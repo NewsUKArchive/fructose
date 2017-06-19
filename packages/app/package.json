@@ -1,0 +1,39 @@
+{
+  "name": "reactase-app",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "./node_modules/.bin/jest"
+  },
+  "dependencies": {
+    "events": "^1.1.1",
+    "global": "^4.3.2",
+    "lerna": "^2.0.0-rc.5",
+    "prop-types": "^15.5.10",
+    "react": "16.0.0-alpha.6",
+    "react-native": "0.44.2",
+    "react-native-cli": "^2.0.1",
+    "socket.io-client": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "2.0.0",
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
+    "jest": "^20.0.4",
+    "react-addons-test-utils": "15.6.0",
+    "react-dom": "^15.6.1",
+    "sinon": "^2.3.4"
+  },
+  "jest": {
+    "preset": "react-native",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/e2eTests"
+    ]
+  }
+}

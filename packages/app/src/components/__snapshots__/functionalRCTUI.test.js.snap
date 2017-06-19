@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Functional React Component Tester UI snapshot: instantiated FunctionalRCTUI component 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    reactase
+  </Text>
+</View>
+`;
+
+exports[`Functional React Component Tester UI snapshot: loading MockComponent 1`] = `
+<View>
+  <MockComponent
+    id="mock"
+  />
+</View>
+`;

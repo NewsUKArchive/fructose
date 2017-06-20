@@ -21,7 +21,7 @@ export default class FunctionalRCTUI extends Component {
 
   loadComponent  = (name, props) => {
     const Component = this.props.components[name];
-    const component = <Component />
+    const component = <Component {...props}/>
     this.setState({component: component});
   }
 

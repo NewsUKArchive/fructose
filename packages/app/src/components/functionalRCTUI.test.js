@@ -26,12 +26,12 @@ describe('Functional React Component Tester UI', () => {
   })
 
   it('snapshot: loading MockComponent', () => {
-    wrapper.instance().loadComponent({name:MockComponent.displayName, props:{id:'mock'}});
+    wrapper.instance().loadComponent(MockComponent.displayName, {id:'mock'});
     expect(wrapper.update()).toMatchSnapshot();
   });
 
   it('loadComponent loads component into View', () => {
-    wrapper.instance().loadComponent({name:MockComponent.displayName, props:{id:'mock'}});
+    wrapper.instance().loadComponent(MockComponent.displayName, {id:'mock'});
     expect(wrapper.update().contains(<MockComponent id='mock' />)).toBe(true);
   });
 });

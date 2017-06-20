@@ -8,6 +8,12 @@ export default class FunctionalRCT {
   constructor(eventEmitter) {
     this.events = new EventEmitter();
     this.socket = io('http://localhost:7811');
+
+    this.socket.on('aaa', (componentName) => {
+      this.socket.emit('debug', 'received');
+      this.loadComponent(componentName, {});
+    });
+    
     this.components = {};
   }
 
@@ -20,9 +26,6 @@ export default class FunctionalRCT {
   }
 
   getFunctionalRCTUI = () => {
-    // this.socket.on('load', (componentDetails) => {
-    //   this.loadComponent(componentDetails);
-    // });
     return <FunctionalRCTUI events={this.events} components={this.components} />
   }
 }

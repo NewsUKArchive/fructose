@@ -35,8 +35,6 @@ export default class e2eTests extends Component {
     addComponent('Component1', Component1);
     addComponent('Component2', Component2);
     this.setState({harness:getUI()});
-    setTimeout(() => loadComponent('Component1', {}), 250);
-    setTimeout(() => loadComponent('Component2', {}), 500);
   }
 
   render() {

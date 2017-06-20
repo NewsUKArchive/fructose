@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-import { getUI, addComponent, loadComponent } from 'reactase-app';
+import { getUI, addComponent, loadComponent } from 'fructose-app';
 
 class Component2 extends Component {
   render () {

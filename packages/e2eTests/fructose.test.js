@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import detox from 'detox';
 const FructoseClient = require('fructose-client').FructoseClient;
-import { startFructoseServer } from 'fructose-server';
+import { FructoseServer } from 'fructose-server';
 
 const detoxConfig =  {
   "configurations": {
@@ -14,27 +14,43 @@ const detoxConfig =  {
   } 
 }
 
-console.warn(1,FructoseClient)
-
 describe('fructose', () => {
   const client = new FructoseClient();
+  const server = new FructoseServer();
   beforeAll(async () => {
-    console.warn(2,FructoseClient)
     await detox.init(detoxConfig);
-    await startFructoseServer();
+    await server.start();
   }, 60000);
 
   afterAll(async () => {
+    client.disconnect();
+    server.close();
     await detox.cleanup();
   });
 
   beforeEach( async () => {
-    await device.reloadReactNative();
-  }, 5000);
+    await device.reloadReactNative(); // removing this makes tests faster.. We may not need it!
+  });
 
   it('can load a component', async () => {
-    console.log('in it')
-    client.loadComponent('Component1', {});
-    setTimeout( async () => await expect(element(by.text('COMPONENT 1'))).toBeVisible(), 3000);
-  }, 5000)
+    await client.loadComponent('Component1', {});
+    await expect(element(by.text('COMPONENT 1'))).toBeVisible();
+
+  })
+
+  it('can load a component1', async () => {
+    await client.loadComponent('Component2', {});
+    await expect(element(by.text('COMPONENT 2'))).toBeVisible();
+  })
+
+  it('can load a component2', async () => {
+    await client.loadComponent('Component1', {});
+    await expect(element(by.text('COMPONENT 1'))).toBeVisible();
+  })
+
+  it('can load a component3', async () => {
+    await client.loadComponent('Component2', {});
+    await expect(element(by.text('COMPONENT 2'))).toBeVisible();
+  })
+
 });

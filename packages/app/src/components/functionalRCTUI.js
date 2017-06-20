@@ -29,10 +29,9 @@ export default class FunctionalRCTUI extends Component {
     this.props.events.removeListener('component', this.componentLoader);
   }
 
-  componentDidMount () {
-  }
-
-  componentDidUpdate() {
+  componentWillUpdate() {
+    this.props.events.emit('loaded');
+    console.warn('emitting loaded event')
   }
 
   render() {

@@ -6,12 +6,16 @@ import io from 'socket.io-client';
 
 export default class FunctionalRCT {
   constructor(eventEmitter) {
-    this.events = new EventEmitter();
     this.socket = io('http://localhost:7811');
+    this.events = new EventEmitter();
+    this.events.on('loaded', () => {
+      console.warn('emiiting ws msg loadedOnDevice')
+    });
 
-    this.socket.on('aaa', (componentName) => {
-      this.socket.emit('debug', 'received');
+    this.socket.on('load-on-device', (componentName, props) => {
+      console.warn('received loadOnDevice msg');
       this.loadComponent(componentName, {});
+      this.socket.emit('loadedOnDevice');
     });
     
     this.components = {};
@@ -23,6 +27,7 @@ export default class FunctionalRCT {
   
   loadComponent = (name, props) => {
     this.events.emit('load', name, props);
+    console.warn('emitting event load eith name and props')
   }
 
   getFunctionalRCTUI = () => {

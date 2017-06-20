@@ -2,26 +2,46 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 
-function startFructoseServer() {
-  var first = true;
-  return new Promise ( (resolve, reject) => {
-    const app = express();
-    const server = http.Server(app);
-    const io = socketio(server);
+function FructoseServer() {
+  this.first = true;
+  this.app = null;
+  this.server = null;
+  this.io = null;
+  this.instance = null;
+}
 
-    app.get('/', function(req, res){
+FructoseServer.prototype.close = function () {
+  this.io.sockets.forEach(s => s.disconnect());
+  this.io.close();
+  this.server.close();
+  this.instance.close()
+}
+
+FructoseServer.prototype.start = function () {
+  return new Promise ( (resolve, reject) => {
+    this.app = express();
+    this.server = http.Server(this.app);
+    this.io = socketio(this.server);
+
+    this.app.get('/', (req, res) => {
       res.sendFile(__dirname + '/index.html');
     });
 
-    io.on('connection', function(socket){
+    this.io.on('connection',  (socket) => {
       console.log('a user connected');
-      if (first) {
-        first = false;
-        resolve();
+      if (this.first) {
+        this.first = false;
+        resolve(); // resolve on the first connection - there is a better way to do this. add a hasConnection method... works for now
       }
-      socket.on('bbb', (componentName, props) => {
-        console.log('deets', componentName, props);
-        socket.broadcast.emit('aaa', componentName);
+
+      socket.on('loadComponent', (componentName, props) => {
+        console.warn('msg received from client, sending loadOnDevice to device')
+        this.io.emit('load-on-device', componentName, props);
+      });
+
+      socket.on('loadedOnDevice', () => {
+        console.warn('component loaded to device, sending loaded msg to client')
+        this.io.emit('loaded');
       });
 
       socket.on('debug', (r) => {
@@ -29,10 +49,10 @@ function startFructoseServer() {
       });
     });
 
-    server.listen(7811, function(){
+    this.instance = this.server.listen(7811, () => {
       console.log('listening on *:7811');
     });
   });
 }
 
-module.exports = { startFructoseServer }
+module.exports = { FructoseServer }

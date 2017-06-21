@@ -1,16 +1,14 @@
-var socketClient = require('socket.io-client');
+const socketClient = require('socket.io-client');
 
-function FructoseClient () {
-  this.socket = socketClient('http://localhost:7811');
+function FructoseClient (PORT=7811) {
+  this.socket = socketClient(`http://localhost:${PORT}`);
   this.loadComponent = (component, props) => {
     return new Promise( (resolve, reject) => {
       console.warn('sending loadComponent msg to server');
       this.socket.emit('loadComponent', component, props);
       this.socket.on('loaded', () => {
-        console.warn('finally loaded')
-        resolve();
+        resolve('component loaded');
       });
-      this.socket.on('load-on-device', (x,y)=>console.error(x,y))
     }) 
   }
   this.disconnect = () => this.socket.disconnect();

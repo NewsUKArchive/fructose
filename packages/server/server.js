@@ -1,20 +1,21 @@
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
+const enableDestroy = require('server-destroy');
 
-function FructoseServer() {
+function FructoseServer(port) {
   this.first = true;
   this.app = null;
   this.server = null;
   this.io = null;
-  this.instance = null;
+  this.i = null;
+  this.port = port;
 }
 
 FructoseServer.prototype.close = function () {
-  this.io.sockets.forEach(s => s.disconnect());
-  this.io.close();
-  this.server.close();
-  this.instance.close()
+  // this.io.sockets.connected.forEach(s => s.disconnect(true));
+  // this.io.server.close();
+  this.server.destroy();
 }
 
 FructoseServer.prototype.start = function () {
@@ -31,7 +32,6 @@ FructoseServer.prototype.start = function () {
       console.log('a user connected');
       if (this.first) {
         this.first = false;
-        resolve(); // resolve on the first connection - there is a better way to do this. add a hasConnection method... works for now
       }
 
       socket.on('loadComponent', (componentName, props) => {
@@ -49,8 +49,10 @@ FructoseServer.prototype.start = function () {
       });
     });
 
-    this.instance = this.server.listen(7811, () => {
-      console.log('listening on *:7811');
+    this.server.listen(this.port, () => {
+      console.log('listening on *:' + this.port);
+      enableDestroy(this.server);
+      resolve();
     });
   });
 }

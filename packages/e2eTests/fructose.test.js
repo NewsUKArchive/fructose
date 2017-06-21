@@ -7,7 +7,7 @@ const detoxConfig =  {
   "configurations": {
     "ios.sim.debug": {
       "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/e2eTests.app",
-      "build": "xcodebuild -project ios/e2eTests.xcodeproj -scheme example -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+      "build": "xcodebuild -project ios/e2eTests.xcodeproj -scheme e2eTests -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
       "type": "ios.simulator",
       "name": "iPhone 7"
     }
@@ -29,7 +29,7 @@ describe('fructose', () => {
   });
 
   beforeEach( async () => {
-    await device.reloadReactNative(); // removing this makes tests faster.. We may not need it!
+    //await device.reloadReactNative(); // removing this makes tests faster.. We may not need it!
   });
 
   it('can load a component', async () => {

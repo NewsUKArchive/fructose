@@ -2,36 +2,18 @@
 
 lerna bootstrap --npm-client=yarn --concurrency=1
 
-cd packages
-
-if cd client && npm t ; then
-  echo "CLIENT TESTS PASSED"
+if lerna run test; then
+  echo "UNIT/INTEGRATION TESTS PASSED"
 else
-  echo "CLIENT TESTS FAILED"
+  echo "UNIT/INTEGRATION TESTS FAILED"
   cd ../..
   exit 1
 fi
 
-if cd ../server && npm t ; then
-  echo "SERVER TESTS PASSED"
-else
-  echo "SERVER TESTS FAILED"
-  cd ../..
-  exit 1
-fi
-
-if cd ../app && npm t ; then
-  echo "APP TESTS PASSED"
-else
-  echo "APP TESTS FAILED"
-  cd ../..
-  exit 1
-fi
-
-cd ../e2eTests 
+cd packages/e2eTests 
 rm -rf node_modules
 yarn
-npm start &
+yarn start &
 if  npm t ; then
   echo "E2E TESTS PASSED"
 else

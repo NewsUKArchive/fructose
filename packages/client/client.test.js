@@ -29,7 +29,6 @@ describe('FructoseClient', () => {
     io = socketio(server);
 
     io.on('connection', (socket) => {
-      console.error('connected')
       socket.on('loadComponent', (x,y) => {
         expect(x).toBe(1);
         expect(y).toBe(2);

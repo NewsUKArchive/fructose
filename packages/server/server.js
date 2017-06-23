@@ -27,18 +27,15 @@ FructoseServer.prototype.start = function () {
     });
 
     this.io.on('connection',  (socket) => {
-      console.log('a user connected');
       if (this.first) {
         this.first = false;
       }
 
       socket.on('loadComponent', (componentName, props) => {
-        console.warn('msg received from client, sending loadOnDevice to device')
         this.io.emit('load-on-device', componentName, props);
       });
 
       socket.on('loadedOnDevice', () => {
-        console.warn('component loaded to device, sending loaded msg to client')
         this.io.emit('loaded');
       });
 
@@ -48,7 +45,6 @@ FructoseServer.prototype.start = function () {
     });
 
     this.server.listen(this.port, () => {
-      console.log('listening on *:' + this.port);
       enableDestroy(this.server);
       resolve();
     });

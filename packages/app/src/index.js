@@ -1,6 +1,10 @@
 import FunctionalRCT from "./functionalRCT";
+import { EventEmitter } from "events";
+import io from "socket.io-client";
 
-const fcrt = new FunctionalRCT();
+const events =  new EventEmitter();
+const socket = io("http://localhost:7811");
+const fcrt = new FunctionalRCT(events, socket);
 
 export const getUI = fcrt.getFunctionalRCTUI;
 export const addComponent = fcrt.addComponent;

@@ -1,13 +1,10 @@
 import React from "react";
 import { Text } from "react-native";
 import FunctionalRCTUI from "./components/functionalRCTUI";
-import { EventEmitter } from "events";
-import io from "socket.io-client";
-
 export default class FunctionalRCT {
-  constructor(eventEmitter) {
-    this.socket = io("http://localhost:7811");
-    this.events = new EventEmitter();
+  constructor(events, socket) {
+    this.socket = socket;
+    this.events = events;
     this.events.on("loaded", () => {});
 
     this.socket.on("load-on-device", (componentName, props) => {

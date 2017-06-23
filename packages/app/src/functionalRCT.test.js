@@ -1,11 +1,16 @@
 import FunctionalRCT from "./functionalRCT";
 import { shallow } from "enzyme";
 
+import { EventEmitter } from "events";
+import io from "socket.io-client";
+
 describe("FunctionalRCT", () => {
   var fcrt;
 
   beforeEach(() => {
-    fcrt = new FunctionalRCT();
+    const events =  new EventEmitter();
+    const socket = io("http://localhost:7811");
+    fcrt = new FunctionalRCT(events, socket);
   });
 
   afterEach(() => {

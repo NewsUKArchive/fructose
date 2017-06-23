@@ -3,24 +3,23 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
+		"start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
+		"test": "jest --forceExit"
 	},
 	"dependencies": {
 		"babel-polyfill": "^6.23.0",
+		"fructose-app": "../app",
 		"react": "16.0.0-alpha.6",
-		"react-native": "0.44.2",
-		"fructose-app": "0.0.1"
+		"react-native": "0.44.2"
 	},
 	"devDependencies": {
-		"babel-jest": "20.0.3",
+		"babel-jest": "^20.0.3",
 		"babel-preset-react-native": "2.0.0",
-		"detox": "^5.1.3",
+		"jest-environment-node-debug": "2.0.0",
+		"detox": "5.1.3",
+		"fructose-client": "../client",
+		"fructose-server": "../server",
 		"jest": "20.0.4",
-		"fructose-client": "0.0.1",
-		"fructose-server": "0.0.1"
-	},
-	"peerDependencies": {
-    "react-native": "0.44.2"
-  }
+		"jest-cli": "20.0.4"
+	}
 }

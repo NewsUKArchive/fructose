@@ -1,4 +1,4 @@
-import FunctionalRCT from './functionalRCT';
+import FunctionalRCT from "./functionalRCT";
 
 const fcrt = new FunctionalRCT();
 

@@ -4,37 +4,32 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import { getUI, addComponent, loadComponent } from 'fructose-app';
+import React, { Component } from "react";
+import { AppRegistry, StyleSheet, Text, View } from "react-native";
+import { getUI, addComponent, loadComponent } from "fructose-app";
 
 class Component2 extends Component {
-  render () {
+  render() {
     return <Text>COMPONENT 2</Text>;
   }
 }
 
 class Component1 extends Component {
-  render () {
+  render() {
     return <Text>COMPONENT 1</Text>;
   }
 }
 
 export default class e2eTests extends Component {
-  constructor () {
+  constructor() {
     super();
-    this.state = {harness: <Text>Harness</Text>}
-  } 
+    this.state = { harness: <Text>Harness</Text> };
+  }
 
-  componentDidMount(){
-    addComponent('Component1', Component1);
-    addComponent('Component2', Component2);
-    this.setState({harness:getUI()});
+  componentDidMount() {
+    addComponent("Component1", Component1);
+    addComponent("Component2", Component2);
+    this.setState({ harness: getUI() });
   }
 
   render() {
@@ -49,20 +44,20 @@ export default class e2eTests extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF"
   },
   welcome: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    textAlign: "center",
+    margin: 10
   },
   instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    textAlign: "center",
+    color: "#333333",
+    marginBottom: 5
+  }
 });
 
-AppRegistry.registerComponent('e2eTests', () => e2eTests);
+AppRegistry.registerComponent("e2eTests", () => e2eTests);

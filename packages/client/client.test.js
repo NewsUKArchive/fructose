@@ -1,42 +1,46 @@
-const Client = require('./client').FructoseClient;
-const express = require('express');
-const http = require('http');
-const socketio = require('socket.io');
+const Client = require("./client");
+const express = require("express");
+const http = require("http");
+const socketio = require("socket.io");
+const SocketClient = require("socket.io-client");
 
-describe('FructoseClient', () => {
+describe("FructoseClient", () => {
   var app;
-  var server = http.Server(this.app);
-  var io = socketio(this.server);
+  var socketClient; 
   var client;
-  var port;
-  
-  beforeAll( (done) => {
-    app = express();
-    server = http.Server(this.app);
-    server.listen(0, () => {
-      port = server.address().port;
-      done();
-    })
-  });
+  var server;
+  var io;
 
-  afterAll( () => {
+  afterAll(() => {
     client.disconnect();
-    io.close()
+    io.close();
     server.close();
   });
 
-  it('e2e test', () => {
-    io = socketio(server);
+  it(
+    "e2e test", (done) => {
+      app = express();
+      server = http.Server(app);
+      io = socketio(server);
 
-    io.on('connection', (socket) => {
-      socket.on('loadComponent', (x,y) => {
-        expect(x).toBe(1);
-        expect(y).toBe(2);
-        io.emit('loaded');
-      })
-    });
+      io.on("connection", socket => {
+        socket.on("loadComponent", (x, y) => {
+          expect(x).toBe(1);
+          expect(y).toBe(2);
+          io.emit("loaded");
+        });
+      });
 
-    client = new Client(port);    
-    return expect(client.loadComponent(1,2)).resolves.toBe('component loaded');
-  }, 300);
+      server.listen(0, () => {
+        const port = server.address().port;
+        console.warn()
+        socketClient = SocketClient(`http://localhost:${port}`);
+        client = new Client(socketClient);
+        expect(client.loadComponent(1, 2)).resolves.toBe(
+          "component loaded"
+        ).then(done);
+      });
+    },
+    1000
+  );
 });

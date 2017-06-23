@@ -2,18 +2,20 @@
   "name": "fructose-client",
   "version": "0.0.1",
   "description": "",
-  "main": "client.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest --verbose"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "global": "^4.3.2",
+    "jest-environment-node-debug": "^2.0.0",
     "socket.io-client": "^2.0.3"
   },
   "devDependencies": {
-    "jest": "20.0.4",
     "express": "^4.15.3",
+    "jest": "20.0.4",
     "socket.io": "^2.0.3"
   }
 }

@@ -1,4 +1,4 @@
-import { getUI, addComponent } from './index';
+import { tearDown, getUI, addComponent } from './index';
 
 describe('index', () => {
   it('is bound to the right context', () => {
@@ -9,6 +9,7 @@ describe('index', () => {
       '1': 'A',
       '2': 'B'
     }
+    tearDown();
     expect(ui.props.components).toMatchObject(expected);
   });
 });

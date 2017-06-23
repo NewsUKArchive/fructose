@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
-    "start": "node server.js"
+    "test": "jest --verbose",
+    "start": "node start.js"
   },
   "author": "Rohan Janjua",
   "license": "ISC",

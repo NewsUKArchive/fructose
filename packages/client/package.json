@@ -4,15 +4,15 @@
   "description": "",
   "main": "client.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jest": "^20.0.4",
     "socket.io-client": "^2.0.3"
   },
   "devDependencies": {
+    "jest": "20.0.4",
     "express": "^4.15.3",
     "socket.io": "^2.0.3"
   }

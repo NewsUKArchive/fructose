@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
-		"test": "jest --forceExit"
+		"test": "jest --forceExit --verbose"
 	},
 	"dependencies": {
 		"babel-polyfill": "^6.23.0",

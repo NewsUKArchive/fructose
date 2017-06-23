@@ -13,8 +13,6 @@ function FructoseServer(port) {
 }
 
 FructoseServer.prototype.close = function () {
-  // this.io.sockets.connected.forEach(s => s.disconnect(true));
-  // this.io.server.close();
   this.server.destroy();
 }
 

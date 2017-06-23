@@ -31,7 +31,6 @@ export default class FunctionalRCTUI extends Component {
 
   componentWillUpdate() {
     this.props.events.emit('loaded');
-    console.warn('emitting loaded event')
   }
 
   render() {

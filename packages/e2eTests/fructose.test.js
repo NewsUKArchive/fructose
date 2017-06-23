@@ -15,8 +15,8 @@ const detoxConfig =  {
 }
 
 describe('fructose', () => {
-  const client = new FructoseClient();
-  const server = new FructoseServer();
+  const client = new FructoseClient(7811);
+  const server = new FructoseServer(7811);
   beforeAll(async () => {
     await detox.init(detoxConfig);
     await server.start();
@@ -29,7 +29,10 @@ describe('fructose', () => {
   });
 
   beforeEach( async () => {
-    //await device.reloadReactNative(); // removing this makes tests faster.. We may not need it!
+    /* add this in to reload the rn environment for each test - makes tests slower by ~500ms
+      BUT it could make the environment more stable. I've found no reason to use it YET.
+    await device.reloadReactNative();
+    */
   });
 
   it('can load a component', async () => {

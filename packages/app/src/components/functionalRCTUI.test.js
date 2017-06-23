@@ -16,7 +16,7 @@ describe('Functional React Component Tester UI', () => {
     events = new EventEmitter();
     wrapper = shallow(<FunctionalRCTUI events={events} components={{MockComponent}}/>);
   });
-  
+
   it('snapshot: instantiated FunctionalRCTUI component', () => {
     expect(wrapper).toMatchSnapshot();
   });

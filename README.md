@@ -2,9 +2,9 @@
 
 Fructose is a library to enable functional testing of React Native components in a device or simulator. It allows you to create functional tests against React Native components in isolation. This is different to an end to end testing approach where you test a built application.
 
-Fructose can technically support both Android and iOS. At the moment it is limited by detox to iOS. Once detox has Android support, so will fructose.
+Fructose uses [detox] under the hood as the driver for ios devices.
 
-Fructose uses detox under the hood as the driver for ios devices.
+Fructose can technically support both Android and iOS. At the moment it is limited by [detox] to iOS. Once [detox] has Android support, so will fructose.
 
 ---
 
@@ -18,7 +18,7 @@ You need to use both to create and run a fructose test.
 
 The App component is a React component that sits within an index.ios.js/index.android.js and forms the basis for your test application. It uses a websocket to listen for commands to load in a new component.
 
-The Test Utils enable tests to load components inside the app, and they also enable interaction with the app through detox.
+The Test Utils enable tests to load components inside the app, and they also enable interaction with the app through [detox].
 
 ## Getting Started
 
@@ -115,8 +115,16 @@ When run in the context of the tests, it sends a message to the app to load up t
 
 The second and third arguments are only used in the context of the tests. The second argument is simply a description that you might put into a 'describe' block, the third is a function that contains your tests. At the moment the tests need to be written in a test framework that supports the functions `beforeAll`,`afterAll`, `beforeEach`, `afterEach`, `describe`. We have only tested it with jest.
 
+If you want to understand [expect][expect], [element][actions], and [by][matchers], take a look at the [Detox documentation][detox-docs].
+
 ## Future
   
   1. Remove as much of the configuration currently needed as possible 
   2. Make Fructose test runner agnostic.
   3. A Cli to help get started with fructose.
+
+[detox]: https://github.com/wix/detox
+[detox-docs]: https://github.com/wix/detox/blob/master/docs/README.md
+[matchers]: https://github.com/wix/detox/blob/master/docs/APIRef.Matchers.md
+[actions]: https://github.com/wix/detox/blob/master/docs/APIRef.ActionsOnElement.md
+[expect]: https://github.com/wix/detox/blob/master/docs/APIRef.Expect.md

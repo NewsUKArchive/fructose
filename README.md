@@ -27,6 +27,7 @@ The Test Utils enable tests to load components inside the app, and they also ena
 ```
 yarn add fructose-app --dev
 yarn add fructose-test-utils --dev
+yarn add react-native-fructose-loader --dev
 ```
 
 ### Set up the app

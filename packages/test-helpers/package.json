@@ -1,7 +1,7 @@
 {
-  "name": "test-helpers",
-  "version": "0.0.1",
-  "description": "test helpers for fructose",
+  "name": "hjkadshhjkl-test-utils",
+  "version": "0.1.0",
+  "description": "test utils for fructose",
   "main": "lib/index.js",
   "bin": {
     "compile-tests": "bin/writeComponentsTests"
@@ -15,8 +15,8 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "detox": "5.1.3",
-    "fructose-client": "../client",
-    "fructose-server": "../server",
+    "hjkadshhjkl-client": "^0.1.0",
+    "hjkadshhjkl-server": "^0.1.0",
     "tape": "^4.7.0"
   },
   "devDependencies": {

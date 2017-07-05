@@ -1,21 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Functional React Component Tester UI snapshot: instantiated FunctionalRCTUI component 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#F5FCFF",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
   <Text
     accessible={true}
     allowFontScaling={true}
     ellipsizeMode="tail"
   >
-    reactase
+    Fructose
   </Text>
 </View>
 `;
 
 exports[`Functional React Component Tester UI snapshot: loading MockComponent 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#F5FCFF",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
   <MockComponent
-    id="mock"
+    id="testIdBlah"
   />
 </View>
 `;

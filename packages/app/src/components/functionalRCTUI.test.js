@@ -15,7 +15,7 @@ describe("Functional React Component Tester UI", () => {
   beforeEach(() => {
     events = new EventEmitter();
     wrapper = shallow(
-      <FunctionalRCTUI events={events} components={{ MockComponent }} />
+      <FunctionalRCTUI events={events} components={{ "abc123-test-string": <MockComponent id="testIdBlah"/> }} />
     );
   });
 
@@ -24,16 +24,16 @@ describe("Functional React Component Tester UI", () => {
   });
 
   it("loads default component on render", () => {
-    expect(wrapper.contains(<Text>reactase</Text>)).toBe(true);
+    expect(wrapper.contains(<Text>Fructose</Text>)).toBe(true);
   });
 
   it("snapshot: loading MockComponent", () => {
-    wrapper.instance().loadComponent(MockComponent.displayName, { id: "mock" });
+    wrapper.instance().loadComponent('abc123-test-string');
     expect(wrapper.update()).toMatchSnapshot();
   });
 
   it("loadComponent loads component into View", () => {
-    wrapper.instance().loadComponent(MockComponent.displayName, { id: "mock" });
-    expect(wrapper.update().contains(<MockComponent id="mock" />)).toBe(true);
+    wrapper.instance().loadComponent('abc123-test-string');
+    expect(wrapper.update().contains(<MockComponent id="testIdBlah" />)).toBe(true);
   });
 });

@@ -1,6 +1,3 @@
-import React from "react";
-import { Text } from "react-native";
-import FunctionalRCTUI from "./components/functionalRCTUI";
 export default class FunctionalRCT {
   constructor(events, socket) {
     this.socket = socket;
@@ -15,17 +12,22 @@ export default class FunctionalRCT {
     this.components = {};
   }
 
+  addComponents = (components) => {
+    Object.assign(this.components, components);
+  }
+
   addComponent = (name, component) => {
     this.components[name] = component;
   };
 
-  loadComponent = (name, props) => {
-    this.events.emit("load", name, props);
+  loadComponent = (name) => {
+    this.events.emit("load", name);
   };
 
-  getFunctionalRCTUI = () => {
-    return (
-      <FunctionalRCTUI events={this.events} components={this.components} />
-    );
-  };
+  getProps = () => {
+    return {
+      events: this.events,
+      components: this.components
+    };
+  }
 }

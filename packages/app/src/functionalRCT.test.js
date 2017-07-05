@@ -25,40 +25,25 @@ describe("FunctionalRCT", () => {
 
   describe("#addComponent", () => {
     it("adds a component to this.components", () => {
-      fcrt.addComponent((name = "name"), (component = "component"));
+      fcrt.addComponent("name", "component");
       expect(fcrt.components["name"]).toBe("component");
     });
   });
 
   describe("#loadComponent", () => {
-    it("emits an event with componentDetails", () => {
+    it("emits an event with component string", () => {
       const test = new Promise((resolve, reject) => {
-        fcrt.events.on("load", (name, component) => {
+        fcrt.events.on("load", (name) => {
           try {
             expect(name).toBe("name");
-            expect(component).toBe("props");
             resolve();
           } catch (e) {
             reject(e);
           }
         });
       });
-      fcrt.loadComponent("name", "props");
+      fcrt.loadComponent("name");
       return test;
-    });
-  });
-
-  describe("#getFunctionalRCTUI", () => {
-    it("returns a FunctionalRCTUI component with the correct props", () => {
-      fcrt.addComponent((name = "1"), (component = "A"));
-      fcrt.addComponent((name = "2"), (component = "B"));
-      const ui = fcrt.getFunctionalRCTUI();
-      const expected = {
-        "1": "A",
-        "2": "B"
-      };
-      expect(ui.props.components).toMatchObject(expected);
-      expect(ui.props.events).toBe(fcrt.events);
     });
   });
 });

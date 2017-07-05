@@ -33,7 +33,6 @@ describe("FructoseClient", () => {
 
       server.listen(0, () => {
         const port = server.address().port;
-        console.warn()
         socketClient = SocketClient(`http://localhost:${port}`);
         client = new Client(socketClient);
         expect(client.loadComponent(1, 2)).resolves.toBe(

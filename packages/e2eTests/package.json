@@ -4,22 +4,43 @@
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
-		"test": "jest --forceExit --verbose"
+		"test": "npm run with-components && jest .fructose/components.test.js --forceExit --verbose",
+		"fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
+		"write-tests": "compile-tests",
+		"write-components": "node ./node_modules/.bin/rnstl",
+		"with-components": "npm run write-components && npm run write-tests"
 	},
 	"dependencies": {
-		"babel-polyfill": "^6.23.0",
 		"fructose-app": "../app",
 		"react": "16.0.0-alpha.6",
-		"react-native": "0.44.2"
+		"react-native": "0.44.1"
+	},
+	"jest": {
+		"preset": "react-native",
+		"modulePathIgnorePatterns": [
+			"<rootDir>/../app",
+			"<rootDir>/node_modules/fructose-app"
+		],
+		"transformIgnorePatterns": [
+			"node_modules/(?!react-native|react-navigation|fructose-app)"
+		],
+		"setupTestFrameworkScriptFile": "./.fructose/jest-setup.js"
 	},
 	"devDependencies": {
-		"babel-jest": "^20.0.3",
 		"babel-preset-react-native": "2.0.0",
-		"jest-environment-node-debug": "2.0.0",
-		"detox": "5.1.3",
-		"fructose-client": "../client",
-		"fructose-server": "../server",
+		"test-helpers": "../test-helpers",
 		"jest": "20.0.4",
-		"jest-cli": "20.0.4"
+		"jest-cli": "20.0.4",
+		"jest-environment-node-debug": "2.0.0",
+		"react-native-fructose-loader": "git://github.com/rjanjua/react-native-fructose-loader.git#3100cc6da6d1e71287715781c5ebf2df3af46043"
+	},
+	  "config": {
+		"react-native-fructose-loader": {
+			"searchDir": [
+				"./"
+			],
+			"pattern": "**/*.fructose.test.js",
+			"outputFile": "./.fructose/components.js"
+		}
 	}
 }

@@ -3,7 +3,8 @@
   "packages": [
     "packages/app",
     "packages/server",
-    "packages/client"
+    "packages/client",
+    "packages/test-helpers"
   ],
   "version": "0.0.1"
 }

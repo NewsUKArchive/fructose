@@ -54,3 +54,5 @@ fastlane/screenshots
 
 #coverage
 **/coverage
+
+sandbox 

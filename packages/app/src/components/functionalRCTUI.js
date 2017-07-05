@@ -6,16 +6,15 @@ import io from "socket.io-client";
 export default class FunctionalRCTUI extends Component {
   constructor(props) {
     super(props);
-    this.p = props;
-    this.A = "A";
-    this.com = props.components;
     this.props.events.on("load", this.loadComponent);
-    this.state = { component: <Text>reactase</Text> };
+    this.state = { component: <Text>Fructose</Text> };
   }
 
-  loadComponent = (name, props) => {
-    const Component = this.props.components[name];
-    const component = <Component {...props} />;
+  loadComponent = (name) => {
+    const component = this.props.components[name];
+    if (!component){
+      console.error(name, 'is undefined', this.props.components);
+    }
     this.setState({ component: component });
   };
 
@@ -29,7 +28,7 @@ export default class FunctionalRCTUI extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         {this.state.component}
       </View>
     );

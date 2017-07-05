@@ -13,7 +13,6 @@ fi
 cd packages/e2eTests 
 rm -rf node_modules
 yarn
-yarn start &
 if  npm t ; then
   echo "E2E TESTS PASSED"
 else

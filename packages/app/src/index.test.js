@@ -1,15 +1,11 @@
-import { tearDown, getUI, addComponent } from "./index";
+import Fructose, { tearDown } from "./index";
 
 describe("index", () => {
-  it("is bound to the right context", () => {
-    addComponent("1", "A");
-    addComponent("2", "B");
-    const ui = getUI();
-    const expected = {
-      "1": "A",
-      "2": "B"
-    };
-    tearDown();
-    expect(ui.props.components).toMatchObject(expected);
+  it("exports 'Fructose' Function", () => {
+    expect(Fructose).toBeInstanceOf(Function);
+  });
+
+  it("exports a teardown Function", () => {
+    expect(tearDown).toBeInstanceOf(Function);
   });
 });

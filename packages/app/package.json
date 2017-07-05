@@ -1,7 +1,7 @@
 {
   "name": "hjkadshhjkl-app",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
   "main": "src/index.js",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",

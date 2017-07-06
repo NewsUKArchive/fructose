@@ -1,12 +1,12 @@
-export default () => {
-  const Client = require('fructose-client');
+export default (config) => {
+  const Client = require('hjkadshhjkl-client');
   const { setup, teardown } = require("./setup");
   
   var first = true;
 
   beforeAll( async () => {
     if (first) {
-      await setup();
+      await setup(config);
       first = false;
     }
   }, 60000);

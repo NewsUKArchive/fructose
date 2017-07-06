@@ -4,8 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-exports.default = function () {
-  var Client = require('fructose-client');
+exports.default = function (config) {
+  var Client = require('hjkadshhjkl-client');
 
   var _require = require("./setup"),
       setup = _require.setup,
@@ -15,7 +15,7 @@ exports.default = function () {
 
   beforeAll(async function () {
     if (first) {
-      await setup();
+      await setup(config);
       first = false;
     }
   }, 60000);

@@ -1,8 +1,7 @@
 import 'babel-polyfill';
 import './fakeCliArgs' // the order is important - this file must run before we import detox
 import detox from "detox";
-import { FructoseServer } from "fructose-server";
-import Client from "fructose-client";
+import { FructoseServer } from "hjkadshhjkl-server";
 import { spawnSync } from "child_process";
 import { startPackager, kill } from "./startPackager";
 
@@ -10,8 +9,7 @@ import { startPackager, kill } from "./startPackager";
 const detoxConfig = {
   configurations: {
     "ios.sim.debug": {
-      binaryPath:
-        "ios/build/Build/Products/Debug-iphonesimulator/e2eTests.app",
+      binaryPath: "",
       type: "ios.simulator",
       name: "iPhone 7"
     }
@@ -20,10 +18,15 @@ const detoxConfig = {
 var fructosePackager;
 var server;
 
-export const setup = async () => {
+export const setup = async (config={}) => {
   fructosePackager = await startPackager();
   server = new FructoseServer(7811);
   await server.start();
+  if(config.binaryPath){
+    detoxConfig.configurations["ios.sim.debug"].binaryPath = config.binaryPath;
+  } else {
+    throw("No binaryPath was provided, you need to pass in a config object");
+  }
   await detox.init(detoxConfig);
 };
 

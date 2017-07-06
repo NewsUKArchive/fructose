@@ -1,8 +1,9 @@
-import 'babel-polyfill';
-import './fakeCliArgs' // the order is important - this file must run before we import detox
+/* eslint import/first: 0 */
+import "./fakeCliArgs"; // the order is important - this file must run before we import detox
+
+import "babel-polyfill";
 import detox from "detox";
 import { FructoseServer } from "hjkadshhjkl-server";
-import { spawnSync } from "child_process";
 import { startPackager, kill } from "./startPackager";
 
 // The paths in this need to be relative to <rootDir>/packages/component
@@ -15,17 +16,19 @@ const detoxConfig = {
     }
   }
 };
-var fructosePackager;
-var server;
+let fructosePackager;
+let server;
 
-export const setup = async (config={}) => {
+export const setup = async (config = {}) => {
   fructosePackager = await startPackager();
   server = new FructoseServer(7811);
   await server.start();
-  if(config.binaryPath){
+  if (config.binaryPath) {
     detoxConfig.configurations["ios.sim.debug"].binaryPath = config.binaryPath;
   } else {
-    throw("No binaryPath was provided, you need to pass in a config object");
+    throw new Error({
+      msg: "No binaryPath was provided, you need to pass in a config object"
+    });
   }
   await detox.init(detoxConfig);
 };

@@ -1,22 +1,24 @@
+/* globals describe it beforeAll afterAll expect */
+
 const FructoseServer = require("./server").FructoseServer;
 const client = require("socket.io-client");
 const portfinder = require("portfinder");
 
 describe("FructoseServer", () => {
-  var server;
-  var PORT;
-  var socket;
+  let server;
+  let PORT;
+  let socket;
 
-  beforeAll(() => {
-    return portfinder
+  beforeAll(() =>
+    portfinder
       .getPortPromise()
       .then(port => {
         PORT = port;
         server = new FructoseServer(PORT);
         socket = client(`http://localhost:${PORT}`);
       })
-      .then(() => server.start());
-  });
+      .then(() => server.start())
+  );
 
   afterAll(() => {
     socket.disconnect();
@@ -34,10 +36,10 @@ describe("FructoseServer", () => {
   });
 
   it("forwards the loadedOnDevice message", done => {
-    var messagesReceived = 0;
+    let messagesReceived = 0;
 
     socket.on("loaded", () => {
-      messagesReceived++;
+      messagesReceived += 1;
       expect(messagesReceived).toBe(1);
       done();
     });

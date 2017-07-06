@@ -12,18 +12,18 @@ class FructoseServer {
     this.port = port;
   }
 
-  close () {
+  close() {
     this.server.destroy();
   }
 
-  start () {
-    return new Promise((resolve, reject) => {
+  start() {
+    return new Promise(resolve => {
       this.app = express();
       this.server = http.Server(this.app);
       this.io = socketio(this.server);
 
       this.app.get("/", (req, res) => {
-        res.sendFile(__dirname + "/index.html");
+        res.sendFile(`${__dirname}/index.html`);
       });
 
       this.io.on("connection", socket => {

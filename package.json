@@ -4,10 +4,34 @@
   "private": true,
   "main": "src/index.js",
   "scripts": {
-    "test": "./scripts/tests.sh"
+    "test": "./scripts/tests.sh",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "lint-staged": "lint-staged",
+    "prettier:diff": "prettier --list-different 'packages/*/*.js'",
+    "prettier:write": "prettier --write 'packages/*/*.js'"
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "lint-staged",
+    "test"
+  ],
+  "lint-staged": {
+    "**/*.js": [
+      "eslint . --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "lerna": "^2.0.0-rc.5",
-    "prettier": "^1.4.4"
+    "prettier": "1.4.2",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "15.0.1",
+    "eslint-config-prettier": "2.3.0",
+    "eslint-plugin-import": "2.6.1",
+    "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-react": "7.1.0",
+    "lint-staged": "4.0.0",
+    "pre-commit": "1.2.2"
   }
 }

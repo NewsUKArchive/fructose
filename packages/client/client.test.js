@@ -1,3 +1,5 @@
+/* globals describe it  afterAll expect */
+
 const Client = require("./client");
 const express = require("express");
 const http = require("http");
@@ -5,11 +7,11 @@ const socketio = require("socket.io");
 const SocketClient = require("socket.io-client");
 
 describe("FructoseClient", () => {
-  var app;
-  var socketClient; 
-  var client;
-  var server;
-  var io;
+  let app;
+  let socketClient;
+  let client;
+  let server;
+  let io;
 
   afterAll(() => {
     client.disconnect();
@@ -18,7 +20,8 @@ describe("FructoseClient", () => {
   });
 
   it(
-    "e2e test", (done) => {
+    "e2e test",
+    done => {
       app = express();
       server = http.Server(app);
       io = socketio(server);
@@ -35,9 +38,9 @@ describe("FructoseClient", () => {
         const port = server.address().port;
         socketClient = SocketClient(`http://localhost:${port}`);
         client = new Client(socketClient);
-        expect(client.loadComponent(1, 2)).resolves.toBe(
-          "component loaded"
-        ).then(done);
+        expect(client.loadComponent(1, 2)).resolves
+          .toBe("component loaded")
+          .then(done);
       });
     },
     1000

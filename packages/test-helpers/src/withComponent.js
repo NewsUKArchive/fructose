@@ -1,37 +1,37 @@
-export default (config) => {
-  const Client = require('hjkadshhjkl-client');
-  const { setup, teardown } = require("./setup");
-  
-  var first = true;
+/* globals describe beforeEach beforeAll afterAll */
 
-  beforeAll( async () => {
+const Client = require("hjkadshhjkl-client");
+const { setup, teardown } = require("./setup");
+
+export default config => {
+  let first = true;
+
+  beforeAll(async () => {
     if (first) {
       await setup(config);
       first = false;
     }
   }, 60000);
 
-  afterAll( async () => {
+  afterAll(async () => {
     await teardown();
   });
 
   const withComponent = (component, description, tests) => {
-      describe(description, () => {
-        const hashed = JSON.stringify(component);
-        var client;
+    describe(description, () => {
+      const hashed = JSON.stringify(component);
+      let client;
 
-        beforeAll(async () => {
-          client = Client(7811);
-        }, 60000);
+      beforeAll(async () => {
+        client = Client(7811);
+      }, 60000);
 
-        afterAll(async () => {
-          await client.disconnect();
-        });
+      afterAll(async () => client.disconnect());
 
-        beforeEach(async () => await client.loadComponent(hashed));
-        tests();
-      });
-  }
+      beforeEach(async () => client.loadComponent(hashed));
+      tests();
+    });
+  };
 
   global.withComponent = withComponent;
-}
+};

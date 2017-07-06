@@ -1,14 +1,14 @@
-import FunctionalRCT from "./functionalRCT";
-import { shallow } from "enzyme";
+/* globals describe it beforeEach afterEach expect*/
 
 import { EventEmitter } from "events";
 import io from "socket.io-client";
+import FunctionalRCT from "./functionalRCT";
 
 describe("FunctionalRCT", () => {
-  var fcrt;
+  let fcrt;
 
   beforeEach(() => {
-    const events =  new EventEmitter();
+    const events = new EventEmitter();
     const socket = io("http://localhost:7811");
     fcrt = new FunctionalRCT(events, socket);
   });
@@ -26,14 +26,14 @@ describe("FunctionalRCT", () => {
   describe("#addComponent", () => {
     it("adds a component to this.components", () => {
       fcrt.addComponent("name", "component");
-      expect(fcrt.components["name"]).toBe("component");
+      expect(fcrt.components.name).toBe("component");
     });
   });
 
   describe("#loadComponent", () => {
     it("emits an event with component string", () => {
       const test = new Promise((resolve, reject) => {
-        fcrt.events.on("load", (name) => {
+        fcrt.events.on("load", name => {
           try {
             expect(name).toBe("name");
             resolve();

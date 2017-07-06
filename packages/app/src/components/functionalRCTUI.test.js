@@ -1,21 +1,25 @@
+/* globals describe it beforeEach expect */
 import React from "react";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 import { shallow } from "enzyme";
-import FunctionalRCTUI from "./functionalRCTUI";
 import { EventEmitter } from "events";
+import FunctionalRCTUI from "./functionalRCTUI";
 
 const MockComponent = React.createClass({
   render: () => <Text id={this.props.id} />
 });
 
 describe("Functional React Component Tester UI", () => {
-  var wrapper;
-  var events;
+  let wrapper;
+  let events;
 
   beforeEach(() => {
     events = new EventEmitter();
     wrapper = shallow(
-      <FunctionalRCTUI events={events} components={{ "abc123-test-string": <MockComponent id="testIdBlah"/> }} />
+      <FunctionalRCTUI
+        events={events}
+        components={{ "abc123-test-string": <MockComponent id="testIdBlah" /> }}
+      />
     );
   });
 
@@ -28,12 +32,14 @@ describe("Functional React Component Tester UI", () => {
   });
 
   it("snapshot: loading MockComponent", () => {
-    wrapper.instance().loadComponent('abc123-test-string');
+    wrapper.instance().loadComponent("abc123-test-string");
     expect(wrapper.update()).toMatchSnapshot();
   });
 
   it("loadComponent loads component into View", () => {
-    wrapper.instance().loadComponent('abc123-test-string');
-    expect(wrapper.update().contains(<MockComponent id="testIdBlah" />)).toBe(true);
+    wrapper.instance().loadComponent("abc123-test-string");
+    expect(wrapper.update().contains(<MockComponent id="testIdBlah" />)).toBe(
+      true
+    );
   });
 });

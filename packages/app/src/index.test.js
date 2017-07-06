@@ -1,3 +1,5 @@
+/* globals describe it expect */
+
 import Fructose, { tearDown } from "./index";
 
 describe("index", () => {

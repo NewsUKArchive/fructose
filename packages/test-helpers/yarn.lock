@@ -795,20 +795,6 @@ fresh@0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.0.tgz#f474ca5e6a9246d6fd8e0953cfa9b9c805afa78e"
 
-fructose-client@../client:
-  version "0.0.1"
-  dependencies:
-    global "^4.3.2"
-    jest-environment-node-debug "^2.0.0"
-    socket.io-client "^2.0.3"
-
-fructose-server@../server:
-  version "0.0.1"
-  dependencies:
-    express "^4.15.3"
-    server-destroy "^1.0.1"
-    socket.io "^2.0.3"
-
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -883,6 +869,22 @@ has@^1.0.1, has@~1.0.1:
   resolved "https://registry.yarnpkg.com/has/-/has-1.0.1.tgz#8461733f538b0837c9361e39a9ab9e9704dc2f28"
   dependencies:
     function-bind "^1.0.2"
+
+hjkadshhjkl-client@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/hjkadshhjkl-client/-/hjkadshhjkl-client-0.1.0.tgz#d8f3311b22266b254f8b0bfe3e262b4bc6e0728d"
+  dependencies:
+    global "^4.3.2"
+    jest-environment-node-debug "^2.0.0"
+    socket.io-client "^2.0.3"
+
+hjkadshhjkl-server@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/hjkadshhjkl-server/-/hjkadshhjkl-server-0.1.0.tgz#aded87bb4f8ae4b7960eb89eb1e0706c508e92f8"
+  dependencies:
+    express "^4.15.3"
+    server-destroy "^1.0.1"
+    socket.io "^2.0.3"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"

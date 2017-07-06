@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose --forceExit",
     "start": "node start.js"
   },
   "author": "Rohan Janjua",

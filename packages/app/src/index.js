@@ -15,7 +15,7 @@ export default function Fructose(loadComponents) {
   const store = componentLoader(loadComponents);
   fcrt.addComponents(store);
   return () => {
-    const { events, components } = fcrt.getProps();
-    return <FunctionalRCTUI events={events} components={components} />;
+    const p = fcrt.getProps();
+    return <FunctionalRCTUI events={p.events} components={p.components} />;
   };
 }

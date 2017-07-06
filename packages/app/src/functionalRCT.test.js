@@ -6,9 +6,10 @@ import FunctionalRCT from "./functionalRCT";
 
 describe("FunctionalRCT", () => {
   let fcrt;
+  let events;
 
   beforeEach(() => {
-    const events = new EventEmitter();
+    events = new EventEmitter();
     const socket = io("http://localhost:7811");
     fcrt = new FunctionalRCT(events, socket);
   });
@@ -23,17 +24,10 @@ describe("FunctionalRCT", () => {
     expect(lengthOfComponents).toBe(0);
   });
 
-  describe("#addComponent", () => {
-    it("adds a component to this.components", () => {
-      fcrt.addComponent("name", "component");
-      expect(fcrt.components.name).toBe("component");
-    });
-  });
-
   describe("#loadComponent", () => {
     it("emits an event with component string", () => {
       const test = new Promise((resolve, reject) => {
-        fcrt.events.on("load", name => {
+        events.on("load", name => {
           try {
             expect(name).toBe("name");
             resolve();

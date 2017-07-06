@@ -2094,9 +2094,8 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-hjkadshhjkl-app@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/hjkadshhjkl-app/-/hjkadshhjkl-app-0.1.1.tgz#229aaf0027ac615a14834eab488bb6b953bd4371"
+hjkadshhjkl-app@../app:
+  version "0.1.9"
   dependencies:
     babel-preset-es2015 "^6.24.1"
     events "^1.1.1"
@@ -2105,31 +2104,31 @@ hjkadshhjkl-app@0.1.1:
     react "16.0.0-alpha.6"
     socket.io-client "2.0.3"
 
-hjkadshhjkl-client@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/hjkadshhjkl-client/-/hjkadshhjkl-client-0.1.0.tgz#d8f3311b22266b254f8b0bfe3e262b4bc6e0728d"
+hjkadshhjkl-client@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/hjkadshhjkl-client/-/hjkadshhjkl-client-0.1.9.tgz#8f0f451890d1119797f697cd30b9008f7aa7d353"
   dependencies:
     global "^4.3.2"
     jest-environment-node-debug "^2.0.0"
     socket.io-client "^2.0.3"
 
-hjkadshhjkl-server@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/hjkadshhjkl-server/-/hjkadshhjkl-server-0.1.0.tgz#aded87bb4f8ae4b7960eb89eb1e0706c508e92f8"
+hjkadshhjkl-server@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/hjkadshhjkl-server/-/hjkadshhjkl-server-0.1.9.tgz#42f28ad7641d258de5dbf5810b28af8c7b37a079"
   dependencies:
     express "^4.15.3"
     server-destroy "^1.0.1"
     socket.io "^2.0.3"
 
-hjkadshhjkl-test-utils@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/hjkadshhjkl-test-utils/-/hjkadshhjkl-test-utils-0.1.7.tgz#2608a58ab9b6e09d9a1749fb7a2c0cb035a2260d"
+hjkadshhjkl-test-utils@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/hjkadshhjkl-test-utils/-/hjkadshhjkl-test-utils-0.1.9.tgz#69d27d139c65f9e351c396d87618e6d659684e8d"
   dependencies:
     babel-polyfill "^6.23.0"
     babel-preset-es2015 "^6.24.1"
     detox "5.1.3"
-    hjkadshhjkl-client "^0.1.0"
-    hjkadshhjkl-server "^0.1.0"
+    hjkadshhjkl-client "^0.1.9"
+    hjkadshhjkl-server "^0.1.9"
     tape "^4.7.0"
 
 hoek@2.x.x:

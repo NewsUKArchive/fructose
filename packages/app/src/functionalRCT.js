@@ -1,38 +1,22 @@
-export default class FunctionalRCT {
-  constructor(events, socket) {
-    this.socket = socket;
-    this.events = events;
-    this.events.on("loaded", () => {});
+export default function FunctionalRCT(events, socket) {
+  events.on("loaded", () => {});
 
-    this.socket.on("load-on-device", componentName => {
-      this.loadComponent(componentName, {});
-      this.socket.emit("loadedOnDevice");
-    });
+  const loadComponent = name => events.emit("load", name);
 
-    this.addComponents.bind(this);
-    this.addComponent.bind(this);
-    this.loadComponent.bind(this);
-    this.getProps.bind(this);
+  socket.on("load-on-device", componentName => {
+    loadComponent(componentName, {});
+    socket.emit("loadedOnDevice");
+  });
 
-    this.components = {};
-  }
+  const components = {};
 
-  addComponents(components) {
-    Object.assign(this.components, components);
-  }
-
-  addComponent(name, component) {
-    this.components[name] = component;
-  }
-
-  loadComponent(name) {
-    this.events.emit("load", name);
-  }
-
-  getProps() {
-    return {
-      events: this.events,
-      components: this.components
-    };
-  }
+  return {
+    components: () => components,
+    addComponents: c => Object.assign(components, c),
+    getProps: () => ({
+      events,
+      components
+    }),
+    loadComponent
+  };
 }

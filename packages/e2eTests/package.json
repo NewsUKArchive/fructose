@@ -9,7 +9,7 @@
 		"write-test-components": "node ./node_modules/.bin/rnstl && compile-tests"
 	},
 	"dependencies": {
-		"hjkadshhjkl-app": "0.1.1",
+		"hjkadshhjkl-app": "../app",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.44.1"
 	},
@@ -17,7 +17,7 @@
 		"preset": "react-native",
 		"modulePathIgnorePatterns": [
 			"<rootDir>/../app",
-			"<rootDir>/node_modules/fructose-app"
+			"<rootDir>/node_modules/hjkadshhjkl-app"
 		],
 		"transformIgnorePatterns": [
 			"node_modules/(?!react-native|react-navigation|fructose-app)"
@@ -26,7 +26,7 @@
 	},
 	"devDependencies": {
 		"babel-preset-react-native": "2.0.0",
-		"hjkadshhjkl-test-utils": "^0.1.7",
+		"hjkadshhjkl-test-utils": "../test-helpers",
 		"jest": "20.0.4",
 		"jest-cli": "20.0.4",
 		"jest-environment-node-debug": "2.0.0",

@@ -24,9 +24,20 @@ const styles = StyleSheet.create({
 export default class FunctionalRCTUI extends Component {
   constructor(props) {
     super(props);
+
+    this.loadComponent = name => {
+      const component = this.props.components[name];
+      if (!component) {
+        throw new Error({
+          msg: `${name} is undefined`,
+          components: this.props.components
+        });
+      }
+      this.setState({ component });
+    };
+
     this.props.events.on("load", this.loadComponent);
     this.state = { component: <Text>Fructose</Text> };
-    this.loadComponent.bind(this);
   }
 
   componentWillUpdate() {
@@ -35,17 +46,6 @@ export default class FunctionalRCTUI extends Component {
 
   componentWillUnmount() {
     this.props.events.removeListener("component", this.componentLoader);
-  }
-
-  loadComponent(name) {
-    const component = this.props.components[name];
-    if (!component) {
-      throw new Error({
-        msg: `${name} is undefined`,
-        components: this.props.components
-      });
-    }
-    this.setState({ component });
   }
 
   render() {

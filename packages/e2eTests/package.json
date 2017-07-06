@@ -9,7 +9,7 @@
 		"write-test-components": "node ./node_modules/.bin/rnstl && compile-tests"
 	},
 	"dependencies": {
-		"fructose-app": "../app",
+		"hjkadshhjkl-app": "0.1.1",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.44.1"
 	},
@@ -26,13 +26,13 @@
 	},
 	"devDependencies": {
 		"babel-preset-react-native": "2.0.0",
-		"test-helpers": "../test-helpers",
+		"hjkadshhjkl-test-utils": "^0.1.7",
 		"jest": "20.0.4",
 		"jest-cli": "20.0.4",
 		"jest-environment-node-debug": "2.0.0",
 		"react-native-fructose-loader": "git://github.com/rjanjua/react-native-fructose-loader.git#3100cc6da6d1e71287715781c5ebf2df3af46043"
 	},
-	  "config": {
+	"config": {
 		"react-native-fructose-loader": {
 			"searchDir": [
 				"./"
@@ -40,5 +40,8 @@
 			"pattern": "**/*.fructose.test.js",
 			"outputFile": "./.fructose/components.js"
 		}
+	},
+	"fructose": {
+		"binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/e2eTests.app"
 	}
 }

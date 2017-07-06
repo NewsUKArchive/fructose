@@ -1,2 +1,3 @@
-import createWithComponentsFn from 'test-helpers';
-createWithComponentsFn();
+import config from '../package';
+import initFructose from 'hjkadshhjkl-test-utils';
+initFructose(config.fructose);

@@ -6,12 +6,14 @@
 		"start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
 		"test": "npm run write-test-components && jest .fructose/components.test.js --forceExit --verbose",
 		"fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
-		"write-test-components": "node ./node_modules/.bin/rnstl && compile-tests"
+		"compile-components": "rnstl --searchDir ./ --pattern '**/*.fructose.js' --outputFile ./.fructose/components.js",
+		"write-test-components": "npm run compile-components  && compile-tests"
 	},
 	"dependencies": {
 		"hjkadshhjkl-app": "../app",
 		"react": "16.0.0-alpha.6",
-		"react-native": "0.44.1"
+		"react-native": "0.44.1",
+		"react-native-storybook-loader": "^1.4.1"
 	},
 	"jest": {
 		"preset": "react-native",
@@ -29,8 +31,7 @@
 		"hjkadshhjkl-test-utils": "../test-helpers",
 		"jest": "20.0.4",
 		"jest-cli": "20.0.4",
-		"jest-environment-node-debug": "2.0.0",
-		"react-native-fructose-loader": "git://github.com/rjanjua/react-native-fructose-loader.git#3100cc6da6d1e71287715781c5ebf2df3af46043"
+		"jest-environment-node-debug": "2.0.0"
 	},
 	"config": {
 		"react-native-fructose-loader": {

@@ -27,21 +27,21 @@ The Test Utils enable tests to load components inside the app, and they also ena
 ```
 yarn add fructose-app --dev
 yarn add fructose-test-utils --dev
-yarn add react-native-fructose-loader --dev
+yarn add react-native-storybook-loader --dev
 ```
 
 ### Set up the app
 
 Create a folder `.fructose` in your project root directory.
 
-Add an `index.ios.js` in this folder with the following content:
+Add an `index.ios.js` in this folder with the following content - register the component to the same name as the one your app binary expects. For example, if you are using the storybook app:
 
 ```
 import { AppRegistry } from "react-native";
 import Fructose from "fructose-app";
 import { loadStories } from './components';
 
-AppRegistry.registerComponent("e2eTests", () => Fructose(loadStories));
+AppRegistry.registerComponent("storybooknative", () => Fructose(loadStories));
 ```
 
 ### Set up the tests
@@ -61,6 +61,14 @@ You will need to require this file at the beginning of your test run. For exampl
 	}
 ```
 
+You will also need to add a `fructose` config to your package.json with an attribute binaryPath that points to a React Native app, for example if you are using storybooks, you can set binaryPath to the location of the storybook binary:
+
+```
+	"fructose": {
+		"binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/storybooksnative.app"
+	}
+```
+
 Add a script to your package.json: 
 
 ```
@@ -76,17 +84,8 @@ Add the following to your package.json:
 ```
 "scripts": {
   "fructose-app": "react-native start --root .fructose --resetCache",
-  "write-test-components": "node ./node_modules/.bin/rnstl && compile-tests"
-}
-..
-"config": {
-  "react-native-fructose-loader": {
-    "searchDir": [
-      "./"
-    ],
-    "pattern": "**/*.fructose.test.js",
-    "outputFile": "./.fructose/components.js"
-  }
+  "compile-components": "rnstl --searchDir ./ --pattern '**/*.fructose.js' --outputFile ./.fructose/components.js",
+  "write-test-components": "npm run compile-components  && compile-tests"
 }
 ```
 

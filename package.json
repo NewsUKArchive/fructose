@@ -1,6 +1,6 @@
 {
-  "name": "rncomponentapp",
-  "version": "0.0.1",
+  "name": "fructose",
+  "version": "0.1.10",
   "private": true,
   "main": "src/index.js",
   "scripts": {
@@ -33,5 +33,11 @@
     "eslint-plugin-react": "7.1.0",
     "lint-staged": "4.0.0",
     "pre-commit": "1.2.2"
+  },
+  "author": "News UK & Ireland Ltd",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/rjanjua/fructose/issues"
   }
+
 }

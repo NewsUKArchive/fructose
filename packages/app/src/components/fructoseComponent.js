@@ -21,17 +21,14 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class FunctionalRCTUI extends Component {
+export default class FructoseComponent extends Component {
   constructor(props) {
     super(props);
 
     this.loadComponent = name => {
       const component = this.props.components[name];
       if (!component) {
-        throw new Error({
-          msg: `${name} is undefined`,
-          components: this.props.components
-        });
+        throw new Error(`${name} does not exist in the componentStore`);
       }
       this.setState({ component });
     };
@@ -45,7 +42,7 @@ export default class FunctionalRCTUI extends Component {
   }
 
   componentWillUnmount() {
-    this.props.events.removeListener("component", this.componentLoader);
+    this.props.events.removeListener("load", this.loadComponent);
   }
 
   render() {
@@ -57,7 +54,7 @@ export default class FunctionalRCTUI extends Component {
   }
 }
 
-FunctionalRCTUI.propTypes = {
+FructoseComponent.propTypes = {
   events: PropTypes.shape({
     emit: PropTypes.func.isRequired,
     on: PropTypes.func.isRequired,

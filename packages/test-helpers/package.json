@@ -7,7 +7,7 @@
     "compile-tests": "bin/writeComponentsTests"
   },
   "scripts": {
-    "test": "tape -r babel-register src/**/*.test.js | tap-summary"
+    "test": "nyc tape -r babel-register src/**/*.test.js | tap-nyc"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "babel-register": "^6.24.1",
+    "nyc": "^11.0.3",
+    "tap-nyc": "^1.0.2",
     "tap-summary": "^3.0.2"
   }
 }

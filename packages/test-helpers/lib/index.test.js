@@ -15,10 +15,10 @@ var _typeof = typeof Symbol === "function" &&
     };
 
 var test = require("tape");
-var index = require("./index").default;
 
 test("index exports function as default", function(t) {
   t.plan(1);
+  var index = require("./index").default;
   t.equal(
     typeof index === "undefined" ? "undefined" : _typeof(index),
     "function",

@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 /* globals describe beforeEach beforeAll afterAll */
+
 var Client = require("hjkadshhjkl-client");
 
 var _require = require("./setup"),

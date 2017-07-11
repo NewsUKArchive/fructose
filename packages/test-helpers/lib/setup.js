@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.teardown = exports.setup = undefined;
 
-require("babel-polyfill");
-
 require("./fakeCliArgs");
+
+require("babel-polyfill");
 
 var _detox = require("detox");
 
@@ -22,6 +22,8 @@ function _interopRequireDefault(obj) {
 }
 
 // The paths in this need to be relative to <rootDir>/packages/component
+// the order is important - this file must run before we import detox
+
 var detoxConfig = {
   configurations: {
     "ios.sim.debug": {
@@ -30,7 +32,7 @@ var detoxConfig = {
       name: "iPhone 7"
     }
   }
-}; // the order is important - this file must run before we import detox
+}; /* eslint import/first: 0 */
 
 var fructosePackager = void 0;
 var server = void 0;
@@ -46,9 +48,9 @@ var setup = (exports.setup = async function setup() {
   if (config.binaryPath) {
     detoxConfig.configurations["ios.sim.debug"].binaryPath = config.binaryPath;
   } else {
-    throw {
+    throw new Error({
       msg: "No binaryPath was provided, you need to pass in a config object"
-    };
+    });
   }
   await _detox2.default.init(detoxConfig);
 });

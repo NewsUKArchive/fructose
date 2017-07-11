@@ -1,6 +1,6 @@
 {
   "name": "hjkadshhjkl-test-utils",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "description": "test utils for fructose",
   "main": "lib/index.js",
   "bin": {

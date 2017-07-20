@@ -4,7 +4,8 @@
     "packages/app",
     "packages/server",
     "packages/client",
-    "packages/test-helpers"
+    "packages/test-helpers",
+    "packages/fructose"
   ],
-  "version": "0.1.11"
+  "version": "0.1.14"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "fructose",
+  "name": "@times-components/fructose",
   "version": "0.1.24",
   "main": "fructose.js",
   "scripts": {

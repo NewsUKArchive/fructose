@@ -26,9 +26,8 @@
 		"setupTestFrameworkScriptFile": "./.fructose/jest-setup.js"
 	},
 	"devDependencies": {
-		"babel-preset-es2015": "^6.24.1",
 		"babel-preset-react-native": "2.0.0",
-		"hjkadshhjkl": "0.1.20",
+		"hjkadshhjkl": "../",
 		"jest": "20.0.4",
 		"jest-cli": "20.0.4",
 		"jest-environment-node-debug": "2.0.0"

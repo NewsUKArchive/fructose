@@ -25,8 +25,7 @@ The Test Utils enable tests to load components inside the app, and they also ena
 ### Install
 
 ```
-yarn add fructose-app --dev
-yarn add fructose-test-utils --dev
+yarn add fructose --dev
 yarn add react-native-storybook-loader --dev
 ```
 
@@ -38,7 +37,7 @@ Add an `index.ios.js` in this folder with the following content - register the c
 
 ```
 import { AppRegistry } from "react-native";
-import Fructose from "fructose-app";
+import Fructose from "fructose";
 import { loadStories } from './components';
 
 AppRegistry.registerComponent("storybooknative", () => Fructose(loadStories));
@@ -49,8 +48,9 @@ AppRegistry.registerComponent("storybooknative", () => Fructose(loadStories));
 Next add a setup file for your test runner in the same folder with the following content:
 
 ```
-import createWithComponentsFn from 'fructose-test-utils';
-createWithComponentsFn();
+import setup from 'fructose/setup';
+import config from '../package';
+setup(config.fructose);
 ```
 
 You will need to require this file at the beginning of your test run. For example, if you are using jest add this to your package.json:

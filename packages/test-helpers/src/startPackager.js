@@ -1,16 +1,19 @@
 import { spawn } from "child_process";
 
-const forwardSlasesAfterRoot = process
-  .cwd()
-  .substr(process.cwd().indexOf("e2eTests"))
-  .match(/\//g);
-const numForwardSlashes = forwardSlasesAfterRoot
-  ? forwardSlasesAfterRoot.length
-  : 0;
+const getCwd = () => {
+  const forwardSlasesAfterRoot = process
+    .cwd()
+    .substr(process.cwd().indexOf("e2eTests"))
+    .match(/\//g);
+  const numForwardSlashes = forwardSlasesAfterRoot
+    ? forwardSlasesAfterRoot.length
+    : 0;
 
-let cwd = process.cwd();
-for (let i = 0; i < numForwardSlashes; i += 1) {
-  cwd += "/..";
+  let cwd = process.cwd();
+  for (let i = 0; i < numForwardSlashes; i += 1) {
+    cwd += "/..";
+  }
+  return cwd;
 }
 
 const handlePackager = fructosePackager =>
@@ -41,6 +44,6 @@ export const kill = packager =>
   });
 
 export const startPackager = () => {
-  const fructosePackager = spawn("npm", ["run", "fructose-app"], { cwd });
+  const fructosePackager = spawn("npm", ["run", "fructose-app"], { cwd: getCwd() });
   return handlePackager(fructosePackager);
 };

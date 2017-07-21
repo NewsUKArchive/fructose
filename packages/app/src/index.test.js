@@ -25,10 +25,6 @@ it("exports 'Fructose' Function", () => {
   expect(Fructose).toBeInstanceOf(Function);
 });
 
-it("exports a teardown Function", () => {
-  expect(tearDown).toBeInstanceOf(Function);
-});
-
 describe("FructoseApp", () => {
   it("returns a function that returns a function that returns the app", () => {
     const appFunction = Fructose(() => withComponent({ a: 1 }));
@@ -41,8 +37,3 @@ describe("FructoseApp", () => {
   });
 });
 
-describe("tearDown", () => {
-  it("disconnects the socket", () => {});
-  tearDown();
-  expect(mockSocketDisconnect).toHaveBeenCalledTimes(1);
-});

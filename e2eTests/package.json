@@ -6,11 +6,10 @@
 		"start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
 		"test": "npm run write-test-components && jest .fructose/components.test.js --forceExit --verbose",
 		"fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
-		"compile-components": "rnstl --searchDir ./ --pattern '**/*.fructose.js' --outputFile ./.fructose/components.js",
+		"compile-components": "rnstl --searchDir ./ --pattern 'example/*.fructose.js' --outputFile ./.fructose/components.js",
 		"write-test-components": "npm run compile-components  && compile-tests"
 	},
 	"dependencies": {
-		"hjkadshhjkl-app": "../app",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.44.1",
 		"react-native-storybook-loader": "^1.4.1"
@@ -19,7 +18,7 @@
 		"preset": "react-native",
 		"modulePathIgnorePatterns": [
 			"<rootDir>/../app",
-			"<rootDir>/node_modules/hjkadshhjkl-app"
+			"<rootDir>/node_modules/fructose"
 		],
 		"transformIgnorePatterns": [
 			"node_modules/(?!react-native|react-navigation|fructose-app)"
@@ -28,7 +27,7 @@
 	},
 	"devDependencies": {
 		"babel-preset-react-native": "2.0.0",
-		"hjkadshhjkl-test-utils": "../test-helpers",
+		"hjkadshhjkl": "../",
 		"jest": "20.0.4",
 		"jest-cli": "20.0.4",
 		"jest-environment-node-debug": "2.0.0"

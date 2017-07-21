@@ -1,16 +1,24 @@
 #!/bin/bash
 
-lerna bootstrap --npm-client=yarn --concurrency=1
+yarn --npm-client=yarn --concurrency=1
 
-if lerna run test; then
-  echo "UNIT/INTEGRATION TESTS PASSED"
+if  yarn test:test-helpers ; then
+  echo "TEST HELPERS UNIT TESTS PASSED"
 else
-  echo "UNIT/INTEGRATION TESTS FAILED"
+  echo "TEST HELPERS UNIT TESTS FAILED"
   cd ../..
   exit 1
 fi
 
-cd packages/e2eTests 
+if  yarn test:jest ; then
+  echo "UNIT TESTS PASSED"
+else
+  echo "UNIT TESTS FAILED"
+  cd ../..
+  exit 1
+fi
+
+cd e2eTests 
 rm -rf node_modules
 yarn
 if  npm t ; then

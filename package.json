@@ -1,14 +1,18 @@
 {
   "name": "fructose",
-  "version": "0.1.10",
-  "private": true,
-  "main": "src/index.js",
+  "version": "0.1.24",
+  "main": "fructose.js",
   "scripts": {
+    "test:test-helpers": "nyc tape -r babel-register packages/test-helpers/**/*.tape.js | tap-nyc",
+    "test:jest": "jest --verbose --forceExit",
     "test": "./scripts/tests.sh",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "lint-staged": "lint-staged",
     "prettier:diff": "prettier --list-different 'packages/*/*.js'",
     "prettier:write": "prettier --write 'packages/*/*.js'"
+  },
+  "bin": {
+    "compile-tests": "packages/test-helpers/bin/writeComponentsTests"
   },
   "pre-commit": [
     "precommit-msg",
@@ -22,22 +26,59 @@
       "git add"
     ]
   },
+  "jest": {
+    "preset": "react-native",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/e2eTests"
+    ]
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "detox": "5.1.3",
+    "events": "1.1.1",
+    "express": "^4.15.3",
+    "global": "4.3.2",
+    "prop-types": "15.5.10",
+    "react": "16.0.0-alpha.6",
+    "server-destroy": "^1.0.1",
+    "socket.io": "2.0.3",
+    "socket.io-client": "2.0.3"
+  },
   "devDependencies": {
-    "lerna": "^2.0.0-rc.5",
-    "prettier": "1.4.2",
+    "babel-preset-react-native": "2.0.0",
+    "babel-register": "^6.24.1",
+    "enzyme": "2.8.2",
+    "enzyme-to-json": "1.5.1",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.0.1",
     "eslint-config-prettier": "2.3.0",
     "eslint-plugin-import": "2.6.1",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.1.0",
+    "jest": "20.0.4",
+    "jest-environment-node-debug": "2.0.0",
+    "lerna": "^2.0.0-rc.5",
     "lint-staged": "4.0.0",
-    "pre-commit": "1.2.2"
+    "nyc": "^11.0.3",
+    "portfinder": "^1.0.13",
+    "pre-commit": "1.2.2",
+    "prettier": "1.4.2",
+    "react-addons-test-utils": "15.6.0",
+    "react-dom": "15.6.1",
+    "react-native": "0.44.1",
+    "react-native-cli": "2.0.1",
+    "sinon": "2.3.6",
+    "tap-nyc": "^1.0.2",
+    "tap-summary": "^3.0.2",
+    "tape": "^4.7.0"
   },
   "author": "News UK & Ireland Ltd",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/rjanjua/fructose/issues"
   }
-
 }

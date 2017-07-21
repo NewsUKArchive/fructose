@@ -3,7 +3,7 @@ import "./fakeCliArgs"; // the order is important - this file must run before we
 
 import "babel-polyfill";
 import detox from "detox";
-import { FructoseServer } from "hjkadshhjkl-server";
+import { FructoseServer } from "../../server";
 import { startPackager, kill } from "./startPackager";
 
 // The paths in this need to be relative to <rootDir>/packages/component

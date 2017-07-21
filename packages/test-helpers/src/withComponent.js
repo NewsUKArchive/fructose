@@ -1,6 +1,6 @@
 /* globals describe beforeEach beforeAll afterAll */
 
-const Client = require("hjkadshhjkl-client");
+const Client = require("../../client");
 const { setup, teardown } = require("./setup");
 
 export default config => {

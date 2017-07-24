@@ -2,3 +2,4 @@
 **/coverage/*
 **/lib/*
 packages/test-helpers/**/*.test.js
+**/*.tape.js

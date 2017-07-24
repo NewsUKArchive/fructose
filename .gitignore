@@ -54,5 +54,5 @@ fastlane/screenshots
 
 #coverage
 **/coverage
-
+.nyc_output/**
 sandbox 

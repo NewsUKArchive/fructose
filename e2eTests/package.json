@@ -4,10 +4,11 @@
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
-		"test": "npm run write-test-components && jest .fructose/components.test.js --forceExit --verbose",
+		"test": "npm run build-app && npm run write-test-components && jest .fructose/components.test.js --forceExit --verbose",
 		"fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
 		"compile-components": "rnstl --searchDir ./ --pattern 'example/*.fructose.js' --outputFile ./.fructose/components.js",
-		"write-test-components": "npm run compile-components  && compile-tests"
+		"write-test-components": "npm run compile-components  && compile-tests", 
+		"build-app": "xcodebuild -project ios/e2eTests.xcodeproj -scheme e2eTests -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build && kill -9 $(lsof -ti tcp:8081)"
 	},
 	"dependencies": {
 		"react": "16.0.0-alpha.6",

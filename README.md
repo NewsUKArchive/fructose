@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/newsuk/fructose.svg?branch=master)](https://travis-ci.org/newsuk/fructose)
+
 # Fructose
 
 Fructose is a library to enable functional testing of React Native components in a device or simulator. It allows you to create functional tests against React Native components in isolation. This is different to an end to end testing approach where you test a built application.

@@ -21,9 +21,9 @@ let fructosePackager;
 let server;
 
 export const setup = async (config = {}) => {
-  fructosePackager = await startPackager().then(() => log.verbose("packager started"));
+  fructosePackager = await startPackager().then(() => console.log("packager started"));
   server = new FructoseServer(7811);
-  await server.start().then(() => log.verbose("fructose server started on 7811", server.server.address()));
+  await server.start().then(() => console.log("fructose server started on 7811", server.server.address()));
   if (config.binaryPath) {
     detoxConfig.configurations["ios.sim.debug"].binaryPath = config.binaryPath;
   } else {
@@ -31,7 +31,7 @@ export const setup = async (config = {}) => {
       msg: "No binaryPath was provided, you need to pass in a config object"
     });
   }
-  await detox.init(detoxConfig).then(() => log.verbose("detox inited"));
+  await detox.init(detoxConfig).then(() => console.log("detox inited"));
 };
 
 export const teardown = async () => {

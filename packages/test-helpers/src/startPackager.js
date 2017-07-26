@@ -1,12 +1,12 @@
 import { spawn } from "child_process";
 
 const getCwd = () => {
-  const forwardSlasesAfterRoot = process
+  const forwardSlashesAfterRoot = process
     .cwd()
     .substr(process.cwd().indexOf("e2eTests"))
     .match(/\//g);
-  const numForwardSlashes = forwardSlasesAfterRoot
-    ? forwardSlasesAfterRoot.length
+  const numForwardSlashes = forwardSlashesAfterRoot
+    ? forwardSlashesAfterRoot.length
     : 0;
 
   let cwd = process.cwd();
@@ -29,14 +29,20 @@ const handlePackager = fructosePackager =>
     });
 
     fructosePackager.on("close", code => {
-      if (code !== 0) {
-        reject(`closed with code ${code}`);
+      if (code === 11) {
+        console.log('Packager could not listen on port 8081');
+        resolve("Packager can't listen on port 8081");
+      }
+      else if (code !== 0) {
+        console.log(`packager did not exit correctly: code ${code}`)
+        resolve(`closed with code ${code}`);
       }
     });
   });
 
 export const kill = packager =>
   new Promise(resolve => {
+    console.log('killing packager');
     packager.on("exit", () => {
       resolve();
     });
@@ -44,6 +50,7 @@ export const kill = packager =>
   });
 
 export const startPackager = () => {
+  console.log("starting packager");
   const fructosePackager = spawn("npm", ["run", "fructose-app"], { cwd: getCwd() });
   return handlePackager(fructosePackager);
 };

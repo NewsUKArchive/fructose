@@ -1,0 +1,20 @@
+machine:
+  xcode:
+    version: 8.3.2
+  node:
+    version: 8.2.1
+  
+dependencies:
+  pre: 
+    - brew install yarn
+    - brew tap facebook/fb
+    - export CODE_SIGNING_REQUIRED=NO
+    - brew install fbsimctl
+    - brew tap wix/brew
+    - brew install applesimutils --HEAD
+  override:
+    - yarn
+  
+  test:
+    override:
+      - yarn test

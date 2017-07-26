@@ -1,8 +1,6 @@
 machine:
   xcode:
     version: 8.3.2
-  node:
-    version: 8.2.1
   
 dependencies:
   pre: 
@@ -12,9 +10,14 @@ dependencies:
     - brew install fbsimctl
     - brew tap wix/brew
     - brew install applesimutils --HEAD
+    - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+    - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+    - nvm install stable
+    - nvm use stable
+
   override:
     - yarn
   
   test:
     override:
-      - yarn test
+      - ./scripts/test.sh

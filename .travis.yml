@@ -22,10 +22,14 @@ install:
 - nvm use $NODE_VERSION
 
 - yarn
-- pushd e2eTests && yarn && popd
+- pushd e2eTests  
+- yarn 
+- popd
 
 before_script:
-- pushd e2eTests && yarn fructose-app & && popd
+- pushd e2eTests
+- yarn fructose-app & 
+- popd
 
 script:
 - ./scripts/ci.sh

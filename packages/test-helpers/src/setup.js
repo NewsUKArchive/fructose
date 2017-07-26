@@ -13,7 +13,7 @@ const detoxConfig = {
     "ios.sim.debug": {
       binaryPath: "",
       type: "ios.simulator",
-      name: "iPhone 7, iOS 10.3"
+      name: "iPhone 7 Plus"
     }
   }
 };

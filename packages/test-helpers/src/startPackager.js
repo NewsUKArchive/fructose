@@ -20,14 +20,15 @@ const getCwd = () => {
 const handlePackager = fructosePackager =>
   new Promise((resolve, reject) => {
     fructosePackager.stdout.on("data", d => {
-      log.verbose(d.toString("utf8"));
+      console.log(d.toString("utf8"));
       if (d.toString("utf8").includes("Loading dependency graph, done.")) {
         resolve(fructosePackager);
       }
     });
 
     fructosePackager.stderr.on("data", (d) => {
-      log.verbose(d.toString("utf8"));
+      console.log(d.toString("utf8"));
+      // not sure why I need this, but it prevents the packager from not loading on warnings
     });
 
     fructosePackager.on("close", code => {

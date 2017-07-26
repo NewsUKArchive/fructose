@@ -9,7 +9,8 @@ export default config => {
 
   beforeAll(async () => {
     if (first) {
-      await setup(config);
+      console.log("setting up")
+      await setup(config).then(() => console.log("setup complete"));
       first = false;
     }
   }, 180000);
@@ -25,11 +26,14 @@ export default config => {
 
       beforeAll(async () => {
         client = Client(7811);
+        console.log("client address", client.socket);
       }, 60000);
 
       afterAll(async () => client.disconnect());
 
-      beforeEach(async () => client.loadComponent(hashed));
+      beforeEach(async () => {
+        return await client.loadComponent(hashed).then( () => console.log('loadComponent', hashed))
+      });
       tests();
     });
   };

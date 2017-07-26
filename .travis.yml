@@ -21,8 +21,14 @@ install:
 - nvm install $NODE_VERSION
 - nvm use $NODE_VERSION
 
+- yarn
+- pushd e2eTests && yarn && popd
+
+before_script:
+- pushd e2eTests && yarn fructose-app & && popd
+
 script:
-- ./scripts/tests.sh
+- ./scripts/ci.sh
 
 notifications: 
   email: true

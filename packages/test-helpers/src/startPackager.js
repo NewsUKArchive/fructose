@@ -32,11 +32,11 @@ const handlePackager = fructosePackager =>
 
     fructosePackager.on("close", code => {
       if (code === 11) {
-        log.error('Packager could not listen on port 8081');
+        console.log('Packager could not listen on port 8081');
         resolve("Packager can't listen on port 8081");
       }
       else if (code !== 0) {
-        log.error(`packager did not exit correctly: code ${code}`)
+        console.log(`packager did not exit correctly: code ${code}`)
         resolve(`closed with code ${code}`);
       }
     });
@@ -44,7 +44,7 @@ const handlePackager = fructosePackager =>
 
 export const kill = packager =>
   new Promise(resolve => {
-    log.verbose('killing packager');
+    console.log('killing packager');
     packager.on("exit", () => {
       resolve();
     });
@@ -52,7 +52,7 @@ export const kill = packager =>
   });
 
 export const startPackager = () => {
-  log.verbose("starting packager");
+  console.log("starting packager");
   const fructosePackager = spawn("npm", ["run", "fructose-app"], { cwd: getCwd() });
   return handlePackager(fructosePackager);
 };

@@ -5,10 +5,6 @@ import { Text } from "react-native";
 
 withComponent(<Text>The Hobbit</Text>, "basic text", () => {
   test("simple test", async () => {
-    await expect(element(by.text("Fructose"))).toBeVisible();
-  });
-
-  test("simple test", async () => {
     await expect(element(by.text("The Hobbit"))).toBeVisible();
   });
 });

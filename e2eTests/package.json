@@ -29,6 +29,7 @@
 	"devDependencies": {
 		"babel-preset-react-native": "2.0.0",
 		"@times-components/fructose": "../",
+		"detox":"5.5.1",
 		"jest": "20.0.4",
 		"jest-cli": "20.0.4",
 		"jest-environment-node-debug": "2.0.0"
@@ -42,7 +43,13 @@
 			"outputFile": "./.fructose/components.js"
 		}
 	},
-	"fructose": {
-		"binaryPath": "ios/e2eTests.app"
+	"detox": {
+		"configurations": {
+			"ios.sim.debug": {
+				"binaryPath": "ios/e2eTests.app",
+				"type": "ios.simulator",
+				"name": "iPhone 7, iOS 10.3"
+			}
+		}
 	}
 }

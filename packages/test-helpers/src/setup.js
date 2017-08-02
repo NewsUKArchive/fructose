@@ -1,41 +1,35 @@
-/* eslint import/first: 0 */
-import "./fakeCliArgs"; // the order is important - this file must run before we import detox
-
 import "babel-polyfill";
-import detox from "detox";
 import { FructoseServer } from "../../server";
-import { startPackager, kill } from "./startPackager";
+import Packager from "./startPackager";
 var log = require('npmlog')
 
-// The paths in this need to be relative to <rootDir>/packages/component
-const detoxConfig = {
-  configurations: {
-    "ios.sim.debug": {
-      binaryPath: "",
-      type: "ios.simulator",
-      name: "iPhone 7, iOS 10.3"
-    }
-  }
-};
 let fructosePackager;
 let server;
 
-export const setup = async (config = {}) => {
-  fructosePackager = await startPackager().then(() => log.verbose("packager started"));
-  server = new FructoseServer(7811);
-  await server.start().then(() => log.verbose("fructose server started on 7811", server.server.address()));
-  if (config.binaryPath) {
-    detoxConfig.configurations["ios.sim.debug"].binaryPath = config.binaryPath;
-  } else {
-    throw new Error({
-      msg: "No binaryPath was provided, you need to pass in a config object"
-    });
-  }
-  await detox.init(detoxConfig).then(() => log.verbose("detox inited"));
+export default () => {
+  const packager = new Packager();
+  const server = new FructoseServer(7811);
+
+  const setup = async () => {
+        console.log(3);
+
+    await packager.start().then(() => log.verbose("packager started"));
+    console.log(4);
+    await server.start().then(() => log.verbose("fructose server started on 7811", server.server.address()));
+    console.log(5)
+  };
+
+  const cleanup = async () => {
+    await packager.kill();
+    console.log('killed packager')
+    server.close();
+    console.log('closed server');
+  };
+
+  return {
+    setup, 
+    cleanup
+  };
 };
 
-export const teardown = async () => {
-  await kill(fructosePackager);
-  server.close();
-  await detox.cleanup();
-};
+

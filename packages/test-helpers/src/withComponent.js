@@ -1,24 +1,8 @@
 /* globals describe beforeEach beforeAll afterAll */
-var log = require('npmlog')
+import Client from "../../client";
+import log from "npmlog";
 
-const Client = require("../../client");
-const { setup, teardown } = require("./setup");
-
-export default config => {
-  let first = true;
-
-  beforeAll(async () => {
-    if (first) {
-      log.verbose("setting up")
-      await setup(config).then(() => log.info("setup complete"));
-      first = false;
-    }
-  }, 180000);
-
-  afterAll(async () => {
-    await teardown();
-  });
-
+export default ()  => {
   const withComponent = (component, description, tests) => {
     describe(description, () => {
       const hashed = JSON.stringify(component);

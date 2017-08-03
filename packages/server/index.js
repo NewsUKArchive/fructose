@@ -28,8 +28,10 @@ class FructoseServer {
       });
 
       this.io.on("connection", socket => {
+        console.log('yay')
         log.verbose(`connected to socket: ${socket}`);
         socket.on("loadComponent", (componentName, props) => {
+          console.log('doing')
           log.verbose(`emitting loadComponent event to device with component: ${componentName}`);
           this.io.emit("load-on-device", componentName, props);
         });

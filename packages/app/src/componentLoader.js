@@ -3,9 +3,10 @@ export default loadComponents => {
 
   // create withComponent global that will run when withComponent is encountered
   // in a test file
-
+  
   global.withComponent = component => {
-    componentsStore[JSON.stringify(component)] = component;
+    const key = JSON.stringify(component).replace(/"\$\$typeof":.*?,/g, "");
+    componentsStore[key] = component;
   };
 
   loadComponents();

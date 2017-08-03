@@ -4,10 +4,14 @@
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
-		"test": "npm run write-test-components && jest .fructose/components.test.js --verbose --forceExit",
+		"test": "npm run test:ios && npm run test:android",
+		"test:ios": "npm run write-ios-components && jest .fructose/components.test.js --verbose --forceExit",
+		"test:android": "npm run write-android-components && ANDROID=true jest .fructose/components.test.js --verbose --forceExit",
 		"fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
-		"compile-components": "rnstl --searchDir ./ --pattern 'example/*.fructose.js' --outputFile ./.fructose/components.js",
-		"write-test-components": "npm run compile-components  && compile-tests"
+		"compile-android-components": "rnstl --searchDir ./ --pattern 'example/android.fructose.js' --outputFile ./.fructose/components.js",
+		"compile-ios-components": "rnstl --searchDir ./ --pattern 'example/ios.fructose.js' --outputFile ./.fructose/components.js",
+		"write-ios-components": "npm run compile-ios-components  && compile-tests",
+		"write-android-components": "npm run compile-android-components  && compile-tests"
 	},
 	"dependencies": {
 		"react": "16.0.0-alpha.6",
@@ -27,12 +31,13 @@
 		"setupTestFrameworkScriptFile": "./.fructose/jest-setup.js"
 	},
 	"devDependencies": {
-		"babel-preset-react-native": "2.0.0",
 		"@times-components/fructose": "../",
-		"detox":"5.5.1",
+		"babel-preset-react-native": "2.0.0",
+		"detox": "5.5.1",
 		"jest": "20.0.4",
 		"jest-cli": "20.0.4",
-		"jest-environment-node-debug": "2.0.0"
+		"jest-environment-node-debug": "2.0.0",
+		"webdriverio": "^4.8.0"
 	},
 	"config": {
 		"react-native-fructose-loader": {

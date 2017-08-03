@@ -47,7 +47,7 @@ export default class FructoseComponent extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} testID="fructose" >
         {this.state.component}
       </View>
     );

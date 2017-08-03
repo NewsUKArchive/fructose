@@ -11,8 +11,6 @@ export default class Packager {
   }
 
   packagerStarted() {
-            console.log(7);
-
     return new Promise( (resolve) => {
       this.events.on('started', resolve);
     });
@@ -25,8 +23,6 @@ export default class Packager {
   } 
 
   async start () {
-            console.log(6);
-
     log.verbose("starting packager");
     this.events.on("exit", () => {
       this.dead = true;

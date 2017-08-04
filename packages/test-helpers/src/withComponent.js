@@ -1,41 +1,31 @@
 /* globals describe beforeEach beforeAll afterAll */
-var log = require('npmlog')
+import Client from "../../client";
+import log from "npmlog";
 
-const Client = require("../../client");
-const { setup, teardown } = require("./setup");
-
-export default config => {
-  let first = true;
-
-  beforeAll(async () => {
-    if (first) {
-      log.verbose("setting up")
-      await setup(config).then(() => log.info("setup complete"));
-      first = false;
-    }
-  }, 180000);
-
-  afterAll(async () => {
-    await teardown();
-  });
-
+const client = Client(7811);
+log.verbose("client socket", client.socket);
+export default ()  => {
   const withComponent = (component, description, tests) => {
-    describe(description, () => {
-      const hashed = JSON.stringify(component);
-      let client;
+    const hashed = JSON.stringify(component);
 
-      beforeAll(async () => {
-        client = Client(7811);
-        log.verbose("client address", client.socket);
-      }, 60000);
-
-      afterAll(async () => client.disconnect());
-
-      beforeEach(async () => {
+    const loadComponent = async () => {
         return await client.loadComponent(hashed).then( () => log.verbose('loadComponent', hashed))
+    }
+    
+    const disconnect = async () => {
+      client.disconnect();
+    }
+
+    const fructose = {};
+    fructose.loadComponent = loadComponent;
+    fructose.disconnect = disconnect;
+    if (describe !== undefined) {
+      describe(`withComponent: description`, () => {
+        tests(fructose);
       });
-      tests();
-    });
+    } else {
+      tests(fructose);
+    }
   };
 
   global.withComponent = withComponent;

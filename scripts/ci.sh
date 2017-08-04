@@ -1,14 +1,7 @@
 #!/bin/bash
 
-if  yarn test:test-helpers ; then
-  echo "TEST HELPERS UNIT TESTS PASSED"
-else
-  echo "TEST HELPERS UNIT TESTS FAILED"
-  cd ../..
-  exit 1
-fi
 
-if  yarn test:jest ; then
+if  yarn test:unit ; then
   echo "UNIT TESTS PASSED"
 else
   echo "UNIT TESTS FAILED"
@@ -17,7 +10,7 @@ else
 fi
 
 cd e2eTests 
-if  yarn test ; then
+if  yarn test:ios ; then
   echo "E2E TESTS PASSED"
 else
   echo "E2E TESTS FAILED"

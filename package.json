@@ -7,8 +7,11 @@
     "test": "./scripts/tests.sh",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "lint-staged": "lint-staged",
-    "prettier:diff": "prettier --list-different 'packages/*/*.js'",
-    "prettier:write": "prettier --write 'packages/*/*.js'",
+    "lint:packages": "eslint . --fix",
+    "lint:fructose": "eslint e2eTests/.fructose /--fix",
+    "lint:e2eTests": "eslint e2eTests /--fix",
+    "prettier:diff": "prettier --list-different '**/*.js'",
+    "prettier:write": "prettier --write '**/*.js'",
     "prepublish": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib"
   },
   "bin": {
@@ -20,8 +23,10 @@
     "test:unit"
   ],
   "lint-staged": {
-    "**/*.js": [
-      "eslint . --fix",
+      "**/*.js": [
+      "lint:packages",
+      "lint:fructose",
+      "lint:e2eTests",
       "prettier --write",
       "git add"
     ]

@@ -16,7 +16,9 @@
 	"dependencies": {
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.44.1",
-		"react-native-storybook-loader": "^1.4.1"
+		"react-native-storybook-loader": "^1.4.1",
+		"detox": "5.5.1",
+		"webdriverio": "^4.8.0"
 	},
 	"jest": {
 		"preset": "react-native",
@@ -33,11 +35,9 @@
 	"devDependencies": {
 		"@times-components/fructose": "../",
 		"babel-preset-react-native": "2.0.0",
-		"detox": "5.5.1",
 		"jest": "20.0.4",
 		"jest-cli": "20.0.4",
-		"jest-environment-node-debug": "2.0.0",
-		"webdriverio": "^4.8.0"
+		"jest-environment-node-debug": "2.0.0"
 	},
 	"config": {
 		"react-native-fructose-loader": {

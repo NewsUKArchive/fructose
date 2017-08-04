@@ -12,7 +12,7 @@
     "lint:e2eTests": "eslint e2eTests /--fix",
     "prettier:diff": "prettier --list-different '**/*.js'",
     "prettier:write": "prettier --write '**/*.js'",
-    "prepublish": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib"
+    "prepare": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib"
   },
   "bin": {
     "compile-tests": "packages/test-helpers/bin/writeComponentsTests"

@@ -17,8 +17,9 @@
 	"jest": {
 		"preset": "react-native",
 		"modulePathIgnorePatterns": [
-			"<rootDir>/../app",
-			"<rootDir>/node_modules/fructose"
+			"<rootDir>/node_modules/@times-components/fructose/node_modules/react-native",
+			"<rootDir>/node_modules/@times-components/fructose/e2eTests",
+			"<rootDir>/../node_modules"
 		],
 		"transformIgnorePatterns": [
 			"node_modules/(?!react-native|react-navigation|fructose-app)"
@@ -27,7 +28,7 @@
 	},
 	"devDependencies": {
 		"babel-preset-react-native": "2.0.0",
-		"hjkadshhjkl": "../",
+		"@times-components/fructose": "../",
 		"jest": "20.0.4",
 		"jest-cli": "20.0.4",
 		"jest-environment-node-debug": "2.0.0"
@@ -42,6 +43,6 @@
 		}
 	},
 	"fructose": {
-		"binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/e2eTests.app"
+		"binaryPath": "ios/e2eTests.app"
 	}
 }

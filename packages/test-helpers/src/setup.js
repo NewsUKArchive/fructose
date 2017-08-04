@@ -5,6 +5,7 @@ import "babel-polyfill";
 import detox from "detox";
 import { FructoseServer } from "../../server";
 import { startPackager, kill } from "./startPackager";
+var log = require('npmlog')
 
 // The paths in this need to be relative to <rootDir>/packages/component
 const detoxConfig = {
@@ -12,7 +13,7 @@ const detoxConfig = {
     "ios.sim.debug": {
       binaryPath: "",
       type: "ios.simulator",
-      name: "iPhone 7"
+      name: "iPhone 7, iOS 10.3"
     }
   }
 };
@@ -20,9 +21,9 @@ let fructosePackager;
 let server;
 
 export const setup = async (config = {}) => {
-  fructosePackager = await startPackager();
+  fructosePackager = await startPackager().then(() => log.verbose("packager started"));
   server = new FructoseServer(7811);
-  await server.start();
+  await server.start().then(() => log.verbose("fructose server started on 7811", server.server.address()));
   if (config.binaryPath) {
     detoxConfig.configurations["ios.sim.debug"].binaryPath = config.binaryPath;
   } else {
@@ -30,7 +31,7 @@ export const setup = async (config = {}) => {
       msg: "No binaryPath was provided, you need to pass in a config object"
     });
   }
-  await detox.init(detoxConfig);
+  await detox.init(detoxConfig).then(() => log.verbose("detox inited"));
 };
 
 export const teardown = async () => {

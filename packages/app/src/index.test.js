@@ -1,6 +1,6 @@
 /* globals describe it expect jest withComponent */
 import { shallow } from "enzyme";
-import Fructose, { tearDown } from "./index";
+import Fructose from "./index";
 
 jest.mock("events", () => {
   function EventEmitter() {
@@ -36,4 +36,3 @@ describe("FructoseApp", () => {
     });
   });
 });
-

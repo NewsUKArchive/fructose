@@ -1,4 +1,5 @@
 /* globals describe beforeEach beforeAll afterAll */
+var log = require('npmlog')
 
 const Client = require("../../client");
 const { setup, teardown } = require("./setup");
@@ -8,10 +9,11 @@ export default config => {
 
   beforeAll(async () => {
     if (first) {
-      await setup(config);
+      log.verbose("setting up")
+      await setup(config).then(() => log.info("setup complete"));
       first = false;
     }
-  }, 60000);
+  }, 180000);
 
   afterAll(async () => {
     await teardown();
@@ -24,11 +26,14 @@ export default config => {
 
       beforeAll(async () => {
         client = Client(7811);
+        log.verbose("client address", client.socket);
       }, 60000);
 
       afterAll(async () => client.disconnect());
 
-      beforeEach(async () => client.loadComponent(hashed));
+      beforeEach(async () => {
+        return await client.loadComponent(hashed).then( () => log.verbose('loadComponent', hashed))
+      });
       tests();
     });
   };

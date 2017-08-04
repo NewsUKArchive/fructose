@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
 const enableDestroy = require("server-destroy");
+var log = require('npmlog')
 
 class FructoseServer {
   constructor(port) {
@@ -27,16 +28,19 @@ class FructoseServer {
       });
 
       this.io.on("connection", socket => {
+        log.verbose(`connected to socket: ${socket}`);
         socket.on("loadComponent", (componentName, props) => {
+          log.verbose(`emitting loadComponent event to device with component: ${componentName}`);
           this.io.emit("load-on-device", componentName, props);
         });
 
         socket.on("loadedOnDevice", () => {
+          log.verbose('loaded component on device');
           this.io.emit("loaded");
         });
 
         socket.on("debug", r => {
-          console.log(r);
+          log(r);
         });
       });
 

@@ -21,7 +21,7 @@ fi
 cd e2eTests 
 rm -rf node_modules
 yarn
-if  npm t ; then
+if  yarn test ; then
   echo "E2E TESTS PASSED"
 else
   echo "E2E TESTS FAILED"

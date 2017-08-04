@@ -11,6 +11,7 @@
     events "1.1.1"
     express "^4.15.3"
     global "4.3.2"
+    npmlog "^4.1.2"
     prop-types "15.5.10"
     server-destroy "^1.0.1"
     socket.io "2.0.3"
@@ -3323,7 +3324,7 @@ npmlog@^2.0.4:
     are-we-there-yet "~1.1.2"
     gauge "~1.2.5"
 
-npmlog@^4.0.2:
+npmlog@^4.0.2, npmlog@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/npmlog/-/npmlog-4.1.2.tgz#08a7f2a8bf734604779a9efa4ad5cc717abb954b"
   dependencies:
@@ -4736,10 +4737,6 @@ walker@~1.0.5:
 watch@~0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/watch/-/watch-0.10.0.tgz#77798b2da0f9910d595f1ace5b0c2258521f21dc"
-
-wdio-appium-service@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/wdio-appium-service/-/wdio-appium-service-0.2.3.tgz#988c5c545b06ba184e6245f49ae8420071fa4009"
 
 wdio-dot-reporter@~0.0.8:
   version "0.0.8"

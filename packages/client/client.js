@@ -1,4 +1,4 @@
-var log = require('npmlog')
+const log = require("npmlog");
 
 class FructoseClient {
   constructor(socket) {

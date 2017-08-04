@@ -1,20 +1,21 @@
-/* globals describe beforeEach beforeAll afterAll */
-import Client from "../../client";
+/* globals describe */
 import log from "npmlog";
+import Client from "../../client";
 
 const client = Client(7811);
 log.verbose("client socket", client.socket);
-export default ()  => {
+export default () => {
   const withComponent = (component, description, tests) => {
     const hashed = JSON.stringify(component);
 
-    const loadComponent = async () => {
-        return await client.loadComponent(hashed).then( () => log.verbose('loadComponent', hashed))
-    }
-    
+    const loadComponent = async () =>
+      client
+        .loadComponent(hashed)
+        .then(() => log.verbose("loadComponent", hashed));
+
     const disconnect = async () => {
       client.disconnect();
-    }
+    };
 
     const fructose = {};
     fructose.loadComponent = loadComponent;

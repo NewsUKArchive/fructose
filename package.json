@@ -15,7 +15,9 @@
     "compile-tests": "packages/test-helpers/bin/writeComponentsTests"
   },
   "pre-commit": [
-    "precommit-msg"
+    "precommit-msg",
+    "lint-staged",
+    "test:unit"
   ],
   "lint-staged": {
     "**/*.js": [
@@ -41,6 +43,7 @@
     "events": "1.1.1",
     "express": "^4.15.3",
     "global": "4.3.2",
+    "npmlog": "^4.1.2",
     "prop-types": "15.5.10",
     "server-destroy": "^1.0.1",
     "socket.io": "2.0.3",
@@ -51,9 +54,9 @@
     "react-native": "0.44.1"
   },
   "devDependencies": {
+    "babel-cli": "6.24.1",
     "babel-preset-react-native": "2.0.0",
     "babel-register": "6.24.1",
-    "babel-cli": "6.24.1",
     "enzyme": "2.8.2",
     "enzyme-to-json": "1.5.1",
     "eslint": "3.19.0",
@@ -70,9 +73,9 @@
     "portfinder": "^1.0.13",
     "pre-commit": "1.2.2",
     "prettier": "1.4.2",
+    "react": "16.0.0-alpha.6",
     "react-addons-test-utils": "15.6.0",
     "react-dom": "15.6.1",
-    "react": "16.0.0-alpha.6",
     "react-native": "0.44.1",
     "react-native-cli": "2.0.1",
     "sinon": "2.3.6",

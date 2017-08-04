@@ -10,6 +10,7 @@ exports[`Functional React Component Tester UI snapshot: instantiated FunctionalR
       "justifyContent": "center",
     }
   }
+  testID="fructose"
 >
   <Text
     accessible={true}
@@ -31,6 +32,7 @@ exports[`Functional React Component Tester UI snapshot: loading MockComponent 1`
       "justifyContent": "center",
     }
   }
+  testID="fructose"
 >
   <MockComponent
     id="testIdBlah"

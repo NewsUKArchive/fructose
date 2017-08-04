@@ -1,3 +1,8 @@
-import createWithComponentsFn from './withComponent';
+import createWithComponentGlobal from "./withComponent";
+import hooks from "./setup";
 
-export default createWithComponentsFn;
+const fructose = {};
+fructose.withComponent = createWithComponentGlobal;
+fructose.hooks = hooks();
+
+export default fructose;

@@ -2,15 +2,7 @@
 
 yarn --npm-client=yarn --concurrency=1
 
-if  yarn test:test-helpers ; then
-  echo "TEST HELPERS UNIT TESTS PASSED"
-else
-  echo "TEST HELPERS UNIT TESTS FAILED"
-  cd ../..
-  exit 1
-fi
-
-if  yarn test:jest ; then
+if  yarn test:unit ; then
   echo "UNIT TESTS PASSED"
 else
   echo "UNIT TESTS FAILED"

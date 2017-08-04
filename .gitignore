@@ -30,6 +30,10 @@ build/
 local.properties
 *.iml
 
+# vscode
+€
+.vscode
+
 # node.js
 #
 node_modules/
@@ -56,3 +60,6 @@ fastlane/screenshots
 **/coverage
 .nyc_output/**
 sandbox 
+
+# babeled stuff
+packages/test-helpers/lib/**

@@ -1,3 +1,3 @@
-const server = require("./index");
+const Server = require("./index").FructoseServer;
 
-server.startFructoseServer();
+new Server(7811).start();

@@ -3,13 +3,16 @@
   "version": "0.1.24",
   "main": "fructose.js",
   "scripts": {
-    "test:test-helpers": "nyc tape -r babel-register packages/test-helpers/**/*.tape.js | tap-nyc",
-    "test:jest": "jest --verbose --forceExit",
+    "test:unit": "jest --verbose --forceExit",
     "test": "./scripts/tests.sh",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "lint-staged": "lint-staged",
-    "prettier:diff": "prettier --list-different 'packages/*/*.js'",
-    "prettier:write": "prettier --write 'packages/*/*.js'"
+    "lint:packages": "eslint . --fix",
+    "lint:fructose": "eslint e2eTests/.fructose /--fix",
+    "lint:e2eTests": "eslint e2eTests /--fix",
+    "prettier:diff": "prettier --list-different '**/*.js'",
+    "prettier:write": "prettier --write '**/*.js'",
+    "prepublish": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib"
   },
   "bin": {
     "compile-tests": "packages/test-helpers/bin/writeComponentsTests"
@@ -17,11 +20,13 @@
   "pre-commit": [
     "precommit-msg",
     "lint-staged",
-    "test"
+    "test:unit"
   ],
   "lint-staged": {
-    "**/*.js": [
-      "eslint . --fix",
+      "**/*.js": [
+      "lint:packages",
+      "lint:fructose",
+      "lint:e2eTests",
       "prettier --write",
       "git add"
     ]
@@ -32,7 +37,8 @@
       "enzyme-to-json/serializer"
     ],
     "modulePathIgnorePatterns": [
-      "<rootDir>/e2eTests"
+      "<rootDir>/e2eTests",
+      "<rootDir>/packages/test-helpers/lib"
     ]
   },
   "dependencies": {
@@ -42,6 +48,7 @@
     "events": "1.1.1",
     "express": "^4.15.3",
     "global": "4.3.2",
+    "npmlog": "^4.1.2",
     "prop-types": "15.5.10",
     "server-destroy": "^1.0.1",
     "socket.io": "2.0.3",
@@ -52,8 +59,9 @@
     "react-native": "0.44.1"
   },
   "devDependencies": {
+    "babel-cli": "6.24.1",
     "babel-preset-react-native": "2.0.0",
-    "babel-register": "^6.24.1",
+    "babel-register": "6.24.1",
     "enzyme": "2.8.2",
     "enzyme-to-json": "1.5.1",
     "eslint": "3.19.0",
@@ -70,9 +78,9 @@
     "portfinder": "^1.0.13",
     "pre-commit": "1.2.2",
     "prettier": "1.4.2",
+    "react": "16.0.0-alpha.6",
     "react-addons-test-utils": "15.6.0",
     "react-dom": "15.6.1",
-    "react": "16.0.0-alpha.6",
     "react-native": "0.44.1",
     "react-native-cli": "2.0.1",
     "sinon": "2.3.6",

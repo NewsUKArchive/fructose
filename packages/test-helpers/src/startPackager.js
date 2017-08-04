@@ -49,7 +49,6 @@ export default class Packager {
 
   handlePackager () {
     this.fructosePackager.stdout.on("data", d => {
-      console.log(d.toString('utf8'))
       log.verbose(d.toString("utf8"));
       if (d.toString("utf8").includes("Loading dependency graph, done.")) {
         this.events.emit('started');

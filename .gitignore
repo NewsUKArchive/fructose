@@ -60,3 +60,6 @@ fastlane/screenshots
 **/coverage
 .nyc_output/**
 sandbox 
+
+# babeled stuff
+packages/test-helpers/lib/**

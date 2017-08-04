@@ -1,6 +1,6 @@
 {
   "name": "@times-components/fructose",
-  "version": "0.1.24",
+  "version": "1.0.0",
   "main": "fructose.js",
   "scripts": {
     "test:unit": "jest --verbose --forceExit",
@@ -23,7 +23,7 @@
     "test:unit"
   ],
   "lint-staged": {
-      "**/*.js": [
+    "**/*.js": [
       "lint:packages",
       "lint:fructose",
       "lint:e2eTests",

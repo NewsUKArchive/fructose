@@ -15,9 +15,7 @@
     "compile-tests": "packages/test-helpers/bin/writeComponentsTests"
   },
   "pre-commit": [
-    "precommit-msg",
-    "lint-staged",
-    "test"
+    "precommit-msg"
   ],
   "lint-staged": {
     "**/*.js": [

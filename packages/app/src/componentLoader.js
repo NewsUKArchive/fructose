@@ -1,11 +1,13 @@
+import rnComponentKey from "../../common/rnComponentKey";
+
 export default loadComponents => {
   const componentsStore = {};
 
   // create withComponent global that will run when withComponent is encountered
   // in a test file
-  
+
   global.withComponent = component => {
-    const key = JSON.stringify(component).replace(/"\$\$typeof":.*?,/g, "");
+    const key = rnComponentKey(component);
     componentsStore[key] = component;
   };
 

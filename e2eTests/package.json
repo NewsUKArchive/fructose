@@ -14,10 +14,10 @@
 		"write-android-components": "npm run compile-android-components  && compile-tests"
 	},
 	"dependencies": {
+		"detox": "5.5.1",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.44.1",
 		"react-native-storybook-loader": "^1.4.1",
-		"detox": "5.5.1",
 		"webdriverio": "^4.8.0"
 	},
 	"jest": {

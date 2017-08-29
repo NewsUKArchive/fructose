@@ -1,10 +1,12 @@
-var fs = require('fs');
-const PNG = require('pngjs').PNG;
+const fs = require("fs");
+const PNG = require("pngjs").PNG;
 
-module.exports = (imgPath) => {
-  return new Promise( (resolve) => {
-    console.log(imgPath)
+module.exports = imgPath =>
+  new Promise(resolve => {
+    // eslint-disable-next-line no-use-before-define
     const done = () => resolve(img1);
-    const img1 = fs.createReadStream(imgPath).pipe(new PNG()).on('parsed', done);
+    const img1 = fs
+      .createReadStream(imgPath)
+      .pipe(new PNG())
+      .on("parsed", done);
   });
-}

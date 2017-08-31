@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const c = require("./comparer");
+const c = require("./differ");
 const l = require("./loader");
 const S = require("./snapper");
 
@@ -17,7 +17,9 @@ const doStuff = async () => {
   const b = await l(`${__dirname}/tmpSnaps/snappy.png`);
   const d = c(a, b);
 
-  d.pack().pipe(fs.createWriteStream(`${__dirname}/tmpSnaps/snappy-diff.png`));
+  d.diff
+    .pack()
+    .pipe(fs.createWriteStream(`${__dirname}/tmpSnaps/snappy-diff.png`));
 };
 
 doStuff();

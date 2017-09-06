@@ -31,17 +31,12 @@ export default () => {
 
       if (snaps.exists(testname)) {
         console.warn("IT EXISTS");
-
-        // take new snapshot
         await snaps.snap(testname);
-        // diff
         const diffCount = await snaps.diff(testname);
         console.warn("countywounty: ", diffCount);
-        //  -> pass, do nothing
         if (diffCount === 0) {
           assert(true, testname);
         } else {
-          //  -> fail, request approval
           assert.equal(
             0,
             diffCount,
@@ -49,11 +44,8 @@ export default () => {
           );
         }
       } else {
-        // fail
-        // take snapshot
         await snaps.snap(testname);
         assert(false, "New. Please review the new snapshot");
-        // request approval
       }
     };
 

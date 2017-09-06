@@ -12,24 +12,21 @@ const styles = StyleSheet.create({
 
 withComponent(
   <Text>
-    The Philosopher&apos;s Stone, the bumbler&apos;s tome, the one book that
-    made them all groan
+    The Philosopher&apos;s Stone
   </Text>,
   "basic text",
   fructose => {
-    test(
-      "simple test",
-      async () => {
-        await fructose.loadComponent();
-        await fructose.snapshotTest("ios", "philosophers-stone");
-        /* creates a snapshot in __snapshots__/ios/tmp/philosophers-stone.png, asks to approve snapshot at http:localhost:7812, 
-      once snapshot approved gets written to __snapshots__/ios/philosophers-stone.png. 
+    test("simple test", async () => {
+      await fructose.loadComponent();
+      await expect(element(by.text(`The Philosopher's Stone`))).toBeVisible();
+    });
 
-      If snapshot already exists, and is different, creates a diff in __snapshots__/ios/diff/philosophers-stone.png, then asks to approve
-      */
-        await expect(element(by.text(`The Philosopher's Stone`))).toBeVisible();
+    test(
+      "snapshot test",
+      async () => {
+        await fructose.snapshotTest("ios", "philosophers-stone");
       },
-      60000
+      10000
     );
   }
 );

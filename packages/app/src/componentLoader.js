@@ -15,6 +15,5 @@ export default loadComponents => {
 
   // withComponent doesn't need to exist anymore
   global.withComponent = undefined;
-
   return componentsStore;
 };

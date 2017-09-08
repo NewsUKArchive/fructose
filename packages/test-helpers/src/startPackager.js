@@ -42,6 +42,7 @@ export default class Packager {
     log.verbose("starting packager");
     this.events.on("exit", () => {
       this.dead = true;
+      this.events.emit("packerKilled");
     });
     this.fructosePackager = spawn("npm", ["run", "fructose-app"], {
       cwd: getCwd()
@@ -78,7 +79,9 @@ export default class Packager {
 
     this.fructosePackager.on("close", code => {
       if (code === 11) {
-        log.error("Packager could not listen on port 8081");
+        log.error(
+          "Packager could not listen on port :8081 \n lsof -i :8081 \n kill -9 <PID>"
+        );
         this.events.emit("exit");
       } else if (code !== 0) {
         log.error(`packager did not exit correctly: code ${code}`);

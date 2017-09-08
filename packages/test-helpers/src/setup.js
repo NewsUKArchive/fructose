@@ -9,7 +9,13 @@ export default () => {
   const server = new FructoseServer(7811);
 
   const setup = async () => {
+    packager.events.on("packerKilled", () => {
+      log.error("ERROR: TERMINATING TESTS");
+      process.exit(1);
+    });
+
     await packager.start().then(() => log.verbose("packager started"));
+
     await server
       .start()
       .then(() =>

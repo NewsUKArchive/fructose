@@ -12,6 +12,11 @@ exports[`Functional React Component Tester UI snapshot: instantiated FunctionalR
   }
   testID="fructose"
 >
+  <StatusBar
+    animated={false}
+    hidden={true}
+    showHideTransition="fade"
+  />
   <Text
     accessible={true}
     allowFontScaling={true}
@@ -34,6 +39,11 @@ exports[`Functional React Component Tester UI snapshot: loading MockComponent 1`
   }
   testID="fructose"
 >
+  <StatusBar
+    animated={false}
+    hidden={true}
+    showHideTransition="fade"
+  />
   <MockComponent
     id="testIdBlah"
   />

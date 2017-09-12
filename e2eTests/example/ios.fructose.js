@@ -1,4 +1,4 @@
-/* globals withComponent test expect element by */
+/* globals withComponent test expect element by beforeEach */
 
 import React from "react";
 import { StyleSheet, Text } from "react-native";
@@ -11,13 +11,26 @@ const styles = StyleSheet.create({
 });
 
 withComponent(
-  <Text>The Philosopher&apos;s Stone</Text>,
+  <Text>
+    The Philosopher&apos;s Stone
+  </Text>,
   "basic text",
   fructose => {
-    test("simple test", async () => {
+    beforeEach(async () => {
       await fructose.loadComponent();
+    });
+
+    test("simple test", async () => {
       await expect(element(by.text(`The Philosopher's Stone`))).toBeVisible();
     });
+
+    test(
+      "snapshot test",
+      async () => {
+        await fructose.snapshotTest("ios", "philosophers-stone");
+      },
+      10000
+    );
   }
 );
 

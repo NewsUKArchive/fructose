@@ -4,11 +4,11 @@
     "private": true,
     "scripts": {
         "start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
-        "test": "npm run test:ios && npm run test:android",
-        "web": "npm run write-web-components && [ -d web/vendor-dev ] || npm run web:build:vendor-dev && NODE_ENV=development webpack-dev-server -d --host 127.0.0.1 --port 3000 --config web/webpack.config.js --inline --hot --colors",
-        "web:build:vendor-dev": "rm -rf web/vendor-dev; NODE_ENV=development webpack --config web/vendor.webpack.config.js || rm -rf web/vendor-dev",
-        "test:web": "npm run write-web-components && WEB=true jest .fructose/components.test.js --verbose --forceExit ",
-        "test:ios": "npm run write-ios-components && jest .fructose/components.test.js --verbose --forceExit",
+        "test": "npm run test:ios && npm run test:android && npm run test:web",
+        "web": "[ -d .fructose/web/vendor-dev ] & npm run web:build:vendor-dev && NODE_ENV=development webpack-dev-server -d --host 127.0.0.1 --port 3000 --config .fructose/web/webpack.config.js --inline --hot --colors",
+        "web:build:vendor-dev": "NODE_ENV=development webpack --config .fructose/web/vendor.webpack.config.js",
+        "test:web": "npm run write-web-components && npm run web & WEB=true jest .fructose/components.test.js --verbose --forceExit",
+        "test:ios": "npm run write-ios-components && IOS=true jest .fructose/components.test.js --verbose --forceExit",
         "test:android": "npm run write-android-components && ANDROID=true jest .fructose/components.test.js --verbose --forceExit",
         "fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
         "compile-android-components": "rnstl --searchDir ./ --pattern 'example/android.fructose.js' --outputFile ./.fructose/components.js",
@@ -19,13 +19,16 @@
         "write-android-components": "npm run compile-android-components  && compile-tests"
     },
     "dependencies": {
+        "@times-components/image": "^1.2.0",
+        "chromeless": "^1.3.0",
         "detox": "5.5.1",
+        "portscanner": "^2.1.1",
         "react": "16.0.0-alpha.6",
         "react-native": "0.44.1",
-        "react-native-web": "^0.0.88",
         "react-native-storybook-loader": "^1.4.1",
-        "webpack": "^2.4.1",
-        "webdriverio": "^4.8.0"
+        "react-native-web": "^0.0.120",
+        "webdriverio": "^4.8.0",
+        "webpack": "^2.4.1"
     },
     "jest": {
         "preset": "react-native",
@@ -35,30 +38,30 @@
             "<rootDir>/../node_modules"
         ],
         "transformIgnorePatterns": [
-            "node_modules/(?!react-native|react-navigation|fructose-app)"
+            "node_modules/(?!react-native|react-navigation|fructose-app|@times-components/image)"
         ],
         "setupTestFrameworkScriptFile": "./.fructose/jest-setup.js"
     },
     "devDependencies": {
         "@times-components/fructose": "../",
-        "babel-preset-react-native": "2.0.0",
-        "compression-webpack-plugin": "^1.0.0",
-        "jest": "20.0.4",
-        "jest-cli": "20.0.4",
-        "jest-environment-node-debug": "2.0.0",
-        "webpack-dev-server": "^2.7.1",
-        "copy-webpack-plugin": "^4.0.1",
-        "html-webpack-plugin": "^2.28.0",
         "add-asset-html-webpack-plugin": "^2.0.1",
         "babel-jest": "19.0.0",
         "babel-loader": "^7.0.0",
+        "babel-preset-react-native": "2.0.0",
+        "compression-webpack-plugin": "^1.0.0",
+        "copy-webpack-plugin": "^4.0.1",
+        "html-webpack-plugin": "^2.28.0",
         "http-serve": "^1.0.1",
+        "jest": "20.0.4",
+        "jest-cli": "20.0.4",
+        "jest-environment-node-debug": "2.0.0",
         "json-loader": "^0.5.4",
         "offline-plugin": "^4.7.0",
         "react-dom": "^15.4.2",
         "react-hot-loader": "^1.3.1",
         "react-test-renderer": "16.0.0-alpha.6",
-        "url-loader": "^0.5.8"
+        "url-loader": "^0.5.8",
+        "webpack-dev-server": "^2.7.1"
     },
     "config": {
         "react-native-fructose-loader": {

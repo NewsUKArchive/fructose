@@ -3,15 +3,49 @@ import fructose from "@times-components/fructose/setup";
 import detox from "detox";
 import webdriverio from "webdriverio";
 import { spawn } from "child_process";
+import { Chromeless } from "chromeless";
+import path from "path";
+import portscanner from "portscanner";
+import EventEmitter from "events";
 import config from "../package";
+
+const isPortTaken = port =>
+  new Promise(resolve => {
+    portscanner.checkPortStatus(port, "127.0.0.1", (error, status) => {
+      // Status is 'open' if currently in use or 'closed' if available
+      const isTaken = status === "open";
+      resolve(isTaken);
+    });
+  });
+
+const checkIfPortTaken = x =>
+  new Promise(resolve => {
+    const event = new EventEmitter();
+    event.on("taken", taken => {
+      resolve(taken);
+    });
+    let taken;
+    let repeatTimes = x;
+    const interval = setInterval(async () => {
+      repeatTimes -= 1;
+      taken = await isPortTaken(3000);
+      if (taken) {
+        event.emit("taken", true);
+        clearInterval(interval);
+      }
+      if (!taken && repeatTimes === 0) {
+        event.emit("taken", false);
+        clearInterval(interval);
+      }
+    }, 1000);
+  });
 
 let appium;
 fructose.withComponent();
 
 beforeAll(async () => {
-  await fructose.hooks.setup();
-
   if (process.env.ANDROID || process.env.IOS) {
+    await fructose.hooks.mobile.setup();
     if (process.env.ANDROID) {
       appium = await new Promise(resolve => {
         const proc = spawn("appium");
@@ -26,8 +60,10 @@ beforeAll(async () => {
           platformName: "Android",
           platformVersion: "7.0",
           deviceName: "Android Emulator",
-          app:
-            "/Users/rohanjanjua/workspace/News/fructose/e2eTests/android/app/build/outputs/apk/app-debug.apk"
+          app: path.join(
+            __dirname,
+            "../android/app/build/outputs/apk/app-debug.apk"
+          )
         },
         host: "localhost",
         port: 4723
@@ -38,25 +74,26 @@ beforeAll(async () => {
     } else {
       await detox.init(config.detox);
     }
-  }  else if (process.env.WEB) {
-    // Start webpack-dev-server
-    // https://webpack.github.io/docs/webpack-dev-server.html
-    // var config = require("./webpack.config.js");
-    // config.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
-    // var compiler = webpack(config);
-    // var server = new webpackDevServer(compiler, {
-    //   hot: true
-    //   ...
-    // });
-    // server.listen(8080);
-
+  } else if (process.env.WEB) {
+    await fructose.hooks.web.setup();
+    const taken = await checkIfPortTaken(10);
+    if (!taken) {
+      throw new Error("fructose app is not running");
+    }
+    global.Chromeless = Chromeless;
   }
 }, 180000);
 
 afterAll(async () => {
-  await detox.cleanup();
-  await fructose.hooks.cleanup();
+  if (process.env.IOS) {
+    await detox.cleanup();
+    await fructose.hooks.mobile.cleanup();
+  }
   if (process.env.ANDROID) {
     appium.kill();
+    await fructose.hooks.mobile.cleanup();
+  }
+  if (process.env.WEB) {
+    await fructose.hooks.web.cleanup();
   }
 });

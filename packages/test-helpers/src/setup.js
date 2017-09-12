@@ -4,11 +4,14 @@ import Packager from "./startPackager";
 
 const log = require("npmlog");
 
-export default () => {
-  const packager = new Packager();
-  const server = new FructoseServer(7811);
+const mobileHooks = () => {
+  let packager;
+  let server;
 
   const setup = async () => {
+    packager = new Packager();
+    server = new FructoseServer(7811);
+    
     packager.events.on("terminateTests", () => {
       log.error("ERROR: TERMINATING TESTS");
       process.exit(1);
@@ -26,11 +29,25 @@ export default () => {
   const cleanup = async () => {
     await packager.kill();
     server.close();
-    console.log("cleaned up fructose");
+  };
+  return { setup, cleanup };
+};
+
+const webHooks = () => {
+  let server;
+
+  const setup = async () => {
+    server = new FructoseServer(7811);
+    await server.start();
   };
 
-  return {
-    setup,
-    cleanup
+  const cleanup = async () => {
+    server.close();
   };
+
+  return { setup, cleanup };
+};
+export default {
+  web: webHooks(),
+  mobile: mobileHooks()
 };

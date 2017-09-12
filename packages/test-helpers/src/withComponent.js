@@ -30,22 +30,20 @@ export default () => {
       const snaps = new AppSnaps(platform, snapsPath);
 
       if (snaps.exists(testname)) {
-        console.warn("IT EXISTS");
         await snaps.snap(testname);
         const diffCount = await snaps.diff(testname);
-        console.warn("countywounty: ", diffCount);
         if (diffCount === 0) {
           assert(true, testname);
         } else {
           assert.equal(
             0,
             diffCount,
-            "Mismatch. Please review the new snapshot"
+            "A mismatch has been detected between the baseline and new snapshot. Please review the new snapshot"
           );
         }
       } else {
         await snaps.snap(testname);
-        assert(false, "New. Please review the new snapshot");
+        assert(false, "A new snapshot has been created. Please review it");
       }
     };
 

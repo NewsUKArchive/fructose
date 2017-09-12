@@ -1,10 +1,10 @@
 /* globals describe */
-import log from "npmlog";
+import log from "../../../logger";
 import Client from "../../client";
 import rnComponentKey from "../../common/rnComponentKey";
 
 const client = Client(7811);
-log.verbose("client socket", client.socket);
+log.info("withComponent", "client socket connected on 7811");
 export default () => {
   const withComponent = (component, description, tests) => {
     const hashed = rnComponentKey(component);
@@ -12,7 +12,7 @@ export default () => {
     const loadComponent = async () =>
       client
         .loadComponent(hashed)
-        .then(() => log.verbose("loadComponent", hashed));
+        .then(() => log.verbose("withComponent", `loadComponent ${hashed}`));
 
     const disconnect = async () => {
       client.disconnect();

@@ -2,7 +2,7 @@ const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
 const enableDestroy = require("server-destroy");
-const log = require("npmlog");
+const log = require("../../logger");
 
 class FructoseServer {
   constructor(port) {
@@ -14,11 +14,13 @@ class FructoseServer {
   }
 
   close() {
+    log.info("server-index", "Fructose server terminating");
     this.server.destroy();
   }
 
   start() {
     return new Promise(resolve => {
+      log.info("server-index", `Fructose Server starting`);
       this.app = express();
       this.server = http.Server(this.app);
       this.io = socketio(this.server);
@@ -28,21 +30,26 @@ class FructoseServer {
       });
 
       this.io.on("connection", socket => {
-        log.verbose(`connected to socket: ${socket}`);
+        log.info("server-index", `Fructose Server connected to socket`);
         socket.on("loadComponent", (componentName, props) => {
           log.verbose(
-            `emitting loadComponent event to device with component: ${componentName}`
+            "server-index",
+            `Fructose Server emitting 'loadComponent' event with component: ${componentName}`
           );
           this.io.emit("load-on-device", componentName, props);
         });
 
         socket.on("loadedOnDevice", () => {
-          log.verbose("loaded component on device");
+          log.verbose("server-index", "Fructose Server emitting 'loaded'");
           this.io.emit("loaded");
         });
 
-        socket.on("debug", r => {
-          log(r);
+        socket.on("debug", message => {
+          log.info(
+            "server-index",
+            "Fructose server recieved debug message : ",
+            message
+          );
         });
       });
 

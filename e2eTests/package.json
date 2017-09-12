@@ -1,60 +1,60 @@
 {
-	"name": "e2eTests",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
-		"test": "npm run test:ios && npm run test:android",
-		"test:ios": "npm run write-ios-components && jest .fructose/components.test.js --verbose --forceExit",
-		"test:android": "npm run write-android-components && ANDROID=true jest .fructose/components.test.js --verbose --forceExit",
-		"fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
-		"compile-android-components": "rnstl --searchDir ./ --pattern 'example/android.fructose.js' --outputFile ./.fructose/components.js",
-		"compile-ios-components": "rnstl --searchDir ./ --pattern 'example/ios.fructose.js' --outputFile ./.fructose/components.js",
-		"write-ios-components": "npm run compile-ios-components  && compile-tests",
-		"write-android-components": "npm run compile-android-components  && compile-tests"
-	},
-	"dependencies": {
-		"detox": "5.5.1",
-		"react": "16.0.0-alpha.6",
-		"react-native": "0.44.1",
-		"react-native-storybook-loader": "^1.4.1",
-		"webdriverio": "^4.8.0"
-	},
-	"jest": {
-		"preset": "react-native",
-		"modulePathIgnorePatterns": [
-			"<rootDir>/node_modules/@times-components/fructose/node_modules/react-native",
-			"<rootDir>/node_modules/@times-components/fructose/e2eTests",
-			"<rootDir>/../node_modules"
-		],
-		"transformIgnorePatterns": [
-			"node_modules/(?!react-native|react-navigation|fructose-app)"
-		],
-		"setupTestFrameworkScriptFile": "./.fructose/jest-setup.js"
-	},
-	"devDependencies": {
-		"@times-components/fructose": "../",
-		"babel-preset-react-native": "2.0.0",
-		"jest": "20.0.4",
-		"jest-cli": "20.0.4",
-		"jest-environment-node-debug": "2.0.0"
-	},
-	"config": {
-		"react-native-fructose-loader": {
-			"searchDir": [
-				"./"
-			],
-			"pattern": "**/*.fructose.test.js",
-			"outputFile": "./.fructose/components.js"
-		}
-	},
-	"detox": {
-		"configurations": {
-			"ios.sim.debug": {
-				"binaryPath": "ios/e2eTests.app",
-				"type": "ios.simulator",
-				"name": "iPhone 7, iOS 10.3"
-			}
-		}
-	}
+    "name": "e2eTests",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
+        "test": "npm run test:ios && npm run test:android",
+        "test:ios": "npm run write-ios-components && LOGLEVEL=verbose jest .fructose/components.test.js --forceExit",
+        "test:android": "npm run write-android-components && ANDROID=true jest .fructose/components.test.js --verbose --forceExit",
+        "fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
+        "compile-android-components": "rnstl --searchDir ./ --pattern 'example/android.fructose.js' --outputFile ./.fructose/components.js",
+        "compile-ios-components": "rnstl --searchDir ./ --pattern 'example/ios.fructose.js' --outputFile ./.fructose/components.js",
+        "write-ios-components": "npm run compile-ios-components  && compile-tests",
+        "write-android-components": "npm run compile-android-components  && compile-tests"
+    },
+    "dependencies": {
+        "detox": "5.5.1",
+        "react": "16.0.0-alpha.6",
+        "react-native": "0.44.1",
+        "react-native-storybook-loader": "^1.4.1",
+        "webdriverio": "^4.8.0"
+    },
+    "jest": {
+        "preset": "react-native",
+        "modulePathIgnorePatterns": [
+            "<rootDir>/node_modules/@times-components/fructose/node_modules/react-native",
+            "<rootDir>/node_modules/@times-components/fructose/e2eTests",
+            "<rootDir>/../node_modules"
+        ],
+        "transformIgnorePatterns": [
+            "node_modules/(?!react-native|react-navigation|fructose-app)"
+        ],
+        "setupTestFrameworkScriptFile": "./.fructose/jest-setup.js"
+    },
+    "devDependencies": {
+        "@times-components/fructose": "../",
+        "babel-preset-react-native": "2.0.0",
+        "jest": "20.0.4",
+        "jest-cli": "20.0.4",
+        "jest-environment-node-debug": "2.0.0"
+    },
+    "config": {
+        "react-native-fructose-loader": {
+            "searchDir": [
+                "./"
+            ],
+            "pattern": "**/*.fructose.test.js",
+            "outputFile": "./.fructose/components.js"
+        }
+    },
+    "detox": {
+        "configurations": {
+            "ios.sim.debug": {
+                "binaryPath": "ios/e2eTests.app",
+                "type": "ios.simulator",
+                "name": "iPhone 7, iOS 10.3"
+            }
+        }
+    }
 }

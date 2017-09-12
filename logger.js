@@ -1,12 +1,24 @@
 const log = require("npmlog");
 
+log.level = process.env.LOGLEVEL || "info";
+log.stream = process.stdout;
+log.enableColor();
+log.info("logger", `Log level is ${log.level}`);
+
 module.exports = {
-  info: (file, textToLog) => {
+  info: (fileName, textToLog) => {
     log.stream = process.stdout;
-    log.info(`[${file}] :`, textToLog);
+    log.prefixStyle = { fg: "green", bg: "black" };
+    log.info(`[${fileName}] :`, textToLog);
   },
-  error: (file, textToError) => {
+  verbose: (fileName, textToLog) => {
+    log.stream = process.stdout;
+    log.prefixStyle = { fg: "blue" };
+    log.verbose(`[${fileName}] :`, textToLog);
+  },
+  error: (fileName, textToError) => {
     log.stream = process.stderr;
-    log.error(`[${file}] :`, textToError);
+    log.prefixStyle = { fg: "red" };
+    log.error(`[${fileName}] :`, textToError);
   }
 };

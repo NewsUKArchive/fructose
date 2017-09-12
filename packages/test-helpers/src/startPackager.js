@@ -1,7 +1,7 @@
 import { spawn } from "child_process";
 import EventEmitter from "events";
 
-const log = require("npmlog");
+const log = require("../../../logger");
 
 const getCwd = () => {
   const forwardSlashesAfterRoot = process
@@ -39,7 +39,7 @@ export default class Packager {
   }
 
   async start() {
-    log.verbose("starting packager");
+    log.info("startPackager", "starting Packager");
     this.events.on("exit", () => {
       this.dead = true;
     });
@@ -56,8 +56,7 @@ export default class Packager {
       if (this.dead === true) {
         resolve();
       } else {
-        console.log("killing packager");
-        log.verbose("killing packager");
+        log.info("startPackager", "killing Packager");
         this.fructosePackager.kill("SIGINT");
         resolve();
       }
@@ -66,22 +65,25 @@ export default class Packager {
 
   handlePackager() {
     this.fructosePackager.stdout.on("data", d => {
-      log.verbose(d.toString("utf8"));
+      log.verbose("startPackager", d.toString("utf8"));
       if (d.toString("utf8").includes("Loading dependency graph, done.")) {
         this.events.emit("started");
       }
     });
 
     this.fructosePackager.stderr.on("data", d => {
-      log.error(d.toString("utf8"));
+      log.error("startPackager", d.toString("utf8"));
     });
 
     this.fructosePackager.on("close", code => {
       if (code === 11) {
-        log.error("Packager could not listen on port 8081");
+        log.error("startPackager", "Packager could not listen on port 8081");
         this.events.emit("exit");
       } else if (code !== 0) {
-        log.error(`packager did not exit correctly: code ${code}`);
+        log.error(
+          "startPackager",
+          `packager did not exit correctly: code ${code}`
+        );
         this.events.emit("exit");
       }
     });

@@ -78,7 +78,8 @@ beforeAll(async () => {
     await fructose.hooks.web.setup();
     const taken = await checkIfPortTaken(10);
     if (!taken) {
-      throw new Error("fructose app is not running");
+      console.error("The fructose app did not start correctly");
+      process.exit(1);
     }
     global.Chromeless = Chromeless;
   }

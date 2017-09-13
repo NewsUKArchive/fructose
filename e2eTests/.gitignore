@@ -56,3 +56,5 @@ fastlane/screenshots
 **/.fructose/components.test.js
 
 **/__snapshots__/*/tmp
+**/vendor-dev
+**/vendor

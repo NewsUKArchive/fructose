@@ -1,8 +1,7 @@
 import "babel-polyfill";
 import { FructoseServer } from "../../server";
 import Packager from "./startPackager";
-
-const log = require("../../../logger");
+import log from "../../../logger";
 
 export default () => {
   const packager = new Packager();

@@ -54,3 +54,5 @@ fastlane/screenshots
 
 **/.fructose/components.js
 **/.fructose/components.test.js
+
+**/__snapshots__/*/tmp

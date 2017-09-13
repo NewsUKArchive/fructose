@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, StatusBar } from "react-native";
 import PropTypes from "prop-types";
 
 const styles = StyleSheet.create({
@@ -47,7 +47,8 @@ export default class FructoseComponent extends Component {
 
   render() {
     return (
-      <View style={styles.container} testID="fructose" >
+      <View style={styles.container} testID="fructose">
+        <StatusBar hidden />
         {this.state.component}
       </View>
     );

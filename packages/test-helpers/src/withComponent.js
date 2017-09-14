@@ -55,7 +55,7 @@ export default () => {
     };
 
     if (describe !== undefined) {
-      describe(`withComponent: description`, () => {
+      describe(`withComponent: ${component.props.fructoseID}`, () => {
         tests(fructose);
       });
     } else {

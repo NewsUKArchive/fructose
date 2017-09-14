@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 });
 
 withComponent(
-  <Text fructoseID="1">
+  <Text fructoseID="book one">
     The Philosopher&apos;s Stone
   </Text>,
   "basic text",
@@ -35,7 +35,9 @@ withComponent(
 );
 
 withComponent(
-  <Text style={styles.title} fructoseID="2">The Chamber of Secrets</Text>,
+  <Text style={styles.title} fructoseID="second book">
+    The Chamber of Secrets
+  </Text>,
   "basic text",
   fructose => {
     test("with style", async () => {
@@ -46,7 +48,7 @@ withComponent(
 );
 
 withComponent(
-  <Text fructoseID="3">The Prisoner of Azkaban</Text>,
+  <Text fructoseID="book the 3rd">The Prisoner of Azkaban</Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -57,7 +59,7 @@ withComponent(
 );
 
 withComponent(
-  <Text fructoseID="4">The Goblet of Fire</Text>,
+  <Text fructoseID="The Fourth">The Goblet of Fire</Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -68,7 +70,7 @@ withComponent(
 );
 
 withComponent(
-  <Text fructoseID="5">The Order of the Phoenix</Text>,
+  <Text fructoseID="Book number five">The Order of the Phoenix</Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -79,7 +81,7 @@ withComponent(
 );
 
 withComponent(
-  <Text fructoseID="6">The Half Blood Prince</Text>,
+  <Text fructoseID="Sixth">The Half Blood Prince</Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -90,7 +92,7 @@ withComponent(
 );
 
 withComponent(
-  <Text fructoseID="7" style={styles.title}>The Deathly Hallows</Text>,
+  <Text fructoseID="Book Seven" style={styles.title}>The Deathly Hallows</Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {

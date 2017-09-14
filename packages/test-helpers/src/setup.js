@@ -1,8 +1,7 @@
 import "babel-polyfill";
 import { FructoseServer } from "../../server";
 import Packager from "./startPackager";
-
-const log = require("npmlog");
+import log from "../../common/logger";
 
 const mobileHooks = () => {
   let packager;
@@ -17,17 +16,17 @@ const mobileHooks = () => {
       process.exit(1);
     });
 
-    await packager.start().then(() => log.verbose("packager started"));
+    await packager.start().then(() => log.verbose("setup", "packager started"));
 
     await server
       .start()
       .then(() =>
-        log.verbose("fructose server started on 7811", server.server.address())
+        log.verbose("setup", `fructose server started on port : 7811`)
       );
   };
 
   const cleanup = async () => {
-    await packager.kill();
+    await packager.kill().then(() => log.verbose("setup", "Packager Killed"));
     server.close();
   };
   return { setup, cleanup };

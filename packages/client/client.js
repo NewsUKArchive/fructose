@@ -1,4 +1,4 @@
-const log = require("npmlog");
+const log = require("../common/logger");
 
 class FructoseClient {
   constructor(socket) {
@@ -7,17 +7,17 @@ class FructoseClient {
 
   loadComponent(component, props) {
     return new Promise(resolve => {
-      log.verbose(`client: loadComponent ${component}`);
+      log.verbose("client", `emitting 'loadComponent' with : ${component}`);
       this.socket.emit("loadComponent", component, props);
       this.socket.on("loaded", () => {
-        log.verbose(`client: component loaded" ${component}`);
+        log.verbose("client", `component loaded" ${component}`);
         resolve("component loaded");
       });
     });
   }
 
   disconnect() {
-    log.verbose(`disconnecting client`);
+    log.info("client", `disconnecting client`);
     this.socket.disconnect();
   }
 }

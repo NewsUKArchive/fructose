@@ -1,14 +1,15 @@
 /* globals describe */
-import log from "npmlog";
+
 import assert from "assert";
 import path from "path";
 import stack from "callsite";
 import Client from "../../client";
 import AppSnaps from "../../snapshots";
+import log from "../../common/logger";
 import rnComponentKey from "../../common/rnComponentKey";
 
 const client = Client(7811);
-log.verbose("client socket", client.socket);
+log.info("withComponent", "client socket connected on 7811");
 export default () => {
   const withComponent = (component, description, tests) => {
     const testfilePath = stack()[1].getFileName();
@@ -19,7 +20,7 @@ export default () => {
     const loadComponent = async () =>
       client
         .loadComponent(hashed)
-        .then(() => log.verbose("loadComponent", hashed));
+        .then(() => log.verbose("withComponent", `loadComponent ${hashed}`));
 
     const disconnect = async () => {
       client.disconnect();

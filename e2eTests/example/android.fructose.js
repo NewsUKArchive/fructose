@@ -4,7 +4,7 @@ import React from "react";
 import { Text } from "react-native";
 
 withComponent(
-  <Text fructoseId="hobbit">The Hobbit</Text>,
+  <Text fructoseID="hobbit">The Hobbit</Text>,
   "basic text",
   fructose => {
     beforeEach(async () => {

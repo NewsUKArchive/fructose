@@ -1,4 +1,4 @@
-const log = require("../../logger");
+const log = require("../common/logger");
 
 class FructoseClient {
   constructor(socket) {

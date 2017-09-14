@@ -2,7 +2,7 @@ const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
 const enableDestroy = require("server-destroy");
-const log = require("../../logger");
+const log = require("../common/logger");
 
 class FructoseServer {
   constructor(port) {

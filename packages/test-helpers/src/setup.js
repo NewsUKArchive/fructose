@@ -1,7 +1,7 @@
 import "babel-polyfill";
 import { FructoseServer } from "../../server";
 import Packager from "./startPackager";
-import log from "../../../logger";
+import log from "../../common/logger";
 
 export default () => {
   const packager = new Packager();

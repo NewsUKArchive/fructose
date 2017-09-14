@@ -1,7 +1,6 @@
 import { spawn } from "child_process";
 import EventEmitter from "events";
-
-const log = require("../../../logger");
+import log from "../../common/logger";
 
 const getCwd = () => {
   const forwardSlashesAfterRoot = process

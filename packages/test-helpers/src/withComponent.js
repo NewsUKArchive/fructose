@@ -5,7 +5,7 @@ import path from "path";
 import stack from "callsite";
 import Client from "../../client";
 import AppSnaps from "../../snapshots";
-import log from "../../../logger";
+import log from "../../common/logger";
 import rnComponentKey from "../../common/rnComponentKey";
 
 const client = Client(7811);

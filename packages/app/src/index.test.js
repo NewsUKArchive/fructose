@@ -27,11 +27,12 @@ it("exports 'Fructose' Function", () => {
 
 describe("FructoseApp", () => {
   it("returns a function that returns a function that returns the app", () => {
-    const appFunction = Fructose(() => withComponent({ a: 1 }));
+    const testComponent = { props: { fructoseID: "id" } };
+    const appFunction = Fructose(() => withComponent(testComponent));
     const app = appFunction();
     const props = shallow(app).instance().props;
     expect(props).toMatchObject({
-      components: { '{"a":1}': { a: 1 } },
+      components: { id: testComponent },
       events: { value: "mockEventEmitter" }
     });
   });

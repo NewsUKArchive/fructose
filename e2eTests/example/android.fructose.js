@@ -1,4 +1,4 @@
-/* globals withComponent test beforeEach driver*/
+/* globals withComponent test beforeEach driver */
 
 import React from "react";
 import { Text } from "react-native";

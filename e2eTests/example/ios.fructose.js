@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 });
 
 withComponent(
-  <Text>
+  <Text fructoseID="1">
     The Philosopher&apos;s Stone
   </Text>,
   "basic text",
@@ -35,7 +35,7 @@ withComponent(
 );
 
 withComponent(
-  <Text style={styles.title}>The Chamber of Secrets</Text>,
+  <Text style={styles.title} fructoseID="2">The Chamber of Secrets</Text>,
   "basic text",
   fructose => {
     test("with style", async () => {
@@ -45,36 +45,52 @@ withComponent(
   }
 );
 
-withComponent(<Text>The Prisoner of Azkaban</Text>, "basic text", fructose => {
-  test("simple test", async () => {
-    await fructose.loadComponent();
-    await expect(element(by.text("The Prisoner of Azkaban"))).toBeVisible();
-  });
-});
-
-withComponent(<Text>The Goblet of Fire</Text>, "basic text", fructose => {
-  test("simple test", async () => {
-    await fructose.loadComponent();
-    await expect(element(by.text("The Goblet of Fire"))).toBeVisible();
-  });
-});
-
-withComponent(<Text>The Order of the Phoenix</Text>, "basic text", fructose => {
-  test("simple test", async () => {
-    await fructose.loadComponent();
-    await expect(element(by.text("The Order of the Phoenix"))).toBeVisible();
-  });
-});
-
-withComponent(<Text>The Half Blood Prince</Text>, "basic text", fructose => {
-  test("simple test", async () => {
-    await fructose.loadComponent();
-    await expect(element(by.text("The Half Blood Prince"))).toBeVisible();
-  });
-});
+withComponent(
+  <Text fructoseID="3">The Prisoner of Azkaban</Text>,
+  "basic text",
+  fructose => {
+    test("simple test", async () => {
+      await fructose.loadComponent();
+      await expect(element(by.text("The Prisoner of Azkaban"))).toBeVisible();
+    });
+  }
+);
 
 withComponent(
-  <Text style={styles.title}>The Deathly Hallows</Text>,
+  <Text fructoseID="4">The Goblet of Fire</Text>,
+  "basic text",
+  fructose => {
+    test("simple test", async () => {
+      await fructose.loadComponent();
+      await expect(element(by.text("The Goblet of Fire"))).toBeVisible();
+    });
+  }
+);
+
+withComponent(
+  <Text fructoseID="5">The Order of the Phoenix</Text>,
+  "basic text",
+  fructose => {
+    test("simple test", async () => {
+      await fructose.loadComponent();
+      await expect(element(by.text("The Order of the Phoenix"))).toBeVisible();
+    });
+  }
+);
+
+withComponent(
+  <Text fructoseID="6">The Half Blood Prince</Text>,
+  "basic text",
+  fructose => {
+    test("simple test", async () => {
+      await fructose.loadComponent();
+      await expect(element(by.text("The Half Blood Prince"))).toBeVisible();
+    });
+  }
+);
+
+withComponent(
+  <Text fructoseID="7" style={styles.title}>The Deathly Hallows</Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {

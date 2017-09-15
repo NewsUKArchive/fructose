@@ -1,20 +1,16 @@
 import path from "path";
-import stack from "callsite";
 import assert from "assert";
 import AppSnaps from "../../snapshots";
 import log from "../../common/logger";
 
-const snapshotTest = async (platform, testname) => {
-  stack().forEach((site, index) => {
-    const filePath = site.getFileName();
-    const dir = path.dirname(filePath);
-    log.info(index, dir);
-  });
-
-  const testFilePath = stack()[1].getFileName();
+const snapshotTest = async (platform, testFilePath, testname) => {
   const testDir = path.dirname(testFilePath);
-
   const snapsPath = `${testDir}/__snapshots__`;
+
+  log.verbose(
+    "snapshotTest",
+    `path is ${snapsPath} on ${platform} for ${testname}`
+  );
   const snaps = new AppSnaps(platform, snapsPath);
 
   if (snaps.exists(testname)) {

@@ -41,7 +41,6 @@ const checkIfPortTaken = x =>
   });
 
 let appium;
-fructose.withComponent();
 
 beforeAll(async () => {
   if (process.env.ANDROID || process.env.IOS) {

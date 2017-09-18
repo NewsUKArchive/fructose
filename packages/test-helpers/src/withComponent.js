@@ -63,5 +63,6 @@ export default () => {
     }
   };
 
+  log.verbose("withComponent", "setting up withComponent Global");
   global.withComponent = withComponent;
 };

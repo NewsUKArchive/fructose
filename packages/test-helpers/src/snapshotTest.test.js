@@ -1,10 +1,10 @@
 /* globals expect beforeEach */
 
-const stack = require("callsite");
-const path = require("path");
-const log = require("../../common/logger");
-const AppSnaps = require("../../snapshots");
-const { assertSnapshot } = require("./snapshotTest");
+import stack from "callsite";
+import path from "path";
+import log from "../../common/logger";
+import AppSnaps from "../../snapshots";
+import { assertSnapshot } from "./snapshotTest";
 
 describe.only("snapshotTest", () => {
   let snapper;

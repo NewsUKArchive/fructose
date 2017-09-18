@@ -4,7 +4,7 @@ import stack from "callsite";
 import Client from "../../client";
 import log from "../../common/logger";
 import rnComponentKey from "../../common/rnComponentKey";
-import snapshot from "./snapshotTest";
+import { snapTest } from "./snapshotTest";
 
 const client = Client(7811);
 
@@ -25,7 +25,7 @@ export default () => {
     const snapshotTest = (platform, testname) => {
       const testfilePath = stack()[1].getFileName();
       log.verbose("withComponent", `snapshot file path is : ${testfilePath}`);
-      return snapshot(platform, testfilePath, testname);
+      return snapTest(platform, testfilePath, testname);
     };
 
     const fructose = {

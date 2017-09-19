@@ -5,9 +5,8 @@ exports[`Functional React Component Tester UI snapshot: instantiated FunctionalR
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#F5FCFF",
       "flex": 1,
-      "justifyContent": "center",
+      "justifyContent": "flex-start",
     }
   }
   testID="fructose"
@@ -32,9 +31,8 @@ exports[`Functional React Component Tester UI snapshot: loading MockComponent 1`
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#F5FCFF",
       "flex": 1,
-      "justifyContent": "center",
+      "justifyContent": "flex-start",
     }
   }
   testID="fructose"

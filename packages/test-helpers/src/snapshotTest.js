@@ -1,6 +1,4 @@
-import path from "path";
 import assert from "assert";
-import AppSnaps from "../../snapshots";
 import log from "../../common/logger";
 
 const assertSnapshot = async (snapper, testName) => {
@@ -26,16 +24,4 @@ const assertSnapshot = async (snapper, testName) => {
   }
 };
 
-const snapTest = async (platform, testFilePath, testname) => {
-  const testDir = path.dirname(testFilePath);
-  const snapsPath = `${testDir}/__snapshots__`;
-
-  log.verbose(
-    "snapshotTest",
-    `path is ${snapsPath} on ${platform} for ${testname}`
-  );
-  const snaps = new AppSnaps(platform, snapsPath);
-  await assertSnapshot(snaps, testname);
-};
-
-module.exports = { snapTest, assertSnapshot };
+module.exports = { assertSnapshot };

@@ -4,9 +4,10 @@ import stack from "callsite";
 import path from "path";
 import log from "../../common/logger";
 import AppSnaps from "../../snapshots";
-import { assertSnapshot } from "./snapshotTest";
+import { assertSnapshot, snapTest } from "./snapshotTest";
+import sinon from "sinon";
 
-describe.only("snapshotTest", () => {
+describe("snapshotAssert", () => {
   let snapper;
 
   beforeEach(() => {

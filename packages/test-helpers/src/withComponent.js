@@ -1,10 +1,12 @@
 /* globals describe */
 
 import stack from "callsite";
+import path from "path";
+import AppSnaps from "../../snapshots";
 import Client from "../../client";
 import log from "../../common/logger";
 import rnComponentKey from "../../common/rnComponentKey";
-import { snapTest } from "./snapshotTest";
+import { assertSnapshot } from "./snapshotTest";
 
 const client = Client(7811);
 
@@ -12,6 +14,7 @@ log.info("withComponent", "client socket connected on 7811");
 export default () => {
   const withComponent = (component, description, tests) => {
     const hashed = rnComponentKey(component);
+    const testFilePath = stack()[1].getFileName();
 
     const loadComponent = async () =>
       client
@@ -22,10 +25,13 @@ export default () => {
       client.disconnect();
     };
 
-    const snapshotTest = (platform, testname) => {
-      const testfilePath = stack()[1].getFileName();
-      log.verbose("withComponent", `snapshot file path is : ${testfilePath}`);
-      return snapTest(platform, testfilePath, testname);
+    const snapshotTest = async (platform, testname) => {
+      const testDir = path.dirname(testFilePath);
+      const snapsPath = `${testDir}/__snapshots__`;
+
+      log.verbose("withComponent", `snapshot file path is : ${snapsPath}`);
+      const snaps = new AppSnaps(platform, snapsPath);
+      await assertSnapshot(snaps, testname);
     };
 
     const fructose = {

@@ -7,7 +7,7 @@ test("index exports function as default", async () => {
   expect(typeof fructose.hooks.web.cleanup).toBe("function");
 });
 
-test.only("withComponent is set as global function", () => {
+test("withComponent is set as global function", () => {
   const fructose = require("./index").default;
   expect(typeof global.withComponent).toBe("function");
 });

@@ -10,9 +10,7 @@ describe.only("snapshotTest", () => {
   let snapper;
 
   beforeEach(() => {
-    const testFilePath = stack()[0].getFileName();
-    const testDir = path.dirname(testFilePath);
-    const snapsPath = `${testDir}/__snapshots__`;
+    const snapsPath = `${__dirname}/__snapshots__`;
     const platform = "ios";
 
     snapper = new AppSnaps(platform, snapsPath);
@@ -22,10 +20,14 @@ describe.only("snapshotTest", () => {
         resolve();
       });
     };
-  }), it("returns true if images match", () => {
+  });
+
+  it("returns true if images match", () => {
     const testName = "returns-true";
     return assertSnapshot(snapper, testName);
-  }), it("returns false if images to not match", async () => {
+  });
+
+  it("returns false if images to not match", async () => {
     const testName = "returns-false";
     expect.assertions(1);
 
@@ -34,7 +36,9 @@ describe.only("snapshotTest", () => {
     } catch (err) {
       expect(err.code).toEqual("ERR_ASSERTION");
     }
-  }), it("asks to review the new snapshot if one does not exist", async () => {
+  });
+
+  it("asks to review the new snapshot if one does not exist", async () => {
     const testName = "fake";
     expect.assertions(1);
 
@@ -43,5 +47,12 @@ describe.only("snapshotTest", () => {
     } catch (err) {
       expect(err.code).toEqual("ERR_ASSERTION");
     }
+  });
+
+  it("calls snapshot snap", async () => {
+    snapper.snap = jest.fn();
+    const testName = "returns-true";
+    await assertSnapshot(snapper, testName);
+    expect(snapper.snap.mock.calls.length).toBe(1);
   });
 });

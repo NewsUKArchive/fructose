@@ -10,7 +10,7 @@ const mobileHooks = () => {
   const setup = async () => {
     packager = new Packager();
     server = new FructoseServer(7811);
-    
+
     packager.events.on("terminateTests", () => {
       log.error("ERROR: TERMINATING TESTS");
       process.exit(1);

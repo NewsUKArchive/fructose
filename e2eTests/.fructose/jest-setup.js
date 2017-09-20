@@ -1,4 +1,4 @@
-/* globals beforeAll afterAll */
+/* globals beforeAll jasmine afterAll */
 import fructose from "@times-components/fructose/setup";
 import detox from "detox";
 import webdriverio from "webdriverio";
@@ -44,6 +44,9 @@ let appium;
 fructose.withComponent();
 
 beforeAll(async () => {
+  // to deal with with the long running snap shot tests
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+
   if (process.env.ANDROID || process.env.IOS) {
     await fructose.hooks.mobile.setup();
     if (process.env.ANDROID) {

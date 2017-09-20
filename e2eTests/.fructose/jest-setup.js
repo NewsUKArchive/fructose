@@ -41,7 +41,6 @@ const checkIfPortTaken = x =>
   });
 
 let appium;
-fructose.withComponent();
 
 beforeAll(async () => {
   // to deal with with the long running snap shot tests

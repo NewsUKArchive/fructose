@@ -1,8 +1,9 @@
 import createWithComponentGlobal from "./withComponent";
 import hooks from "./setup";
 
+createWithComponentGlobal();
+
 const fructose = {};
-fructose.withComponent = createWithComponentGlobal;
 fructose.hooks = hooks;
 
 export default fructose;

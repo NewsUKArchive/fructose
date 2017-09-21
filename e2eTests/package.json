@@ -7,7 +7,7 @@
         "test": "npm run test:ios && npm run test:android && npm run test:web",
         "web": "start-web",
         "web:build:vendor-dev": "webpack --config .fructose/vendor.webpack.config.js",
-        "test:web": "yarn web:build:vendor-dev && npm run web & npm run write-web-components && npm run web & WEB=true jest .fructose/components.test.js --verbose --forceExit",
+        "test:web": "yarn web:build:vendor-dev && (npm run web & npm run write-web-components && npm run web & WEB=true jest .fructose/components.test.js --verbose --forceExit)",
         "test:ios": "npm run write-ios-components && LOGLEVEL=verbose IOS=true jest .fructose/components.test.js --verbose --forceExit",
         "test:android": "npm run write-android-components && ANDROID=true jest .fructose/components.test.js --verbose --forceExit",
         "fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",

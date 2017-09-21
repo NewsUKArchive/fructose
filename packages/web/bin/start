@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+const merge = require('webpack-merge');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+
+const upperConfig = require("../../../../../../.fructose/webpack.config.js");
+const config = require('../webpack.config.js');
+const mergedConfig = merge(upperConfig, config);
+console.log(mergedConfig)
+
+new WebpackDevServer(webpack(mergedConfig), {
+  publicPath: config.output.publicPath,
+  hot: false,
+  historyApiFallback: true,
+}).listen(
+  3000,
+  'localhost',
+  err => (err ? console.log(err) : console.log('Listening at http://localhost:3000/'))
+);

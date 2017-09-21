@@ -15,7 +15,8 @@
     "prepare": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib"
   },
   "bin": {
-    "compile-tests": "packages/test-helpers/bin/writeComponentsTests"
+    "compile-tests": "packages/test-helpers/bin/writeComponentsTests",
+    "start-web": "packages/web/bin/start"
   },
   "pre-commit": [
     "precommit-msg",
@@ -54,6 +55,7 @@
     "events": "1.1.1",
     "express": "^4.15.3",
     "global": "4.3.2",
+    "html-webpack-plugin": "^2.28.0",    
     "jimp": "^0.2.28",
     "looks-same": "^3.2.1",
     "npmlog": "^4.1.2",
@@ -63,7 +65,8 @@
     "prop-types": "15.5.10",
     "server-destroy": "^1.0.1",
     "socket.io": "2.0.3",
-    "socket.io-client": "2.0.3"
+    "socket.io-client": "2.0.3",
+    "webpack-merge": "^4.1.0"
   },
   "peerDependencies": {
     "react": "16.0.0-alpha.6",

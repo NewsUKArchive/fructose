@@ -10,6 +10,13 @@ import sinon from "sinon";
 describe("snapshotAssert", () => {
   let snapper;
 
+  const fakeFileExists = () => {
+    snapper.diff = async bool => {
+      return new Promise(resolve => {
+        resolve(bool === "resolve-true" ? 0 : 1);
+      });
+    };
+  };
   beforeEach(() => {
     const snapsPath = `${__dirname}/__snapshots__`;
     const platform = "ios";
@@ -21,15 +28,23 @@ describe("snapshotAssert", () => {
         resolve();
       });
     };
+
+    snapper.exists = async () => {
+      return new Promise(resolve => {
+        resolve();
+      });
+    };
   });
 
   it("returns true if images match", () => {
-    const testName = "returns-true";
+    fakeFileExists();
+    const testName = "resolve-true";
     return assertSnapshot(snapper, testName);
   });
 
   it("returns false if images to not match", async () => {
-    const testName = "returns-false";
+    fakeFileExists();
+    const testName = "resolve-false";
     expect.assertions(1);
 
     try {
@@ -39,7 +54,8 @@ describe("snapshotAssert", () => {
     }
   });
 
-  it("asks to review the new snapshot if one does not exist", async () => {
+  it("asks to review the new snapshot if one does not exist at file path", async () => {
+    fakeFileExists();
     const testName = "fake";
     expect.assertions(1);
 

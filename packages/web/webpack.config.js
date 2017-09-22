@@ -15,8 +15,6 @@ const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const OfflinePlugin = require("offline-plugin");
 
-const outputPath = path.join(__dirname, "/build/");
-
 const plugins = [
   new webpack.DefinePlugin({
     "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
@@ -25,7 +23,7 @@ const plugins = [
   }),
   new HtmlWebpackPlugin({
     filename: "index.html",
-    template: path.join(__dirname, "./templates/index.ejs")
+    template: path.join(__dirname, "./index.ejs")
   }),
   // Split out any remaining node modules
   new webpack.optimize.CommonsChunkPlugin({
@@ -46,7 +44,7 @@ const plugins = [
 // If offline plugin is enabled, it has to come last.
 if (__OFFLINE__) plugins.push(new OfflinePlugin());
 
-module.exports = {
+module.exports = (outputPath) => ({
   module: {
     loaders: [
       {
@@ -70,4 +68,4 @@ module.exports = {
     },
     extensions: [".web.js", ".js", ".json"]
   }
-};
+});

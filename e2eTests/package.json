@@ -7,7 +7,7 @@
         "test": "npm run test:ios && npm run test:android && npm run test:web",
         "web": "start-web",
         "web:build:vendor-dev": "webpack --config .fructose/vendor.webpack.config.js",
-        "test:web": "yarn web:build:vendor-dev && (npm run web & npm run write-web-components && npm run web & WEB=true jest .fructose/components.test.js --verbose --forceExit)",
+        "test:web": "yarn web:build:vendor-dev && (npm run web & npm run write-web-components && WEB=true jest .fructose/components.test.js --verbose --forceExit)",
         "test:ios": "npm run write-ios-components && LOGLEVEL=verbose IOS=true jest .fructose/components.test.js --verbose --forceExit",
         "test:android": "npm run write-android-components && ANDROID=true jest .fructose/components.test.js --verbose --forceExit",
         "fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
@@ -27,6 +27,7 @@
         "react-native": "0.44.1",
         "react-native-storybook-loader": "^1.4.1",
         "react-native-web": "^0.0.120",
+        "request": "^2.82.0",
         "webdriverio": "^4.8.0",
         "webpack": "^2.4.1"
     },

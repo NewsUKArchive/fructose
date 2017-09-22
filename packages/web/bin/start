@@ -2,14 +2,49 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-
+const path = require('path');
 const upperConfig = require("../../../../../../.fructose/webpack.config.js");
-const config = require('../webpack.config.js');
+const config = require('../webpack.config.js')(path.join(process.cwd(), 'dist'));
 const mergedConfig = merge(upperConfig, config);
-console.log(mergedConfig)
+const configDir = path.join(process.cwd(), '.fructose');
+const fs = require('fs');
+
+function getHeadHtml(configDirPath) {
+  const headHtmlPath = path.resolve(configDirPath, 'head.html');
+  const fallbackHtmlPath = path.resolve(configDirPath, 'head.html');
+  let headHtml = '';
+  if (fs.existsSync(headHtmlPath)) {
+    headHtml = fs.readFileSync(headHtmlPath, 'utf8');
+  } else if (fs.existsSync(fallbackHtmlPath)) {
+    headHtml = fs.readFileSync(fallbackHtmlPath, 'utf8');
+    fallbackHeadUsage();
+  }
+
+  return headHtml;
+}
+
+const headHtml = getHeadHtml(configDir);
+
+const ejsTemplate = `
+<!DOCTYPE html>
+<html<% if (__OFFLINE__) { %> manifest="appcache/manifest.appcache"<% } %>>
+  <head>
+    <meta charset="utf-8">
+    <title>React Native Web</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    ${headHtml}
+    </head>
+  <body>
+    <div id="react-root"></div>
+  </body>
+</html>
+`;
+
+fs.writeFileSync(path.join(__dirname, "../index.ejs"), ejsTemplate);
 
 new WebpackDevServer(webpack(mergedConfig), {
-  publicPath: config.output.publicPath,
+  publicPath: mergedConfig.output.publicPath,
   hot: false,
   historyApiFallback: true,
 }).listen(

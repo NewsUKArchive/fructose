@@ -16,11 +16,11 @@ module.exports = class AppSnapper {
     this.snapper = new Snapper(platform);
     this.tempSnaps = `${snapsPath}/${platform}/tmp`;
     this.approvedSnaps = `${snapsPath}/${platform}`;
-    mkdir(this.approvedSnaps);
-    mkdir(this.tempSnaps);
   }
 
   async snap(testname) {
+    mkdir(this.approvedSnaps);
+    mkdir(this.tempSnaps);
     this.snapper.snap(`${this.tempSnaps}/${testname}.png`);
     const image = await Jimp.read(`${this.tempSnaps}/${testname}.png`);
     return new Promise(resolve => {

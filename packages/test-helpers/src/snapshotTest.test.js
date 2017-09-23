@@ -10,13 +10,24 @@ import sinon from "sinon";
 describe("snapshotAssert", () => {
   let snapper;
 
-  const fakeFileExists = () => {
+  jest.mock("fs");
+
+  const fakeDiff = () => {
     snapper.diff = async bool => {
       return new Promise(resolve => {
         resolve(bool === "resolve-true" ? 0 : 1);
       });
     };
   };
+
+  const fakeFileExists = () => {
+    snapper.exists = async () => {
+      return new Promise(resolve => {
+        resolve();
+      });
+    };
+  };
+
   beforeEach(() => {
     const snapsPath = `${__dirname}/__snapshots__`;
     const platform = "ios";
@@ -28,21 +39,17 @@ describe("snapshotAssert", () => {
         resolve();
       });
     };
-
-    snapper.exists = async () => {
-      return new Promise(resolve => {
-        resolve();
-      });
-    };
   });
 
   it("returns true if images match", () => {
+    fakeDiff();
     fakeFileExists();
     const testName = "resolve-true";
     return assertSnapshot(snapper, testName);
   });
 
   it("returns false if images to not match", async () => {
+    fakeDiff();
     fakeFileExists();
     const testName = "resolve-false";
     expect.assertions(1);
@@ -55,7 +62,6 @@ describe("snapshotAssert", () => {
   });
 
   it("asks to review the new snapshot if one does not exist at file path", async () => {
-    fakeFileExists();
     const testName = "fake";
     expect.assertions(1);
 
@@ -68,7 +74,9 @@ describe("snapshotAssert", () => {
 
   it("calls snapshot snap", async () => {
     snapper.snap = jest.fn();
-    const testName = "returns-true";
+    fakeDiff();
+    fakeFileExists();
+    const testName = "resolve-true";
     await assertSnapshot(snapper, testName);
     expect(snapper.snap.mock.calls.length).toBe(1);
   });

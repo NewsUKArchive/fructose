@@ -55,7 +55,10 @@ fastlane/screenshots
 **/.fructose/components.js
 **/.fructose/components.test.js
 
-dist/**
+!dist
+!dist/public
+dist/public/**
+!dist/public/react-logo.png
 
 **/__snapshots__/*/tmp
 **/vendor-dev

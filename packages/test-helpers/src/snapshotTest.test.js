@@ -4,18 +4,15 @@ import stack from "callsite";
 import path from "path";
 import log from "../../common/logger";
 import AppSnaps from "../../snapshots";
-import { assertSnapshot, snapTest } from "./snapshotTest";
-import sinon from "sinon";
+import { assertSnapshot } from "./snapshotTest";
 
 describe("snapshotAssert", () => {
   let snapper;
 
-  jest.mock("fs");
-
   const fakeDiff = () => {
     snapper.diff = async bool => {
       return new Promise(resolve => {
-        resolve(bool === "resolve-true" ? 0 : 1);
+        resolve(bool.includes("true") ? 0 : 1);
       });
     };
   };

@@ -9,6 +9,7 @@ describe("Snapshot differ", () => {
     width: 5,
     height: 2
   };
+
   const img2 = {
     data: new Buffer("abc"),
     width: 5,

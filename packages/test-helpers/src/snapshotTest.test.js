@@ -38,14 +38,14 @@ describe("snapshotAssert", () => {
     };
   });
 
-  it("returns true if images match", () => {
+  it("does not throw assertion error if images match", async () => {
     fakeDiff();
     fakeFileExists();
     const testName = "resolve-true";
-    return assertSnapshot(snapper, testName);
+    await assertSnapshot(snapper, testName);
   });
 
-  it("returns false if images to not match", async () => {
+  it("throws error if images do not match", async () => {
     fakeDiff();
     fakeFileExists();
     const testName = "resolve-false";
@@ -65,11 +65,12 @@ describe("snapshotAssert", () => {
     try {
       await assertSnapshot(snapper, testName);
     } catch (err) {
+      console.warn("ADSADASDASDASD:", err);
       expect(err.code).toEqual("ERR_ASSERTION");
     }
   });
 
-  it("calls snapshot snap", async () => {
+  it("takes a snapshot to compare against", async () => {
     snapper.snap = jest.fn();
     fakeDiff();
     fakeFileExists();

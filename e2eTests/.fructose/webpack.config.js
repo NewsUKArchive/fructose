@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable global-require */
 const webpack = require("webpack");
 const path = require("path");
 
@@ -16,7 +16,7 @@ module.exports = {
       // Use the DLL in development.
       new webpack.DllReferencePlugin({
         context: __dirname,
-        manifest: require("../dist/public/vendor-manifest.json")
+        manifest: require("../dist/public/vendor-manifest.json") // eslint-disable-line import/no-unresolved
       })
     ]
   }

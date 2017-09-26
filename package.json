@@ -15,8 +15,8 @@
     "prepare": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib"
   },
   "bin": {
-    "compile-tests": "packages/test-helpers/bin/writeComponentsTests",
-    "start-web": "packages/web/bin/start"
+    "compile-tests": "packages/test-helpers/bin/writeComponentsTests.js",
+    "fructose-web": "packages/web/bin/start.js"
   },
   "pre-commit": [
     "precommit-msg",
@@ -64,9 +64,12 @@
     "pixelmatch": "^4.0.2",
     "pngjs": "^3.3.0",
     "prop-types": "15.5.10",
+    "request": "^2.82.0",
     "server-destroy": "^1.0.1",
     "socket.io": "2.0.3",
     "socket.io-client": "2.0.3",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2",
     "webpack-merge": "^4.1.0"
   },
   "peerDependencies": {

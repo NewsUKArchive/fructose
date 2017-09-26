@@ -6,6 +6,7 @@ import log from "../../common/logger";
 import AppSnaps from "../../snapshots";
 import { assertSnapshot, snapTest } from "./snapshotTest";
 import sinon from "sinon";
+jest.unmock("pixelmatch");
 
 describe("snapshotAssert", () => {
   let snapper;

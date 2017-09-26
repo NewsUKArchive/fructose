@@ -5,40 +5,7 @@ import webdriverio from "webdriverio";
 import { spawn } from "child_process";
 import { Chromeless } from "chromeless";
 import path from "path";
-import portscanner from "portscanner";
-import EventEmitter from "events";
 import config from "../package";
-
-const isPortTaken = port =>
-  new Promise(resolve => {
-    portscanner.checkPortStatus(port, "127.0.0.1", (error, status) => {
-      // Status is 'open' if currently in use or 'closed' if available
-      const isTaken = status === "open";
-      resolve(isTaken);
-    });
-  });
-
-const checkIfPortTaken = x =>
-  new Promise(resolve => {
-    const event = new EventEmitter();
-    event.on("taken", taken => {
-      resolve(taken);
-    });
-    let taken;
-    let repeatTimes = x;
-    const interval = setInterval(async () => {
-      repeatTimes -= 1;
-      taken = await isPortTaken(3000);
-      if (taken) {
-        event.emit("taken", true);
-        clearInterval(interval);
-      }
-      if (!taken && repeatTimes === 0) {
-        event.emit("taken", false);
-        clearInterval(interval);
-      }
-    }, 1000);
-  });
 
 let appium;
 
@@ -77,12 +44,7 @@ beforeAll(async () => {
       await detox.init(config.detox);
     }
   } else if (process.env.WEB) {
-    await fructose.hooks.web.setup();
-    const taken = await checkIfPortTaken(10);
-    if (!taken) {
-      console.error("The fructose app did not start correctly");
-      process.exit(1);
-    }
+    await fructose.hooks.web.setup(3000, 20000);
     global.Chromeless = Chromeless;
   }
 }, 180000);

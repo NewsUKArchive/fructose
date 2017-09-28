@@ -2,6 +2,7 @@ import "babel-polyfill";
 import { FructoseServer } from "../../server";
 import Packager from "./startPackager";
 import log from "../../common/logger";
+import checkIfWebStarted from "./didWebStart";
 
 const mobileHooks = () => {
   let packager;
@@ -35,7 +36,13 @@ const mobileHooks = () => {
 const webHooks = () => {
   let server;
 
-  const setup = async () => {
+  const setup = async (port, timeout) => {
+    const appStarted = await checkIfWebStarted(port, timeout);
+    if (!appStarted) {
+      throw new Error(
+        "App did not start. Run 'fructose-web --build-dir path/to/dir' first"
+      );
+    }
     server = new FructoseServer(7811);
     await server.start();
   };

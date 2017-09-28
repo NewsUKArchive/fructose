@@ -5,4 +5,4 @@ packages/test-helpers/**/*.test.js
 **/*.tape.js
 **/.fructose/components.js
 **/.fructose/components.test.js
-**/.fructose/web/vendor-dev
+**/e2eTests/dist/**/*

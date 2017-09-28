@@ -63,3 +63,6 @@ sandbox
 
 # babeled stuff
 packages/test-helpers/lib/**
+
+# ejs template
+packages/web/templates/**

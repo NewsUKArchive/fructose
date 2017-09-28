@@ -41,7 +41,7 @@ const headHtml = getHeadHtml(configDir);
 
 const ejsTemplate = `
 <!DOCTYPE html>
-<html<% if (__OFFLINE__) { %> manifest="appcache/manifest.appcache"<% } %>>
+<html>
   <head>
     <meta charset="utf-8">
     <title>React Native Web</title>

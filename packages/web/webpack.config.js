@@ -1,8 +1,6 @@
 /* eslint-disable */
-const enableOfflinePlugin = false;
 
 const __DEV__ = process.env.NODE_ENV === "development";
-const __OFFLINE__ = enableOfflinePlugin && !__DEV__;
 
 const path = require("path");
 const glob = require("glob");
@@ -10,16 +8,11 @@ const webpack = require("webpack");
 const config = require("./shared.webpack.config.js");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
-
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const OfflinePlugin = require("offline-plugin");
 
 const plugins = [
   new webpack.DefinePlugin({
     "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-    __DEV__,
-    __OFFLINE__
+    __DEV__
   }),
   new HtmlWebpackPlugin({
     filename: "index.html",
@@ -41,10 +34,7 @@ const plugins = [
       ])
 ];
 
-// If offline plugin is enabled, it has to come last.
-if (__OFFLINE__) plugins.push(new OfflinePlugin());
-
-module.exports = (outputPath) => ({
+module.exports = outputPath => ({
   module: {
     loaders: [
       {

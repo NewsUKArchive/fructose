@@ -1,8 +1,7 @@
 /* globals expect describe it jest */
 import pixelmatch from "pixelmatch";
+import { PNG } from "pngjs";
 import imageDiff from "./differ";
-
-const PNG = require("pngjs").PNG;
 
 describe("Snapshot differ", () => {
   jest.mock("pixelmatch");

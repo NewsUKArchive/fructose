@@ -2,7 +2,7 @@
 
 ## Running the example end to end tests  🏃
 
-In order to run the examples, it is assumed that you have the latest version of (xCode | android studio | chrome browser) installed for (iOS | Android | Web).
+In order to run the examples, it is assumed that you have the latest version of (XCode | Android studio | Chrome Browser) installed for (iOS | Android | Web).
 
 - `yarn` in project root to install project dependencies.
 - Follow steps 1-4 of [Detox] getting started for native.
@@ -56,6 +56,6 @@ test: Adding missing or correcting existing tests
 chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
 ```
 
-Fructose uses an auto publishing feature that uses the commit convention to work out the bump version.
+Fructose uses an auto publishing feature that uses this commit convention to work out the bump version.
 
 [detox]:  https://github.com/wix/detox/blob/master/docs/Introduction.GettingStarted.md

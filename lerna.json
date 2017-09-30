@@ -6,6 +6,5 @@
     "packages/client",
     "packages/test-helpers",
     "packages/fructose"
-  ],
-  "version": "0.1.14"
+  ]
 }

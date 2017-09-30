@@ -21,7 +21,7 @@ withComponent(
     });
 
     test("simple test", async () => {
-      await expect(element(by.text(`The Philosopher's Stone1`))).toBeVisible();
+      await expect(element(by.text(`The Philosopher's Stone`))).toBeVisible();
     });
 
     test(

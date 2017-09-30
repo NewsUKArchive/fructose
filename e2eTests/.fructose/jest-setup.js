@@ -14,6 +14,27 @@ beforeAll(async () => {
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
   if (process.env.ANDROID || process.env.IOS) {
+    const reporter = {
+      specDone: async result => {
+        if (result.status === "failed") {
+          // const fileName = result.fullName.replace(/ /g,"_");
+          // const file = path.join(__dirname, fileName, ".png");
+
+          const lol =
+            "/Users/mattlowry/dev/news/fructose/e2eTests/.fructose/withComponent_book_one_simple_test.png";
+
+          console.log("------------------------------------");
+          console.log("----------FAILED----------------------");
+          console.log(fructose.hooks.mobile.takeScreenShot("ios", lol));
+          console.log("------------------------------------");
+          await fructose.hooks.mobile.takeScreenShot("ios", lol);
+        }
+        console.log("------PASSED------");
+      }
+    };
+
+    jasmine.getEnv().addReporter(reporter);
+
     await fructose.hooks.mobile.setup();
     if (process.env.ANDROID) {
       appium = await new Promise(resolve => {

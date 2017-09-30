@@ -33,6 +33,9 @@ const mobileHooks = () => {
   };
 
   const takeScreenShot = async (platform, screenshotPath) => {
+    console.log("------------------------------------");
+    console.log("TAKESCREENSHOT", platform, screenshotPath);
+    console.log("------------------------------------");
     const snapper = new Snapper(platform);
     await snapper.snap(screenshotPath);
   };

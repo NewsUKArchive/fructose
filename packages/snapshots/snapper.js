@@ -16,7 +16,6 @@ module.exports = class Snapper {
     if (typeof outpath !== "string") {
       throw Error("path must be string");
     }
-
     spawnSync("npx", ["osnap", this.platform, "-f", outpath]);
   }
 };

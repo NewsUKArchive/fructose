@@ -41,7 +41,9 @@ export default () => {
     };
 
     if (describe !== undefined) {
-      describe(`withComponent: ${component.props.fructoseID}`, () => {
+      const testName = `${description} \n with Component: ${component.props
+        .fructoseID}`;
+      describe(testName, () => {
         tests(fructose);
       });
     } else {

@@ -9,8 +9,12 @@ import rnComponentKey from "../../common/rnComponentKey";
 import { assertSnapshot } from "./snapshotTest";
 
 const client = Client(7811);
-
 log.info("withComponent", "client socket connected on 7811");
+
+export const disconnectClient = async () => {
+  client.disconnect();
+};
+
 export default () => {
   const withComponent = (component, description, tests) => {
     let hashed;
@@ -28,10 +32,6 @@ export default () => {
         .loadComponent(hashed)
         .then(() => log.verbose("withComponent", `loadComponent ${hashed}`));
 
-    const disconnect = async () => {
-      client.disconnect();
-    };
-
     const snapshotTest = async (platform, testname) => {
       const testDir = path.dirname(testFilePath);
       const snapsPath = `${testDir}/__snapshots__`;
@@ -43,7 +43,7 @@ export default () => {
 
     const fructose = {
       loadComponent,
-      disconnect,
+      disconnectClient,
       snapshotTest
     };
 

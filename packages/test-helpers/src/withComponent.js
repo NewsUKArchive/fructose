@@ -13,7 +13,14 @@ const client = Client(7811);
 log.info("withComponent", "client socket connected on 7811");
 export default () => {
   const withComponent = (component, description, tests) => {
-    const hashed = rnComponentKey(component);
+    let hashed;
+
+    try {
+      hashed = rnComponentKey(component);
+    } catch (err) {
+      throw new Error(`${err} to test: ${description}`);
+    }
+
     const testFilePath = stack()[1].getFileName();
 
     const loadComponent = async () =>

@@ -3,6 +3,7 @@ import { FructoseServer } from "../../server";
 import Packager from "./startPackager";
 import log from "../../common/logger";
 import checkIfWebStarted from "./didWebStart";
+import Snapper from "../../snapshots/snapper";
 
 const mobileHooks = () => {
   let packager;
@@ -30,7 +31,13 @@ const mobileHooks = () => {
     await packager.kill().then(() => log.verbose("setup", "Packager Killed"));
     server.close();
   };
-  return { setup, cleanup };
+
+  const takeScreenShot = async (platform, screenshotPath) => {
+    const snapper = new Snapper(platform);
+    await snapper.snap(screenshotPath);
+  };
+
+  return { setup, cleanup, takeScreenShot };
 };
 
 const webHooks = () => {

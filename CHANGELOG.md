@@ -1,3 +1,13 @@
+<a name="2.2.8"></a>
+## [2.2.8](https://github.com/newsuk/fructose/compare/v2.2.7...v2.2.8) (2017-10-04)
+
+
+### Bug Fixes
+
+* cleaning state inbetween tests ([#44](https://github.com/newsuk/fructose/issues/44)) ([9196068](https://github.com/newsuk/fructose/commit/9196068))
+
+
+
 <a name="2.2.7"></a>
 ## [2.2.7](https://github.com/newsuk/fructose/compare/v2.2.6...v2.2.7) (2017-10-04)
 

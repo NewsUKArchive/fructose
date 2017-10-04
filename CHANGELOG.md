@@ -1,3 +1,13 @@
+<a name="2.2.6"></a>
+## [2.2.6](https://github.com/newsuk/fructose/compare/v2.2.5...v2.2.6) (2017-10-04)
+
+
+### Bug Fixes
+
+* report which test name the fructoseID is missing for ([#45](https://github.com/newsuk/fructose/issues/45)) ([0867a70](https://github.com/newsuk/fructose/commit/0867a70))
+
+
+
 <a name="2.2.5"></a>
 ## [2.2.5](https://github.com/newsuk/fructose/compare/v2.2.4...v2.2.5) (2017-10-03)
 

@@ -1,4 +1,4 @@
-/* globals withComponent test beforeEach driver */
+/* globals withComponent test beforeEach driver device afterEach */
 
 import React from "react";
 import { Text } from "react-native";
@@ -9,6 +9,10 @@ withComponent(
   fructose => {
     beforeEach(async () => {
       await fructose.loadComponent();
+    });
+
+    afterEach(async () => {
+      await device.reloadReactNative();
     });
 
     test("simple test", async () => {

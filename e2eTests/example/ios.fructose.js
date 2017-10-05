@@ -1,4 +1,4 @@
-/* globals withComponent test expect element by beforeEach */
+/* globals withComponent device test expect element by afterEach beforeEach */
 
 import React from "react";
 import { StyleSheet, Text } from "react-native";
@@ -18,6 +18,10 @@ withComponent(
   fructose => {
     beforeEach(async () => {
       await fructose.loadComponent();
+    });
+
+    afterEach(async () => {
+      await device.reloadReactNative();
     });
 
     test("simple test", async () => {

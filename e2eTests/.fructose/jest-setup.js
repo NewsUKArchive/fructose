@@ -7,13 +7,29 @@ import { Chromeless } from "chromeless";
 import path from "path";
 import config from "../package";
 
+const createPath = text => {
+  const png = String.join(text, ".png");
+  const removeWhitespace = png.replace(/ /g, "_");
+  return path.join(__dirname, "__failures__", removeWhitespace);
+};
+
+const reporter = {
+  specDone: async testResult => {
+    if (testResult.status === "failed") {
+      const filePath = createPath(testResult.fullName);
+      await fructose.hooks.mobile.takeScreenShot("ios", filePath);
+    }
+  }
+};
+
 let appium;
 
 beforeAll(async () => {
   // to deal with with the long running snap shot tests
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
 
   if (process.env.ANDROID || process.env.IOS) {
+    jasmine.getEnv().addReporter(reporter);
     await fructose.hooks.mobile.setup();
     if (process.env.ANDROID) {
       appium = await new Promise(resolve => {

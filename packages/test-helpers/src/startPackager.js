@@ -17,12 +17,11 @@ const getCwd = () => {
   }
   return cwd;
 };
-
 export default class Packager {
   constructor() {
     this.fructosePackager = null;
     this.events = new EventEmitter();
-    this.dead = false;
+    this.killed = false;
   }
 
   packagerStarted() {
@@ -39,12 +38,13 @@ export default class Packager {
 
   async start() {
     log.info("startPackager", "starting Packager");
-    this.events.on("exit", () => {
-      this.dead = true;
+    this.events.on("terminate", () => {
+      this.killed = true;
       this.events.emit("terminateTests");
     });
     this.fructosePackager = spawn("npm", ["run", "fructose-app"], {
-      cwd: getCwd()
+      cwd: getCwd(),
+      detached: true
     });
     this.handlePackager();
     await this.packagerStarted();
@@ -53,12 +53,16 @@ export default class Packager {
   async kill() {
     this.checkPackager();
     return new Promise(resolve => {
-      if (this.dead === true) {
+      if (this.killed === true) {
         resolve();
       } else {
         log.info("startPackager", "killing Packager");
         this.fructosePackager.kill("SIGINT");
-        resolve();
+        this.fructosePackager.on("exit", () => {
+          log.info("startPackager", "packager has exited");
+          this.fructosePackager.killed = true;
+          resolve();
+        });
       }
     });
   }
@@ -76,18 +80,19 @@ export default class Packager {
     });
 
     this.fructosePackager.on("close", code => {
+      log.info("startPackager", `packager closed with exit code ${code}`);
       if (code === 11) {
         log.error(
           "startPackager",
           "Packager could not listen on port :8081 \n please run 'kill -9 $(lsof -ti :8081)'"
         );
-        this.events.emit("exit");
+        this.events.emit("terminate");
       } else if (code !== 0) {
         log.error(
           "startPackager",
           `packager did not exit correctly: code ${code}`
         );
-        this.events.emit("exit");
+        this.events.emit("terminate");
       }
     });
   }

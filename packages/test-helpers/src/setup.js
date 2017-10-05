@@ -4,6 +4,7 @@ import Packager from "./startPackager";
 import log from "../../common/logger";
 import checkIfWebStarted from "./didWebStart";
 import Snapper from "../../snapshots/snapper";
+import { client } from "./withComponent";
 
 const mobileHooks = () => {
   let packager;
@@ -28,6 +29,7 @@ const mobileHooks = () => {
   };
 
   const cleanup = async () => {
+    await client.disconnect();
     await packager.kill().then(() => log.verbose("setup", "Packager Killed"));
     server.close();
   };
@@ -55,6 +57,7 @@ const webHooks = () => {
   };
 
   const cleanup = async () => {
+    await client.disconnect();
     server.close();
   };
 

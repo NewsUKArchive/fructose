@@ -14,8 +14,10 @@ class FructoseServer {
   }
 
   close() {
-    log.info("server-index", "Fructose server terminating");
-    this.server.destroy();
+    return new Promise(resolve => {
+      log.info("server-index", "Fructose server terminating");
+      this.server.destroy(resolve);
+    });
   }
 
   start() {

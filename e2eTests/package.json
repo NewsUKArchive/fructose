@@ -8,7 +8,7 @@
         "web": "fructose-web --build-dir dist/public",
         "web:build:vendor-dev": "webpack --config .fructose/vendor.webpack.config.js",
         "test:web": "yarn web:build:vendor-dev && (npm run web & npm run write-web-components && WEB=true jest .fructose/components.test.js --verbose --forceExit)",
-        "test:ios": "npm run write-ios-components && LOGLEVEL=verbose IOS=true jest .fructose/components.test.js --verbose --forceExit",
+        "test:ios": "npm run write-ios-components && LOGLEVEL=verbose IOS=true jest .fructose/components.test.js --forceExit --verbose",
         "test:android": "npm run write-android-components && ANDROID=true jest .fructose/components.test.js --verbose --forceExit",
         "fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
         "compile-android-components": "rnstl --searchDir ./ --pattern 'example/android.fructose.js' --outputFile ./.fructose/components.js",
@@ -21,7 +21,7 @@
     "dependencies": {
         "@times-components/image": "^1.2.0",
         "chromeless": "^1.3.0",
-        "detox": "5.5.1",
+        "detox":"5.8.1",
         "react": "16.0.0-alpha.6",
         "react-native": "0.44.1",
         "react-native-storybook-loader": "^1.4.1",
@@ -73,7 +73,7 @@
             "ios.sim.debug": {
                 "binaryPath": "ios/e2eTests.app",
                 "type": "ios.simulator",
-                "name": "iPhone 7, iOS 10.3"
+                "name": "iPhone 7"
             }
         }
     }

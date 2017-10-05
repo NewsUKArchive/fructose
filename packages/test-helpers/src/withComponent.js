@@ -8,12 +8,8 @@ import log from "../../common/logger";
 import rnComponentKey from "../../common/rnComponentKey";
 import { assertSnapshot } from "./snapshotTest";
 
-const client = Client(7811);
+export const client = Client(7811);
 log.info("withComponent", "client socket connected on 7811");
-
-export const disconnectClient = async () => {
-  client.disconnect();
-};
 
 export default () => {
   const withComponent = (component, description, tests) => {
@@ -43,7 +39,6 @@ export default () => {
 
     const fructose = {
       loadComponent,
-      disconnectClient,
       snapshotTest
     };
 

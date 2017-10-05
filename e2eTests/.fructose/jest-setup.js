@@ -77,5 +77,4 @@ afterAll(async () => {
   if (process.env.WEB) {
     await fructose.hooks.web.cleanup();
   }
-  await fructose.hooks.disconnectClient();
 });

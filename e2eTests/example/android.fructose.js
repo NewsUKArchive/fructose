@@ -55,8 +55,10 @@ withComponent(
   fructose => {
     test("with red style", async () => {
       await fructose.loadComponent();
-      await driver.waitForVisible('//*[@text="Manchester United"]', 6000);
-      const a = await driver.getText('//*[@text="Manchester United"]');
+
+      const text = '//*[@text="Manchester United"]';
+      await driver.waitForVisible(text, 6000);
+      const a = await driver.getText(text);
       if (a !== "Manchester United") {
         throw new Error("should be Manchester United!");
       }

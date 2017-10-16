@@ -19,5 +19,9 @@ module.exports = {
         manifest: require("../dist/public/vendor-manifest.json") // eslint-disable-line import/no-unresolved
       })
     ]
+  },
+  node: {
+    fs: "empty",
+    net: "empty"
   }
 };

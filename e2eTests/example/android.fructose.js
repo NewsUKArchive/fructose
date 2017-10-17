@@ -1,4 +1,4 @@
-/* globals withComponent test beforeEach driver device afterEach */
+/* globals withComponent test beforeEach driver afterEach */
 
 import React from "react";
 import { StyleSheet, Text } from "react-native";
@@ -31,12 +31,10 @@ withComponent(
       await fructose.loadComponent();
     });
 
-    afterEach(async () => {
-      await device.reloadReactNative();
-    });
+    afterEach(async () => {});
 
     const text = '//*[@text="The Hobbit"]';
-    
+
     test("simple test", async () => {
       await driver.waitForVisible(text, 6000);
       const a = await driver.getText(text);

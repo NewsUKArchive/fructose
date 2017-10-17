@@ -3,7 +3,7 @@
 
 
 "@times-components/fructose@../":
-  version "2.2.7"
+  version "2.2.8"
   dependencies:
     babel-polyfill "^6.23.0"
     babel-preset-es2015 "^6.24.1"
@@ -35,8 +35,8 @@
     webpack-merge "^4.1.0"
 
 "@times-components/image@^1.2.0":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@times-components/image/-/image-1.4.1.tgz#99714fd1276ac7ecb44e963e6dd4151c8ad14292"
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@times-components/image/-/image-1.4.2.tgz#49dfbda5d6f295ec2aac803ee16927b5dc6c1cde"
   dependencies:
     prop-types "15.5.10"
     react-native-web "0.0.119"
@@ -397,8 +397,8 @@ atob@~1.1.0:
   resolved "https://registry.yarnpkg.com/atob/-/atob-1.1.3.tgz#95f13629b12c3a51a5d215abdce2aa9f32f80773"
 
 aws-sdk@^2.90.0:
-  version "2.126.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.126.0.tgz#f77e794153b68b0304f526b6cff4e10cc849b274"
+  version "2.127.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.127.0.tgz#3d70e8f868c234a212f7b62d5a0452561a63b4dc"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -407,7 +407,7 @@ aws-sdk@^2.90.0:
     querystring "0.2.0"
     sax "1.2.1"
     url "0.10.3"
-    uuid "3.0.1"
+    uuid "3.1.0"
     xml2js "0.4.17"
     xmlbuilder "4.2.1"
 
@@ -7198,13 +7198,13 @@ uuid@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
 
+uuid@3.1.0, uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
+
 uuid@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
-
-uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
 uws@~0.14.4:
   version "0.14.5"

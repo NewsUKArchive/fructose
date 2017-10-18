@@ -27,14 +27,6 @@ withComponent(
     test("simple test", async () => {
       await expect(element(by.text(`The Philosopher's Stone`))).toBeVisible();
     });
-
-    test(
-      "snapshot test",
-      async () => {
-        await fructose.snapshotTest("ios", "philosophers-stone");
-      },
-      10000
-    );
   }
 );
 

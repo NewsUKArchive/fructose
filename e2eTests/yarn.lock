@@ -3,7 +3,7 @@
 
 
 "@times-components/fructose@../":
-  version "2.2.8"
+  version "2.2.9"
   dependencies:
     babel-polyfill "^6.23.0"
     babel-preset-es2015 "^6.24.1"
@@ -397,8 +397,8 @@ atob@~1.1.0:
   resolved "https://registry.yarnpkg.com/atob/-/atob-1.1.3.tgz#95f13629b12c3a51a5d215abdce2aa9f32f80773"
 
 aws-sdk@^2.90.0:
-  version "2.127.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.127.0.tgz#3d70e8f868c234a212f7b62d5a0452561a63b4dc"
+  version "2.130.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.130.0.tgz#f0c6da7dbda9a15cb0c2beb3030f6da2a4c03c36"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -1336,8 +1336,8 @@ boom@5.x.x:
     hoek "4.x.x"
 
 bowser@^1.7.3:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.7.3.tgz#504bdb43118ca8db9cbbadf28fd60f265af96e4f"
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.8.0.tgz#889d46ac922ec5db8297672747362ef836781ba7"
 
 bplist-creator@0.0.7:
   version "0.0.7"
@@ -1759,8 +1759,8 @@ component-inherit@0.0.3:
   resolved "https://registry.yarnpkg.com/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
 
 compress-commons@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/compress-commons/-/compress-commons-1.2.0.tgz#58587092ef20d37cb58baf000112c9278ff73b9f"
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/compress-commons/-/compress-commons-1.2.1.tgz#03bed4571850bf874b4283a73726928768f6472f"
   dependencies:
     buffer-crc32 "^0.2.1"
     crc32-stream "^2.0.0"
@@ -2282,8 +2282,8 @@ detox@5.8.1:
     ws "^1.1.1"
 
 diff@^3.2.0:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/diff/-/diff-3.3.1.tgz#aa8567a6eed03c531fc89d3f711cd0e5259dec75"
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-3.4.0.tgz#b1d85507daf3964828de54b37d0d73ba67dda56c"
 
 diffie-hellman@^5.0.0:
   version "5.0.2"
@@ -4576,8 +4576,8 @@ log4js@0.6.20:
     semver "~1.1.4"
 
 loglevel@^1.4.1:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.5.0.tgz#3863984a2c326b986fbb965f378758a6dc8a4324"
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.5.1.tgz#189078c94ab9053ee215a0acdbf24244ea0f6502"
 
 longest@^1.0.1:
   version "1.0.1"

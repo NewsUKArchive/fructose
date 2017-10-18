@@ -1,7 +1,6 @@
 /* globals beforeAll jasmine afterAll */
 import fructose from "@times-components/fructose/setup";
 import detox from "detox";
-import webdriverio from "webdriverio";
 import { spawn } from "child_process";
 import { Chromeless } from "chromeless";
 import path from "path";
@@ -21,6 +20,8 @@ const reporter = {
     }
   }
 };
+
+const webdriverio = require("webdriverio");
 
 let appium;
 

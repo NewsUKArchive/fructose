@@ -1,3 +1,13 @@
+<a name="2.2.15"></a>
+## [2.2.15](https://github.com/newsuk/fructose/compare/v2.2.14...v2.2.15) (2017-10-18)
+
+
+### Bug Fixes
+
+* Remove styles ([#58](https://github.com/newsuk/fructose/issues/58)) ([3a2d18d](https://github.com/newsuk/fructose/commit/3a2d18d))
+
+
+
 <a name="2.2.14"></a>
 ## [2.2.14](https://github.com/newsuk/fructose/compare/v2.2.13...v2.2.14) (2017-10-18)
 

@@ -1,6 +1,6 @@
 {
   "name": "@times-components/fructose",
-  "version": "2.2.12",
+  "version": "2.2.14",
   "main": "fructose.js",
   "scripts": {
     "test:unit": "jest --verbose --forceExit",

@@ -5,9 +5,7 @@ import { shallow } from "enzyme";
 import { EventEmitter } from "events";
 import FructoseComponent from "./fructoseComponent";
 
-const MockComponent = React.createClass({
-  render: () => <Text id={this.props.id} />
-});
+const MockComponent = () => <Text id={this.props.id} />;
 
 describe("Functional React Component Tester UI", () => {
   let wrapper;

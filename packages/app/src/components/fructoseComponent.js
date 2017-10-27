@@ -3,11 +3,6 @@ import { StyleSheet, Text, View, StatusBar } from "react-native";
 import PropTypes from "prop-types";
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center"
-  },
   welcome: {
     fontSize: 20,
     textAlign: "center",

@@ -2,13 +2,6 @@
 
 exports[`Functional React Component Tester UI snapshot: instantiated FunctionalRCTUI component 1`] = `
 <View
-  style={
-    Object {
-      "alignItems": "center",
-      "flex": 1,
-      "justifyContent": "flex-start",
-    }
-  }
   testID="fructose"
 >
   <StatusBar
@@ -28,13 +21,6 @@ exports[`Functional React Component Tester UI snapshot: instantiated FunctionalR
 
 exports[`Functional React Component Tester UI snapshot: loading MockComponent 1`] = `
 <View
-  style={
-    Object {
-      "alignItems": "center",
-      "flex": 1,
-      "justifyContent": "flex-start",
-    }
-  }
   testID="fructose"
 >
   <StatusBar

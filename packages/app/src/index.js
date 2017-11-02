@@ -7,7 +7,7 @@ let socket;
 
 const createEventsAndSockets = () => {
   const eventEmitter = new EventEmitter();
-  socket = io("http://localhost:7811", {transports: ['websocket']});
+  socket = io(process.env.SERVER_URL, {transports: ['websocket']});
   createEvents(eventEmitter, socket);
   return eventEmitter
 }

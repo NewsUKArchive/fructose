@@ -36,30 +36,22 @@ withComponent(
     const text = '//*[@text="The Hobbit"]';
 
     test("simple test", async () => {
-      await driver.waitForVisible(text, 6000);
-      const a = await driver.getText(text);
-      if (a !== "The Hobbit") {
-        throw new Error("should be the hobbit!");
-      }
+      await driver.waitForElementByXPath(text, 6000);
     });
   }
 );
 
 withComponent(
   <Text style={styles.manutd} fructoseID="manutd">
-    Manchester United
+    MAN U
   </Text>,
   "basic text",
   fructose => {
     test("with red style", async () => {
       await fructose.loadComponent();
 
-      const text = '//*[@text="Manchester United"]';
-      await driver.waitForVisible(text, 6000);
-      const a = await driver.getText(text);
-      if (a !== "Manchester United") {
-        throw new Error("should be Manchester United!");
-      }
+      const text = '//*[@text="MAN U"]';
+      await driver.waitForElementByXPath(text, 6000);
     });
   }
 );
@@ -72,11 +64,7 @@ withComponent(
   fructose => {
     test("with mayo style", async () => {
       await fructose.loadComponent();
-      await driver.waitForVisible('//*[@text="Mayo 4 Sam"]', 6000);
-      const a = await driver.getText('//*[@text="Mayo 4 Sam"]');
-      if (a !== "Mayo 4 Sam") {
-        throw new Error("should be Mayo 4 Sam!");
-      }
+      await driver.waitForElementByXPath('//*[@text="Mayo 4 Sam"]', 6000);
     });
   }
 );

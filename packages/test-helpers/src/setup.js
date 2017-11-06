@@ -1,5 +1,4 @@
 import "babel-polyfill";
-import ngrok from "ngrok";
 import { FructoseServer } from "../../server";
 import Packager from "./startPackager";
 import log from "../../common/logger";
@@ -12,11 +11,6 @@ const mobileHooks = () => {
   let server;
 
   const setup = async () => {
-    ngrok.connect(7811, (err, url) => {
-      console.log("Starting ngrok on url: ", url);
-      process.env.SERVER_URL = url;
-    });
-
     packager = new Packager();
     server = new FructoseServer(7811);
 

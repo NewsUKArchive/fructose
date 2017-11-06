@@ -7,9 +7,9 @@
         "test": "npm run test:ios && npm run test:android && npm run test:web",
         "web": "fructose-web --build-dir dist/public",
         "web:build:vendor-dev": "webpack --config .fructose/vendor.webpack.config.js",
-        "test:web": "yarn web:build:vendor-dev && (npm run web & npm run write-web-components && WEB=true jest .fructose/components.test.js --verbose --forceExit)",
-        "test:ios": "npm run write-ios-components && LOGLEVEL=verbose IOS=true jest .fructose/components.test.js --verbose --forceExit",
-        "test:android": "node ../packages/test-helpers/src/saveServerUrl.js && react-native run-android --variant=release && ../scripts/launch-emulator.sh && npm run write-android-components && ANDROID=true jest .fructose/components.test.js --verbose --forceExit",
+        "test:web": "./scripts/web-tests.sh",
+        "test:ios": "./scripts/ios-tests.sh",
+        "test:android": "./scripts/android-tests.sh",
         "fructose-app": "react-native start --root .fructose --resetCache --config=rn-cli.config.js",
         "compile-android-components": "rnstl --searchDir ./ --pattern 'example/android.fructose.js' --outputFile ./.fructose/components.js",
         "compile-ios-components": "rnstl --searchDir ./ --pattern 'example/ios.fructose.js' --outputFile ./.fructose/components.js",
@@ -28,7 +28,7 @@
         "react-native-fs": "^2.8.1",
         "react-native-storybook-loader": "^1.4.1",
         "react-native-web": "^0.0.120",
-        "webdriverio": "^4.8.0",
+        "wd": "^1.4.1",
         "webpack": "^2.4.1"
     },
     "jest": {

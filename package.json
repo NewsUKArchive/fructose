@@ -16,7 +16,8 @@
   },
   "bin": {
     "compile-tests": "packages/test-helpers/bin/writeComponentsTests.js",
-    "fructose-web": "packages/web/bin/start.js"
+    "fructose-web": "packages/web/bin/start.js",
+    "fructose-tunnel": "packages/test-helpers/bin/createTunnel.js"
   },
   "pre-commit": [
     "precommit-msg",

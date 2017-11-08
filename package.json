@@ -16,7 +16,8 @@
   },
   "bin": {
     "compile-tests": "packages/test-helpers/bin/writeComponentsTests.js",
-    "fructose-web": "packages/web/bin/start.js"
+    "fructose-web": "packages/web/bin/start.js",
+    "fructose-tunnel": "packages/test-helpers/bin/createTunnel.js"
   },
   "pre-commit": [
     "precommit-msg",
@@ -59,6 +60,7 @@
     "html-webpack-plugin": "^2.28.0",
     "jimp": "^0.2.28",
     "looks-same": "^3.2.1",
+    "ngrok": "^2.2.23",
     "npmlog": "^4.1.2",
     "osnap": "^1.1.0",
     "pixelmatch": "^4.0.2",

@@ -1,7 +1,7 @@
 /* globals Chromeless withComponent describe beforeEach afterEach test expect */
 
 import React from "react";
-import Image from "@times-components/image";
+import { Text } from "react-native";
 
 let chromeless;
 const setup = () => {
@@ -13,13 +13,7 @@ const teardown = async () => {
 };
 
 withComponent(
-  <Image
-    fructoseID="web-component"
-    source={{
-      uri:
-        "/react-logo.png"
-    }}
-  />,
+  <Text fructoseID="test" testID="banana">BANANA</Text>,
   "basic text",
   fructose => {
     describe("fructose", () => {
@@ -33,7 +27,7 @@ withComponent(
           .goto("http://localhost:3000")
           .exists("[data-testid='fructose']");
         await fructose.loadComponent();
-        const selector = `[src='/react-logo.png']`;
+        const selector = `[data-testid='banana']`;
         const exists = await chromeless.wait(selector).exists(selector);
         expect(exists).toBe(true);
       });

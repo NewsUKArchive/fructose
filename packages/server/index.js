@@ -32,7 +32,7 @@ class FructoseServer {
       });
 
       this.io.on("connection", socket => {
-        log.info("server-index", `Fructose Server connected to socket`);
+        log.info("server-index", `client connected to Fructose Server`);
         socket.on("loadComponent", (componentName, props) => {
           log.verbose(
             "server-index",
@@ -42,7 +42,7 @@ class FructoseServer {
         });
 
         socket.on("loadedOnDevice", () => {
-          log.verbose("server-index", "Fructose Server emitting 'loaded'");
+          log.verbose("server-index", "Fructose App loaded component");
           this.io.emit("loaded");
         });
 

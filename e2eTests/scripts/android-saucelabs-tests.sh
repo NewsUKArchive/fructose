@@ -5,7 +5,7 @@ pushd android
 ./gradlew clean
 ./gradlew assembleRelease
 popd
-curl -u tnlweb:32571499-872a-4f5f-8b22-5dd1c2184049\
+curl -u $SAUCE_USERNAME:$SAUCE_KEY\
     -X POST \
     -H "Content-Type: application/octet-stream"\
     https://saucelabs.com/rest/v1/storage/tnlweb/fructose-e2e.apk?overwrite=true\

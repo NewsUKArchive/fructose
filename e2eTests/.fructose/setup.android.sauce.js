@@ -2,9 +2,21 @@
 import fructose from "@times-components/fructose/setup";
 import wd from "wd";
 
+const SAUCE_USERNAME = process.env.SAUCE_USERNAME;
+const SAUCE_KEY = process.env.SAUCE_KEY;
+
+if (!SAUCE_KEY || !SAUCE_USERNAME) {
+  throw new Error(
+    `
+  Sauce username or key is undefined. 
+  Please set the Environment Variables SAUCE_KEY and SAUCE_USERNAME
+  `
+  );
+}
+
 global.asserter = wd.asserters;
 const driver = wd.promiseChainRemote(
-  "https://tnlweb:32571499-872a-4f5f-8b22-5dd1c2184049@ondemand.saucelabs.com:443/wd/hub"
+  `https://${SAUCE_USERNAME}:${SAUCE_KEY}@ondemand.saucelabs.com:443/wd/hub`
 );
 
 beforeAll(async () => {

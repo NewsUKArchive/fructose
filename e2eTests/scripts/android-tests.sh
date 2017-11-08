@@ -10,6 +10,6 @@ adb reverse tcp:7811 tcp:7811
 adb reverse tcp:4723 tcp:4723
 react-native run-android --no-packager
 npm run write-android-components 
-ANDROID=true jest .fructose/components.test.js --verbose --setupTestFrameworkScriptFile ./.fructose/setup.android.js --forceExit
+jest .fructose/components.test.js --verbose --setupTestFrameworkScriptFile ./.fructose/setup.android.js --forceExit
 kill -9 $EMU_PID
 kill -9 $APPIUM_PID

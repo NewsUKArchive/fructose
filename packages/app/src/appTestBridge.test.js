@@ -40,3 +40,27 @@ describe("loaded event", () => {
     50
   );
 });
+
+describe("get-app-components", () => {
+  it(
+    "emits a 'publish-component-store' event on events when triggered",
+    () =>
+      new Promise(resolve => {
+        events.on("publish-component-store", () => resolve());
+        socket.emit("get-app-components");
+      }),
+    50
+  );
+});
+
+describe("loaded-app-components event", () => {
+  it(
+    "emits a 'loadedOnDevice' event on socket when triggered",
+    () =>
+      new Promise(resolve => {
+        socket.on("loaded-app-components", () => resolve());
+        events.emit("loaded-app-components");
+      }),
+    50
+  );
+});

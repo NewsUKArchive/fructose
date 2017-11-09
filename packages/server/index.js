@@ -52,10 +52,22 @@ class FructoseServer {
           this.io.emit("loaded");
         });
 
+        socket.on("loaded-app-components", componentKeys => {
+          log.verbose(
+            "server-index",
+            "Fructose App sending bundled components"
+          );
+          this.io.emit("bundled-components", componentKeys);
+        });
+
+        socket.on("getAppComponents", () => {
+          this.io.emit("get-app-components");
+        });
+
         socket.on("debug", message => {
           log.info(
             "server-index",
-            "Fructose server recieved App debug message : ",
+            "Fructose server recieved debug message : ",
             message
           );
         });

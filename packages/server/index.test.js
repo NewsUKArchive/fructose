@@ -8,6 +8,12 @@ describe("FructoseServer", () => {
   let server;
   let PORT;
   let socket;
+  const config = {
+    transports: ["websocket"],
+    query: {
+      clientType: "tests"
+    }
+  };
 
   beforeAll(() =>
     portfinder
@@ -15,7 +21,7 @@ describe("FructoseServer", () => {
       .then(port => {
         PORT = port;
         server = new FructoseServer(PORT);
-        socket = client(`http://localhost:${PORT}`);
+        socket = client(`http://localhost:${PORT}`, config);
       })
       .then(() => server.start())
   );

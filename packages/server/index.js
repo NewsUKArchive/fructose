@@ -4,6 +4,13 @@ const socketio = require("socket.io");
 const enableDestroy = require("server-destroy");
 const log = require("../common/logger");
 
+const logConnection = clientType => {
+  if (clientType.includes("tests")) {
+    log.info("server-index", ` Tests connected to Fructose Server`);
+  } else if (clientType.includes("app")) {
+    log.info("server-index", ` App connected to Fructose Server`);
+  }
+};
 class FructoseServer {
   constructor(port) {
     this.app = null;
@@ -32,12 +39,11 @@ class FructoseServer {
       });
 
       this.io.on("connection", socket => {
-        log.info("server-index", `client connected to Fructose Server`);
+        if (socket.handshake.query.clientType) {
+          logConnection(socket.handshake.query.clientType);
+        }
+
         socket.on("loadComponent", (componentName, props) => {
-          log.verbose(
-            "server-index",
-            `Fructose Server emitting 'loadComponent' event with component: ${componentName}`
-          );
           this.io.emit("load-on-device", componentName, props);
         });
 
@@ -49,7 +55,7 @@ class FructoseServer {
         socket.on("debug", message => {
           log.info(
             "server-index",
-            "Fructose server recieved debug message : ",
+            "Fructose server recieved App debug message : ",
             message
           );
         });

@@ -28,18 +28,6 @@ const appEntryFilename = program.appEntryFilename
   ? program.appEntryFilename
   : "components.js";
 
-if (!directory) {
-  throw new Error("fructose root not specified, specify with -d");
-}
-
-if (!testEntryFilename) {
-  throw new Error("test entry file not specified, specify with -t");
-}
-
-if (!appEntryFilename) {
-  throw new Error("app entry file is not specified, specify with -a");
-}
-
 const writeFile = (data, path) =>
   new Promise((resolve, reject) => {
     fs.writeFile(path, data, err => {

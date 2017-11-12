@@ -1,6 +1,6 @@
 {
   "name": "@times-components/fructose",
-  "version": "2.2.15",
+  "version": "3.0.0",
   "main": "fructose.js",
   "scripts": {
     "test:unit": "jest --verbose --forceExit",
@@ -21,8 +21,7 @@
   },
   "pre-commit": [
     "precommit-msg",
-    "lint-staged",
-    "test:unit"
+    "lint-staged"
   ],
   "lint-staged": {
     "**/*.js": [

@@ -1,3 +1,18 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/newsuk/fructose/compare/v2.2.16...v3.0.0) (2017-11-10)
+
+
+### Features
+
+* decouples packager from fructose ([#66](https://github.com/newsuk/fructose/issues/66)) ([80b8200](https://github.com/newsuk/fructose/commit/80b8200))
+
+
+### BREAKING CHANGES
+
+* removes all handling of packager from fructose
+
+
+
 <a name="2.2.16"></a>
 ## [2.2.16](https://github.com/newsuk/fructose/compare/v2.2.15...v2.2.16) (2017-11-08)
 

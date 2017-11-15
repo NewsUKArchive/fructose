@@ -43,7 +43,7 @@ describe("loaded event", () => {
 
 describe("get-app-components", () => {
   it(
-    "emits a 'publish-component-store' event on events when triggered",
+    "emits a 'publish-component-store' event when triggered",
     () =>
       new Promise(resolve => {
         events.on("publish-component-store", () => resolve());

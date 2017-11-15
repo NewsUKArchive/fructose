@@ -8,6 +8,12 @@ describe("FructoseServer", () => {
   let server;
   let PORT;
   let socket;
+  const config = {
+    transports: ["websocket"],
+    query: {
+      clientType: "tests"
+    }
+  };
 
   beforeAll(() =>
     portfinder
@@ -15,7 +21,7 @@ describe("FructoseServer", () => {
       .then(port => {
         PORT = port;
         server = new FructoseServer(PORT);
-        socket = client(`http://localhost:${PORT}`);
+        socket = client(`http://localhost:${PORT}`, config);
       })
       .then(() => server.start())
   );
@@ -46,4 +52,30 @@ describe("FructoseServer", () => {
 
     socket.emit("loadedOnDevice");
   });
+
+  it("forwards the get-app-components", () =>
+    new Promise(resolve => {
+      let messagesReceived = 0;
+
+      socket.on("get-app-components", () => {
+        messagesReceived += 1;
+        expect(messagesReceived).toBe(1);
+        resolve();
+      });
+
+      socket.emit("getAppComponents");
+    }));
+
+  it("forwards the bundled-components", () =>
+    new Promise(resolve => {
+      let messagesReceived = 0;
+
+      socket.on("bundled-components", () => {
+        messagesReceived += 1;
+        expect(messagesReceived).toBe(1);
+        resolve();
+      });
+
+      socket.emit("loaded-app-components");
+    }));
 });

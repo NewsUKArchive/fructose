@@ -9,7 +9,6 @@ import rnComponentKey from "../../common/rnComponentKey";
 import { assertSnapshot } from "./snapshotTest";
 
 export const client = Client(7811);
-log.info("withComponent", "client socket connected on 7811");
 
 export default () => {
   const withComponent = (component, description, tests) => {

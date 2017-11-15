@@ -19,6 +19,15 @@ export default class FructoseComponent extends Component {
   constructor(props) {
     super(props);
 
+    this.getBundledComponents = () =>
+      Object.keys(this.props.components).map(key => key);
+
+    this.publishBundledComponents = () =>
+      this.props.events.emit(
+        "loaded-app-components",
+        this.getBundledComponents()
+      );
+
     this.loadComponent = name => {
       const component = this.props.components[name];
       if (!component) {
@@ -27,6 +36,10 @@ export default class FructoseComponent extends Component {
       this.setState({ component });
     };
 
+    this.props.events.on(
+      "publish-component-store",
+      this.publishBundledComponents
+    );
     this.props.events.on("load", this.loadComponent);
     this.state = { component: <Text>Fructose</Text> };
   }

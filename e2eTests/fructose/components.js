@@ -1,0 +1,1 @@
+  require('../example/web.fructose.js');

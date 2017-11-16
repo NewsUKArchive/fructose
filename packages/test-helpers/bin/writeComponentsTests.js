@@ -34,7 +34,6 @@ const writeFile = (data, path) =>
       if (err) {
         reject(err);
       }
-      console.log("wrote tests to file");
       resolve();
     });
   });

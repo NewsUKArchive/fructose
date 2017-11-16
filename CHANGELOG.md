@@ -1,3 +1,8 @@
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/newsuk/fructose/compare/v3.0.0...v3.0.1) (2017-11-16)
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/newsuk/fructose/compare/v2.2.16...v3.0.0) (2017-11-10)
 

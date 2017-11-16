@@ -16,7 +16,7 @@ import com.android.build.OutputFile
     // bundleAssetName: "index.android.bundle",
  
     // the entry file for bundle generation
-    entryFile: ".fructose/index.android.js",
+    entryFile: "fructose/index.android.js",
  
     // whether to bundle JS and assets in debug mode
 //     bundleInDebug: false,

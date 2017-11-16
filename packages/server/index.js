@@ -4,6 +4,13 @@ const socketio = require("socket.io");
 const enableDestroy = require("server-destroy");
 const log = require("../common/logger");
 
+const logConnection = clientType => {
+  if (clientType.includes("tests")) {
+    log.info("server-index", ` Tests connected to Fructose Server`);
+  } else if (clientType.includes("app")) {
+    log.info("server-index", ` App connected to Fructose Server`);
+  }
+};
 class FructoseServer {
   constructor(port) {
     this.app = null;
@@ -32,18 +39,29 @@ class FructoseServer {
       });
 
       this.io.on("connection", socket => {
-        log.info("server-index", `Fructose Server connected to socket`);
+        if (socket.handshake.query.clientType) {
+          logConnection(socket.handshake.query.clientType);
+        }
+
         socket.on("loadComponent", (componentName, props) => {
-          log.verbose(
-            "server-index",
-            `Fructose Server emitting 'loadComponent' event with component: ${componentName}`
-          );
           this.io.emit("load-on-device", componentName, props);
         });
 
         socket.on("loadedOnDevice", () => {
-          log.verbose("server-index", "Fructose Server emitting 'loaded'");
+          log.verbose("server-index", "Fructose App loaded component");
           this.io.emit("loaded");
+        });
+
+        socket.on("loaded-app-components", componentKeys => {
+          log.verbose(
+            "server-index",
+            "Fructose App sending bundled components"
+          );
+          this.io.emit("bundled-components", componentKeys);
+        });
+
+        socket.on("getAppComponents", () => {
+          this.io.emit("get-app-components");
         });
 
         socket.on("debug", message => {

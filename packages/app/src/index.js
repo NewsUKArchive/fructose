@@ -6,9 +6,16 @@ import createEvents from "./appTestBridge";
 
 let socket;
 
+const config = {
+  transports: ["websocket"],
+  query: {
+    clientType: "app"
+  }
+};
+
 const createEventsAndSockets = () => {
   const eventEmitter = new EventEmitter();
-  socket = io(properties["server-url"], { transports: ["websocket"] });
+  socket = io(properties["server-url"], config);
   createEvents(eventEmitter, socket);
   return eventEmitter;
 };

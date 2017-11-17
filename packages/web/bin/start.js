@@ -1,17 +1,6 @@
 #!/usr/bin/env node
 const program = require("commander");
 
-const merge = require("webpack-merge");
-const webpack = require("webpack");
-const WebpackDevServer = require("webpack-dev-server");
-const path = require("path");
-
-const directory = program.buildDir ? program.buildDir : ".fructose";
-const upperConfig = require( `../../../../../../${directory}/webpack.config.js`);// eslint-disable-line no-use-before-define
-const config = require("../webpack.config.js")(
-  path.join(process.cwd(), program.buildDir)
-);
-
 program
   .version("0.0.1")
   .option("-d, --build-dir [directory]", "specify the build directory")
@@ -23,6 +12,16 @@ if (!program.buildDir)
     "you must define the build directory: --build-dir [directory]"
   );
 
+const merge = require("webpack-merge");
+const webpack = require("webpack");
+const WebpackDevServer = require("webpack-dev-server");
+const path = require("path");
+
+const directory = program.buildDir ? program.buildDir : ".fructose";
+const upperConfig = require( `../../../../../../${directory}/webpack.config.js`);// eslint-disable-line no-use-before-define
+const config = require("../webpack.config.js")(
+  path.join(process.cwd(), program.buildDir)
+);
 
 const mergedConfig = merge(upperConfig, config);
 const configDir = path.join(process.cwd(), directory);

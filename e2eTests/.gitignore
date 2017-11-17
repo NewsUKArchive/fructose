@@ -53,6 +53,8 @@ fastlane/screenshots
 
 **/.fructose/components.js
 **/.fructose/components.test.js
+**/fructose/components.js
+**/fructose/components.test.js
 
 !dist
 !dist/public

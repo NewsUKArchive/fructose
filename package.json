@@ -8,7 +8,7 @@
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "lint-staged": "lint-staged",
     "lint:packages": "eslint . --fix",
-    "lint:fructose": "eslint e2eTests/.fructose /--fix",
+    "lint:fructose": "eslint e2eTests/fructose /--fix",
     "lint:e2eTests": "eslint e2eTests /--fix",
     "prettier:diff": "prettier --list-different '**/*.js'",
     "prettier:write": "prettier --write '**/*.js'",

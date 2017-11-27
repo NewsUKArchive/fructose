@@ -1,6 +1,6 @@
 {
   "name": "@times-components/fructose",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "main": "fructose.js",
   "scripts": {
     "test:unit": "jest --verbose --forceExit",
@@ -74,8 +74,8 @@
     "webpack-merge": "^4.1.0"
   },
   "peerDependencies": {
-    "react": "16.0.0-alpha.6",
-    "react-native": "0.44.1"
+    "react": ">= 16.0.0-alpha.6 <= 16.0.0",
+    "react-native": ">= 0.44.1 <= 0.50"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",

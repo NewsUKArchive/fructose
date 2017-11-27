@@ -13,6 +13,10 @@ class FructoseClient {
         log.verbose("client", `tests recieved component loaded" ${component}`);
         resolve("component loaded");
       });
+      this.socket.on('componentNotLoaded', () => {
+        log.verbose("client", `component was not loaded on the app" ${component}`);
+        resolve('not loaded');
+      })
     });
   }
 

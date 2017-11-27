@@ -3,7 +3,7 @@ import { FructoseServer } from "../../server";
 import log from "../../common/logger";
 import checkIfWebStarted from "./didWebStart";
 import Snapper from "../../snapshots/snapper";
-import { client } from "./withComponent";
+import { disconnectClient } from "./withComponent";
 
 const mobileHooks = () => {
   let server;
@@ -19,7 +19,7 @@ const mobileHooks = () => {
   };
 
   const cleanup = async () => {
-    await client.disconnect();
+    await disconnectClient();
     server.close();
   };
 
@@ -46,7 +46,7 @@ const webHooks = () => {
   };
 
   const cleanup = async () => {
-    await client.disconnect();
+    await disconnectClient();
     server.close();
   };
 
@@ -54,5 +54,5 @@ const webHooks = () => {
 };
 export default {
   web: webHooks(),
-  mobile: mobileHooks()
+  mobile: mobileHooks(),
 };

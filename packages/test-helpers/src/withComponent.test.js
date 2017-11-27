@@ -6,20 +6,12 @@ describe("withComponent client", () => {
     let client;
 
     afterEach( () => {
-    client.disconnect();
+        client.disconnect();
     });
 
     it("starts the client", async () => {
         client = await startClient();
         expect(client).toBeInstanceOf(Client) 
-    });
-
-    it("disconnects the client", async () => {
-        startClient();
-        disconnectClient();
-
-        //need to start the fructose server,
-        //get the client connected assert, then dissconnect
     });
 
     it("rejects when client is not started", () => {

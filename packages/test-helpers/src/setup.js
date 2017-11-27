@@ -54,5 +54,5 @@ const webHooks = () => {
 };
 export default {
   web: webHooks(),
-  mobile: mobileHooks(),
+  mobile: mobileHooks()
 };

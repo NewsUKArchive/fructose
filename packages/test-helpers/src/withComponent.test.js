@@ -15,6 +15,6 @@ describe("withComponent client", () => {
     });
 
     it("rejects when client is not started", () => {
-        expect(getClient()).rejects.toBe("client has not been started")
+        expect(disconnectClient()).rejects.toBe("client has not been started")
     });
 })

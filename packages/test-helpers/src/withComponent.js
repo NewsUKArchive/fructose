@@ -29,11 +29,13 @@ export const startClient = () =>
   })
 
 export default () => {
-  if (typeof client === 'undefined') {
-    startClient();
-  }
   const withComponent = (component, description, tests) => {
     let hashed;
+
+    if (typeof client === 'undefined') {
+      log.verbose("withComponent", `starting fructose client`);
+      startClient();
+    }
 
     try {
       hashed = rnComponentKey(component);

@@ -3,12 +3,32 @@ import rnComponentKey from "../../common/rnComponentKey";
 export default loadComponents => {
   const componentsStore = {};
 
+  class StoryLoader {
+    constructor(name) {
+      this.name = name
+    }
+  
+    add(name, componentCreator) {
+      componentsStore[`${this.name}${name}`] = componentCreator();
+      return this;
+    }
+
+    addDecorator() {
+      return this;
+    }
+  }
+
   // create withComponent global that will run when withComponent is encountered
   // in a test file
 
   global.withComponent = component => {
     const key = rnComponentKey(component);
     componentsStore[key] = component;
+  };
+
+  global.storiesOf = (name) => {
+    const loader = new StoryLoader(name, componentsStore);
+    return loader;
   };
 
   loadComponents();

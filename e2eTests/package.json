@@ -20,6 +20,7 @@
     },
     "dependencies": {
         "@times-components/image": "^1.2.0",
+        "@times-components/fructose": "../",        
         "chromeless": "^1.3.0",
         "detox":"5.8.1",
         "react": "16.0.0-alpha.6",
@@ -42,7 +43,6 @@
         "setupTestFrameworkScriptFile": "./fructose/jest-setup.js"
     },
     "devDependencies": {
-        "@times-components/fructose": "../",
         "babel-jest": "19.0.0",
         "babel-loader": "^7.0.0",
         "babel-preset-react-native": "2.0.0",

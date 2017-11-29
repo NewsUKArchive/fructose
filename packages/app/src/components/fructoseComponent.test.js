@@ -1,13 +1,14 @@
 /* globals describe it beforeEach expect */
 import React from "react";
 import { Text } from "react-native";
-import { shallow } from "enzyme";
+import { configure, shallow } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 import { EventEmitter } from "events";
 import FructoseComponent from "./fructoseComponent";
 
-const MockComponent = React.createClass({
-  render: () => <Text id={this.props.id} />
-});
+configure({ adapter: new Adapter() });
+
+const MockComponent = props => <Text id={props.id} />; // eslint-disable-line react/prop-types
 
 describe("Functional React Component Tester UI", () => {
   let wrapper;

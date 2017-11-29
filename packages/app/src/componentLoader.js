@@ -9,8 +9,7 @@ export default loadComponents => {
     }
   
     add(name, componentCreator) {
-      console.warn(name)
-      componentsStore[""+this.name+name] = componentCreator();
+      componentsStore[`${this.name}${name}`] = componentCreator();
       return this;
     }
 

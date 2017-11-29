@@ -1,6 +1,9 @@
 /* globals describe it expect jest withComponent */
-import { shallow } from "enzyme";
+import { configure, shallow } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 import Fructose from "./index";
+
+configure({ adapter: new Adapter() });
 
 jest.mock("events", () => {
   function EventEmitter() {

@@ -24,7 +24,9 @@ const styles = StyleSheet.create({
 });
 
 withComponent(
-  <Text style={styles.title} fructoseID="hobbit">The Hobbit</Text>,
+  <Text style={styles.title} fructoseID="hobbit">
+    The Hobbit
+  </Text>,
   "basic text",
   fructose => {
     beforeEach(async () => {

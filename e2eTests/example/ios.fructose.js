@@ -11,9 +11,7 @@ const styles = StyleSheet.create({
 });
 
 withComponent(
-  <Text fructoseID="book one">
-    The Philosopher&apos;s Stone
-  </Text>,
+  <Text fructoseID="book one">The Philosopher&apos;s Stone</Text>,
   "basic text",
   fructose => {
     beforeEach(async () => {
@@ -88,7 +86,9 @@ withComponent(
 );
 
 withComponent(
-  <Text fructoseID="Book Seven" style={styles.title}>The Deathly Hallows</Text>,
+  <Text fructoseID="Book Seven" style={styles.title}>
+    The Deathly Hallows
+  </Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {

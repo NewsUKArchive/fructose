@@ -13,7 +13,9 @@ const teardown = async () => {
 };
 
 withComponent(
-  <Text fructoseID="test" testID="banana">BANANA</Text>,
+  <Text fructoseID="test" testID="banana">
+    BANANA
+  </Text>,
   "basic text",
   fructose => {
     describe("fructose", () => {

@@ -40,6 +40,9 @@
     "modulePathIgnorePatterns": [
       "<rootDir>/e2eTests",
       "<rootDir>/packages/test-helpers/lib"
+    ],
+    "setupFiles": [
+      "<rootDir>/.jest/jest-setup.js"
     ]
   },
   "dependencies": {
@@ -65,8 +68,8 @@
     "webpack-merge": "^4.1.1"
   },
   "peerDependencies": {
-    "react": ">= 16.0.0-alpha.6 <= 16.0.0",
-    "react-native": ">= 0.44.1 <= 0.50"
+    "react": "16.0.0",
+    "react-native": "0.50"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

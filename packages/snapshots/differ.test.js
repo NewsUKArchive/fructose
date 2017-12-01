@@ -24,9 +24,7 @@ describe("Snapshot differ", () => {
     const expectedHeight = 2;
 
     await imageDiff(img1, img2);
-    expect(
-      pixelmatch
-    ).toBeCalledWith(
+    expect(pixelmatch).toBeCalledWith(
       img1.data,
       img2.data,
       diff.data,

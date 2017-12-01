@@ -16,13 +16,16 @@ const merge = require("webpack-merge");
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
 const path = require("path");
-const upperConfig = require("../../../../../../.fructose/webpack.config.js"); // eslint-disable-line import/no-unresolved
+
+const directory = program.buildDir ? program.buildDir : ".fructose";
+// eslint-disable-next-line import/no-dynamic-require
+const upperConfig = require(`../../../../../../${directory}/webpack.config.js`);
 const config = require("../webpack.config.js")(
   path.join(process.cwd(), program.buildDir)
 );
 
 const mergedConfig = merge(upperConfig, config);
-const configDir = path.join(process.cwd(), ".fructose");
+const configDir = path.join(process.cwd(), directory);
 const fs = require("fs");
 
 function getHeadHtml(configDirPath) {

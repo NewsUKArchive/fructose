@@ -5,21 +5,22 @@
     "scripts": {
         "start": "node node_modules/react-native/local-cli/cli.js start --config=rn-cli.config.js --resetCache",
         "test": "npm run test:ios && npm run test:android && npm run test:web",
-        "web": "fructose-web --build-dir dist/public",
-        "web:build:vendor-dev": "webpack --config .fructose/vendor.webpack.config.js",
+        "web": "fructose-web --build-dir dist/public -d fructose",
+        "web:build:vendor-dev": "webpack --config fructose/vendor.webpack.config.js",
         "test:web": "./scripts/web-tests.sh",
         "test:ios": "./scripts/ios-tests.sh",
         "test:android": "./scripts/android-tests.sh",
-        "test:android-ci": "./scripts/android-saucelabs-tests.sh",
-        "compile-android-components": "rnstl --searchDir ./ --pattern 'example/android.fructose.js' --outputFile ./.fructose/components.js",
-        "compile-ios-components": "rnstl --searchDir ./ --pattern 'example/ios.fructose.js' --outputFile ./.fructose/components.js",
-        "compile-web-components": "rnstl --searchDir ./ --pattern 'example/web.fructose.js' --outputFile ./.fructose/components.js",
-        "write-web-components": "npm run compile-web-components  &&  compile-tests -d .fructose -t components.test.js -a components.js",
-        "write-ios-components": "npm run compile-ios-components  &&  npx compile-tests -d .fructose -t components.test.js -a components.js",
-        "write-android-components": "npm run compile-android-components  && npx compile-tests -d .fructose -t components.test.js -a components.js"
+        "test:android-ci": "SAUCE_USERNAME=${SAUCE_USERNAME} SAUCE_KEY=${SAUCE_KEY} ./scripts/android-saucelabs-tests.sh",
+        "compile-android-components": "rnstl --searchDir ./ --pattern 'example/android.fructose.js' --outputFile ./fructose/components.js",
+        "compile-ios-components": "rnstl --searchDir ./ --pattern 'example/ios.fructose.js' --outputFile ./fructose/components.js",
+        "compile-web-components": "rnstl --searchDir ./ --pattern 'example/web.fructose.js' --outputFile ./fructose/components.js",
+        "write-web-components": "npm run compile-web-components  && compile-tests -d fructose",
+        "write-ios-components": "npm run compile-ios-components  && compile-tests -d fructose",
+        "write-android-components": "npm run compile-android-components  && compile-tests -d fructose"
     },
     "dependencies": {
         "@times-components/image": "^1.2.0",
+        "@times-components/fructose": "../",        
         "chromeless": "^1.3.0",
         "wd": "^1.4.1",
         "detox": "5.9.0",
@@ -41,10 +42,9 @@
         "transformIgnorePatterns": [
             "node_modules/(?!react-native|react-navigation|fructose-app|@times-components/image)"
         ],
-        "setupTestFrameworkScriptFile": "./.fructose/jest-setup.js"
+        "setupTestFrameworkScriptFile": "./fructose/jest-setup.js"
     },
     "devDependencies": {
-        "@times-components/fructose": "../",
         "babel-jest": "19.0.0",
         "babel-loader": "^7.1.2",
         "babel-preset-react-native": "4.0.0",
@@ -67,7 +67,7 @@
                 "./"
             ],
             "pattern": "**/*.fructose.test.js",
-            "outputFile": "./.fructose/components.js"
+            "outputFile": "./fructose/components.js"
         }
     },
     "detox": {

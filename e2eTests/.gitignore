@@ -47,6 +47,20 @@ buck-out/
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/
 
-*/fastlane/report.xml
-*/fastlane/Preview.html
-*/fastlane/screenshots
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+
+**/.fructose/components.js
+**/.fructose/components.test.js
+**/fructose/components.js
+**/fructose/components.test.js
+
+!dist
+!dist/public
+dist/public/**
+!dist/public/react-logo.png
+
+**/__snapshots__/*/tmp
+**/vendor-dev
+**/vendor

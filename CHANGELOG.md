@@ -1,3 +1,43 @@
+<a name="3.1.5"></a>
+## [3.1.5](https://github.com/newsuk/fructose/compare/v3.1.4...v3.1.5) (2017-11-29)
+
+
+
+<a name="3.1.4"></a>
+## [3.1.4](https://github.com/newsuk/fructose/compare/v3.1.3...v3.1.4) (2017-11-29)
+
+
+
+<a name="3.1.3"></a>
+## [3.1.3](https://github.com/newsuk/fructose/compare/v3.1.2...v3.1.3) (2017-11-27)
+
+
+
+<a name="3.1.2"></a>
+## [3.1.2](https://github.com/newsuk/fructose/compare/v3.1.1...v3.1.2) (2017-11-23)
+
+
+
+<a name="3.1.1"></a>
+## [3.1.1](https://github.com/newsuk/fructose/compare/v3.1.0...v3.1.1) (2017-11-21)
+
+
+
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/newsuk/fructose/compare/v3.0.1...v3.1.0) (2017-11-17)
+
+
+### Features
+
+* allow specification of directory for web builds ([#67](https://github.com/newsuk/fructose/issues/67)) ([e2fd2b1](https://github.com/newsuk/fructose/commit/e2fd2b1))
+
+
+
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/newsuk/fructose/compare/v3.0.0...v3.0.1) (2017-11-16)
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/newsuk/fructose/compare/v2.2.16...v3.0.0) (2017-11-10)
 

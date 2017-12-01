@@ -7,7 +7,10 @@ class FructoseClient {
 
   loadComponent(component, props) {
     return new Promise(resolve => {
-      log.verbose("client", `tests emitting 'loadComponent' with : ${component}`);
+      log.verbose(
+        "client",
+        `tests emitting 'loadComponent' with : ${component}`
+      );
       this.socket.emit("loadComponent", component, props);
       this.socket.on("loaded", () => {
         log.verbose("client", `tests recieved component loaded" ${component}`);

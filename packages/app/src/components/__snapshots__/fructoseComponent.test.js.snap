@@ -12,7 +12,6 @@ exports[`Functional React Component Tester UI snapshot: instantiated FunctionalR
   <Text
     accessible={true}
     allowFontScaling={true}
-    disabled={false}
     ellipsizeMode="tail"
   >
     Fructose

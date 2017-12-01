@@ -6,7 +6,10 @@ const log = require("../common/logger");
 
 const logConnection = clientType => {
   if (clientType.includes("tests")) {
-    log.info("server-index", ` Fructose Test Client connected to Fructose Server`);
+    log.info(
+      "server-index",
+      ` Fructose Test Client connected to Fructose Server`
+    );
   } else if (clientType.includes("app")) {
     log.info("server-index", ` App connected to Fructose Server`);
   } else if (clientType.includes("snapper")) {

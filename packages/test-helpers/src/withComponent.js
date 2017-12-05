@@ -17,7 +17,7 @@ export const disconnectClient = () =>
     if (typeof client === 'undefined') {
       reject('client has not been started')
     } else {
-      client.disconnectClient();
+      client.socket.disconnect();
       resolve();
     }
   })

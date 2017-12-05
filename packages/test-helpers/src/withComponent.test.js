@@ -5,13 +5,10 @@ describe("withComponent client", () => {
 
     let client;
 
-    afterEach( () => {
-        client.disconnect();
-    });
-
     it("starts the client", async () => {
         client = await startClient();
-        expect(client).toBeInstanceOf(Client) 
+        expect(client).toBeInstanceOf(Client);
+        await disconnectClient();
     });
 
     it("rejects when client is not started", () => {

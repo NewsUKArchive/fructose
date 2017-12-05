@@ -18,7 +18,8 @@ const WebpackDevServer = require("webpack-dev-server");
 const path = require("path");
 
 const directory = program.buildDir ? program.buildDir : ".fructose";
-const upperConfig = require( `../../../../../../${directory}/webpack.config.js`);// eslint-disable-line no-use-before-define
+// eslint-disable-next-line import/no-dynamic-require
+const upperConfig = require(`../../../../../../${directory}/webpack.config.js`);
 const config = require("../webpack.config.js")(
   path.join(process.cwd(), program.buildDir)
 );

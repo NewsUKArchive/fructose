@@ -1,3 +1,13 @@
+<a name="3.1.6"></a>
+## [3.1.6](https://github.com/newsuk/fructose/compare/v3.1.5...v3.1.6) (2017-12-05)
+
+
+### Bug Fixes
+
+* remove loaded listener after it is fired ([#77](https://github.com/newsuk/fructose/issues/77)) ([5f3052f](https://github.com/newsuk/fructose/commit/5f3052f))
+
+
+
 <a name="3.1.5"></a>
 ## [3.1.5](https://github.com/newsuk/fructose/compare/v3.1.4...v3.1.5) (2017-11-29)
 

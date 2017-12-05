@@ -9,8 +9,10 @@ class FructoseClient {
     return new Promise(resolve => {
       log.verbose("client", `tests emitting 'loadComponent' with : ${component}`);
       this.socket.emit("loadComponent", component, props);
+
       this.socket.on("loaded", () => {
         log.verbose("client", `tests recieved component loaded" ${component}`);
+        this.socket.removeListener('loaded');
         resolve("component loaded");
       });
     });

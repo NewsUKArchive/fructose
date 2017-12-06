@@ -3,16 +3,37 @@
 import stack from "callsite";
 import path from "path";
 import AppSnaps from "../../snapshots";
-import Client from "../../client";
+import fructoseClient from "../../client";
 import log from "../../common/logger";
 import rnComponentKey from "../../common/rnComponentKey";
 import { assertSnapshot } from "./snapshotTest";
 
-export const client = Client(7811);
+let client;
+
+export const disconnectClient = () =>
+  new Promise((resolve, reject) => {
+    if (typeof client === 'undefined') {
+      reject('client has not been started')
+    } else {
+      client.socket.disconnect();
+      resolve();
+    }
+  })
+
+export const startClient = () =>
+  new Promise(resolve => {
+    client = fructoseClient(7811);
+    resolve(client);
+  })
 
 export default () => {
   const withComponent = (component, description, tests) => {
     let hashed;
+
+    if (typeof client === 'undefined') {
+      log.verbose("withComponent", `starting fructose client`);
+      startClient();
+    }
 
     try {
       hashed = rnComponentKey(component);
@@ -22,12 +43,10 @@ export default () => {
 
     const testFilePath = stack()[1].getFileName();
 
-    const loadComponent = async () =>
-      client
-        .loadComponent(hashed)
-        .then(() => log.verbose("withComponent", `loadComponent ${hashed}`));
+    const loadComponent = async() =>
+      client.loadComponent(hashed);
 
-    const snapshotTest = async (platform, testname) => {
+    const snapshotTest = async(platform, testname) => {
       const testDir = path.dirname(testFilePath);
       const snapsPath = `${testDir}/__snapshots__`;
 

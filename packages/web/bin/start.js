@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 const program = require("commander");
+const log = require("../../common/logger");
 
 program
   .version("0.0.1")
   .option("-d, --build-dir [directory]", "specify the build directory")
   .parse(process.argv);
 
-console.log(program.buildDir);
 if (!program.buildDir)
   throw new Error(
     "you must define the build directory: --build-dir [directory]"
@@ -69,5 +69,7 @@ new WebpackDevServer(webpack(mergedConfig), {
   3000,
   "localhost",
   err =>
-    err ? console.log(err) : console.log("Listening at http://localhost:3000/")
+    err
+      ? log.info("web-start", err)
+      : log.info("web-start", "Listening at http://localhost:3000/")
 );

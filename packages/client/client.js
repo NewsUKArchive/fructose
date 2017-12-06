@@ -17,11 +17,6 @@ class FructoseClient {
       });
     });
   }
-
-  disconnect() {
-    log.info("client", `disconnecting client`);
-    this.socket.disconnect();
-  }
 }
 
 module.exports = FructoseClient;

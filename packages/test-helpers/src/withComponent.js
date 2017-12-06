@@ -6,9 +6,7 @@ import AppSnaps from "../../snapshots";
 import fructoseClient from "../../client";
 import log from "../../common/logger";
 import rnComponentKey from "../../common/rnComponentKey";
-import {
-  assertSnapshot
-} from "./snapshotTest";
+import { assertSnapshot } from "./snapshotTest";
 
 let client;
 

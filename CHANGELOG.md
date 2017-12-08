@@ -1,3 +1,13 @@
+<a name="3.1.8"></a>
+## [3.1.8](https://github.com/newsuk/fructose/compare/v3.1.7...v3.1.8) (2017-12-08)
+
+
+### Bug Fixes
+
+* resolve even if client has not been started ([#79](https://github.com/newsuk/fructose/issues/79)) ([81878f7](https://github.com/newsuk/fructose/commit/81878f7))
+
+
+
 <a name="3.1.7"></a>
 ## [3.1.7](https://github.com/newsuk/fructose/compare/v3.1.6...v3.1.7) (2017-12-06)
 

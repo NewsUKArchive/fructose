@@ -10,8 +10,4 @@ describe("withComponent client", () => {
         expect(client).toBeInstanceOf(Client);
         await disconnectClient();
     });
-
-    it("rejects when client is not started", () => {
-        expect(disconnectClient()).rejects.toBe("client has not been started")
-    });
 })

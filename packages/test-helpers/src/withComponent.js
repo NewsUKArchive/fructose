@@ -11,9 +11,9 @@ import { assertSnapshot } from "./snapshotTest";
 let client;
 
 export const disconnectClient = () =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     if (typeof client === 'undefined') {
-      reject('client has not been started')
+     resolve();
     } else {
       client.socket.disconnect();
       resolve();

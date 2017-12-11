@@ -44,10 +44,17 @@ const readTestComponents = () =>
       `${directory}/${appEntryFilename}`,
       { encoding: "utf8" },
       (err, data) => {
-        const tests = data
-          .split("\n")
-          .filter(line => line.trim().startsWith("require"))
-          .join("\n");
+        let tests;
+
+        if (data) {
+          tests = data
+            .split("\n")
+            .filter(line => line.trim().startsWith("require"))
+            .join("\n");
+        } else {
+          tests = "";
+        }
+
         writeFile(tests, `${directory}/${testEntryFilename}`).then(resolve);
       }
     );

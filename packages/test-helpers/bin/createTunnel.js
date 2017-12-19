@@ -3,6 +3,7 @@
 const fs = require("fs");
 const ngrok = require("ngrok");
 const path = require("path");
+const log = require("../../common/logger");
 
 function serverUrlString(url) {
   const json = {
@@ -17,7 +18,7 @@ function writeProperties(contents) {
     contents,
     err => {
       if (err) throw err;
-      console.log("Properties file updated");
+      log.info("createTunnel", "Properties file updated");
     }
   );
 }

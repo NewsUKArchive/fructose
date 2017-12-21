@@ -1,3 +1,13 @@
+<a name="3.1.10"></a>
+## [3.1.10](https://github.com/newsuk/fructose/compare/v3.1.9...v3.1.10) (2017-12-21)
+
+
+### Bug Fixes
+
+* wait for component to load emitting loaded ([#82](https://github.com/newsuk/fructose/issues/82)) ([a93212d](https://github.com/newsuk/fructose/commit/a93212d))
+
+
+
 <a name="3.1.9"></a>
 ## [3.1.9](https://github.com/newsuk/fructose/compare/v3.1.8...v3.1.9) (2017-12-19)
 

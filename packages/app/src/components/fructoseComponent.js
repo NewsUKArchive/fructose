@@ -44,7 +44,7 @@ export default class FructoseComponent extends Component {
     this.state = { component: <Text>Fructose</Text> };
   }
 
-  componentWillUpdate() {
+  componentDidUpdate() {
     this.props.events.emit("loaded");
   }
 

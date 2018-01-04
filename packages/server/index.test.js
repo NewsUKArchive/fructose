@@ -1,4 +1,4 @@
-/* globals describe it beforeAll afterAll expect */
+/* globals describe it afterEach expect */
 
 const FructoseServer = require("./index").FructoseServer;
 const client = require("socket.io-client");
@@ -8,14 +8,14 @@ describe("FructoseServer", () => {
   let server;
   let PORT;
   let socket;
-  const config = {
+  const socketConfig = {
     transports: ["websocket"],
     query: {
       clientType: "tests"
     }
   };
 
-  beforeAll(() =>
+  const setUp = config =>
     portfinder
       .getPortPromise()
       .then(port => {
@@ -23,59 +23,81 @@ describe("FructoseServer", () => {
         server = new FructoseServer(PORT);
         socket = client(`http://localhost:${PORT}`, config);
       })
-      .then(() => server.start())
-  );
+      .then(() => server.start());
 
-  afterAll(() => {
-    socket.disconnect();
-    server.close();
+  afterEach(async () => {
+    await socket.disconnect();
+    await server.close();
   });
 
   it("forwards the loadComponent message", done => {
-    socket.on("load-on-device", (x, y) => {
-      expect(x).toBe(1);
-      expect(y).toBe(2);
-      done();
+    setUp(socketConfig).then(() => {
+      socket.on("load-on-device", (x, y) => {
+        expect(x).toBe(1);
+        expect(y).toBe(2);
+        done();
+      });
+      socket.emit("loadComponent", 1, 2);
     });
+  });
 
-    socket.emit("loadComponent", 1, 2);
+  it("forwards the fructose-app-loaded message", done => {
+    const conf = {
+      transports: ["websocket"],
+      query: {
+        clientType: "app"
+      }
+    };
+    setUp(conf).then(() => {
+      let messagesReceived = 0;
+      socket.on("fructose-app-loaded", () => {
+        messagesReceived += 1;
+        expect(messagesReceived).toBe(1);
+        done();
+      });
+    });
   });
 
   it("forwards the loadedOnDevice message", done => {
-    let messagesReceived = 0;
+    setUp(socketConfig).then(() => {
+      let messagesReceived = 0;
 
-    socket.on("loaded", () => {
-      messagesReceived += 1;
-      expect(messagesReceived).toBe(1);
-      done();
+      socket.on("loaded", () => {
+        messagesReceived += 1;
+        expect(messagesReceived).toBe(1);
+        done();
+      });
+
+      socket.emit("loadedOnDevice");
     });
-
-    socket.emit("loadedOnDevice");
   });
 
   it("forwards the get-app-components", () =>
     new Promise(resolve => {
-      let messagesReceived = 0;
+      setUp(socketConfig).then(() => {
+        let messagesReceived = 0;
 
-      socket.on("get-app-components", () => {
-        messagesReceived += 1;
-        expect(messagesReceived).toBe(1);
-        resolve();
+        socket.on("get-app-components", () => {
+          messagesReceived += 1;
+          expect(messagesReceived).toBe(1);
+          resolve();
+        });
+
+        socket.emit("getAppComponents");
       });
-
-      socket.emit("getAppComponents");
     }));
 
   it("forwards the bundled-components", () =>
     new Promise(resolve => {
-      let messagesReceived = 0;
+      setUp(socketConfig).then(() => {
+        let messagesReceived = 0;
+        socket.on("bundled-components", () => {
+          messagesReceived += 1;
+          expect(messagesReceived).toBe(1);
+          resolve();
+        });
 
-      socket.on("bundled-components", () => {
-        messagesReceived += 1;
-        expect(messagesReceived).toBe(1);
-        resolve();
+        socket.emit("loaded-app-components");
       });
-
-      socket.emit("loaded-app-components");
     }));
 });

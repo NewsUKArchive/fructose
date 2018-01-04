@@ -6,7 +6,10 @@ const log = require("../common/logger");
 
 const logConnection = clientType => {
   if (clientType.includes("tests")) {
-    log.info("server-index", ` Fructose Test Client connected to Fructose Server`);
+    log.info(
+      "server-index",
+      ` Fructose Test Client connected to Fructose Server`
+    );
   } else if (clientType.includes("app")) {
     log.info("server-index", ` App connected to Fructose Server`);
   } else if (clientType.includes("snapper")) {
@@ -44,6 +47,8 @@ class FructoseServer {
         if (socket.handshake.query.clientType) {
           logConnection(socket.handshake.query.clientType);
         }
+
+        this.io.emit("fructose-app-loaded");
 
         socket.on("loadComponent", (componentName, props) => {
           this.io.emit("load-on-device", componentName, props);

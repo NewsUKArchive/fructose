@@ -4,13 +4,14 @@ const socketio = require("socket.io");
 const enableDestroy = require("server-destroy");
 const log = require("../common/logger");
 
-const logConnection = clientType => {
+const handleConnectionType = clientType => {
   if (clientType.includes("tests")) {
     log.info(
       "server-index",
       ` Fructose Test Client connected to Fructose Server`
     );
   } else if (clientType.includes("app")) {
+    this.io.emit("fructose-app-loaded");
     log.info("server-index", ` App connected to Fructose Server`);
   } else if (clientType.includes("snapper")) {
     log.info("server-index", ` Dextrose Client connected to Fructose Server`);
@@ -45,10 +46,8 @@ class FructoseServer {
 
       this.io.on("connection", socket => {
         if (socket.handshake.query.clientType) {
-          logConnection(socket.handshake.query.clientType);
+          handleConnectionType(socket.handshake.query.clientType);
         }
-
-        this.io.emit("fructose-app-loaded");
 
         socket.on("loadComponent", (componentName, props) => {
           this.io.emit("load-on-device", componentName, props);

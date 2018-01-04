@@ -8,13 +8,13 @@ const handleConnectionType = clientType => {
   if (clientType.includes("tests")) {
     log.info(
       "server-index",
-      ` Fructose Test Client connected to Fructose Server`
+      "Fructose Test Client connected to Fructose Server"
     );
   } else if (clientType.includes("app")) {
     this.io.emit("fructose-app-loaded");
-    log.info("server-index", ` App connected to Fructose Server`);
+    log.info("server-index", "App connected to Fructose Server");
   } else if (clientType.includes("snapper")) {
-    log.info("server-index", ` Dextrose Client connected to Fructose Server`);
+    log.info("server-index", "Dextrose Client connected to Fructose Server");
   }
 };
 class FructoseServer {
@@ -35,7 +35,7 @@ class FructoseServer {
 
   start() {
     return new Promise(resolve => {
-      log.info("server-index", `Fructose Server starting`);
+      log.info("server-index", "Fructose Server starting");
       this.app = express();
       this.server = http.Server(this.app);
       this.io = socketio(this.server);

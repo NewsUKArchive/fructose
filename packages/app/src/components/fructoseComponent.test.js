@@ -88,11 +88,11 @@ describe("Functional React Component Tester UI", () => {
 
   it("returns components not found if no components loaded", () =>
     new Promise(resolve => {
+      let messageCount = 0;
       const eventEmitter = new EventEmitter();
-      eventEmitter.on("loaded-app-components", componentKeys => {
-        expect(componentKeys).toMatchObject([
-          "ERROR-NO-COMPONENTS-FOUND-IN-THE-APP"
-        ]);
+      eventEmitter.on("no-components", () => {
+        messageCount += 1;
+        expect(messageCount).toBe(1);
         resolve();
       });
       shallow(<FructoseComponent events={eventEmitter} />);

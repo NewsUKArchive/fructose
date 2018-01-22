@@ -21,7 +21,7 @@ export default class FructoseComponent extends Component {
 
     this.getBundledComponents = () => {
       if (!this.props.components) {
-        return ["ERROR-NO-COMPONENTS-FOUND-IN-THE-APP"];
+        this.props.events.emit("no-components");
       }
 
       return Object.keys(this.props.components).map(key => key);

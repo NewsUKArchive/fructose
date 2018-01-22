@@ -19,8 +19,13 @@ export default class FructoseComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.getBundledComponents = () =>
-      Object.keys(this.props.components).map(key => key);
+    this.getBundledComponents = () => {
+      if (!this.props.components) {
+        this.props.events.emit("no-components");
+      }
+
+      return Object.keys(this.props.components).map(key => key);
+    };
 
     this.publishBundledComponents = () =>
       this.props.events.emit(

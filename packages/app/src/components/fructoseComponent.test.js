@@ -85,4 +85,17 @@ describe("Functional React Component Tester UI", () => {
       );
       eventEmitter.emit("publish-component-store");
     }));
+
+  it("returns components not found if no components loaded", () =>
+    new Promise(resolve => {
+      let messageCount = 0;
+      const eventEmitter = new EventEmitter();
+      eventEmitter.on("no-components", () => {
+        messageCount += 1;
+        expect(messageCount).toBe(1);
+        resolve();
+      });
+      shallow(<FructoseComponent events={eventEmitter} />);
+      eventEmitter.emit("publish-component-store");
+    }));
 });

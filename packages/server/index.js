@@ -70,6 +70,10 @@ class FructoseServer {
           this.io.emit("get-app-components");
         });
 
+        socket.on("no-components", () => {
+          throw new Error("No Components found in app");
+        });
+
         socket.on("debug", message => {
           log.info(
             "server-index",

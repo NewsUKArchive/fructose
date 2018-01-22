@@ -1,3 +1,13 @@
+<a name="3.1.13"></a>
+## [3.1.13](https://github.com/newsuk/fructose/compare/v3.1.12...v3.1.13) (2018-01-22)
+
+
+### Bug Fixes
+
+* returning error to server if no components are found in the app ([#85](https://github.com/newsuk/fructose/issues/85)) ([80344df](https://github.com/newsuk/fructose/commit/80344df))
+
+
+
 <a name="3.1.12"></a>
 ## [3.1.12](https://github.com/newsuk/fructose/compare/v3.1.11...v3.1.12) (2018-01-04)
 

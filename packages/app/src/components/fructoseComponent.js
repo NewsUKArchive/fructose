@@ -20,7 +20,7 @@ export default class FructoseComponent extends Component {
     super(props);
 
     this.getBundledComponents = () => {
-      if (!this.props.components) {
+      if (this.props.components.length === 0) {
         this.props.events.emit("no-components");
       }
 
@@ -73,5 +73,10 @@ FructoseComponent.propTypes = {
     on: PropTypes.func.isRequired,
     removeListener: PropTypes.func.isRequired
   }).isRequired,
-  components: PropTypes.shape.isRequired
+  /* eslint react/forbid-prop-types: 0 */
+  components: PropTypes.array
+};
+
+FructoseComponent.defaultProps = {
+  components: []
 };

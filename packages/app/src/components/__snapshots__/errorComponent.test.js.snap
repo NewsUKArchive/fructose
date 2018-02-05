@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error View Handler prints out error 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#B20000",
+      "height": "100%",
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "white",
+        "fontSize": 24,
+        "fontWeight": "bold",
+        "textAlign": "center",
+      }
+    }
+  >
+    Exception Found
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "white",
+        "fontSize": 16,
+      }
+    }
+  >
+    Error: I am ERRRRRR
+  </Text>
+</View>
+`;

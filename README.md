@@ -104,7 +104,7 @@ Add the following to your package.json:
   "fructose-app": "react-native start --root .fructose --resetCache",
   "fructose-web": "start-web --build-dir your/build-dir"
   "compile-components": "rnstl --searchDir ./ --pattern '**/*.fructose.js' --outputFile ./.fructose/components.js",
-  "write-test-components": "npm run compile-components  && compile-tests"
+  "write-test-components": "yarn compile-components  && compile-tests"
 }
 ```
 

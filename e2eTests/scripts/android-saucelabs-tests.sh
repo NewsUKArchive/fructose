@@ -1,6 +1,6 @@
 #!/bin/bash
 npx fructose-tunnel &
-npm run write-android-components 
+yarn write-android-components 
 pushd android
 ./gradlew clean
 ./gradlew assembleRelease

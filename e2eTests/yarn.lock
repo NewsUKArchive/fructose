@@ -314,7 +314,7 @@ arrify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
-art@^0.10.0:
+art@^0.10.0, art@^0.10.1:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/art/-/art-0.10.1.tgz#38541883e399225c5e193ff246e8f157cf7b2146"
 
@@ -1963,7 +1963,7 @@ create-react-class@^15.5.2:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
-create-react-class@^15.6.0, create-react-class@^15.6.2:
+create-react-class@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.2.tgz#cf1ed15f12aad7f14ef5f2dfe05e6c42f91ef02a"
   dependencies:
@@ -2101,6 +2101,10 @@ dateformat@^2.0.0:
 debounce@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.0.2.tgz#503cc674d8d7f737099664fb75ddbd36b9626dc6"
+
+debounce@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.1.0.tgz#6a1a4ee2a9dc4b7c24bb012558dbcdb05b37f408"
 
 debug@2.6.9, debug@^2.2.0, debug@^2.6.6, debug@^2.6.8, debug@~2.6.4, debug@~2.6.6, debug@~2.6.9:
   version "2.6.9"
@@ -3584,9 +3588,16 @@ ini@~1.3.0:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
 
-inline-style-prefixer@^3.0.7, inline-style-prefixer@^3.0.8:
+inline-style-prefixer@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-3.0.8.tgz#8551b8e5b4d573244e66a34b04f7d32076a2b534"
+  dependencies:
+    bowser "^1.7.3"
+    css-in-js-utils "^2.0.0"
+
+inline-style-prefixer@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-4.0.0.tgz#30a03df1b346ba6b1fb8a812bc3c9dabef48022d"
   dependencies:
     bowser "^1.7.3"
     css-in-js-utils "^2.0.0"
@@ -5559,7 +5570,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.6.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@15.6.0, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -5717,6 +5728,17 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-art@^16.2.0:
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/react-art/-/react-art-16.2.0.tgz#3b6914a6c9da64f83910896fa8cdae6ddf2aa589"
+  dependencies:
+    art "^0.10.1"
+    create-react-class "^15.6.2"
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
 react-clone-referenced-element@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-clone-referenced-element/-/react-clone-referenced-element-1.0.1.tgz#2bba8c69404c5e4a944398600bcc4c941f860682"
@@ -5779,21 +5801,20 @@ react-native-web@0.1.7:
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.3"
 
-react-native-web@^0.0.120:
-  version "0.0.120"
-  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.0.120.tgz#bab2ae75dab913d25f1db32cb5ebe68bec90333e"
+react-native-web@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.3.4.tgz#b73a483f3c37a37ed832903e02d9c3c96f3ea109"
   dependencies:
-    animated "^0.2.0"
     array-find-index "^1.0.2"
-    babel-runtime "^6.26.0"
-    create-react-class "^15.6.0"
-    debounce "1.0.2"
+    create-react-class "^15.6.2"
+    debounce "^1.1.0"
     deep-assign "^2.0.0"
-    fbjs "^0.8.14"
+    fbjs "^0.8.16"
     hyphenate-style-name "^1.0.2"
-    inline-style-prefixer "^3.0.7"
+    inline-style-prefixer "^4.0.0"
     normalize-css-color "^1.0.2"
-    prop-types "^15.5.10"
+    prop-types "^15.6.0"
+    react-art "^16.2.0"
     react-timer-mixin "^0.13.3"
 
 react-native@0.50.4:

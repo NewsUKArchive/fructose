@@ -26,7 +26,7 @@
         "react": "16.2.0",
         "react-native": "0.50.4",
         "react-native-storybook-loader": "^1.4.1",
-        "react-native-web": "^0.0.120",
+        "react-native-web": "^0.3.4",
         "wd": "^1.4.1",
         "webpack": "^2.4.1"
     },

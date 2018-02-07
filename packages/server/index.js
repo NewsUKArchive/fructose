@@ -74,6 +74,11 @@ class FructoseServer {
           throw new Error("No Components found in app");
         });
 
+        socket.on("error-loading-component", () => {
+          log.info("server-index", "Error received");
+          this.io.emit("component-not-loaded");
+        });
+
         socket.on("debug", message => {
           log.info(
             "server-index",

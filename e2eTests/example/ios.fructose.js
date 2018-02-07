@@ -11,9 +11,7 @@ const styles = StyleSheet.create({
 });
 
 withComponent(
-  <Text fructoseID="book one">
-    The Philosopher&apos;s Stone
-  </Text>,
+  <Text fructoseID="book one">The Philosopher&apos;s Stone</Text>,
   "basic text",
   fructose => {
     beforeEach(async () => {
@@ -88,12 +86,34 @@ withComponent(
 );
 
 withComponent(
-  <Text fructoseID="Book Seven" style={styles.title}>The Deathly Hallows</Text>,
+  <Text fructoseID="Book Seven" style={styles.title}>
+    The Deathly Hallows
+  </Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {
       await fructose.loadComponent();
       await expect(element(by.text("The Deathly Hallows"))).toBeVisible();
+    });
+  }
+);
+
+const Break = props => {
+  this.break();
+  return (
+    <View style={styles.red}>
+      <Text>ERROR</Text>
+    </View>
+  );
+};
+
+withComponent(
+  <Break fructoseID="error component" />,
+  "this is a component that should throw an error",
+  fructose => {
+    test("breaking shit", async () => {
+      await fructose.loadComponent();
+      await expect(element(by.id("error"))).toBeVisible();
     });
   }
 );

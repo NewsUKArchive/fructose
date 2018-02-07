@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 import PropTypes from "prop-types";
 
+import ErrorBoundary from "./errorComponent";
+
 const styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
@@ -59,12 +61,21 @@ export default class FructoseComponent extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container} testID="fructose">
-        <StatusBar hidden />
-        {this.state.component}
-      </View>
-    );
+    try {
+      return (
+        <View style={styles.container} testID="fructose">
+          <StatusBar hidden />
+          {this.state.component}
+        </View>
+      );
+    } catch (err) {
+      return (
+        <View>
+          <StatusBar hidden />
+          <ErrorBoundary error={err} />
+        </View>
+      );
+    }
   }
 }
 

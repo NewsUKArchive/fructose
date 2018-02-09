@@ -11,4 +11,8 @@ export default (events, socket) => {
   events.on("loaded-app-components", loadedComponents =>
     socket.emit("loaded-app-components", loadedComponents)
   );
+
+  events.on("error-loading-component", () => {
+    socket.emit("error-loading-component");
+  });
 };

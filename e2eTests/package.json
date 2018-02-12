@@ -67,13 +67,5 @@
             "pattern": "**/*.fructose.test.js",
             "outputFile": "./fructose/components.js"
         }
-    },
-    "detox": {
-        "configurations": {
-            "ios.sim.debug": {
-                "binaryPath": "ios/e2eTests.app",
-                "type": "ios.simulator"
-            }
-        }
     }
 }

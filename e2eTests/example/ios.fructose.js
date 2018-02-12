@@ -14,16 +14,8 @@ withComponent(
   <Text fructoseID="book one">The Philosopher&apos;s Stone</Text>,
   "basic text",
   fructose => {
-    beforeEach(async () => {
-      await fructose.loadComponent();
-    });
-
-    afterEach(async () => {
-      await device.reloadReactNative();
-    });
-
     test("simple test", async () => {
-      await expect(element(by.text(`The Philosopher's Stone`))).toBeVisible();
+      await fructose.loadComponent();
     });
   }
 );
@@ -36,7 +28,6 @@ withComponent(
   fructose => {
     test("with style", async () => {
       await fructose.loadComponent();
-      await expect(element(by.text("The Chamber of Secrets"))).toBeVisible();
     });
   }
 );
@@ -47,7 +38,6 @@ withComponent(
   fructose => {
     test("simple test", async () => {
       await fructose.loadComponent();
-      await expect(element(by.text("The Prisoner of Azkaban"))).toBeVisible();
     });
   }
 );
@@ -58,7 +48,6 @@ withComponent(
   fructose => {
     test("simple test", async () => {
       await fructose.loadComponent();
-      await expect(element(by.text("The Goblet of Fire"))).toBeVisible();
     });
   }
 );
@@ -69,7 +58,6 @@ withComponent(
   fructose => {
     test("simple test", async () => {
       await fructose.loadComponent();
-      await expect(element(by.text("The Order of the Phoenix"))).toBeVisible();
     });
   }
 );
@@ -80,7 +68,6 @@ withComponent(
   fructose => {
     test("simple test", async () => {
       await fructose.loadComponent();
-      await expect(element(by.text("The Half Blood Prince"))).toBeVisible();
     });
   }
 );
@@ -93,7 +80,6 @@ withComponent(
   fructose => {
     test("simple test", async () => {
       await fructose.loadComponent();
-      await expect(element(by.text("The Deathly Hallows"))).toBeVisible();
     });
   }
 );
@@ -113,7 +99,6 @@ withComponent(
   fructose => {
     test("breaking shit", async () => {
       await fructose.loadComponent();
-      await expect(element(by.id("error"))).toBeVisible();
     });
   }
 );

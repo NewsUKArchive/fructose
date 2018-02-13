@@ -103,7 +103,7 @@ withComponent(
   "this is a component that should throw an error",
   fructose => {
     describe("fructose", () => {
-      test("breaking shit", async () => {
+      test("error component", async () => {
         await fructose.loadComponent();
       });
     });

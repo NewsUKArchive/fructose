@@ -22,7 +22,7 @@ const deviceReady = () => {
 };
 
 beforeAll(async () => {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 500;
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
   await fructose.hooks.mobile.setup();
   await deviceReady();
 }, 180000);

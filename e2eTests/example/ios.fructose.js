@@ -7,11 +7,16 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 50,
     fontWeight: "bold"
+  },
+  lol: {
+    backgroundColor: "green"
   }
 });
 
 withComponent(
-  <Text fructoseID="book one">The Philosopher&apos;s Stone</Text>,
+  <Text fructoseID="book one" style={styles.lol}>
+    The Philosopher&apos;s Stone
+  </Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -79,25 +84,6 @@ withComponent(
   "basic text",
   fructose => {
     test("simple test", async () => {
-      await fructose.loadComponent();
-    });
-  }
-);
-
-const Break = props => {
-  this.break();
-  return (
-    <View style={styles.red}>
-      <Text>ERROR</Text>
-    </View>
-  );
-};
-
-withComponent(
-  <Break fructoseID="error component" />,
-  "this is a component that should throw an error",
-  fructose => {
-    test("breaking shit", async () => {
       await fructose.loadComponent();
     });
   }

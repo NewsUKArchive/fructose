@@ -24,19 +24,13 @@ const styles = StyleSheet.create({
 });
 
 withComponent(
-  <Text style={styles.title} fructoseID="hobbit">The Hobbit</Text>,
+  <Text style={styles.title} fructoseID="hobbit">
+    The Hobbit
+  </Text>,
   "basic text",
   fructose => {
-    beforeEach(async () => {
-      await fructose.loadComponent();
-    });
-
-    afterEach(async () => {});
-
-    const text = '//*[@text="The Hobbit"]';
-
     test("simple test", async () => {
-      await driver.waitForElementByXPath(text, 6000);
+      await fructose.loadComponent();
     });
   }
 );
@@ -49,9 +43,6 @@ withComponent(
   fructose => {
     test("with red style", async () => {
       await fructose.loadComponent();
-
-      const text = '//*[@text="MAN U"]';
-      await driver.waitForElementByXPath(text, 6000);
     });
   }
 );
@@ -64,7 +55,6 @@ withComponent(
   fructose => {
     test("with mayo style", async () => {
       await fructose.loadComponent();
-      await driver.waitForElementByXPath('//*[@text="Mayo 4 Sam"]', 6000);
     });
   }
 );

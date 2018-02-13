@@ -61,9 +61,6 @@ withComponent(
           .goto("http://localhost:3000")
           .exists("[data-testid='fructose']");
         await fructose.loadComponent();
-        const selector = "[data-testid='error']";
-        const exists = await chromeless.wait(selector).exists(selector);
-        expect(exists).toBe(true);
       });
     });
   }

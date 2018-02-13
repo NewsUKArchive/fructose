@@ -1,5 +1,5 @@
-/* globals describe it expect jest withComponent */
-import { configure, shallow } from "enzyme";
+/* globals it expect jest */
+import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Fructose from "./index";
 
@@ -26,17 +26,4 @@ jest.mock("socket.io-client", () => () => ({
 
 it("exports 'Fructose' Function", () => {
   expect(Fructose).toBeInstanceOf(Function);
-});
-
-describe("FructoseApp", () => {
-  it("returns a function that returns a function that returns the app", () => {
-    const testComponent = { props: { fructoseID: "id" } };
-    const appFunction = Fructose(() => withComponent(testComponent));
-    const app = appFunction();
-    const props = shallow(app).instance().props;
-    expect(props).toMatchObject({
-      components: { id: testComponent },
-      events: { value: "mockEventEmitter" }
-    });
-  });
 });

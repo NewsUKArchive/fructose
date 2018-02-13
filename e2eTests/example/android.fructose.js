@@ -58,3 +58,24 @@ withComponent(
     });
   }
 );
+
+const Break = props => {
+  this.break();
+  return (
+    <View style={styles.red}>
+      <Text>ERROR</Text>
+    </View>
+  );
+};
+
+withComponent(
+  <Break fructoseID="error component" />,
+  "this is a component that should throw an error",
+  fructose => {
+    describe("fructose", () => {
+      test("breaking shit", async () => {
+        await fructose.loadComponent();
+      });
+    });
+  }
+);

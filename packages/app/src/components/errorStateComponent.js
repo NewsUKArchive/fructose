@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
 import PropTypes from "prop-types";
 
 const styles = StyleSheet.create({
@@ -20,15 +20,14 @@ const styles = StyleSheet.create({
 });
 
 export default class ErrorState extends Component {
-  constructor(props) {
-    super(props);
-
-    this.props.events.emit("error-loading-component");
+  componentWillUpdate() {
+    this.props.events.emit("loaded");
   }
 
   render() {
     return (
       <View style={styles.errorContainer}>
+        <StatusBar hidden />
         <Text style={styles.errorHeader}>Exception Found</Text>
         <Text style={styles.stackTrace}>{this.props.error.message}</Text>
       </View>

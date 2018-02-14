@@ -15,12 +15,6 @@ class FructoseClient {
         this.socket.removeListener("loaded");
         resolve("component loaded");
       });
-
-      this.socket.on("component-not-loaded", () => {
-        log.info("client", `error loading ${component}`);
-        this.socket.removeListener("error");
-        resolve("component error");
-      });
     });
   }
 }

@@ -15,14 +15,14 @@ const deviceReady = () => {
   socket = io("http://localhost:7811", config);
 
   return new Promise(resolve => {
-    socket.on("fructose-app-loaded", () => {
+    socket.on("fructose-app-ready", () => {
       resolve("ready");
     });
   });
 };
 
 beforeAll(async () => {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 500;
   await fructose.hooks.mobile.setup();
   await deviceReady();
 }, 180000);

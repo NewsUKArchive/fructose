@@ -12,6 +12,10 @@ export default class ErrorView extends React.Component {
     this.handleError = this.handleError.bind(this);
   }
 
+  componentDidMount() {
+    this.props.events.emit("ready");
+  }
+
   componentDidCatch(e) {
     this.setState({
       error: e
@@ -34,5 +38,10 @@ export default class ErrorView extends React.Component {
 }
 
 ErrorView.propTypes = {
+  events: PropTypes.shape({
+    emit: PropTypes.func.isRequired,
+    on: PropTypes.func.isRequired,
+    removeListener: PropTypes.func.isRequired
+  }).isRequired,
   children: PropTypes.func.isRequired
 };

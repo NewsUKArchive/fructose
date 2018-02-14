@@ -50,7 +50,7 @@ export default class FructoseComponent extends Component {
     this.state = { component: <Text>Fructose</Text> };
   }
 
-  componentDidUpdate() {
+  componentWillUpdate() {
     this.props.events.emit("loaded");
   }
 

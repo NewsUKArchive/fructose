@@ -2,6 +2,24 @@
 
 import React from "react";
 import { Text } from "react-native";
+import io from "socket.io-client";
+
+const deviceReady = () => {
+  const config = {
+    transports: ["websocket"],
+    query: {
+      clientType: "client"
+    }
+  };
+
+  const socket = io("http://localhost:7811", config);
+
+  return new Promise(resolve => {
+    socket.on("fructose-app-ready", () => {
+      resolve("ready");
+    });
+  });
+};
 
 let chromeless;
 const setup = () => {
@@ -25,13 +43,11 @@ withComponent(
       });
 
       test("loads up a component", async () => {
-        await chromeless
+        chromeless
           .goto("http://localhost:3000")
           .exists("[data-testid='fructose']");
+        await deviceReady();
         await fructose.loadComponent();
-        const selector = `[data-testid='banana']`;
-        const exists = await chromeless.wait(selector).exists(selector);
-        expect(exists).toBe(true);
       });
     });
   }
@@ -56,10 +72,11 @@ withComponent(
         await teardown;
       });
 
-      test("breaking shit", async () => {
-        await chromeless
+      test("it should throw an error and display the error component", async () => {
+        chromeless
           .goto("http://localhost:3000")
           .exists("[data-testid='fructose']");
+        await deviceReady();
         await fructose.loadComponent();
       });
     });

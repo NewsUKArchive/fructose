@@ -2,8 +2,6 @@
 import fructose from "@times-components/fructose/setup";
 import io from "socket.io-client";
 
-let socket;
-
 const deviceReady = () => {
   const config = {
     transports: ["websocket"],
@@ -12,7 +10,7 @@ const deviceReady = () => {
     }
   };
 
-  socket = io("http://localhost:7811", config);
+  const socket = io("http://localhost:7811", config);
 
   return new Promise(resolve => {
     socket.on("fructose-app-ready", () => {

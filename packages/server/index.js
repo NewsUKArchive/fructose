@@ -49,6 +49,10 @@ class FructoseServer {
           handleConnectionType(this.io, socket.handshake.query.clientType);
         }
 
+        socket.on("fructose-app-ready", () => {
+          this.io.emit("fructose-app-ready");
+        });
+
         socket.on("loadComponent", (componentName, props) => {
           this.io.emit("load-on-device", componentName, props);
         });
@@ -72,11 +76,6 @@ class FructoseServer {
 
         socket.on("no-components", () => {
           throw new Error("No Components found in app");
-        });
-
-        socket.on("error-loading-component", () => {
-          log.info("server-index", "Error received");
-          this.io.emit("component-not-loaded");
         });
 
         socket.on("debug", message => {

@@ -12,7 +12,7 @@ export default (events, socket) => {
     socket.emit("loaded-app-components", loadedComponents)
   );
 
-  events.on("error-loading-component", () => {
-    socket.emit("error-loading-component");
-  });
+  events.on("ready", loadedComponents =>
+    socket.emit("fructose-app-ready", loadedComponents)
+  );
 };

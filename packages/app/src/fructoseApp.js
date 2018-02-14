@@ -5,7 +5,7 @@ import ErrorView from "./components/errorViewComponent";
 import ErrorState from "./components/errorStateComponent";
 
 const appUI = (components, events) => (
-  <ErrorView>
+  <ErrorView events={events}>
     {({ hasError, error }) =>
       hasError ? (
         <ErrorState events={events} error={error} />

@@ -1,3 +1,4 @@
-import fructose from './packages/app/src/index';
+import { automated, manual as _manual } from "./packages/app/src/index";
 
-export default fructose
+export const manual = _manual;
+export default automated;

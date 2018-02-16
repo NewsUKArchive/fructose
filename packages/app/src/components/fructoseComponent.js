@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#333333",
     marginBottom: 5
+  },
+  container: {
+    backgroundColor: "white",
+    height: "100%",
+    width: "100%"
   }
 });
 
@@ -47,6 +52,7 @@ export default class FructoseComponent extends Component {
       this.publishBundledComponents
     );
     this.props.events.on("load", this.loadComponent);
+
     this.state = { component: <Text>Fructose</Text> };
   }
 

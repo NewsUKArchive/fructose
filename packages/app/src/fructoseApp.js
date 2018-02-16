@@ -17,7 +17,7 @@ const appUI = (components, events) => (
 );
 
 export default function Fructose(events) {
-  console.disableYellowBox = true; // eslint-disable-line
+  // console.disableYellowBox = true; // eslint-disable-line
 
   return loadComponents => {
     const components = componentLoader(loadComponents);

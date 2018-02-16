@@ -3,7 +3,7 @@
 
 
 "@times-components/fructose@../":
-  version "3.1.15"
+  version "3.1.16"
   dependencies:
     babel-polyfill "^6.26.0"
     babel-preset-es2015 "^6.24.1"
@@ -18,6 +18,7 @@
     pixelmatch "^4.0.2"
     pngjs "^3.3.1"
     prop-types "^15.6.0"
+    react-native-side-menu "^1.1.3"
     request "^2.82.0"
     server-destroy "^1.0.1"
     socket.io "^2.0.4"
@@ -5570,7 +5571,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.6.0, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@15.6.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -5773,6 +5774,12 @@ react-hot-loader@^1.3.1:
   dependencies:
     react-hot-api "^0.4.5"
     source-map "^0.4.4"
+
+react-native-side-menu@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-side-menu/-/react-native-side-menu-1.1.3.tgz#6ef5d2232ecf718312df6cedef019148bac3073a"
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-storybook-loader@^1.4.1:
   version "1.6.0"

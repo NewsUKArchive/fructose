@@ -19,10 +19,10 @@
         "write-android-components": "yarn compile-android-components  && compile-tests -d fructose"
     },
     "dependencies": {
+        "@times-components/fructose": "../",
         "@times-components/image": "^1.2.0",
-        "@times-components/fructose": "../",        
         "chromeless": "^1.3.0",
-        "detox":"5.8.1",
+        "detox": "5.8.1",
         "react": "16.2.0",
         "react-native": "0.50.4",
         "react-native-storybook-loader": "^1.4.1",

@@ -13,6 +13,9 @@ export default class ErrorView extends React.Component {
   }
 
   componentDidMount() {
+    this.props.events.on("load", () => {
+      this.setState({ error: null });
+    });
     this.props.events.emit("ready");
   }
 

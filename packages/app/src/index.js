@@ -1,23 +1,14 @@
-import { EventEmitter } from "events";
-import io from "socket.io-client";
-import properties from "./properties";
-import FructoseApp from "./fructoseApp";
-import createEvents from "./appTestBridge";
+import React from "react";
+import fructoseApp from "./fructoseApp";
+import automatedEvents from "./automated";
+import manualEvents from "./manual";
+import NavigationWrapper from "./components/navigation";
 
-let socket;
-
-const config = {
-  transports: ["websocket"],
-  query: {
-    clientType: "app"
-  }
-};
-
-const createEventsAndSockets = () => {
-  const eventEmitter = new EventEmitter();
-  socket = io(properties["server-url"], config);
-  createEvents(eventEmitter, socket);
-  return eventEmitter;
-};
-
-export default FructoseApp(createEventsAndSockets());
+export const manual = loadComponents => () => (
+  <NavigationWrapper
+    loadComponents={loadComponents}
+    app={fructoseApp(manualEvents.eventEmitter)}
+    events={manualEvents}
+  />
+);
+export const automated = fructoseApp(automatedEvents);

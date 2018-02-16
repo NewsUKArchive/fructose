@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 });
 
 export default class ErrorState extends Component {
-  componentDidUpdate() {
+  componentDidMount() {
     this.props.events.emit("loaded");
   }
 

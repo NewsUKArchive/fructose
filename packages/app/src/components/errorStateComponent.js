@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, Text, StyleSheet, StatusBar } from "react-native";
 import PropTypes from "prop-types";
 
@@ -19,25 +19,15 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class ErrorState extends Component {
-  
-  render() {
-    return (
+const ErrorState = (props) => (
       <View style={styles.errorContainer}>
         <StatusBar hidden />
         <Text style={styles.errorHeader}>Exception Found</Text>
-        <Text style={styles.stackTrace}>{this.props.error.message}</Text>
+        <Text style={styles.stackTrace}>{props.error.message}</Text>
       </View>
     );
-  }
-}
 
 ErrorState.propTypes = {
-  events: PropTypes.shape({
-    emit: PropTypes.func.isRequired,
-    on: PropTypes.func.isRequired,
-    removeListener: PropTypes.func.isRequired
-  }).isRequired,
   error: PropTypes.shape({
     message: PropTypes.string,
     stack: PropTypes.string
@@ -47,3 +37,5 @@ ErrorState.propTypes = {
 ErrorState.defaultProps = {
   error: {}
 };
+
+export default ErrorState;

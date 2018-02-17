@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import React from "react";
+import { StyleSheet, View, StatusBar } from "react-native";
 import PropTypes from "prop-types";
 
 const styles = StyleSheet.create({
@@ -20,28 +20,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class FructoseComponent extends Component {
-
-  render() {
-    return (
+const FructoseComponent = (props) => (
       <View style={styles.container} testID="fructose">
         <StatusBar hidden />
-        {this.props.component}
+        {props.component}
       </View>
     );
-  }
-}
 
 FructoseComponent.propTypes = {
-  events: PropTypes.shape({
-    emit: PropTypes.func.isRequired,
-    on: PropTypes.func.isRequired,
-    removeListener: PropTypes.func.isRequired
-  }).isRequired,
   /* eslint react/forbid-prop-types: 0 */
-  components: PropTypes.array
+  component: PropTypes.object.isRequired
 };
 
-FructoseComponent.defaultProps = {
-  components: []
-};
+export default FructoseComponent;

@@ -13,12 +13,6 @@ class App extends Component {
     this.state = {component: null}
   }
 
-  loadComponent = (name) => {
-    const component = this.components[name];
-    if (!component) throw new Error(`${name} does not exist in the componentStore`);
-    this.setState({component});
-  }
-
   sendComponentList() {
     this.props.comms.socket.emit("loaded-app-components", this.componentList);
   }
@@ -33,6 +27,13 @@ class App extends Component {
   componentDidUpdate() {
     this.props.comms.socket.emit("loadedOnDevice");
   }
+
+  loadComponent(name) {
+    const component = this.components[name];
+    if (!component) throw new Error(`${name} does not exist in the componentStore`);
+    this.setState({component});
+  }
+
   render() {
     return (
       <NavigationWrapper
@@ -46,4 +47,4 @@ class App extends Component {
   }
 }
 
-export default app = (loadComponents) => () => <App loadComponents={loadComponents} comms={Messaging()}/>;
+export default (loadComponents) => () => <App loadComponents={loadComponents} comms={Messaging()}/>;

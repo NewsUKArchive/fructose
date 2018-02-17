@@ -80,9 +80,9 @@ export default class NavigationWrapper extends Component {
 
 NavigationWrapper.propTypes = {
   app: PropTypes.func.isRequired,
-  loadComponents: PropTypes.func.isRequired,
+  componentList: PropTypes.array,
   events: PropTypes.shape({
-    eventEmitter: PropTypes.object.isRequired,
-    socket: PropTypes.object.isRequired
-  }).isRequired
+    emit: PropTypes.func.isRequired,
+  }).isRequired,
+  children: PropTypes.object.isRequired
 };

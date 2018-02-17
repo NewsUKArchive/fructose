@@ -1,7 +1,7 @@
 /* globals beforeEach describe it expect */
 
 import { EventEmitter } from "events";
-import appTestBridge from "./appTestBridge";
+import appTestBridge from "./messaging";
 
 let events;
 let socket;

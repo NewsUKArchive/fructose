@@ -7,13 +7,13 @@ describe("Snapshot differ", () => {
   jest.mock("pixelmatch");
 
   const img1 = {
-    data: new Buffer("abc"),
+    data: Buffer.from("abc"),
     width: 5,
     height: 2
   };
 
   const img2 = {
-    data: new Buffer("abc"),
+    data: Buffer.from("abc"),
     width: 5,
     height: 2
   };
@@ -24,9 +24,7 @@ describe("Snapshot differ", () => {
     const expectedHeight = 2;
 
     await imageDiff(img1, img2);
-    expect(
-      pixelmatch
-    ).toBeCalledWith(
+    expect(pixelmatch).toBeCalledWith(
       img1.data,
       img2.data,
       diff.data,

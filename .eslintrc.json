@@ -8,6 +8,5 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "import/extensions": "off"
   },
-  "root": true,
-  "dotfiles":true
+  "root": true
 }

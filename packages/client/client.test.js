@@ -35,11 +35,11 @@ describe("FructoseClient", () => {
       });
 
       server.listen(0, () => {
-        const port = server.address().port;
+        const { port } = server.address();
         socketClient = SocketClient(`http://localhost:${port}`);
         client = new Client(socketClient);
-        expect(client.loadComponent(1, 2)).resolves
-          .toBe("component loaded")
+        expect(client.loadComponent(1, 2))
+          .resolves.toBe("component loaded")
           .then(done);
       });
     },

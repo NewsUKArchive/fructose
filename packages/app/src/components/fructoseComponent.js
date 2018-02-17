@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
   }
 });
 
-const FructoseComponent = (props) => (
+const FructoseComponent = ({component}) => (
       <View style={styles.container} testID="fructose">
         <StatusBar hidden />
-        {props.component}
+        {component}
       </View>
     );
 

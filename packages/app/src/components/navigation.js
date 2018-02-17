@@ -39,29 +39,12 @@ const menuSeparator = () => <View style={styles.menuSeparator} />;
 export default class NavigationWrapper extends Component {
   constructor(props) {
     super(props);
-    this.fructoseApp = this.props.app(this.props.loadComponents);
-    this.state = {
-      components: [],
-      isMenuOpen: true
-    };
-  }
-
-  componentDidMount() {
-    const events = this.props.events.eventEmitter;
-    const socket = this.props.events.socket;
-
-    socket.on("loaded-app-components", cs => {
-      this.setState({
-        components: cs.map(item => ({ key: item }))
-      });
-    });
-
-    events.emit("publish-component-store");
+    this.fructoseApp = this.props.app;
+    this.componentList = this.props.componentList.map(item => ({ key: item }))
   }
 
   onMenuItemPress(id) {
-    this.props.events.eventEmitter.emit("load", id);
-    this.setState({ isMenuOpen: false });
+    this.props.events.emit("load", id);
   }
 
   menuRow(componentId) {
@@ -80,7 +63,7 @@ export default class NavigationWrapper extends Component {
       <View>
         <FlatList
           ListHeaderComponent={menuHeader}
-          data={this.state.components}
+          data={this.componentList}
           renderItem={({ item }) => this.menuRow(item.key)}
           ItemSeparatorComponent={menuSeparator}
         />
@@ -88,8 +71,8 @@ export default class NavigationWrapper extends Component {
     );
 
     return (
-      <SideMenu style={styles.menu} menu={menu} isOpen={this.state.isMenuOpen}>
-        {this.fructoseApp()}
+      <SideMenu style={styles.menu} menu={menu} isOpen={false}>
+        {this.props.children}
       </SideMenu>
     );
   }

@@ -21,40 +21,6 @@ const styles = StyleSheet.create({
 });
 
 export default class FructoseComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.getBundledComponents = () => {
-      if (this.props.components.length === 0) {
-        this.props.events.emit("no-components");
-      }
-
-      return Object.keys(this.props.components).map(key => key);
-    };
-
-    this.publishBundledComponents = () =>
-      this.props.events.emit(
-        "loaded-app-components",
-        this.getBundledComponents()
-      );
-
-    this.loadComponent = name => {
-      const component = this.props.components[name];
-      if (!component) {
-        throw new Error(`${name} does not exist in the componentStore`);
-      }
-
-      this.setState({ component });
-    };
-
-    this.props.events.on(
-      "publish-component-store",
-      this.publishBundledComponents
-    );
-    this.props.events.on("load", this.loadComponent);
-
-    this.state = { component: <Text>Fructose</Text> };
-  }
 
   componentWillUpdate() {
     this.props.events.emit("loaded");
@@ -68,7 +34,7 @@ export default class FructoseComponent extends Component {
     return (
       <View style={styles.container} testID="fructose">
         <StatusBar hidden />
-        {this.state.component}
+        {this.props.component}
       </View>
     );
   }

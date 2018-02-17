@@ -1,26 +1,19 @@
 import React from "react";
 import FructoseComponent from "./components/fructoseComponent";
-import componentLoader from "./componentLoader";
 import ErrorView from "./components/errorViewComponent";
 import ErrorState from "./components/errorStateComponent";
 
-const appUI = (components, events) => (
-  <ErrorView events={events}>
-    {({ hasError, error }) =>
-      hasError ? (
-        <ErrorState events={events} error={error} />
-      ) : (
-        <FructoseComponent events={events} components={components} />
-      )
-    }
-  </ErrorView>
-);
-
-export default function Fructose(events) {
+export default Fructose = (props) => {
   // console.disableYellowBox = true; // eslint-disable-line
-
-  return loadComponents => {
-    const components = componentLoader(loadComponents);
-    return () => appUI(components, events);
-  };
+  return (
+    <ErrorView events={props.events}>
+      {({ hasError, error }) =>
+        hasError ? (
+          <ErrorState events={props.events} error={error} />
+        ) : (
+          <FructoseComponent events={props.events} component={props.component} />
+        )
+      }
+    </ErrorView>
+  );
 }

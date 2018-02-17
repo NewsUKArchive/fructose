@@ -20,10 +20,7 @@ const styles = StyleSheet.create({
 });
 
 export default class ErrorState extends Component {
-  componentWillUpdate() {
-    this.props.events.emit("loaded");
-  }
-
+  
   render() {
     return (
       <View style={styles.errorContainer}>

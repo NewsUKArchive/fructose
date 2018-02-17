@@ -22,14 +22,6 @@ const styles = StyleSheet.create({
 
 export default class FructoseComponent extends Component {
 
-  componentWillUpdate() {
-    this.props.events.emit("loaded");
-  }
-
-  componentWillUnmount() {
-    this.props.events.removeListener("load", this.loadComponent);
-  }
-
   render() {
     return (
       <View style={styles.container} testID="fructose">

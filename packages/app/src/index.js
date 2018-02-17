@@ -8,13 +8,11 @@ import componentLoader from "./componentLoader";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.components = componentLoader(this.props.loadComponents);
-    this.componentList = Object.keys(this.components).map(key => key);
-    this.state = {component: null}
+    this.state = {component: null};
   }
 
   sendComponentList() {
-    this.props.comms.socket.emit("loaded-app-components", this.componentList);
+    this.props.comms.socket.emit("loaded-app-components", this.props.componentList);
   }
 
   componentDidMount() {
@@ -28,8 +26,8 @@ class App extends Component {
     this.props.comms.socket.emit("loadedOnDevice");
   }
 
-  loadComponent(name) {
-    const component = this.components[name];
+  loadComponent = (name) => {
+    const component = this.props.components[name];
     if (!component) throw new Error(`${name} does not exist in the componentStore`);
     this.setState({component});
   }
@@ -37,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <NavigationWrapper
-        componentList={this.componentList}
+        componentList={this.props.componentList}
         events={this.props.comms.events}
       >
         <FructoseApp component={this.state.component} comms={this.props.comms}/>
@@ -47,4 +45,9 @@ class App extends Component {
   }
 }
 
-export default (loadComponents) => () => <App loadComponents={loadComponents} comms={Messaging()}/>;
+export default app = (loadComponents) => () => {
+  const components = componentLoader(loadComponents);
+  const componentList = Object.keys(components).map(key => key);
+
+  return <App components={components} componentList={componentList} comms={Messaging()}/>;
+}

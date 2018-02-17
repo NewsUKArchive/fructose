@@ -20,16 +20,19 @@ const styles = StyleSheet.create({
   }
 });
 
-const FructoseComponent = ({component}) => (
-      <View style={styles.container} testID="fructose">
-        <StatusBar hidden />
-        {component}
-      </View>
-    );
+const FructoseComponent = ({ component }) => (
+  <View style={styles.container} testID="fructose">
+    <StatusBar hidden />
+    {component}
+  </View>
+);
 
 FructoseComponent.propTypes = {
-  /* eslint react/forbid-prop-types: 0 */
-  component: PropTypes.object.isRequired
+  component: PropTypes.element
+};
+
+FructoseComponent.defaultProps = {
+  component: null
 };
 
 export default FructoseComponent;

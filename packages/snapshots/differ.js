@@ -1,4 +1,4 @@
-const PNG = require("pngjs").PNG;
+const { PNG } = require("pngjs");
 const pixelmatch = require("pixelmatch");
 
 module.exports = (img1, img2) => {

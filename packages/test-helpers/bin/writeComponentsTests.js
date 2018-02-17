@@ -2,7 +2,7 @@
 const program = require("commander");
 const fs = require("fs");
 
-const version = require("../../../package").version;
+const { version } = require("../../../package");
 
 program
   .version(version)
@@ -54,7 +54,7 @@ const readTestComponents = () =>
         } else {
           tests = "";
         }
-        
+
         writeFile(tests, `${directory}/${testEntryFilename}`).then(resolve);
       }
     );

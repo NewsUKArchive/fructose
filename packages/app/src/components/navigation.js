@@ -39,8 +39,7 @@ const menuSeparator = () => <View style={styles.menuSeparator} />;
 export default class NavigationWrapper extends Component {
   constructor(props) {
     super(props);
-    this.fructoseApp = this.props.app;
-    this.componentList = this.props.componentList.map(item => ({ key: item }))
+    this.componentList = this.props.componentList.map(item => ({ key: item }));
   }
 
   onMenuItemPress(id) {
@@ -79,10 +78,9 @@ export default class NavigationWrapper extends Component {
 }
 
 NavigationWrapper.propTypes = {
-  app: PropTypes.func.isRequired,
-  componentList: PropTypes.array,
+  componentList: PropTypes.arrayOf(PropTypes.string).isRequired,
   events: PropTypes.shape({
-    emit: PropTypes.func.isRequired,
+    emit: PropTypes.func.isRequired
   }).isRequired,
-  children: PropTypes.object.isRequired
+  children: PropTypes.element.isRequired
 };

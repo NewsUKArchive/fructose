@@ -6,12 +6,12 @@ import ErrorState from "./components/errorStateComponent";
 export default Fructose = (props) => {
   // console.disableYellowBox = true; // eslint-disable-line
   return (
-    <ErrorView events={props.events}>
+    <ErrorView events={props.comms.events}>
       {({ hasError, error }) =>
         hasError ? (
-          <ErrorState events={props.events} error={error} />
+          <ErrorState error={error} />
         ) : (
-          <FructoseComponent events={props.events} component={props.component} />
+          <FructoseComponent component={props.component} />
         )
       }
     </ErrorView>

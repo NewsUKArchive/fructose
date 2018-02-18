@@ -12,7 +12,7 @@ export default class ErrorView extends React.Component {
     this.handleError = this.handleError.bind(this);
   }
 
-  componentDidUpdate() {
+  componentWillMount() {
     this.props.events.on("load", () => {
       this.state.error = null; // don't do setState so we don't trigger a render
     });

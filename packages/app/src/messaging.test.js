@@ -1,66 +1,23 @@
-/* globals beforeEach describe it expect */
+/* globals beforeEach afterEach describe it expect */
 
 import { EventEmitter } from "events";
-import appTestBridge from "./messaging";
+import io from "socket.io-client";
 
-let events;
-let socket;
+import Messaging from "./messaging";
 
-beforeEach(() => {
-  events = new EventEmitter();
-  socket = new EventEmitter();
-  appTestBridge(events, socket);
-});
+describe("Messaging", () => {
+  let messaging;
 
-describe("load-on-device event", () => {
-  it(
-    "emits a 'load' event on events when triggered",
-    () =>
-      new Promise(resolve => {
-        events.on("load", name => {
-          expect(name).toBe("component-name");
-          resolve();
-        });
-        socket.emit("load-on-device", "component-name");
-      }),
-    50
-  );
-});
+  beforeEach(() => {
+    messaging = Messaging();
+  });
 
-describe("loaded event", () => {
-  it(
-    "emits a 'loadedOnDevice' event on socket when triggered",
-    () =>
-      new Promise(resolve => {
-        socket.on("loadedOnDevice", () => {
-          resolve();
-        });
-        events.emit("loaded");
-      }),
-    50
-  );
-});
+  it("returns an object with events and socket", () => {
+    expect(messaging.events).toBeInstanceOf(EventEmitter);
+    expect(messaging.socket).toBeInstanceOf(io.Socket);
+  });
 
-describe("get-app-components", () => {
-  it(
-    "emits a 'publish-component-store' event when triggered",
-    () =>
-      new Promise(resolve => {
-        events.on("publish-component-store", () => resolve());
-        socket.emit("get-app-components");
-      }),
-    50
-  );
-});
-
-describe("loaded-app-components event", () => {
-  it(
-    "emits a 'loadedOnDevice' event on socket when triggered",
-    () =>
-      new Promise(resolve => {
-        socket.on("loaded-app-components", () => resolve());
-        events.emit("loaded-app-components");
-      }),
-    50
-  );
+  afterEach(() => {
+    messaging.socket.destroy();
+  });
 });

@@ -1,12 +1,15 @@
 import React from "react";
-import { StyleSheet, View, StatusBar } from "react-native";
+import { StyleSheet, View, StatusBar, Text } from "react-native";
 import PropTypes from "prop-types";
+import { version } from "../../../../package.json";
 
 const styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: "center",
-    margin: 10
+    margin: 10,
+    height: "100%",
+    width: "100%"
   },
   instructions: {
     textAlign: "center",
@@ -32,7 +35,7 @@ FructoseComponent.propTypes = {
 };
 
 FructoseComponent.defaultProps = {
-  component: null
+  component: <Text style={styles.welcome}>FRUCTOSE @ {version}</Text>
 };
 
 export default FructoseComponent;

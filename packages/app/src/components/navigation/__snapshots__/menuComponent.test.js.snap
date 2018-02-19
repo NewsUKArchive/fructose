@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Component renders specified component 1`] = `
+<SideMenu
+  animationFunction={[Function]}
+  animationStyle={[Function]}
+  autoClosing={true}
+  bounceBackOnOverdraw={true}
+  disableGestures={false}
+  edgeHitWidth={60}
+  hiddenMenuOffset={0}
+  isOpen={false}
+  menu={
+    <MenuList
+      menuHeader="Components"
+      menuItems={
+        Array [
+          "item1",
+          "item2",
+        ]
+      }
+      onMenuItemPress={[Function]}
+    />
+  }
+  menuPosition="left"
+  onChange={[Function]}
+  onMove={[Function]}
+  onSliding={[Function]}
+  onStartShouldSetResponderCapture={[Function]}
+  openMenuOffset={500}
+  style={
+    Object {
+      "backgroundColor": "#DCDCDC",
+    }
+  }
+  toleranceX={10}
+  toleranceY={10}
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    Test Text
+  </Text>
+</SideMenu>
+`;

@@ -21,7 +21,7 @@ describe("Menu navigation Component", () => {
     </navigationWrapper>
   );
 
-  it("renders the expected component list component", () => {
+  it("renders the expected component list", () => {
     const wrapper = shallow(componentUnderTest);
     expect(wrapper).toMatchSnapshot();
   });

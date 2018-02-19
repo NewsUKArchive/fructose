@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import FructoseApp from "./fructoseView";
-import NavigationWrapper from "./navigation/menuComponent";
+import NavigationWrapper from "./navigation/navigationWrapper";
 
 class App extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class App extends Component {
     return (
       <NavigationWrapper
         componentList={this.props.componentList}
-        events={this.props.comms.events}
+        loadComponent={this.loadComponent}
       >
         <FructoseApp
           component={this.state.component}

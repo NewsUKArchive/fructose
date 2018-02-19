@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import FructoseApp from "./fructoseView";
-import NavigationWrapper from "./navigation";
+import NavigationWrapper from "./navigation/menuComponent";
 
 class App extends Component {
   constructor(props) {

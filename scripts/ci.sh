@@ -9,6 +9,14 @@ else
   exit 1
 fi
 
+if  yarn test:web ; then
+  echo "E2E WEB TESTS PASSED"
+else
+  echo "E2E WEB TESTS FAILED"
+  cd ../..
+  exit 1
+fi
+
 cd e2eTests 
 if  yarn test:ios ; then
   echo "E2E IOS TESTS PASSED"

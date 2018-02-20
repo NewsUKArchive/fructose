@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import SideMenu from "react-native-side-menu";
@@ -10,26 +10,37 @@ const styles = StyleSheet.create({
   }
 });
 
-const NavigationWrapper = props => {
-  const menu = (
-    <MenuList
-      menuHeader="Components"
-      menuItems={props.componentList}
-      onMenuItemPress={props.loadComponent}
-    />
-  );
+export default class NavigationWrapper extends Component {
+  constructor(props) {
+    super(props);
+    this.onMenuItemPress = this.onMenuItemPress.bind(this);
+  }
 
-  return (
-    <SideMenu style={styles.menu} menu={menu} isOpen={false}>
-      {props.children}
-    </SideMenu>
-  );
-};
+  onMenuItemPress(id) {
+    this.props.events.emit("load", id);
+  }
+
+  render() {
+    const menu = (
+      <MenuList
+        menuHeader="Components"
+        menuItems={this.props.componentList}
+        onMenuItemPress={this.onMenuItemPress}
+      />
+    );
+
+    return (
+      <SideMenu style={styles.menu} menu={menu} isOpen={false}>
+        {this.props.children}
+      </SideMenu>
+    );
+  }
+}
 
 NavigationWrapper.propTypes = {
   componentList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  loadComponent: PropTypes.func.isRequired,
+  events: PropTypes.shape({
+    emit: PropTypes.func.isRequired
+  }).isRequired,
   children: PropTypes.element.isRequired
 };
-
-export default NavigationWrapper;

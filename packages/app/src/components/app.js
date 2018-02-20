@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <NavigationWrapper
         componentList={this.props.componentList}
-        loadComponent={this.loadComponent}
+        events={this.props.comms.events}
       >
         <FructoseApp
           component={this.state.component}

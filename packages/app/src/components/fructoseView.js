@@ -1,9 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { StyleSheet, View, StatusBar } from "react-native";
 
-import FructoseComponent from "./fructoseComponent";
 import ErrorView from "./errorViewComponent";
 import ErrorState from "./errorStateComponent";
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+    height: "100%",
+    width: "100%"
+  }
+});
 
 const FructoseApp = ({ component, events }) => (
   <ErrorView events={events}>
@@ -11,7 +19,10 @@ const FructoseApp = ({ component, events }) => (
       hasError ? (
         <ErrorState error={error} />
       ) : (
-        <FructoseComponent component={component} />
+        <View style={styles.container} testID="fructose">
+          <StatusBar hidden />
+          {component}
+        </View>
       )
     }
   </ErrorView>

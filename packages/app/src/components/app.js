@@ -1,13 +1,27 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { StyleSheet, Text } from "react-native";
 
 import FructoseApp from "./fructoseView";
 import NavigationWrapper from "./navigation/navigationWrapper";
+import { version } from "../../../../package.json";
+
+const styles = StyleSheet.create({
+  welcome: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+    height: "100%",
+    width: "100%"
+  }
+});
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { component: null };
+    this.state = {
+      component: <Text style={styles.welcome}>FRUCTOSE @ {version}</Text>
+    };
 
     this.loadComponent = name => {
       const component = this.props.components[name];

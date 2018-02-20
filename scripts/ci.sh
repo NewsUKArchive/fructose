@@ -17,11 +17,3 @@ else
   cd ../..
   exit 1
 fi
-
-if  yarn test:android-ci ; then
-  echo "E2E ANDROID TESTS PASSED"
-else
-  echo "E2E ANDROID TESTS FAILED"
-  cd ../..
-  exit 1
-fi

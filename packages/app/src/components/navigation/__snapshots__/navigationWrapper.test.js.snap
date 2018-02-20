@@ -1,25 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Menu Component renders specified component 1`] = `
-<navigationWrapper
-  componentList={
-    Array [
-      "item1",
-      "item2",
-    ]
-  }
-  loadComponent={[Function]}
->
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
-    Test Text
-  </Text>
-</navigationWrapper>
-`;
-
 exports[`Menu navigation Component renders the expected component list 1`] = `
 <navigationWrapper
   componentList={

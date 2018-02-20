@@ -10,13 +10,7 @@
         "test:web": "./scripts/web-tests.sh",
         "test:ios": "./scripts/ios-tests.sh",
         "test:android": "./scripts/android-tests.sh",
-        "test:android-ci": "SAUCE_USERNAME=${SAUCE_USERNAME} SAUCE_KEY=${SAUCE_KEY} ./scripts/android-saucelabs-tests.sh",
-        "compile-android-components": "rnstl --searchDir ./ --pattern 'example/android.fructose.js' --outputFile ./fructose/components.js",
-        "compile-ios-components": "rnstl --searchDir ./ --pattern 'example/ios.fructose.js' --outputFile ./fructose/components.js",
-        "compile-web-components": "rnstl --searchDir ./ --pattern 'example/web.fructose.js' --outputFile ./fructose/components.js",
-        "write-web-components": "yarn compile-web-components  && compile-tests -d fructose",
-        "write-ios-components": "yarn compile-ios-components  && compile-tests -d fructose",
-        "write-android-components": "yarn compile-android-components  && compile-tests -d fructose"
+        "test:android-ci": "SAUCE_USERNAME=${SAUCE_USERNAME} SAUCE_KEY=${SAUCE_KEY} ./scripts/android-saucelabs-tests.sh"
     },
     "dependencies": {
         "@times-components/fructose": "../",

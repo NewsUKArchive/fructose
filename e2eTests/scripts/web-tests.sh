@@ -5,4 +5,6 @@ LOCAL=true npx fructose-tunnel
 ./node_modules/.bin/fructose-web --build-dir dist/public -d fructose &
 WEB_PID=$!
 ./node_modules/.bin/jest fructose/components.test.js  --setupTestFrameworkScriptFile ./fructose/setup.web.js --verbose --forceExit
+TESTS_EXIT_CODE=$?
 kill -9 $WEB_PID
+exit $TESTS_EXIT_CODE

@@ -67,7 +67,7 @@
   },
   "peerDependencies": {
     "react": ">= 16.0.0-alpha.6 <= 16.2.0",
-    "react-native": ">= 0.44.1 <= 0.50.1"
+    "react-native": ">= 0.44.1 <= 0.50.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

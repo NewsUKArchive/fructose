@@ -1,6 +1,6 @@
 /* globals describe it afterEach expect */
 
-const FructoseServer = require("./index").FructoseServer;
+const { FructoseServer } = require("./index");
 const client = require("socket.io-client");
 const portfinder = require("portfinder");
 

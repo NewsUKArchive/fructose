@@ -1,5 +1,5 @@
 const fs = require("fs");
-const PNG = require("pngjs").PNG;
+const { PNG } = require("pngjs");
 
 module.exports = imgPath =>
   new Promise(resolve => {

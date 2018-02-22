@@ -5,7 +5,8 @@ module.exports = {
     return blacklist([
       /\/node_modules\/jest-haste-map\/node_modules\/.*/,
       /\/node_modules\/react-native\/node_modules\/fb-watchman\/.*/,
-      /\/node_modules\/@times-components\/fructose\/node_modules\/react-native\/.*/
+      /\/node_modules\/@times-components\/fructose\/node_modules\/react-native\/.*/,
+      /\..\/.*/
     ]);
   }
 };

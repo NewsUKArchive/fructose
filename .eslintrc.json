@@ -9,5 +9,7 @@
     "import/extensions": "off"
   },
   "root": true,
-  "dotfiles":true
+  "env": {
+    "jest": true
+  }
 }

@@ -4,17 +4,50 @@ import React from "react";
 import { StyleSheet, Text } from "react-native";
 
 const styles = StyleSheet.create({
-  title: {
+  green: {
+    backgroundColor: "green",
+    height: "100%",
+    width: "100%"
+  },
+  aqua: {
+    backgroundColor: "aqua",
+    height: "100%",
+    width: "100%"
+  },
+  blue: {
+    backgroundColor: "blue",
+    height: "100%",
+    width: "100%"
+  },
+  black: {
+    backgroundColor: "black",
+    height: "100%",
+    width: "100%",
+    color: "white",
+    fontSize: 100
+  },
+  orange: {
+    backgroundColor: "orange",
+    height: "100%",
+    width: "100%"
+  },
+  purple: {
+    backgroundColor: "purple",
+    height: "100%",
+    width: "100%"
+  },
+  yellow: {
+    backgroundColor: "yellow",
+    height: "100%",
+    width: "100%",
     fontSize: 50,
     fontWeight: "bold"
   },
-  lol: {
-    backgroundColor: "green"
-  }
+
 });
 
 withComponent(
-  <Text fructoseID="book one" style={styles.lol}>
+  <Text fructoseID="book one" style={styles.green}>
     The Philosopher&apos;s Stone
   </Text>,
   "basic text",
@@ -26,7 +59,7 @@ withComponent(
 );
 
 withComponent(
-  <Text style={styles.title} fructoseID="second book">
+  <Text style={styles.aqua} fructoseID="second book">
     The Chamber of Secrets
   </Text>,
   "basic text",
@@ -38,7 +71,17 @@ withComponent(
 );
 
 withComponent(
-  <Text fructoseID="book the 3rd">The Prisoner of Azkaban</Text>,
+  <Text style={styles.blue} fructoseID="book the 3rd">The Prisoner of Azkaban</Text>,
+  "basic text", 
+  fructose => {
+    test("simple test", async () => {
+      await fructose.loadComponent();
+    });
+  }
+);
+
+withComponent(
+  <Text style={styles.black}  fructoseID="The Fourth">The Goblet of Fire</Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -48,7 +91,7 @@ withComponent(
 );
 
 withComponent(
-  <Text fructoseID="The Fourth">The Goblet of Fire</Text>,
+  <Text style={styles.orange} fructoseID="Book number five">The Order of the Phoenix</Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -58,29 +101,7 @@ withComponent(
 );
 
 withComponent(
-  <Text fructoseID="Book number five">The Order of the Phoenix</Text>,
-  "basic text",
-  fructose => {
-    test("simple test", async () => {
-      await fructose.loadComponent();
-    });
-  }
-);
-
-withComponent(
-  <Text fructoseID="Sixth">The Half Blood Prince</Text>,
-  "basic text",
-  fructose => {
-    test("simple test", async () => {
-      await fructose.loadComponent();
-    });
-  }
-);
-
-withComponent(
-  <Text fructoseID="Book Seven" style={styles.title}>
-    The Deathly Hallows
-  </Text>,
+  <Text style={styles.purple} fructoseID="Sixth">The Half Blood Prince</Text>,
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -106,6 +127,18 @@ withComponent(
       test("error component", async () => {
         await fructose.loadComponent();
       });
+    });
+  }
+);
+
+withComponent(
+  <Text style={styles.yellow} fructoseID="Book Seven">
+    The Deathly Hallows
+  </Text>,
+  "basic text",
+  fructose => {
+    test("simple test", async () => {
+      await fructose.loadComponent();
     });
   }
 );

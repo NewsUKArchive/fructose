@@ -1,3 +1,18 @@
+<a name="3.2.0"></a>
+# [3.2.0](https://github.com/newsuk/fructose/compare/v3.1.16...v3.2.0) (2018-02-22)
+
+
+### Bug Fixes
+
+* wait for component to load before emitting event ([#90](https://github.com/newsuk/fructose/issues/90)) ([fac8806](https://github.com/newsuk/fructose/commit/fac8806))
+
+
+### Features
+
+* added navigation to fructose app ([#92](https://github.com/newsuk/fructose/issues/92)) ([bc767fa](https://github.com/newsuk/fructose/commit/bc767fa))
+
+
+
 <a name="3.1.16"></a>
 ## [3.1.16](https://github.com/newsuk/fructose/compare/v3.1.15...v3.1.16) (2018-02-14)
 

@@ -1,26 +1,60 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import FructoseApp from "./fructoseView";
 import NavigationWrapper from "./navigation/navigationWrapper";
 import { version } from "../../../../package.json";
 
 const styles = StyleSheet.create({
-  welcome: {
+  header: {
+    color: "white",
+    fontSize: 40,
+    textAlign: "center"
+  },
+  version: {
+    padding: 10,
+    color: "white",
     fontSize: 20,
-    textAlign: "center",
-    margin: 10,
+    textAlign: "left"
+  },
+  text: {
+    paddingTop: 10,
+    color: "white",
+    fontSize: 16,
+    textAlign: "center"
+  },
+  view: {
+    backgroundColor: "lightpink",
     height: "100%",
-    width: "100%"
+    width: "100%",
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-between"
   }
 });
+
+const loadingScreen = () => (
+  <View style={styles.view}>
+    <Text style={styles.text}>
+      Brought to you by {"\n"} The Times Tooling Team
+    </Text>
+    <View>
+      <Text style={styles.header}>🛠 FRUCTOSE 🛠</Text>
+      <Text style={styles.text}>
+        {" "}
+        Swipe right from left edge for component menu{" "}
+      </Text>
+    </View>
+    <Text style={styles.version}>Version: {version}</Text>
+  </View>
+);
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      component: <Text style={styles.welcome}>FRUCTOSE @ {version}</Text>
+      component: loadingScreen()
     };
 
     this.loadComponent = name => {

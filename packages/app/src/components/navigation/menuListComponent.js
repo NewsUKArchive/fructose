@@ -13,18 +13,21 @@ const styles = StyleSheet.create({
     fontSize: 24,
     margin: 4,
     marginBottom: 8,
-    color: "black"
+    color: "white",
+    textAlign: "center"
   },
   menuItem: {
     margin: 8
   },
   menuItemText: {
+    color: "white",
     fontSize: 18
   },
   menuSeparator: {
     backgroundColor: "gray",
     height: StyleSheet.hairlineWidth,
-    width: "100%"
+    width: "90%",
+    margin: 2
   }
 });
 

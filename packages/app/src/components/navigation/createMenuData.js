@@ -19,5 +19,10 @@ export default arr => {
     return menuItems;
   }, {});
 
-  return Object.keys(menuItemCollection).map(item => menuItemCollection[item]);
+  return Object.keys(menuItemCollection)
+    .map(item => {
+      menuItemCollection[item].items.sort((a, b) => a.title > b.title);
+      return menuItemCollection[item];
+    })
+    .sort((a, b) => a.title > b.title);
 };

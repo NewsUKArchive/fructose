@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const loadingScreen = () => (
+const LoadingScreen = () => (
   <View style={styles.view}>
     <Text style={styles.text}>
       Brought to you by {"\n"} The Times Tooling Team
@@ -53,7 +53,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      component: loadingScreen()
+      component: <LoadingScreen />
     };
 
     this.loadComponent = name => {

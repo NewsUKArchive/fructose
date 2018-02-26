@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
-import NestedListview, { NestedRow } from "react-native-nested-listview";
+import NestedListView, { NestedRow } from "react-native-nested-listview";
 import createMenuData from "./createMenuData";
 
 const styles = StyleSheet.create({
@@ -27,16 +27,21 @@ const styles = StyleSheet.create({
 
 const MenuSeparator = () => <View style={styles.menuSeparator} />;
 
-const menuNode = (node, level) => {
-  if (node.title) {
+const MenuNode = props => {
+  if (props.node.title) {
     return (
-      <NestedRow level={level}>
-        <Text style={styles.menuItem}>{node.title}</Text>
+      <NestedRow level={props.level}>
+        <Text style={styles.menuItem}>{props.node.title}</Text>
         <MenuSeparator />
       </NestedRow>
     );
   }
   return null;
+};
+
+MenuNode.propTypes = {
+  node: PropTypes.shape().isRequired,
+  level: PropTypes.shape().isRequired
 };
 
 export default class MenuList extends Component {
@@ -58,10 +63,10 @@ export default class MenuList extends Component {
     return (
       <View>
         <Text style={styles.menuHeader}>Component List</Text>
-        <NestedListview
+        <NestedListView
           data={this.preparedMenuItems}
           getChildrenName={() => "items"}
-          renderNode={(node, level) => menuNode(node, level)}
+          renderNode={(node, level) => <MenuNode node={node} level={level} />}
           onNodePressed={node => this.handleNodePress(node)}
         />
       </View>

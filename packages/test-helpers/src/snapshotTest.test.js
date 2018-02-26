@@ -58,17 +58,17 @@ describe("snapshotAssert", () => {
     }
   });
 
-  // it("asks to review the new snapshot if one does not exist at file path", async () => {
-  //   const testName = "fake";
-  //   expect.assertions(1);
+  it("asks to review the new snapshot if one does not exist at file path", async () => {
+    const testName = "fake";
+    expect.assertions(1);
 
-  //   try {
-  //     await assertSnapshot(snapper, testName);
-  //   } catch (err) {
-  //     console.warn("ADSADASDASDASD:", err);
-  //     expect(err.code).toEqual("ERR_ASSERTION");
-  //   }
-  // });
+    try {
+      await assertSnapshot(snapper, testName);
+    } catch (err) {
+      console.warn("ADSADASDASDASD:", err);
+      expect(err.code).toEqual("ERR_ASSERTION");
+    }
+  });
 
   it("takes a snapshot to compare against", async () => {
     snapper.snap = jest.fn();

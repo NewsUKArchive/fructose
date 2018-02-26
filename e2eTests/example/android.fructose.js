@@ -24,24 +24,24 @@ const styles = StyleSheet.create({
 });
 
 withComponent(
-  <Text style={styles.title} fructoseID="hobbit">
+  <Text style={styles.title} fructoseID="simpletest/hobbit">
     The Hobbit
   </Text>,
   "basic text",
   fructose => {
-    test("simple test", async () => {
+    test("simpletest/hobbit", async () => {
       await fructose.loadComponent();
     });
   }
 );
 
 withComponent(
-  <Text style={styles.manutd} fructoseID="manutd">
+  <Text style={styles.manutd} fructoseID="simpletest/manutd">
     MAN U
   </Text>,
   "basic text",
   fructose => {
-    test("with red style", async () => {
+    test("simpletest/with red style", async () => {
       await fructose.loadComponent();
     });
   }

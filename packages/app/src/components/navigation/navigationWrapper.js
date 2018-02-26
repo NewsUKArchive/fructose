@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import SideMenu from "react-native-side-menu";
 import MenuList from "./menuListComponent";
 
 const styles = StyleSheet.create({
   menu: {
-    backgroundColor: "#DCDCDC"
+    backgroundColor: "lightblue",
+    height: "100%",
+    width: "100%"
   }
 });
 
@@ -30,9 +32,11 @@ export default class NavigationWrapper extends Component {
     );
 
     return (
-      <SideMenu style={styles.menu} menu={menu} isOpen={false}>
-        {this.props.children}
-      </SideMenu>
+      <View style={styles.menu}>
+        <SideMenu menu={menu} isOpen={false}>
+          {this.props.children}
+        </SideMenu>
+      </View>
     );
   }
 }

@@ -12,7 +12,8 @@
     "lint:e2eTests": "eslint e2eTests /--fix",
     "prettier:diff": "prettier --list-different '**/*.js'",
     "prettier:write": "prettier --write '**/*.js'",
-    "prepare": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib"
+    "prepare": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib",
+    "copy": "APPDIR=e2eTests/node_modules/@times-components/fructose/packages && rm -rf $APPDIR && cp -r ./packages $APPDIR"
   },
   "bin": {
     "compile-tests": "packages/test-helpers/bin/writeComponentsTests.js",
@@ -56,6 +57,7 @@
     "pixelmatch": "^4.0.2",
     "pngjs": "^3.3.1",
     "prop-types": "^15.6.0",
+    "react-native-nested-listview": "^0.3.0",
     "react-native-side-menu": "^1.1.3",
     "request": "^2.82.0",
     "server-destroy": "^1.0.1",

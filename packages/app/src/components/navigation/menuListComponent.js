@@ -1,15 +1,8 @@
 import React, { Component } from "react";
-import {
-  View,
-  FlatList,
-  Text,
-  TouchableHighlight,
-  StyleSheet
-} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
-import NestedListview, { NestedRow } from 'react-native-nested-listview';
+import NestedListview, { NestedRow } from "react-native-nested-listview";
 import createMenuData from "./menuDataGenerator";
-
 
 const styles = StyleSheet.create({
   menuHeader: {
@@ -20,11 +13,9 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   menuItem: {
-    margin: 8
-  },
-  menuItemText: {
-    color: "white",
-    fontSize: 18
+    margin: 10,
+    color: "gray",
+    fontSize: 20
   },
   menuSeparator: {
     backgroundColor: "gray",
@@ -34,15 +25,20 @@ const styles = StyleSheet.create({
   }
 });
 
+const MenuSeparator = () => <View style={styles.menuSeparator} />;
 
-const menuNode = (node, level) => (
-  <NestedRow
-  level={level}
-  style={styles.row}
->
-  <Text>{node.title}</Text>
-</NestedRow>
-)
+const menuNode = (node, level) => {
+  if (node.title) {
+    return (
+      <NestedRow level={level}>
+        <Text style={styles.menuItem}>{node.title}</Text>
+        <MenuSeparator />
+      </NestedRow>
+    );
+  }
+  return null;
+};
+
 export default class MenuList extends Component {
   constructor(props) {
     super(props);
@@ -50,30 +46,30 @@ export default class MenuList extends Component {
   }
 
   handleNodePress(node) {
-    console.warn(node)
     if (node.items) {
-      return node.items[0].title ? null : this.props.onMenuItemPress(node.title) 
+      return node.items[0].title
+        ? null
+        : this.props.onMenuItemPress(node.title);
     }
-    return this.props.onMenuItemPress(node.componentName)
+    return this.props.onMenuItemPress(node.componentName);
   }
-
 
   render() {
     return (
-      <NestedListview
-      data={this.preparedMenuItems}
-      getChildrenName={(node) => 'items'}
-      renderNode={(node, level) => menuNode(node, level)} 
-      onNodePressed={(node) => this.handleNodePress(node)}
-      />
-     
+      <View>
+        <Text style={styles.menuHeader}>Component List</Text>
+        <NestedListview
+          data={this.preparedMenuItems}
+          getChildrenName={() => "items"}
+          renderNode={(node, level) => menuNode(node, level)}
+          onNodePressed={node => this.handleNodePress(node)}
+        />
+      </View>
     );
   }
 }
 
 MenuList.propTypes = {
-  menuHeader: PropTypes.string.isRequired,
   menuItems: PropTypes.arrayOf(PropTypes.string).isRequired,
   onMenuItemPress: PropTypes.func.isRequired
 };
-

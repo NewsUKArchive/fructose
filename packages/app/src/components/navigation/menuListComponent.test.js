@@ -8,12 +8,18 @@ import MenuListComponent from "./menuListComponent";
 configure({ adapter: new Adapter() });
 
 describe("Menu List Component", () => {
-  const expectedMenuHeader = "Test Header";
-  const expectedMenuItems = ["item1", "item2"];
+  const expectedMenuItems = [
+    "parent1/parent1child",
+    "parent1/parent1child2",
+    "parent2/parent2child",
+    "parent2/parent2child2",
+    "parent1/parent1child3",
+    "parent3"
+  ];
+
   const expectedOnMenuItemPress = jest.fn();
   const componentUnderTest = (
     <MenuListComponent
-      menuHeader={expectedMenuHeader}
       menuItems={expectedMenuItems}
       onMenuItemPress={expectedOnMenuItemPress}
     />

@@ -41,7 +41,7 @@ const MenuNode = props => {
 
 MenuNode.propTypes = {
   node: PropTypes.shape().isRequired,
-  level: PropTypes.shape().isRequired
+  level: PropTypes.number.isRequired
 };
 
 export default class MenuList extends Component {

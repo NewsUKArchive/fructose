@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import NestedListview, { NestedRow } from "react-native-nested-listview";
-import createMenuData from "./menuDataGenerator";
+import createMenuData from "./createMenuData";
 
 const styles = StyleSheet.create({
   menuHeader: {

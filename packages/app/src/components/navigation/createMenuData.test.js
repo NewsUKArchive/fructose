@@ -1,4 +1,4 @@
-import createMenuData from "./menuDataGenerator";
+import createMenuData from "./createMenuData";
 
 describe("menu Data Generator", () => {
   it("creates correct data structure ", () => {

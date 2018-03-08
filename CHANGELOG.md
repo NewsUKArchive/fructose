@@ -1,3 +1,13 @@
+<a name="3.2.2"></a>
+## [3.2.2](https://github.com/newsuk/fructose/compare/v3.2.1...v3.2.2) (2018-03-08)
+
+
+### Bug Fixes
+
+* revert to old socket.io version ([#102](https://github.com/newsuk/fructose/issues/102)) ([3f33fd1](https://github.com/newsuk/fructose/commit/3f33fd1))
+
+
+
 <a name="3.2.1"></a>
 ## [3.2.1](https://github.com/newsuk/fructose/compare/v3.2.0...v3.2.1) (2018-02-26)
 

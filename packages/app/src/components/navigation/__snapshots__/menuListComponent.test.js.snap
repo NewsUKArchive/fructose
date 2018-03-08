@@ -3,9 +3,6 @@
 exports[`Menu List Component renders specified component 1`] = `
 <View>
   <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
     style={
       Object {
         "color": "white",

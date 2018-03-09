@@ -46,6 +46,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-loader": "7.1.4",
     "callsite": "^1.0.0",
     "commander": "^2.12.2",
     "enzyme-to-json": "^3.2.2",
@@ -68,8 +69,8 @@
     "webpack-merge": "^4.1.1"
   },
   "peerDependencies": {
-    "react": ">= 16.0.0-alpha.6 <= 16.2.0",
-    "react-native": ">= 0.44.1 <= 0.50.4"
+    "react": ">= 16.0.0",
+    "react-native": ">= 0.50.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -88,9 +89,9 @@
     "portfinder": "^1.0.13",
     "pre-commit": "^1.2.2",
     "prettier": "^1.8.2",
-    "react": "^16.2.0",
+    "react": "16.2.0",
     "react-dom": "16.2.0",
-    "react-native": "^0.50.4"
+    "react-native": "0.50.4"
   },
   "author": "News UK & Ireland Ltd",
   "license": "BSD-3-Clause",

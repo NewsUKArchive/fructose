@@ -5,9 +5,9 @@ export default loadComponents => {
 
   class StoryLoader {
     constructor(name) {
-      this.name = name
+      this.name = name;
     }
-  
+
     add(name, componentCreator) {
       componentsStore[`${this.name}${name}`] = componentCreator();
       return this;
@@ -26,12 +26,27 @@ export default loadComponents => {
     componentsStore[key] = component;
   };
 
-  global.storiesOf = (name) => {
+  global.storiesOf = name => {
     const loader = new StoryLoader(name, componentsStore);
     return loader;
   };
 
-  loadComponents();
+  const components = loadComponents();
+
+  // if components exist .showcase files are being used
+  if (components) {
+    components.forEach(parent => {
+      const showcases = parent.default;
+      const filteredChildren = showcases.children.filter(
+        showcase => showcase.type === "story"
+      );
+
+      filteredChildren.forEach(showcase => {
+        const showCaseName = `${showcases.name}/${showcase.name}`;
+        componentsStore[showCaseName] = showcase.component();
+      });
+    });
+  }
 
   // withComponent doesn't need to exist anymore
   global.withComponent = undefined;

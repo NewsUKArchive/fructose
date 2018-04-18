@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu List Component renders specified component 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "white",
+        "fontSize": 24,
+        "margin": 4,
+        "marginBottom": 8,
+        "textAlign": "center",
+      }
+    }
+  >
+    Component List
+  </Text>
+  <NestedListView
+    data={
+      Array [
+        Object {
+          "items": Array [
+            Object {
+              "componentName": "parent1/parent1child",
+              "title": "parent1child",
+            },
+            Object {
+              "componentName": "parent1/parent1child2",
+              "title": "parent1child2",
+            },
+            Object {
+              "componentName": "parent1/parent1child3",
+              "title": "parent1child3",
+            },
+          ],
+          "title": "parent1",
+        },
+        Object {
+          "items": Array [
+            Object {
+              "componentName": "parent2/parent2child",
+              "title": "parent2child",
+            },
+            Object {
+              "componentName": "parent2/parent2child2",
+              "title": "parent2child2",
+            },
+          ],
+          "title": "parent2",
+        },
+        Object {
+          "items": Array [
+            Object {
+              "componentName": "parent3",
+              "title": undefined,
+            },
+          ],
+          "title": "parent3",
+        },
+      ]
+    }
+    getChildrenName={[Function]}
+    onNodePressed={[Function]}
+    renderNode={[Function]}
+  />
+</View>
+`;

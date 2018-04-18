@@ -1,0 +1,304 @@
+0 silly input []
+1 silly flags { _: [ 'bootstrap' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   args: [] }
+2 verbose rootPath /Users/matt/dev/news/fructose
+3 info version 2.10.2
+4 silly existsSync /Users/matt/dev/news/fructose/VERSION
+5 silly initialize attempt
+6 silly npmConfig { registry: undefined,
+6 silly npmConfig   npmClient: 'yarn',
+6 silly npmConfig   npmClientArgs: undefined,
+6 silly npmConfig   mutex: 'network:42424' }
+7 silly initialize success
+8 silly execute attempt
+9 info Bootstrapping 1 packages
+10 info lifecycle preinstall
+11 silly runScript preinstall e2eTests
+12 silly e2eTests
+13 silly hasDependencyInstalled e2eTests babel-preset-react-native
+14 silly dependencyIsSatisfied [ 'babel-preset-react-native',
+14 silly dependencyIsSatisfied   '4.0.0',
+14 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+15 verbose dependencyIsSatisfied babel-preset-react-native false
+16 silly hasDependencyInstalled e2eTests jest
+17 silly dependencyIsSatisfied [ 'jest',
+17 silly dependencyIsSatisfied   '22.4.3',
+17 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+18 verbose dependencyIsSatisfied jest false
+19 silly hasDependencyInstalled e2eTests react
+20 silly dependencyIsSatisfied [ 'react',
+20 silly dependencyIsSatisfied   '^16.2.0',
+20 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+21 verbose dependencyIsSatisfied react false
+22 silly hasDependencyInstalled e2eTests react-dom
+23 silly dependencyIsSatisfied [ 'react-dom',
+23 silly dependencyIsSatisfied   '16.2.0',
+23 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+24 verbose dependencyIsSatisfied react-dom false
+25 silly hasDependencyInstalled e2eTests react-native
+26 silly dependencyIsSatisfied [ 'react-native',
+26 silly dependencyIsSatisfied   '^0.50.4',
+26 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+27 verbose dependencyIsSatisfied react-native false
+28 silly hasDependencyInstalled e2eTests html-webpack-plugin
+29 silly dependencyIsSatisfied [ 'html-webpack-plugin',
+29 silly dependencyIsSatisfied   '3.2.0',
+29 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+30 verbose dependencyIsSatisfied html-webpack-plugin false
+31 silly hasDependencyInstalled e2eTests webpack
+32 silly dependencyIsSatisfied [ 'webpack',
+32 silly dependencyIsSatisfied   '^3.8.1',
+32 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+33 verbose dependencyIsSatisfied webpack false
+34 silly hasDependencyInstalled e2eTests webpack-dev-server
+35 silly dependencyIsSatisfied [ 'webpack-dev-server',
+35 silly dependencyIsSatisfied   '^2.7.1',
+35 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+36 verbose dependencyIsSatisfied webpack-dev-server false
+37 silly hasDependencyInstalled e2eTests babel-jest
+38 silly dependencyIsSatisfied [ 'babel-jest',
+38 silly dependencyIsSatisfied   '^22.4.3',
+38 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+39 verbose dependencyIsSatisfied babel-jest false
+40 silly hasDependencyInstalled e2eTests compression-webpack-plugin
+41 silly dependencyIsSatisfied [ 'compression-webpack-plugin',
+41 silly dependencyIsSatisfied   '1.1.11',
+41 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+42 verbose dependencyIsSatisfied compression-webpack-plugin false
+43 silly hasDependencyInstalled e2eTests http-serve
+44 silly dependencyIsSatisfied [ 'http-serve',
+44 silly dependencyIsSatisfied   '^1.0.1',
+44 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+45 verbose dependencyIsSatisfied http-serve false
+46 silly hasDependencyInstalled e2eTests jest-cli
+47 silly dependencyIsSatisfied [ 'jest-cli',
+47 silly dependencyIsSatisfied   '22.4.3',
+47 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+48 verbose dependencyIsSatisfied jest-cli false
+49 silly hasDependencyInstalled e2eTests jest-environment-node-debug
+50 silly dependencyIsSatisfied [ 'jest-environment-node-debug',
+50 silly dependencyIsSatisfied   '2.0.0',
+50 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+51 verbose dependencyIsSatisfied jest-environment-node-debug false
+52 silly hasDependencyInstalled e2eTests json-loader
+53 silly dependencyIsSatisfied [ 'json-loader',
+53 silly dependencyIsSatisfied   '^0.5.4',
+53 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+54 verbose dependencyIsSatisfied json-loader false
+55 silly hasDependencyInstalled e2eTests react-hot-loader
+56 silly dependencyIsSatisfied [ 'react-hot-loader',
+56 silly dependencyIsSatisfied   '^1.3.1',
+56 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+57 verbose dependencyIsSatisfied react-hot-loader false
+58 silly hasDependencyInstalled e2eTests react-test-renderer
+59 silly dependencyIsSatisfied [ 'react-test-renderer',
+59 silly dependencyIsSatisfied   '16.3.2',
+59 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+60 verbose dependencyIsSatisfied react-test-renderer false
+61 silly hasDependencyInstalled e2eTests url-loader
+62 silly dependencyIsSatisfied [ 'url-loader',
+62 silly dependencyIsSatisfied   '^0.5.8',
+62 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+63 verbose dependencyIsSatisfied url-loader false
+64 silly hasDependencyInstalled e2eTests @times-components/fructose
+65 silly dependencyIsSatisfied [ '@times-components/fructose',
+65 silly dependencyIsSatisfied   '../',
+65 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+66 verbose dependencyIsSatisfied @times-components/fructose false
+67 silly hasDependencyInstalled e2eTests chromeless
+68 silly dependencyIsSatisfied [ 'chromeless',
+68 silly dependencyIsSatisfied   '^1.3.0',
+68 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+69 verbose dependencyIsSatisfied chromeless false
+70 silly hasDependencyInstalled e2eTests react-native-storybook-loader
+71 silly dependencyIsSatisfied [ 'react-native-storybook-loader',
+71 silly dependencyIsSatisfied   '^1.4.1',
+71 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+72 verbose dependencyIsSatisfied react-native-storybook-loader false
+73 silly hasDependencyInstalled e2eTests react-native-web
+74 silly dependencyIsSatisfied [ 'react-native-web',
+74 silly dependencyIsSatisfied   '^0.4.0',
+74 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+75 verbose dependencyIsSatisfied react-native-web false
+76 silly hasDependencyInstalled e2eTests wd
+77 silly dependencyIsSatisfied [ 'wd',
+77 silly dependencyIsSatisfied   '^1.4.1',
+77 silly dependencyIsSatisfied   '/Users/matt/dev/news/fructose/e2eTests/node_modules' ]
+78 verbose dependencyIsSatisfied wd false
+79 silly root dependencies []
+80 silly leaf dependencies {
+80 silly leaf dependencies   "e2eTests": [
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "babel-preset-react-native@4.0.0",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "jest@22.4.3",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "react@^16.2.0",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "react-dom@16.2.0",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "react-native@^0.50.4",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "html-webpack-plugin@3.2.0",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "webpack@^3.8.1",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "webpack-dev-server@^2.7.1",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "babel-jest@^22.4.3",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "compression-webpack-plugin@1.1.11",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "http-serve@^1.0.1",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "jest-cli@22.4.3",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "jest-environment-node-debug@2.0.0",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "json-loader@^0.5.4",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "react-hot-loader@^1.3.1",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "react-test-renderer@16.3.2",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "url-loader@^0.5.8",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "@times-components/fructose@../",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "chromeless@^1.3.0",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "react-native-storybook-loader@^1.4.1",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "react-native-web@^0.4.0",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     },
+80 silly leaf dependencies     {
+80 silly leaf dependencies       "dependency": "wd@^1.4.1",
+80 silly leaf dependencies       "isSatisfied": false
+80 silly leaf dependencies     }
+80 silly leaf dependencies   ]
+80 silly leaf dependencies }
+81 info Installing external dependencies
+82 verbose actions 1 actions, concurrency 4
+83 silly installInDir e2eTests [ 'babel-preset-react-native@4.0.0',
+83 silly installInDir   'jest@22.4.3',
+83 silly installInDir   'react@^16.2.0',
+83 silly installInDir   'react-dom@16.2.0',
+83 silly installInDir   'react-native@^0.50.4',
+83 silly installInDir   'html-webpack-plugin@3.2.0',
+83 silly installInDir   'webpack@^3.8.1',
+83 silly installInDir   'webpack-dev-server@^2.7.1',
+83 silly installInDir   'babel-jest@^22.4.3',
+83 silly installInDir   'compression-webpack-plugin@1.1.11',
+83 silly installInDir   'http-serve@^1.0.1',
+83 silly installInDir   'jest-cli@22.4.3',
+83 silly installInDir   'jest-environment-node-debug@2.0.0',
+83 silly installInDir   'json-loader@^0.5.4',
+83 silly installInDir   'react-hot-loader@^1.3.1',
+83 silly installInDir   'react-test-renderer@16.3.2',
+83 silly installInDir   'url-loader@^0.5.8',
+83 silly installInDir   '@times-components/fructose@../',
+83 silly installInDir   'chromeless@^1.3.0',
+83 silly installInDir   'react-native-storybook-loader@^1.4.1',
+83 silly installInDir   'react-native-web@^0.4.0',
+83 silly installInDir   'wd@^1.4.1' ]
+84 silly installInDir backup /Users/matt/dev/news/fructose/e2eTests/package.json
+85 silly rename [ '/Users/matt/dev/news/fructose/e2eTests/package.json',
+85 silly rename   '/Users/matt/dev/news/fructose/e2eTests/package.json.lerna_backup' ]
+86 silly installInDir writing tempJson { dependencies:
+86 silly installInDir    { 'babel-preset-react-native': '4.0.0',
+86 silly installInDir      jest: '22.4.3',
+86 silly installInDir      react: '^16.2.0',
+86 silly installInDir      'react-dom': '16.2.0',
+86 silly installInDir      'react-native': '^0.50.4',
+86 silly installInDir      'html-webpack-plugin': '3.2.0',
+86 silly installInDir      webpack: '^3.8.1',
+86 silly installInDir      'webpack-dev-server': '^2.7.1',
+86 silly installInDir      'babel-jest': '^22.4.3',
+86 silly installInDir      'compression-webpack-plugin': '1.1.11',
+86 silly installInDir      'http-serve': '^1.0.1',
+86 silly installInDir      'jest-cli': '22.4.3',
+86 silly installInDir      'jest-environment-node-debug': '2.0.0',
+86 silly installInDir      'json-loader': '^0.5.4',
+86 silly installInDir      'react-hot-loader': '^1.3.1',
+86 silly installInDir      'react-test-renderer': '16.3.2',
+86 silly installInDir      'url-loader': '^0.5.8',
+86 silly installInDir      '@times-components/fructose': '../',
+86 silly installInDir      chromeless: '^1.3.0',
+86 silly installInDir      'react-native-storybook-loader': '^1.4.1',
+86 silly installInDir      'react-native-web': '^0.4.0',
+86 silly installInDir      wd: '^1.4.1' } }
+87 silly getExecOpts { cwd: '/Users/matt/dev/news/fructose/e2eTests' }
+88 silly installInDir [ 'yarn',
+88 silly installInDir   [ 'install', '--mutex', 'network:42424', '--non-interactive' ] ]
+89 silly installInDir cleanup /Users/matt/dev/news/fructose/e2eTests/package.json
+90 silly renameSync [ '/Users/matt/dev/news/fructose/e2eTests/package.json.lerna_backup',
+90 silly renameSync   '/Users/matt/dev/news/fructose/e2eTests/package.json' ]
+91 verbose installed leaf e2eTests
+92 error execute callback with error
+93 error Error: Command failed: yarn install --mutex network:42424 --non-interactive
+93 error warning package.json: No license field
+93 error warning No license field
+93 error error An unexpected error occurred: "ENAMETOOLONG: name too long, lstat '/Users/matt/Library/Caches/Yarn/v1/npm-@times-components/fructose-3.2.3-1cd9569f-74c3-4e11-a2ca-e7b99070fbf1-1524060192537/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/packages/app/src/components/navigation/__snapshots__/navigationWrapper.test.js.snap'".
+93 error Process stalled
+93 error Active handles:
+93 error   - Socket
+93 error   - Socket
+93 error   - Socket
+93 error   - TLSSocket
+93 error   - TLSSocket
+93 error   - TLSSocket
+93 error   - TLSSocket
+93 error   - TLSSocket
+93 error   - TLSSocket
+93 error   - TLSSocket
+93 error yarn install v1.6.0
+93 error [1/4] Resolving packages...
+93 error [2/4] Fetching packages...
+93 error info If you think this is a bug, please open a bug report with the information provided in "/Users/matt/dev/news/fructose/e2eTests/yarn-error.log".
+93 error info Visit https://yarnpkg.com/en/docs/cli/install for documentation about this command.
+93 error
+93 error     at Promise.all.then.arr (/Users/matt/dev/news/fructose/node_modules/lerna/node_modules/execa/index.js:236:11)
+93 error     at <anonymous>

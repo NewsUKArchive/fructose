@@ -43,7 +43,7 @@ export default loadComponents => {
 
       filteredChildren.forEach(showcase => {
         const showCaseName = `${showcases.name}/${showcase.name}`;
-        componentsStore[showCaseName] = showcase.component();
+        componentsStore[showCaseName] = showcase.component;
       });
     });
   }

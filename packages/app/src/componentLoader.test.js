@@ -34,10 +34,11 @@ it("returns an object with keys when using .showcasefiles", () => {
   };
 
   const getShowcasesObject = () => [mockShowcase];
-
-  const loaded = loader(getShowcasesObject);
-
-  expect(loaded).toEqual({ "Primitives/ArticleLabel/Article Label": "lol" });
+  const loadedShowcases = loader(getShowcasesObject);
+  const returnedComponent = loadedShowcases[
+    "Primitives/ArticleLabel/Article Label"
+  ]();
+  expect(returnedComponent).toEqual("lol");
 });
 
 it("filters out non story showcases", () => {

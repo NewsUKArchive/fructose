@@ -6,6 +6,12 @@ import FructoseApp from "./fructoseView";
 import NavigationWrapper from "./navigation/navigationWrapper";
 import { version } from "../../../../package.json";
 
+const decorators = {
+  select: () => {},
+  color: () => {},
+  action: () => {}
+};
+
 const styles = StyleSheet.create({
   header: {
     color: "white",
@@ -53,7 +59,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      component: <LoadingScreen />
+      component: () => <LoadingScreen />
     };
 
     this.loadComponent = name => {
@@ -91,7 +97,7 @@ class App extends Component {
         events={this.props.comms.events}
       >
         <FructoseApp
-          component={this.state.component}
+          component={this.state.component(decorators)}
           events={this.props.comms.events}
         />
       </NavigationWrapper>
@@ -100,7 +106,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  components: PropTypes.objectOf(PropTypes.object).isRequired,
+  components: PropTypes.objectOf(PropTypes.func).isRequired,
   componentList: PropTypes.arrayOf(PropTypes.string).isRequired,
   comms: PropTypes.shape({
     events: PropTypes.shape({

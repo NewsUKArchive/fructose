@@ -42,14 +42,15 @@ const styles = StyleSheet.create({
     width: "100%",
     fontSize: 50,
     fontWeight: "bold"
-  },
-
+  }
 });
 
 withComponent(
-  <Text fructoseID="book one" style={styles.green}>
-    The Philosopher&apos;s Stone
-  </Text>,
+  () => (
+    <Text fructoseID="book one" style={styles.green}>
+      The Philosopher&apos;s Stone
+    </Text>
+  ),
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -59,9 +60,11 @@ withComponent(
 );
 
 withComponent(
-  <Text style={styles.aqua} fructoseID="second book">
-    The Chamber of Secrets
-  </Text>,
+  () => (
+    <Text style={styles.aqua} fructoseID="second book">
+      The Chamber of Secrets
+    </Text>
+  ),
   "basic text",
   fructose => {
     test("with style", async () => {
@@ -71,17 +74,11 @@ withComponent(
 );
 
 withComponent(
-  <Text style={styles.blue} fructoseID="book the 3rd">The Prisoner of Azkaban</Text>,
-  "basic text", 
-  fructose => {
-    test("simple test", async () => {
-      await fructose.loadComponent();
-    });
-  }
-);
-
-withComponent(
-  <Text style={styles.black}  fructoseID="The Fourth">The Goblet of Fire</Text>,
+  () => (
+    <Text style={styles.blue} fructoseID="book the 3rd">
+      The Prisoner of Azkaban
+    </Text>
+  ),
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -91,7 +88,11 @@ withComponent(
 );
 
 withComponent(
-  <Text style={styles.orange} fructoseID="Book number five">The Order of the Phoenix</Text>,
+  () => (
+    <Text style={styles.black} fructoseID="The Fourth">
+      The Goblet of Fire
+    </Text>
+  ),
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -101,7 +102,25 @@ withComponent(
 );
 
 withComponent(
-  <Text style={styles.purple} fructoseID="Sixth">The Half Blood Prince</Text>,
+  () => (
+    <Text style={styles.orange} fructoseID="Book number five">
+      The Order of the Phoenix
+    </Text>
+  ),
+  "basic text",
+  fructose => {
+    test("simple test", async () => {
+      await fructose.loadComponent();
+    });
+  }
+);
+
+withComponent(
+  () => (
+    <Text style={styles.purple} fructoseID="Sixth">
+      The Half Blood Prince
+    </Text>
+  ),
   "basic text",
   fructose => {
     test("simple test", async () => {
@@ -120,7 +139,7 @@ const Break = props => {
 };
 
 withComponent(
-  <Break fructoseID="error component" />,
+  () => <Break fructoseID="error component" />,
   "this is a component that should throw an error",
   fructose => {
     describe("fructose", () => {
@@ -132,9 +151,11 @@ withComponent(
 );
 
 withComponent(
-  <Text style={styles.yellow} fructoseID="Book Seven">
-    The Deathly Hallows
-  </Text>,
+  () => (
+    <Text style={styles.yellow} fructoseID="Book Seven">
+      The Deathly Hallows
+    </Text>
+  ),
   "basic text",
   fructose => {
     test("simple test", async () => {

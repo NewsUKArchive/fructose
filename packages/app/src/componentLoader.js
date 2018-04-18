@@ -22,6 +22,7 @@ export default loadComponents => {
   // in a test file
 
   global.withComponent = component => {
+    console.log(component);
     const key = rnComponentKey(component);
     componentsStore[key] = () => component;
   };

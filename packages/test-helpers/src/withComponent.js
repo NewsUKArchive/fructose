@@ -11,42 +11,41 @@ import { assertSnapshot } from "./snapshotTest";
 let client;
 
 export const disconnectClient = () =>
-  new Promise((resolve) => {
-    if (typeof client === 'undefined') {
-     resolve();
+  new Promise(resolve => {
+    if (typeof client === "undefined") {
+      resolve();
     } else {
       client.socket.disconnect();
       resolve();
     }
-  })
+  });
 
 export const startClient = () =>
   new Promise(resolve => {
     client = fructoseClient(7811);
     resolve(client);
-  })
+  });
 
 export default () => {
   const withComponent = (component, description, tests) => {
     let hashed;
 
-    if (typeof client === 'undefined') {
+    if (typeof client === "undefined") {
       log.verbose("withComponent", `starting fructose client`);
       startClient();
     }
 
     try {
-      hashed = rnComponentKey(component);
+      hashed = rnComponentKey(component());
     } catch (err) {
       throw new Error(`${err} to test: ${description}`);
     }
 
     const testFilePath = stack()[1].getFileName();
 
-    const loadComponent = async() =>
-      client.loadComponent(hashed);
+    const loadComponent = async () => client.loadComponent(hashed);
 
-    const snapshotTest = async(platform, testname) => {
+    const snapshotTest = async (platform, testname) => {
       const testDir = path.dirname(testFilePath);
       const snapsPath = `${testDir}/__snapshots__`;
 
@@ -61,8 +60,9 @@ export default () => {
     };
 
     if (describe !== undefined) {
-      const testName = `${description} \n with Component: ${component.props
-        .fructoseID}`;
+      const testName = `${description} \n with Component: ${
+        component.props.fructoseID
+      }`;
       describe(testName, () => {
         tests(fructose);
       });

@@ -31,9 +31,11 @@ const teardown = async () => {
 };
 
 withComponent(
-  <Text fructoseID="test" testID="banana">
-    BANANA
-  </Text>,
+  () => (
+    <Text fructoseID="test" testID="banana">
+      BANANA
+    </Text>
+  ),
   "basic text",
   fructose => {
     describe("fructose", () => {
@@ -63,7 +65,7 @@ const Break = props => {
 };
 
 withComponent(
-  <Break fructoseID="error component" />,
+  () => <Break fructoseID="error component" />,
   "this is a component that should throw an error",
   fructose => {
     describe("fructose", () => {

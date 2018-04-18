@@ -5,6 +5,9 @@
     "packages/server",
     "packages/client",
     "packages/test-helpers",
-    "packages/fructose"
-  ]
+    "packages/fructose",
+    "e2eTests"
+  ],
+  "npmClient": "yarn"
+
 }

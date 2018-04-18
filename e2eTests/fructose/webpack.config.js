@@ -7,10 +7,8 @@ module.exports = {
     app: path.join(__dirname, "./index.web.js")
   },
   resolve: {
-    alias: {
-      "react-native": "react-native-web"
-    },
-    extensions: [".web.js", ".js", ".ios.js", ".android.js"],
+    
+    extensions: ["showcase.js", ".web.js", ".js", ".ios.js", ".android.js"],
     mainFields: ["module", "main"],
     plugins: [
       // Use the DLL in development.

@@ -9,7 +9,7 @@ export default loadComponents => {
     }
 
     add(name, componentCreator) {
-      componentsStore[`${this.name}${name}`] = componentCreator();
+      componentsStore[`${this.name}${name}`] = () => componentCreator();
       return this;
     }
 
@@ -23,7 +23,7 @@ export default loadComponents => {
 
   global.withComponent = component => {
     const key = rnComponentKey(component);
-    componentsStore[key] = component;
+    componentsStore[key] = () => component;
   };
 
   global.storiesOf = name => {

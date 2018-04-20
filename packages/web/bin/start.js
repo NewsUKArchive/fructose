@@ -19,7 +19,7 @@ const path = require("path");
 
 const directory = program.buildDir ? program.buildDir : ".fructose";
 // eslint-disable-next-line import/no-dynamic-require
-const upperConfig = require(`../../../../../../${directory}/webpack.config.js`);
+const upperConfig = require(`${directory}/webpack.config.js`);
 const config = require("../webpack.config.js")(
   path.join(process.cwd(), program.buildDir)
 );

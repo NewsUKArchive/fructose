@@ -55,13 +55,16 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 
-#coverage
-**/coverage
-.nyc_output/**
-sandbox 
+**/.fructose/components.js
+**/.fructose/components.test.js
+**/fructose/components.js
+**/fructose/components.test.js
 
-# babeled stuff
-packages/test-helpers/lib/**
+!dist
+!dist/public
+dist/public/**
+!dist/public/react-logo.png
 
-# ejs template
-packages/web/templates/**
+**/__snapshots__/*/tmp
+**/vendor-dev
+**/vendor

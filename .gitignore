@@ -65,3 +65,17 @@ packages/test-helpers/lib/**
 
 # ejs template
 packages/web/templates/**
+
+**/.fructose/components.js
+**/.fructose/components.test.js
+**/fructose/components.js
+**/fructose/components.test.js
+
+!dist
+!dist/public
+dist/public/**
+!dist/public/react-logo.png
+
+**/__snapshots__/*/tmp
+**/vendor-dev
+**/vendor

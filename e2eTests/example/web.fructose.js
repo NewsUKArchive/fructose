@@ -46,7 +46,6 @@ withComponent(
         chromeless
           .goto("http://localhost:3000")
           .exists("[data-testid='fructose']");
-        console.error(fructose.loadComponent());
         await deviceReady();
         await fructose.loadComponent();
       });

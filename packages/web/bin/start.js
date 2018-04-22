@@ -17,31 +17,25 @@ const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
 const path = require("path");
 
-const directory = program.buildDir ? program.buildDir : ".fructose";
+const directory = path.resolve(program.buildDir);
+
 // eslint-disable-next-line import/no-dynamic-require
-const upperConfig = require(`../../../../../../${directory}/webpack.config.js`);
-const config = require("../webpack.config.js")(
-  path.join(process.cwd(), program.buildDir)
-);
+const upperConfig = require(`${directory}/webpack.config.js`);
+const config = require("../webpack.config.js")(path.join(directory));
 
 const mergedConfig = merge(upperConfig, config);
-const configDir = path.join(process.cwd(), directory);
 const fs = require("fs");
 
 function getHeadHtml(configDirPath) {
   const headHtmlPath = path.resolve(configDirPath, "head.html");
-  const fallbackHtmlPath = path.resolve(configDirPath, "head.html");
   let headHtml = "";
   if (fs.existsSync(headHtmlPath)) {
     headHtml = fs.readFileSync(headHtmlPath, "utf8");
-  } else if (fs.existsSync(fallbackHtmlPath)) {
-    headHtml = fs.readFileSync(fallbackHtmlPath, "utf8");
   }
   return headHtml;
 }
 
-const headHtml = getHeadHtml(configDir);
-
+const headHtml = getHeadHtml(directory);
 const ejsTemplate = `
 <!DOCTYPE html>
 <html>

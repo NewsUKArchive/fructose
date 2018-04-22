@@ -1,5 +1,5 @@
 /* globals beforeAll jasmine afterAll */
-import fructose from "@times-components/fructose/setup";
+import fructose from "../../setup";
 import { Chromeless } from "chromeless";
 
 beforeAll(async () => {

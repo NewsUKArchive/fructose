@@ -7,7 +7,7 @@ module.exports = {
   productionPlugins: [
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
+      mangle: false,
       compress: {
         warnings: false, // Suppress uglification warnings
         pure_getters: true,

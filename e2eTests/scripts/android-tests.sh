@@ -1,6 +1,6 @@
 #!/bin/bash
 LOCAL=true node "./packages/test-helpers/bin/createTunnel.js" 
-emulator @Nexus_5X_API_25 -no-boot-anim &
+emulator @fructose_device -no-boot-anim &
 EMU_PID=$!
 adb wait-for-device
 adb reverse tcp:8081 tcp:8081

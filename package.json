@@ -3,7 +3,7 @@
   "version": "3.2.3",
   "main": "index.js",
   "scripts": {
-    "test:unit": "jest --verbose --forceExit",
+    "test:unit": "jest ./packages --verbose --forceExit",
     "test": "./scripts/tests.sh",
 
     "e2e:start": "node node_modules/react-native/local-cli/cli.js start --config='./e2eTests/rn-cli.config.js' --resetCache",

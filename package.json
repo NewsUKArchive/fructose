@@ -3,8 +3,18 @@
   "version": "3.2.3",
   "main": "index.js",
   "scripts": {
-    "test:unit": "jest --verbose --forceExit",
+    "test:unit": "jest ./packages --verbose --forceExit",
     "test": "./scripts/tests.sh",
+
+    "e2e:start": "node node_modules/react-native/local-cli/cli.js start --config='./e2eTests/rn-cli.config.js' --resetCache",
+    "e2e:test": "yarn test:ios && yarn test:android && yarn test:web",
+    "e2e:web": "packages/web/bin/start.js --build-dir dist/public -d fructose",
+    "e2e:web:build:vendor-dev": "webpack --config e2eTests/fructose/vendor.webpack.config.js",
+    "e2e:test:web": "./e2eTests/scripts/web-tests.sh",
+    "e2e:test:ios": "./e2eTests/scripts/ios-tests.sh",
+    "e2e:test:android": "./e2eTests/scripts/android-tests.sh",
+    "e2e:test:android-ci": "SAUCE_USERNAME=${SAUCE_USERNAME} SAUCE_KEY=${SAUCE_KEY} ./e2eTests/scripts/android-saucelabs-tests.sh",
+
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "lint-staged": "lint-staged",
     "lint:packages": "eslint . --fix",
@@ -12,8 +22,7 @@
     "lint:e2eTests": "eslint e2eTests /--fix",
     "prettier:diff": "prettier --list-different '**/*.js'",
     "prettier:write": "prettier --write '**/*.js'",
-    "prepare": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib",
-    "copy": "APPDIR=e2eTests/node_modules/@times-components/fructose/packages && rm -rf $APPDIR && cp -r ./packages $APPDIR"
+    "prepare": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib"
   },
   "bin": {
     "compile-tests": "packages/test-helpers/bin/writeComponentsTests.js",
@@ -39,11 +48,16 @@
       "enzyme-to-json/serializer"
     ],
     "modulePathIgnorePatterns": [
-      "<rootDir>/e2eTests",
       "<rootDir>/packages/test-helpers/lib"
-    ]
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|react-navigation|fructose-app|@times-components/image)"
+  ]
   },
   "dependencies": {
+    "chromeless": "^1.3.0",
+    "react-native-storybook-loader": "^1.4.1",
+    "wd": "^1.4.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-loader": "7.1.4",
@@ -60,6 +74,7 @@
     "prop-types": "^15.6.0",
     "react-native-nested-listview": "^0.3.0",
     "react-native-side-menu": "^1.1.3",
+    "react-native-web": "0.4.0",
     "request": "^2.82.0",
     "server-destroy": "^1.0.1",
     "socket.io": "1.7.4",
@@ -73,6 +88,16 @@
     "react-native": ">= 0.50.4"
   },
   "devDependencies": {
+    "babel-jest": "19.0.0",
+    "compression-webpack-plugin": "^1.0.0",
+    "html-webpack-plugin": "^2.28.0",
+    "http-serve": "^1.0.1",
+    "jest-cli": "20.0.4",
+    "jest-environment-node-debug": "2.0.0",
+    "json-loader": "^0.5.4",
+    "react-hot-loader": "^1.3.1",
+    "react-test-renderer": "16.0.0-alpha.6",
+    "url-loader": "^0.5.8",
     "babel-cli": "^6.26.0",
     "babel-preset-react-native": "^4.0.0",
     "babel-register": "^6.26.0",

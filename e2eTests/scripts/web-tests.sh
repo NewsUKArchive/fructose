@@ -1,10 +1,10 @@
-LOCAL=true npx fructose-tunnel
-./node_modules/.bin/webpack --config fructose/vendor.webpack.config.js
-./node_modules/.bin/rnstl --searchDir ./ --pattern 'example/web.fructose.js' --outputFile ./fructose/components.js
-./node_modules/.bin/compile-tests -d fructose
-./node_modules/.bin/fructose-web --build-dir dist/public -d fructose &
+LOCAL=true node "./packages/test-helpers/bin/createTunnel.js" 
+./node_modules/.bin/webpack --config e2eTests/fructose/vendor.webpack.config.js
+./node_modules/.bin/rnstl --searchDir ./e2eTests --pattern 'example/web.fructose.js' --outputFile ./e2eTests/fructose/components.js
+node "./packages/test-helpers/bin/writeComponentsTests.js" -d e2eTests/fructose
+node "./packages/web/bin/start" --build-dir dist/public -d $(pwd)/e2eTests/fructose &
 WEB_PID=$!
-./node_modules/.bin/jest fructose/components.test.js  --setupTestFrameworkScriptFile ./fructose/setup.web.js --verbose --forceExit
+./node_modules/.bin/jest e2eTests/fructose/components.test.js  --setupTestFrameworkScriptFile ./e2eTests/fructose/setup.web.js --verbose --forceExit
 TESTS_EXIT_CODE=$?
 kill -9 $WEB_PID
 exit $TESTS_EXIT_CODE

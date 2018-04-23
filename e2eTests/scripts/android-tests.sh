@@ -1,5 +1,5 @@
 #!/bin/bash
-LOCAL=true npx fructose-tunnel
+LOCAL=true node "./packages/test-helpers/bin/createTunnel.js" 
 emulator @fructose_device -no-boot-anim &
 EMU_PID=$!
 adb wait-for-device
@@ -7,11 +7,12 @@ adb reverse tcp:8081 tcp:8081
 adb reverse tcp:7811 tcp:7811
 adb reverse tcp:4723 tcp:4723
 echo "writing android components"
-./node_modules/.bin/rnstl --searchDir ./ --pattern 'example/android.fructose.js' --outputFile ./fructose/components.js
-./node_modules/.bin/compile-tests -d fructose
-./node_modules/.bin/react-native start --root fructose --resetCache &
+./node_modules/.bin/rnstl --searchDir ./e2eTests/ --pattern 'example/android.fructose.js' --outputFile e2eTests/fructose/components.js
+node "./packages/test-helpers/bin/writeComponentsTests.js" -d e2eTests/fructose
+./node_modules/.bin/react-native start --resetCache &
 BUNDLER_PID=$!
 ./node_modules/.bin/react-native run-android --no-packager
-./node_modules/.bin/jest fructose/components.test.js --verbose --setupTestFrameworkScriptFile ./fructose/setup.native.js --forceExit
+LOGLEVEL=verbose node_modules/.bin/jest ./e2eTests/fructose/components.test.js --verbose --setupTestFrameworkScriptFile ./e2eTests/fructose/setup.native.js --forceExit
 kill -9 $EMU_PID
 kill -9 $BUNDLER_PID
+

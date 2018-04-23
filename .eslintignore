@@ -6,3 +6,5 @@ packages/test-helpers/**/*.test.js
 **/.fructose/components.js
 **/.fructose/components.test.js
 **/e2eTests/**
+
+**/dist/*

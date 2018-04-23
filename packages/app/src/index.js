@@ -4,8 +4,8 @@ import App from "./components/app";
 import Messaging from "./messaging";
 import componentLoader from "./componentLoader";
 
-export default loadComponents => () => {
-  const components = componentLoader(loadComponents);
+export default componentsToLoad => () => {
+  const components = componentLoader(componentsToLoad);
   const componentList = Object.keys(components).map(key => key);
 
   return (

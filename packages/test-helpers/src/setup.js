@@ -4,12 +4,15 @@ import log from "../../common/logger";
 import checkIfWebStarted from "./didWebStart";
 import Snapper from "../../snapshots/snapper";
 import { disconnectClient } from "./withComponent";
+import fructoseClient from "../../client";
 
 const mobileHooks = () => {
   let server;
 
   const setup = async () => {
     server = new FructoseServer(7811);
+
+    global.fructoseClient = fructoseClient(7811);
 
     await server
       .start()

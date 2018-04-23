@@ -21,9 +21,9 @@ describe("App", () => {
     };
 
     components = {
-      component1: <View testId={1} />,
-      component2: <View testId={2} />,
-      component3: <View testId={3} />
+      component1: () => <View testId={1} />,
+      component2: () => <View testId={2} />,
+      component3: () => <View testId={3} />
     };
 
     componentList = Object.keys(components).map(key => key);

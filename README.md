@@ -3,7 +3,7 @@
 # Fructose
 ## Brought to you by The Times Tooling team  🛠
 
-Fructose is a library that enables the loading of react native and react natice web components in an app.
+Fructose is a library that enables the loading of react native and react native web components in an app.
 
 We have used this to 
 
@@ -14,7 +14,7 @@ We have used this to
 
 ## The App
 
-The Fructose app allows for the loading of arbitrary components at runtime. Once the app is started you are able to load the components in either manual or automated fashions.
+The Fructose app allows for the loading of arbitrary components at runtime. Once the app is started you are able to load the components in either manual or automated fashion.
 
 <img src="https://imgur.com/VJR5Tbz.gif">
 
@@ -41,7 +41,7 @@ From the root of the project run `yarn` and then either...
 `yarn e2e:test:android`
 
 
-You will need simulator / emulator / chrome to run these examples
+You will need a (simulator | emulator | chrome) to run these examples.
 ### Understanding
 
 In the `e2e Test` folder you will find examples of how to consume fructose.
@@ -55,16 +55,16 @@ You can see a working example of how showcase to storybook works here.
 
 [Times-Components-storybook]
 
-showcase files are then loaded into the app index via react-native-showcase-loader function
+Showcase files are then loaded into the app index via react-native-showcase-loader function.
 
 
 The test file is an example of how to load a component ready for grey or black box testing.
 
 
-Finally the fructose folder is where all of the differnt platform index's live.
+Finally the fructose folder is where all of the different platform indexes live.
 
 
-Below are examples of Ios and Web e2eTests running
+Below are examples of Ios and Web e2eTests running.
 
 
 ### React Native Web
@@ -90,7 +90,7 @@ yarn add react-native-showcase-loader --dev
 
 Create a folder `fructose` in your project root directory.
 
-Create a `index.*.js` in this folder for your platform of choice: `ios`, `android`, or `web`.
+Create an `index.*.js` in this folder for your platform of choice: `ios`, `android`, or `web`.
 
 Register the component to the name that your app binary expects. 
 
@@ -105,7 +105,7 @@ See the examples below.
 ## Writing tests
 
 
-In a before hook import setup from fructose and run 
+In a before hook import setup from fructose and run.
 
 ```
 fructose.hooks.mobile.setup();

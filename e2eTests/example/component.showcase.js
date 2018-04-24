@@ -55,7 +55,7 @@ const Break = props => {
 };
 
 export default {
-  name: "Native-ExampleTests",
+  name: "ExampleTests",
   children: [
     {
       type: "story",

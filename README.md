@@ -14,11 +14,11 @@ We have used this to
 
 ## The App
 
-The Fructose app allows for the loading of arbritory components at runtime. Once started you are able to load the abritory components in both manaul and automated fashions and do as you please.
+The Fructose app allows for the loading of arbritory components at runtime. Once started you are able to load the abritory components in either manual or automated fashions.
 
 <img src="https://imgur.com/VJR5Tbz.gif">
 
-Manual loading of components shown above
+Swipe right to manually load a component (shown above)
 
 
 ## Getting Started
@@ -32,7 +32,7 @@ The best way to understand how fructose works is to run the end to end tests.
 
 
 ### Running
-From the root of the project run `yarn` and then...
+From the root of the project run `yarn` and then either...
 
 `yarn e2e:test:web`
 
@@ -56,17 +56,24 @@ You can see a working example of how showcase to storybook works here.
 [Times-Components-storybook]
 
 
-Finally the fructose folder is where all of the differnt platform index's
+The test file is an example of how to load a component ready for grey or black box testing.
+
+
+Finally the fructose folder is where all of the differnt platform index's live.
 
 
 Below are examples of Ios and Web e2eTests running
 
+
+### React Native Web
 [![web fructose](https://imgur.com/Kp75645.gif)](https://imgur.com/Kp75645)
+
+### React Native IOS
 [![ios fructose](https://imgur.com/66zjgr8.gif)](https://imgur.com/66zjgr8)
 
 (The red screen is expected as we're catching a component that errors)
 
-(Yes the tests are asserting that quick)
+(Yes the tests are asserting that quick as they are testing that events are emitted)
 
 # Consuming Fructose
 
@@ -83,11 +90,9 @@ Create a folder `fructose` in your project root directory.
 
 Create a `index.*.js` in this folder for your platform of choice: `ios`, `android`, or `web`.
 
-These files will load the components to be tested into the Fructose app.
-
 Register the component to the name that your app binary expects. 
 
-Use react native showcase loader to require in your showcase files.
+Use react native showcase loader function to require in your showcase files.
 
 See the examples below.
 
@@ -108,14 +113,13 @@ fructose.hooks.web.setup();
 [Ios setup Example](e2eTests/fructose/setup.native.js)
 
 
-
 Once the promise resolves you will have access to a global fructoseClient. Use this client to tell your app to load components defined in your showcase files.
 
 ```
 global.fructoseClient.loadComponent('your component name')
 ```
 
-Your component is now ready for interigration by your testing library of your choice.
+Your component is now ready for interrogation by the testing library of your choice.
 We have used both [appium] and [detox] 
 
 

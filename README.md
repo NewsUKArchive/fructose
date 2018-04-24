@@ -16,8 +16,8 @@ We have used this to
 
 The Fructose app allows for the loading of arbritory components at runtime. Once started you are able to load the abritory components in both manaul and automated fashions and do as you please.
 
+<img src="https://imgur.com/VJR5Tbz.gif">
 
-[![Fructose Interactions](https://imgur.com/VJR5Tbz)](https://imgur.com/VJR5Tbz)
 Manual loading of components shown above
 
 
@@ -61,8 +61,8 @@ Finally the fructose folder is where all of the differnt platform index's
 
 Below are examples of Ios and Web e2eTests running
 
-[![web fructose](https://imgur.com/Kp75645)](https://imgur.com/Kp75645)
-[![ios fructose](https://imgur.com/66zjgr8)](https://imgur.com/66zjgr8)
+[![web fructose](https://imgur.com/Kp75645.gif)](https://imgur.com/Kp75645)
+[![ios fructose](https://imgur.com/66zjgr8.gif)](https://imgur.com/66zjgr8)
 
 (The red screen is expected as we're catching a component that errors)
 

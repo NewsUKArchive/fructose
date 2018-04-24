@@ -20,7 +20,7 @@ describe("Web example tests", () => {
   };
 
   it("loads all expected components ", async () => {
-    expect.assertions(8);
+    expect.assertions(showcases.children.length);
 
     new Chromeless()
       .goto("http://localhost:3000")

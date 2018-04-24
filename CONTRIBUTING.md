@@ -1,20 +1,3 @@
-
-
-## Running the example end to end tests  🏃
-
-In order to run the examples, it is assumed that you have the latest version of (XCode | Android studio | Chrome Browser) installed for (iOS | Android | Web).
-
-- `yarn` in project root to install project dependencies.
-- Follow steps 1-4 of [Detox] getting started for native.
-- `yarn` in the e2e directory.
-- `react-native (run-ios | run-android)` in the e2e directory.
-
-You should now be in a position to run 
-one of the following.
-
-- `yarn test:(ios|android|web)`
-
-
 ## Submitting an Issue  
 
 Before you submit your issue please search the issue archive

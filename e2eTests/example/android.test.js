@@ -7,7 +7,7 @@ describe("Android example tests", () => {
   });
 
   it("loads all expected components ", async () => {
-    expect.assertions(8);
+    expect.assertions(showcases.children.length);
 
     for (let i = 0; i < showcases.children.length; i++) {
       const result = await global.fructoseClient.loadComponent(

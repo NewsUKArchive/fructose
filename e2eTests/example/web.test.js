@@ -1,14 +1,7 @@
-import { fructoseClient } from "../../packages/client";
 import io from "socket.io-client";
+import showcases from "./web.showcase";
 
 describe("Web example tests", () => {
-  let client;
-  let chromeless;
-
-  const setup = () => {
-    chromeless = new Chromeless();
-  };
-
   const deviceReady = () => {
     const config = {
       transports: ["websocket"],
@@ -26,15 +19,21 @@ describe("Web example tests", () => {
     });
   };
 
-  beforeAll(() => {
-    client = fructoseClient(7811);
-    console.log(client);
-  });
+  it("loads all expected components ", async () => {
+    expect.assertions(2);
 
-  beforeEach(() => setup);
+    new Chromeless()
+      .goto("http://localhost:3000")
+      .exists("[data-testid='fructose']");
 
-  it("works", async () => {
     await deviceReady();
-    await client.loadComponent("Web-ExampleTests/Article Label");
+
+    for (let i = 0; i < showcases.children.length; i++) {
+      const result = await global.fructoseClient.loadComponent(
+        `${showcases.name}/${showcases.children[i].name}`
+      );
+
+      expect(result).toBe("component loaded");
+    }
   });
 });

@@ -44,6 +44,7 @@ const webHooks = () => {
         "App did not start. Run 'fructose-web --build-dir path/to/dir' first"
       );
     }
+    global.fructoseClient = fructoseClient(7811);
     server = new FructoseServer(7811);
     await server.start();
   };

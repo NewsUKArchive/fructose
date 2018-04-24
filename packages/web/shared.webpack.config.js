@@ -5,22 +5,22 @@ const webpack = require("webpack");
 
 module.exports = {
   productionPlugins: [
-    new webpack.optimize.AggressiveMergingPlugin()
-    // new webpack.optimize.UglifyJsPlugin({
-    //   mangle: false,
-    //   compress: {
-    //     warnings: false, // Suppress uglification warnings
-    //     pure_getters: true,
-    //     unsafe: true,
-    //     unsafe_comps: true,
-    //     screw_ie8: true
-    //   },
-    //   output: {
-    //     comments: false
-    //   },
-    //   sourceMap: false,
-    //   exclude: [/\.min\.js$/gi] // skip pre-minified libs
-    // })
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: false,
+      compress: {
+        warnings: false, // Suppress uglification warnings
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        screw_ie8: true
+      },
+      output: {
+        comments: false
+      },
+      sourceMap: false,
+      exclude: [/\.min\.js$/gi] // skip pre-minified libs
+    })
   ],
 
   loaders: [

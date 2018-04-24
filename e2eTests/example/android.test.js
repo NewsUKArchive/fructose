@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 import showcases from "./component.showcase";
 
-describe("IOS example tests", () => {
+describe("Android example tests", () => {
   afterAll(() => {
     global.fructoseClient.socket.disconnect();
   });

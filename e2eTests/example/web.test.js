@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import showcases from "./web.showcase";
+import showcases from "./component.showcase";
 
 describe("Web example tests", () => {
   const deviceReady = () => {
@@ -20,7 +20,7 @@ describe("Web example tests", () => {
   };
 
   it("loads all expected components ", async () => {
-    expect.assertions(2);
+    expect.assertions(8);
 
     new Chromeless()
       .goto("http://localhost:3000")

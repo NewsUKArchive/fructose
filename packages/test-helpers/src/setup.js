@@ -3,22 +3,37 @@ import { FructoseServer } from "../../server";
 import log from "../../common/logger";
 import checkIfWebStarted from "./didWebStart";
 import Snapper from "../../snapshots/snapper";
-import { disconnectClient } from "./withComponent";
 import fructoseClient from "../../client";
 
+const fructosePort = 7811;
+let server;
+let client;
+
+const disconnectClient = () =>
+  new Promise(resolve => {
+    if (typeof client === "undefined") {
+      resolve();
+    } else {
+      client.socket.disconnect();
+      resolve();
+    }
+  });
+
 const mobileHooks = () => {
-  let server;
-
   const setup = async () => {
-    server = new FructoseServer(7811);
-
-    global.fructoseClient = fructoseClient(7811);
+    server = new FructoseServer(fructosePort);
 
     await server
       .start()
       .then(() =>
-        log.verbose("setup", `fructose server started on port : 7811`)
+        log.verbose(
+          "setup",
+          `fructose server started on port : ${fructosePort}`
+        )
       );
+
+    client = fructoseClient(fructosePort);
+    return client;
   };
 
   const cleanup = async () => {
@@ -35,8 +50,6 @@ const mobileHooks = () => {
 };
 
 const webHooks = () => {
-  let server;
-
   const setup = async (port, timeout) => {
     const appStarted = await checkIfWebStarted(port, timeout);
     if (!appStarted) {
@@ -44,9 +57,12 @@ const webHooks = () => {
         "App did not start. Run 'fructose-web --build-dir path/to/dir' first"
       );
     }
-    global.fructoseClient = fructoseClient(7811);
-    server = new FructoseServer(7811);
+    server = new FructoseServer(fructosePort);
+
     await server.start();
+
+    client = fructoseClient(fructosePort);
+    return client;
   };
 
   const cleanup = async () => {

@@ -15,7 +15,7 @@ We have used this to
   <img src="https://imgur.com/VJR5Tbz.gif">
 </p>
 
-<center>Swipe right to see the component list and manually load a component (shown above)</center>
+<p align="center">Swipe right to see the component list and manually load a component </p>
 
 # Overview
 
@@ -81,22 +81,23 @@ Finally, the fructose folder is where all of the different platform indexes live
 Below are examples of iOS and Web e2eTests running and asserting the the app emits that the component has loaded:
 
 
-### <center> React Native Web</center>
-<p align="center">
+### <p align="center"> React Native Web
+
+  <p align="center">
   <img src="https://imgur.com/Kp75645.gif">
 </p>
 
 
-### <center>React Native IOS</center>
+### <p align="center"> React Native IOS
 <p align="center">
   <img src="https://imgur.com/66zjgr8.gif">
 </p>
 
-<center>
+<p align="center">
 (The red screen is expected as we're catching a component that errors)
 
 (Yes the tests are asserting that quick)
-</center>
+</p>
 
 # Consuming Fructose
 

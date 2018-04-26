@@ -11,7 +11,7 @@ echo "writing android components"
 ./node_modules/.bin/react-native start --resetCache &
 BUNDLER_PID=$!
 ./node_modules/.bin/react-native run-android --no-packager
-LOGLEVEL=verbose node_modules/.bin/jest ./e2eTests/example/android.test.js --verbose --setupTestFrameworkScriptFile ./e2eTests/fructose/setup.native.js  --forceExit
+LOGLEVEL=verbose node_modules/.bin/jest ./e2eTests/example/android.test.js --verbose  --forceExit
 kill -9 $EMU_PID
 kill -9 $BUNDLER_PID
 

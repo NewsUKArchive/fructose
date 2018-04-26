@@ -1,10 +1,11 @@
 import io from "socket.io-client";
 import showcases from "./component.showcase";
+import { setup, teardown } from "./setup.native.hooks";
 
 describe("Android example tests", () => {
-  afterAll(() => {
-    global.fructoseClient.socket.disconnect();
-  });
+  beforeAll(async () => {
+    fructoseClient = await setup();
+  }, 18000);
 
   it("loads all expected components ", async () => {
     expect.assertions(showcases.children.length);
@@ -15,5 +16,9 @@ describe("Android example tests", () => {
       );
       expect(result).toBe("component loaded");
     }
+  });
+
+  afterAll(() => {
+    teardown();
   });
 });

@@ -26,7 +26,6 @@ describe("Web example tests", () => {
   beforeAll(async () => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
     fructoseClient = await fructose.hooks.web.setup(3000, 60000);
-    console.log(fructoseClient.loadComponent);
   }, 60000);
 
   it("loads all expected components ", async () => {

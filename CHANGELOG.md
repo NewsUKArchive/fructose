@@ -1,3 +1,13 @@
+<a name="3.3.0"></a>
+# [3.3.0](https://github.com/newsuk/fructose/compare/v3.2.3...v3.3.0) (2018-04-26)
+
+
+### Features
+
+* Remove e2e tests circular dependancy  ([#108](https://github.com/newsuk/fructose/issues/108)) ([123b12c](https://github.com/newsuk/fructose/commit/123b12c))
+
+
+
 <a name="3.2.3"></a>
 ## [3.2.3](https://github.com/newsuk/fructose/compare/v3.2.2...v3.2.3) (2018-03-09)
 

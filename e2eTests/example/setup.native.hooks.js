@@ -1,4 +1,4 @@
-/* globals beforeAll jasmine afterAll */
+/* globals jasmine */
 import fructose from "../../setup";
 import io from "socket.io-client";
 
@@ -19,12 +19,13 @@ const deviceReady = () => {
   });
 };
 
-beforeAll(async () => {
+export const setup = async () => {
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 500;
-  await fructose.hooks.mobile.setup();
+  const fructoseClient = await fructose.hooks.mobile.setup();
   await deviceReady();
-}, 180000);
+  return fructoseClient;
+};
 
-afterAll(async () => {
+export const teardown = async () => {
   await fructose.hooks.mobile.cleanup();
-});
+};

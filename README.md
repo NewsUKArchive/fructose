@@ -1,146 +1,151 @@
 
 [![Build Status](https://www.bitrise.io/app/3038aa161f140118/status.svg?token=xtX-Hi2JSI7S3zQIGHI0EQ&branch=master)](https://www.bitrise.io/app/3038aa161f140118)
 # Fructose
+## Brought to you by The Times Tooling team  🛠
 
-Fructose is a library that enables automated functional testing of react-native (and react-native-web) components. 
+Fructose is a library that enables the loading of react native and react native web components on a device.
 
-It is inspired by the storybook approach which lets you load in components for manual testing.
+We have used this to 
 
-## Overview
+ - Enable automated functional black and grey box testing of components. 
+ - Enable automated visual regression of components with [Dextrose]
 
-Fructose has 2 main parts to it.
-  - The app
-  - The test api
 
-You need to use both parts to create and run a fructose test.
+<p align="center">
+  <img src="https://imgur.com/VJR5Tbz.gif">
+</p>
 
-The app contains all the components under test and a mechanism to load them from a client.
+<p align="center">Swipe right to see the component list and manually load a component </p>
 
-The test api enables you to easily load components into the app from a test.
+# Overview
 
-To interact with the component under test you must use a tool such as [detox], [chromeless] or [appium].
+Fructose has 3 components:
+## The App
 
-## Getting Started
+The Fructose app allows for the loading of arbitrary components at runtime. Once the app is started you are able to load the components in either manual or automated fashions.
 
-### Install
+## The Server
+
+The fructose server is how we proxy commands from the client to the app via websockets.
+
+
+## The Client
+
+The fructose client is how we communicate to the server via websockets
+
+
+# Getting Started
+
+We are actively working on this to become easier. 
+
+
+## Running and understanding the examples
+
+
+The best way to see what fructose does is to run the end to end tests.
+
+
+### Running
+From the root of the project run `yarn` and then either...
+
+`yarn e2e:test:web`
+
+`yarn e2e:test:ios`
+
+`yarn e2e:test:android`
+
+
+You will need a (simulator | emulator | chrome) to run these examples.
+### Understanding the examples
+
+In the `e2e Test` folder you will find examples of how to consume fructose.
+We suggest first looking at the `scripts` folder to understand the steps required for running tests with Fructose.
+
+Then look at the `examples` folder. 
+
+The `.showcase` file is a description of how a component should be rendered.
+`Showcase` files came around because originally fructose consumed `storybook` files. This eventually resulted in numerous issues so we created an abstraction layer which decouples components from storybook.
+You can see a working example of how showcase to storybook works here.
+
+[Times-Components-storybook]
+
+Showcase files are then loaded into the app index via react-native-showcase-loader function.
+
+
+The test file is an example of how to load a component ready for grey or black box testing.
+
+
+Finally, the fructose folder is where all of the different platform indexes live.
+
+
+Below are examples of iOS and Web e2eTests running and asserting the the app emits that the component has loaded:
+
+
+### <p align="center"> React Native Web
+
+  <p align="center">
+  <img src="https://imgur.com/Kp75645.gif">
+</p>
+
+
+### <p align="center"> React Native IOS
+<p align="center">
+  <img src="https://imgur.com/66zjgr8.gif">
+</p>
+
+<p align="center">
+(The red screen is expected as we're catching a component that errors)
+
+(Yes the tests are asserting that quick)
+</p>
+
+# Consuming Fructose
+
+
+From your project
 
 ```
-yarn add fructose --dev
-yarn add react-native-storybook-loader --dev
+yarn add @times-components/fructose --dev
+yarn add react-native-showcase-loader --dev
 ```
 
-### Set up the app
 
-Create a folder `.fructose` in your project root directory.
+Create a folder `fructose` in your project root directory.
 
-Create a `index.*.js` in this folder for your platform of choice: `ios`, `android`, or `web`.
+Create an `index.*.js` in this folder for your platform of choice: `ios`, `android`, or `web`.
 
-These files will load the components to be tested into the Fructose app.
+Register the component to the name that your app binary expects. 
 
-Register the component to the name that your app binary expects.
+Use react native showcase loader function to require in your showcase files.
 
-```
-import { AppRegistry } from "react-native";
-import Fructose from "fructose";
-import { loadStories } from './components';
+See the examples below:
 
-AppRegistry.registerComponent("e2eTests", () => Fructose(loadStories));
-```
+[Ios Index Example](e2eTests/fructose/index.ios.js)
 
-We recommend looking at the examples for [web](./e2eTests/.fructose/index.web.js) and [native](./e2eTests/.fructose/index.ios.js) as there are slight differences.
-
-### Set up the tests
-
-Add a setup file in `.fructose`. This is a file that should run once before any of your tests run.
-
-In the below examples we will provide example config for jest. If you use a different test runner then you can do the equivalent for that runner.
-
-In this file you will need to run test hooks.
-
-As a minimum you will need to do the following for mobile:
-
-```
-import fructose from "@times-components/fructose/setup";
-
-beforeAll( async () => {
-  await fructose.hooks.mobile.setup();
-});
-
-afterAll( async () => {
-  await fructose.hooks.mobile.cleanup();
-});
-```
-And for web:
-```
-import fructose from "@times-components/fructose/setup";
-
-beforeAll( async () => {
-  await fructose.hooks.web.setup();
-});
-
-afterAll( async () => {
-  await fructose.hooks.mobile.cleanup();
-});
-```
-
-You will need to run this setup file at the beginning of your test run. For example, if you are using jest add this to your package.json:
-```
-"jest": {
-  "setupTestFrameworkScriptFile": "./.fructose/setup.js"
-}
-```
-
-The exact structure will depend on the test runner you are using and the platform you are targetting.
-
-Check out the [example setup file](./e2eTests/.fructose/jest-setup.js) if you require more detail.
-
-
-### Create the pretest hooks
-
-Add the following to your package.json:
-
-```
-"scripts": {
-  "fructose-app": "react-native start --root .fructose --resetCache",
-  "fructose-web": "start-web --build-dir your/build-dir"
-  "compile-components": "rnstl --searchDir ./ --pattern '**/*.fructose.js' --outputFile ./.fructose/components.js",
-  "write-test-components": "yarn compile-components  && compile-tests"
-}
-```
+[Run Ios Tests.sh Example](e2eTests/scripts/ios-tests.sh)
 
 ## Writing tests
 
-Your test files should include the platform and be named to match the following glob:
 
-  - `*.fructose.@(web|ios|android).js`.
-
-There are examples [here](packages/e2eTests/example).
-
-The `fructose.hooks.web.setup()` function exposes a global `withComponent` function. It enables the test api to load up a component in the fructose app.
+In a before, hook import setup from fructose and await on.
 
 ```
-withComponent(
-  <Text fructoseID="hobbit">The Hobbit</Text>, // --#1--
-  "renders basic text", // --#2--
-  fructose => { // --#3--
-    beforeEach(async () => {
-      await fructose.loadComponent();
-    });
+fructose.hooks.mobile.setup();
+fructose.hooks.web.setup();
+```
 
-    test("simple test", async () => {
-        await expect(element(by.text(`The Hobbit`))).toBeVisible();
-    });
-  }
-);
+[Ios setup Example](e2eTests/fructose/setup.native.js)
+
+
+Once the setup promise resolves a `fructoseClient`. Use this client to tell your app to load components defined in your showcase files.
 
 ```
-The first argument to the function is a React Component. This component must have a unique fructoseID prop so that it can be loaded into the fructose app from the tests.
+fructoseClient.loadComponent('your component name')
+```
 
-The second argument is a description.
+Your component is now ready for interrogation by the testing library of your choice.
+We have used both successfully [appium] and [detox] 
 
-The third argument is a callback that contains tests for the component. In our example we are using [jest] test methods, and [detox] as the driver.
-
-For visual regression testing you have the ability to call `fructose.snapshotTest(platform, componentID);` inside your tests (only tested with iOS so far, though the ability for android exists).
 
 ## Notes 
 
@@ -155,7 +160,6 @@ We currently have Fructose running in a CI environment with...
 ## Future
   
   1. Fructose cli to initialise and run tests
-  1. More mature VRT service
   
 [jest]: https://facebook.github.io/jest
 [chromeless]: https://github.com/graphcool/chromeless
@@ -165,3 +169,5 @@ We currently have Fructose running in a CI environment with...
 [actions]: https://github.com/wix/detox/blob/master/docs/APIRef.ActionsOnElement.md
 [expect]: https://github.com/wix/detox/blob/master/docs/APIRef.Expect.md
 [appium]: http://appium.io/
+[times-components-storybook]: https://github.com/newsuk/times-components/tree/master/packages/storybook
+[Dextrose]: https://github.com/newsuk/dextrose

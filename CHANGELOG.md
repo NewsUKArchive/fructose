@@ -1,3 +1,13 @@
+<a name="3.2.4"></a>
+## [3.2.4](https://github.com/newsuk/fructose/compare/v3.3.0...v3.2.4) (2018-04-26)
+
+
+### Bug Fixes
+
+* correcting peer dependancies ([#112](https://github.com/newsuk/fructose/issues/112)) ([a16e957](https://github.com/newsuk/fructose/commit/a16e957))
+
+
+
 <a name="3.3.0"></a>
 # [3.3.0](https://github.com/newsuk/fructose/compare/v3.2.3...v3.3.0) (2018-04-26)
 

@@ -22,11 +22,3 @@ else
   echo "IOS TESTS FAILED"
   exit 1
 fi
-
-if  yarn e2e:test:android ; then
-  echo "Andorid TESTS PASSED"
-else
-  echo "Android TESTS FAILED"
-  exit 1
-fi
-

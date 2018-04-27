@@ -40,6 +40,7 @@ class FructoseClient {
 
   disconnect() {
     this.socket.disconnect();
+    log.info("fructose client", "client terminated");
   }
 }
 

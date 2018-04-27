@@ -8,8 +8,8 @@ class FructoseClient {
   waitForApp() {
     return new Promise(resolve => {
       log.verbose("fructose Client", "waitng for app to boot");
-      this.socket.on("fructose-app-loaded", () => {
-        log.info("fructose Client", "App Loaded 💯");
+      this.socket.on("fructose-app-ready", () => {
+        log.info("fructose Client", "fructose app Loaded 💯");
         resolve(true);
       });
     });
@@ -20,7 +20,7 @@ class FructoseClient {
       this.socket.on("bundled-components", componentList => {
         resolve(componentList);
       });
-      log.verbose("fructose Client", "emitting get app components");
+      log.verbose("fructose Client", "getting loaded app components");
       this.socket.emit("getAppComponents");
     });
   }
@@ -28,15 +28,12 @@ class FructoseClient {
   loadComponent(component) {
     return new Promise(resolve => {
       this.socket.on("loaded", () => {
-        log.verbose("client", `tests recieved component loaded" ${component}`);
+        log.info("fructose client", `component loaded: ${component}`);
         this.socket.removeListener("loaded");
-        resolve("component-loaded");
+        resolve("component loaded");
       });
 
-      log.verbose(
-        "client",
-        `tests emitting 'loadComponent' with : ${component}`
-      );
+      log.info("fructose client", `loading component: ${component}`);
       this.socket.emit("loadComponent", component);
     });
   }

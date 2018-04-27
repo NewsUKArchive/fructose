@@ -41,20 +41,17 @@ describe("FructoseServer", () => {
     });
   });
 
-  it("forwards the fructose-app-loaded message", done => {
-    const conf = {
-      transports: ["websocket"],
-      query: {
-        clientType: "app"
-      }
-    };
-    setUp(conf).then(() => {
+  it("forwards the fructose-app-ready message", done => {
+    setUp(socketConfig).then(() => {
       let messagesReceived = 0;
-      socket.on("fructose-app-loaded", () => {
+
+      socket.on("fructose-app-ready", () => {
         messagesReceived += 1;
         expect(messagesReceived).toBe(1);
         done();
       });
+
+      socket.emit("fructose-app-ready");
     });
   });
 

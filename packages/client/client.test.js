@@ -27,7 +27,7 @@ describe("Fructose Client", () => {
   it("waits for the app to load", () =>
     new Promise(resolve => {
       io.on("connection", () => {
-        io.emit("fructose-app-loaded");
+        io.emit("fructose-app-ready");
       });
 
       server.listen(0, async () => {
@@ -54,7 +54,7 @@ describe("Fructose Client", () => {
         socketClient = SocketClient(`http://localhost:${port}`);
         fructose = new Client(socketClient);
         expect(fructose.loadComponent("component"))
-          .resolves.toBe("component-loaded")
+          .resolves.toBe("component loaded")
           .then(resolve);
       });
     }));

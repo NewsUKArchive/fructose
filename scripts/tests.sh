@@ -12,14 +12,13 @@ fi
 if  yarn e2e:test:web ; then
   echo "WEB TESTS PASSED"
 else
-  echo "E2E TESTS FAILED"
+  echo "WEB TESTS FAILED"
   exit 1
 fi
 
 if  yarn e2e:test:ios ; then
   echo "IOS TESTS PASSED"
 else
-  echo "E2E TESTS FAILED"
+  echo "IOS TESTS FAILED"
   exit 1
 fi
-

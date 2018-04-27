@@ -9,16 +9,6 @@ const fructosePort = 7811;
 let server;
 let client;
 
-const disconnectClient = () =>
-  new Promise(resolve => {
-    if (typeof client === "undefined") {
-      resolve();
-    } else {
-      client.socket.disconnect();
-      resolve();
-    }
-  });
-
 const mobileHooks = () => {
   const setup = async () => {
     server = new FructoseServer(fructosePort);
@@ -33,11 +23,12 @@ const mobileHooks = () => {
       );
 
     client = fructoseClient(fructosePort);
+    client.waitForApp();
     return client;
   };
 
-  const cleanup = async () => {
-    await disconnectClient();
+  const cleanup = () => {
+    client.disconnect();
     server.close();
   };
 
@@ -62,11 +53,12 @@ const webHooks = () => {
     await server.start();
 
     client = fructoseClient(fructosePort);
+    client.waitForApp();
     return client;
   };
 
-  const cleanup = async () => {
-    await disconnectClient();
+  const cleanup = () => {
+    client.disconnect();
     server.close();
   };
 

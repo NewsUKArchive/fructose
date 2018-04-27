@@ -1,4 +1,4 @@
-/* globals withComponent device test expect element by afterEach beforeEach */
+/* globals device test expect element by afterEach beforeEach */
 
 import React from "react";
 import { StyleSheet, Text } from "react-native";

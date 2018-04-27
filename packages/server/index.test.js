@@ -43,11 +43,7 @@ describe("FructoseServer", () => {
 
   it("forwards the fructose-app-ready message", done => {
     setUp(socketConfig).then(() => {
-      let messagesReceived = 0;
-
       socket.on("fructose-app-ready", () => {
-        messagesReceived += 1;
-        expect(messagesReceived).toBe(1);
         done();
       });
 
@@ -57,11 +53,7 @@ describe("FructoseServer", () => {
 
   it("forwards the loadedOnDevice message", done => {
     setUp(socketConfig).then(() => {
-      let messagesReceived = 0;
-
       socket.on("loaded", () => {
-        messagesReceived += 1;
-        expect(messagesReceived).toBe(1);
         done();
       });
 

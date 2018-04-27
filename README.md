@@ -3,7 +3,7 @@
 # Fructose
 ## Brought to you by The Times Tooling team  🛠
 
-Fructose is a library that enables the loading of react native and react native web components on a device.
+Fructose is a testing library that enables the loading of react native and react native web components on a device.
 
 We have used this to 
 
@@ -78,7 +78,7 @@ The test file is an example of how to load a component ready for grey or black b
 Finally, the fructose folder is where all of the different platform indexes live.
 
 
-Below are examples of iOS and Web e2eTests running and asserting the the app emits that the component has loaded:
+Below are examples of iOS and Web e2eTests running and asserting that the app emits the component has loaded:
 
 
 ### <p align="center"> React Native Web
@@ -95,7 +95,7 @@ Below are examples of iOS and Web e2eTests running and asserting the the app emi
 
 <p align="center">
 (The red screen is expected as we're catching a component that errors)
-
+<p align="center">
 (Yes the tests are asserting that quick)
 </p>
 

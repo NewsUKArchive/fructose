@@ -7,10 +7,10 @@ class FructoseClient {
 
   waitForApp() {
     return new Promise(resolve => {
-      log.verbose("fructose Client", "waitng for app to boot");
+      log.verbose("fructose Client", "waiting for app to boot");
       this.socket.on("fructose-app-ready", () => {
         log.info("fructose Client", "fructose app Loaded 💯");
-        resolve(true);
+        resolve();
       });
     });
   }

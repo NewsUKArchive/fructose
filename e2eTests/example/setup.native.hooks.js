@@ -20,7 +20,7 @@ const deviceReady = () => {
 };
 
 export const setup = async () => {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 500;
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 25000;
   const fructoseClient = await fructose.hooks.mobile.setup();
   await deviceReady();
   return fructoseClient;

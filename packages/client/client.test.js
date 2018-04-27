@@ -1,35 +1,50 @@
-/* globals describe it  afterAll expect */
-
+/* globals describe it expect beforeAll afterEach */
 const Client = require("./client");
 const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
 const SocketClient = require("socket.io-client");
 
-describe("FructoseClient", () => {
+describe("Fructose Client", () => {
   let app;
   let socketClient;
-  let client;
+  let fructose;
   let server;
   let io;
 
-  afterAll(() => {
-    client.disconnect();
+  beforeAll(() => {
+    app = express();
+    server = http.Server(app);
+    io = socketio(server);
+  });
+
+  afterEach(() => {
+    fructose.disconnect();
     io.close();
     server.close();
   });
 
-  it(
-    "e2e test",
-    done => {
-      app = express();
-      server = http.Server(app);
-      io = socketio(server);
+  it("waits for the app to load", () =>
+    new Promise(resolve => {
+      io.on("connection", () => {
+        io.emit("fructose-app-ready");
+      });
 
+      server.listen(0, async () => {
+        const { port } = server.address();
+        socketClient = SocketClient(`http://localhost:${port}`);
+        fructose = new Client(socketClient);
+        await expect(fructose.waitForApp())
+          .resolves.toBe(true)
+          .then(resolve);
+      });
+    }));
+
+  it("can load a component", () =>
+    new Promise(resolve => {
       io.on("connection", socket => {
-        socket.on("loadComponent", (x, y) => {
-          expect(x).toBe(1);
-          expect(y).toBe(2);
+        socket.on("loadComponent", x => {
+          expect(x).toBe("component");
           io.emit("loaded");
         });
       });
@@ -37,12 +52,30 @@ describe("FructoseClient", () => {
       server.listen(0, () => {
         const { port } = server.address();
         socketClient = SocketClient(`http://localhost:${port}`);
-        client = new Client(socketClient);
-        expect(client.loadComponent(1, 2))
+        fructose = new Client(socketClient);
+        expect(fructose.loadComponent("component"))
           .resolves.toBe("component loaded")
-          .then(done);
+          .then(resolve);
       });
-    },
-    1000
-  );
+    }));
+
+  it("returns a list of components loaded in the app", () =>
+    new Promise(resolve => {
+      const componentList = ["a", "b", "c"];
+
+      io.on("connection", socket => {
+        socket.on("getAppComponents", () => {
+          io.emit("bundled-components", componentList);
+        });
+      });
+
+      server.listen(0, () => {
+        const { port } = server.address();
+        socketClient = SocketClient(`http://localhost:${port}`);
+        fructose = new Client(socketClient);
+        expect(fructose.getLoadedComponents())
+          .resolves.toMatchObject(componentList)
+          .then(resolve);
+      });
+    }));
 });

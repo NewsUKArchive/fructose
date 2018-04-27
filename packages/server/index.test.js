@@ -41,30 +41,19 @@ describe("FructoseServer", () => {
     });
   });
 
-  it("forwards the fructose-app-loaded message", done => {
-    const conf = {
-      transports: ["websocket"],
-      query: {
-        clientType: "app"
-      }
-    };
-    setUp(conf).then(() => {
-      let messagesReceived = 0;
-      socket.on("fructose-app-loaded", () => {
-        messagesReceived += 1;
-        expect(messagesReceived).toBe(1);
+  it("forwards the fructose-app-ready message", done => {
+    setUp(socketConfig).then(() => {
+      socket.on("fructose-app-ready", () => {
         done();
       });
+
+      socket.emit("fructose-app-ready");
     });
   });
 
   it("forwards the loadedOnDevice message", done => {
     setUp(socketConfig).then(() => {
-      let messagesReceived = 0;
-
       socket.on("loaded", () => {
-        messagesReceived += 1;
-        expect(messagesReceived).toBe(1);
         done();
       });
 
@@ -75,11 +64,7 @@ describe("FructoseServer", () => {
   it("forwards the get-app-components", () =>
     new Promise(resolve => {
       setUp(socketConfig).then(() => {
-        let messagesReceived = 0;
-
         socket.on("get-app-components", () => {
-          messagesReceived += 1;
-          expect(messagesReceived).toBe(1);
           resolve();
         });
 
@@ -90,10 +75,7 @@ describe("FructoseServer", () => {
   it("forwards the bundled-components", () =>
     new Promise(resolve => {
       setUp(socketConfig).then(() => {
-        let messagesReceived = 0;
         socket.on("bundled-components", () => {
-          messagesReceived += 1;
-          expect(messagesReceived).toBe(1);
           resolve();
         });
 

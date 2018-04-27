@@ -1,3 +1,18 @@
+<a name="3.5.0"></a>
+# [3.5.0](https://github.com/newsuk/fructose/compare/v3.2.4...v3.5.0) (2018-04-27)
+
+
+### Bug Fixes
+
+* html webpack pluging as dependancy ([#114](https://github.com/newsuk/fructose/issues/114)) ([f124018](https://github.com/newsuk/fructose/commit/f124018))
+
+
+### Features
+
+* Update client & remove with component ([#115](https://github.com/newsuk/fructose/issues/115)) ([d4b48c3](https://github.com/newsuk/fructose/commit/d4b48c3))
+
+
+
 <a name="3.2.4"></a>
 ## [3.2.4](https://github.com/newsuk/fructose/compare/v3.3.0...v3.2.4) (2018-04-26)
 

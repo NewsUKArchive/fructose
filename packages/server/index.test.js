@@ -72,11 +72,7 @@ describe("FructoseServer", () => {
   it("forwards the get-app-components", () =>
     new Promise(resolve => {
       setUp(socketConfig).then(() => {
-        let messagesReceived = 0;
-
         socket.on("get-app-components", () => {
-          messagesReceived += 1;
-          expect(messagesReceived).toBe(1);
           resolve();
         });
 
@@ -87,10 +83,7 @@ describe("FructoseServer", () => {
   it("forwards the bundled-components", () =>
     new Promise(resolve => {
       setUp(socketConfig).then(() => {
-        let messagesReceived = 0;
         socket.on("bundled-components", () => {
-          messagesReceived += 1;
-          expect(messagesReceived).toBe(1);
           resolve();
         });
 

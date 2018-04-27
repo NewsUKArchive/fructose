@@ -49,7 +49,7 @@ describe("Fructose Client", () => {
         });
       });
 
-      server.listen(0, async () => {
+      server.listen(0, () => {
         const { port } = server.address();
         socketClient = SocketClient(`http://localhost:${port}`);
         fructose = new Client(socketClient);
@@ -69,7 +69,7 @@ describe("Fructose Client", () => {
         });
       });
 
-      server.listen(0, async () => {
+      server.listen(0, () => {
         const { port } = server.address();
         socketClient = SocketClient(`http://localhost:${port}`);
         fructose = new Client(socketClient);

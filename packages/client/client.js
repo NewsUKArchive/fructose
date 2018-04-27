@@ -10,7 +10,7 @@ class FructoseClient {
       log.verbose("fructose Client", "waiting for app to boot");
       this.socket.on("fructose-app-ready", () => {
         log.info("fructose Client", "fructose app Loaded 💯");
-        resolve();
+        resolve(true);
       });
     });
   }

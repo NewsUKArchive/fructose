@@ -1,3 +1,13 @@
+<a name="3.5.1"></a>
+## [3.5.1](https://github.com/newsuk/fructose/compare/v3.5.0...v3.5.1) (2018-04-28)
+
+
+### Bug Fixes
+
+* require logger ([bd370a7](https://github.com/newsuk/fructose/commit/bd370a7))
+
+
+
 <a name="3.5.0"></a>
 # [3.5.0](https://github.com/newsuk/fructose/compare/v3.2.4...v3.5.0) (2018-04-27)
 

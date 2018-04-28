@@ -1,4 +1,4 @@
-import log from "../common/logger";
+const log = require("../common/logger");
 
 class FructoseClient {
   constructor(socketClient) {

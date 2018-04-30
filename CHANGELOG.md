@@ -1,3 +1,13 @@
+<a name="3.5.3"></a>
+## [3.5.3](https://github.com/newsuk/fructose/compare/v3.5.2...v3.5.3) (2018-04-30)
+
+
+### Bug Fixes
+
+* adding new TC decorators ([#117](https://github.com/newsuk/fructose/issues/117)) ([ec15750](https://github.com/newsuk/fructose/commit/ec15750))
+
+
+
 <a name="3.5.2"></a>
 ## [3.5.2](https://github.com/newsuk/fructose/compare/v3.5.1...v3.5.2) (2018-04-30)
 

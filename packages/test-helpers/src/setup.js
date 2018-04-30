@@ -1,4 +1,5 @@
 import "babel-polyfill";
+import { Chromeless } from "chromeless";
 import { FructoseServer } from "../../server";
 import log from "../../common/logger";
 import checkIfWebStarted from "./didWebStart";
@@ -23,7 +24,7 @@ const mobileHooks = () => {
       );
 
     client = fructoseClient(fructosePort);
-    client.waitForApp();
+    await client.waitForApp();
     return client;
   };
 
@@ -53,8 +54,13 @@ const webHooks = () => {
     await server.start();
 
     client = fructoseClient(fructosePort);
-    client.waitForApp();
-    return client;
+
+    const chromeless = new Chromeless()
+      .goto("http://localhost:3000")
+      .exists("[data-testid='fructose']");
+
+    await client.waitForApp();
+    return { client, chromeless };
   };
 
   const cleanup = () => {

@@ -1,41 +1,20 @@
 import io from "socket.io-client";
 import showcases from "./component.showcase";
 import fructose from "./../../setup";
-import { Chromeless } from "chromeless";
-
-const deviceReady = () => {
-  const config = {
-    transports: ["websocket"],
-    query: {
-      clientType: "client"
-    }
-  };
-
-  const socket = io("http://localhost:7811", config);
-
-  return new Promise(resolve => {
-    socket.on("fructose-app-ready", () => {
-      resolve("ready");
-    });
-  });
-};
 
 describe("Web example tests", () => {
   let fructoseClient;
+  let chrome;
 
   beforeAll(async () => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 25000;
-    fructoseClient = await fructose.hooks.web.setup(3000, 60000);
+
+    const { client, chromeless } = await fructose.hooks.web.setup(3000, 60000);
+    fructoseClient = client;
   }, 60000);
 
   it("loads all expected components ", async () => {
     expect.assertions(showcases.children.length);
-
-    new Chromeless()
-      .goto("http://localhost:3000")
-      .exists("[data-testid='fructose']");
-
-    await deviceReady();
 
     for (let i = 0; i < showcases.children.length; i++) {
       const result = await fructoseClient.loadComponent(

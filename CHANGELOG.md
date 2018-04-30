@@ -1,3 +1,13 @@
+<a name="3.5.2"></a>
+## [3.5.2](https://github.com/newsuk/fructose/compare/v3.5.1...v3.5.2) (2018-04-30)
+
+
+### Bug Fixes
+
+* await for app correctly ([#116](https://github.com/newsuk/fructose/issues/116)) ([ea80d17](https://github.com/newsuk/fructose/commit/ea80d17))
+
+
+
 <a name="3.5.1"></a>
 ## [3.5.1](https://github.com/newsuk/fructose/compare/v3.5.0...v3.5.1) (2018-04-28)
 

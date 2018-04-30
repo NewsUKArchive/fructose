@@ -11,6 +11,9 @@ describe("Web example tests", () => {
 
     const { client, chromeless } = await fructose.hooks.web.setup(3000, 60000);
     fructoseClient = client;
+
+    //for examples benefit
+    chrome = chromeless;
   }, 60000);
 
   it("loads all expected components ", async () => {

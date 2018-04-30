@@ -1,4 +1,3 @@
-LOCAL=true node "./packages/test-helpers/bin/createTunnel.js" 
 ./node_modules/.bin/webpack --config e2eTests/fructose/vendor.webpack.config.js
 ./node_modules/.bin/rnscl --searchDir ./e2eTests/ --pattern 'example/component.showcase.js' --outputFile e2eTests/fructose/components.js
 node "./packages/web/bin/start" --build-dir dist/public -d $(pwd)/e2eTests/fructose &

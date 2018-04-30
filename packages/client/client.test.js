@@ -34,9 +34,8 @@ describe("Fructose Client", () => {
         const { port } = server.address();
         socketClient = SocketClient(`http://localhost:${port}`);
         fructose = new Client(socketClient);
-        await expect(fructose.waitForApp())
-          .resolves.toBe(true)
-          .then(resolve);
+        await fructose.waitForApp();
+        resolve();
       });
     }));
 

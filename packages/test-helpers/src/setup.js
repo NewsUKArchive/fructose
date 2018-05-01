@@ -9,6 +9,7 @@ import fructoseClient from "../../client";
 const fructosePort = 7811;
 let server;
 let client;
+let chromeless;
 
 const mobileHooks = () => {
   const setup = async () => {
@@ -55,7 +56,7 @@ const webHooks = () => {
 
     client = fructoseClient(fructosePort);
 
-    const chromeless = new Chromeless()
+    chromeless = new Chromeless()
       .goto("http://localhost:3000")
       .exists("[data-testid='fructose']");
 
@@ -63,7 +64,8 @@ const webHooks = () => {
     return { client, chromeless };
   };
 
-  const cleanup = () => {
+  const cleanup = async () => {
+    await chromeless.end();
     client.disconnect();
     server.close();
   };

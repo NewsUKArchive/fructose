@@ -9,7 +9,12 @@ import { version } from "../../../../package.json";
 const decorators = {
   select: () => {},
   color: () => {},
-  action: () => {}
+  action: () => {},
+  BarSpacingDecorator: () => {},
+  WhiteBgColorDecorator: () => {},
+  withKnobs: () => {},
+  LateralSpacingDecorator: () => {},
+  CenteredDecorator: () => {}
 };
 
 const styles = StyleSheet.create({

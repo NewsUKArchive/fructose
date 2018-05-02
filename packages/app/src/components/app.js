@@ -6,15 +6,15 @@ import FructoseApp from "./fructoseView";
 import NavigationWrapper from "./navigation/navigationWrapper";
 import { version } from "../../../../package.json";
 
-const decorators = {
+const knobs = {
   select: () => {},
   color: () => {},
+  selectV2: () => {}
+};
+
+const actions = {
   action: () => {},
-  BarSpacingDecorator: () => {},
-  WhiteBgColorDecorator: () => {},
-  withKnobs: () => {},
-  LateralSpacingDecorator: () => {},
-  CenteredDecorator: () => {}
+  decorateAction: () => () => {}
 };
 
 const styles = StyleSheet.create({
@@ -102,7 +102,7 @@ class App extends Component {
         events={this.props.comms.events}
       >
         <FructoseApp
-          component={this.state.component(decorators)}
+          component={this.state.component(knobs, actions)}
           events={this.props.comms.events}
         />
       </NavigationWrapper>

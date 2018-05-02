@@ -26,7 +26,7 @@ const mobileHooks = () => {
 
     client = fructoseClient(fructosePort);
     await client.waitForApp();
-    return client;
+    return { client };
   };
 
   const cleanup = () => {

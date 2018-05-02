@@ -1,3 +1,8 @@
+<a name="3.5.8"></a>
+## [3.5.8](https://github.com/newsuk/fructose/compare/v3.5.7...v3.5.8) (2018-05-02)
+
+
+
 <a name="3.5.7"></a>
 ## [3.5.7](https://github.com/newsuk/fructose/compare/v3.5.6...v3.5.7) (2018-05-02)
 

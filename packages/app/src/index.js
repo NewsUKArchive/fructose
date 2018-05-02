@@ -4,8 +4,11 @@ import App from "./components/app";
 import Messaging from "./messaging";
 import componentLoader from "./componentLoader";
 
-export default componentsToLoad => () => {
-  const components = componentLoader(componentsToLoad);
+const defaultPlatform = "native";
+
+export default (componentsToLoad, config) => () => {
+  const platform = config.platform || defaultPlatform;
+  const components = componentLoader(componentsToLoad, platform);
   const componentList = Object.keys(components).map(key => key);
 
   return (

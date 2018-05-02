@@ -1,15 +1,22 @@
-export default loadComponents => {
+export default (loadComponents, platform) => {
   const componentsStore = {};
   const components = loadComponents();
 
   if (components) {
     components.forEach(parent => {
       const showcases = parent.default;
-      const filteredChildren = showcases.children.filter(
+      const partiallyFilteredShowcases = showcases.children.filter(
         showcase => showcase.type === "story"
       );
 
-      filteredChildren.forEach(showcase => {
+      const filteredShowcases = partiallyFilteredShowcases.filter(showcase => {
+        if (showcase.platform) {
+          return showcase.platform.includes(platform);
+        }
+        return showcase;
+      });
+
+      filteredShowcases.forEach(showcase => {
         const showCaseName = `${showcases.name}/${showcase.name}`;
         componentsStore[showCaseName] = showcase.component;
       });

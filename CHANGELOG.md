@@ -1,3 +1,33 @@
+<a name="3.5.6"></a>
+## [3.5.6](https://github.com/newsuk/fructose/compare/v3.5.5...v3.5.6) (2018-05-02)
+
+
+
+<a name="3.5.5"></a>
+## [3.5.5](https://github.com/newsuk/fructose/compare/v3.5.4...v3.5.5) (2018-05-02)
+
+
+### Bug Fixes
+
+* ending chrome session ([#120](https://github.com/newsuk/fructose/issues/120)) ([eb0bc0e](https://github.com/newsuk/fructose/commit/eb0bc0e))
+
+
+
+<a name="3.5.4"></a>
+## [3.5.4](https://github.com/newsuk/fructose/compare/v3.5.3...v3.5.4) (2018-05-01)
+
+
+
+<a name="3.5.3"></a>
+## [3.5.3](https://github.com/newsuk/fructose/compare/v3.5.2...v3.5.3) (2018-04-30)
+
+
+### Bug Fixes
+
+* adding new TC decorators ([#117](https://github.com/newsuk/fructose/issues/117)) ([ec15750](https://github.com/newsuk/fructose/commit/ec15750))
+
+
+
 <a name="3.5.2"></a>
 ## [3.5.2](https://github.com/newsuk/fructose/compare/v3.5.1...v3.5.2) (2018-04-30)
 

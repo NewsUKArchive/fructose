@@ -1,3 +1,13 @@
+<a name="3.5.5"></a>
+## [3.5.5](https://github.com/newsuk/fructose/compare/v3.5.4...v3.5.5) (2018-05-02)
+
+
+### Bug Fixes
+
+* ending chrome session ([#120](https://github.com/newsuk/fructose/issues/120)) ([eb0bc0e](https://github.com/newsuk/fructose/commit/eb0bc0e))
+
+
+
 <a name="3.5.4"></a>
 ## [3.5.4](https://github.com/newsuk/fructose/compare/v3.5.3...v3.5.4) (2018-05-01)
 

@@ -6,7 +6,8 @@ describe("Android example tests", () => {
   let fructoseClient;
 
   beforeAll(async () => {
-    fructoseClient = await setup();
+    const { client } = await setup();
+    fructoseClient = client;
   }, 18000);
 
   it("loads all expected components ", async () => {

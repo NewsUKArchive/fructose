@@ -26,12 +26,12 @@ export default (loadComponents, platform) => {
         );
 
         filteredShowcases.forEach(showcase => {
-          const showCaseName = `${showcases.name}/${showcase.name}`;
+          const nameWithoutSlash = showcases.name.split("/")[0];
+          const showCaseName = `${nameWithoutSlash}/${showcase.name}`;
           componentsStore[showCaseName] = showcase.component;
         });
       }
     });
   }
-
   return componentsStore;
 };

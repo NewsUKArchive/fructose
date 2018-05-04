@@ -33,6 +33,5 @@ export default (loadComponents, platform) => {
       }
     });
   }
-  console.log(componentsStore);
   return componentsStore;
 };

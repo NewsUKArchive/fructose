@@ -19,9 +19,7 @@ it("returns an object with keys when using .showcasefiles", () => {
 
   const getShowcasesObject = () => [mockShowcase];
   const loadedShowcases = loader(getShowcasesObject);
-  const returnedComponent = loadedShowcases[
-    "Primitives/ArticleLabel/Article Label"
-  ]();
+  const returnedComponent = loadedShowcases["Primitives/Article Label"]();
   expect(returnedComponent).toEqual("lol");
 });
 
@@ -29,7 +27,7 @@ it("filters out non story showcases", () => {
   // mocks the showcase structure that is exported in times-components
   const mockShowcase = {
     default: {
-      name: "Primitives/ArticleLabel",
+      name: "Primitivesl",
       children: [
         {
           type: "not a story",
@@ -49,7 +47,7 @@ it("filters out non story showcases", () => {
 it("returns showcases without a platform", () => {
   const mockShowcase = {
     default: {
-      name: "Primitives/ArticleLabel",
+      name: "Primitives",
       children: [
         {
           type: "story",
@@ -62,16 +60,14 @@ it("returns showcases without a platform", () => {
 
   const getShowcasesObject = () => [mockShowcase];
   const loadedShowcases = loader(getShowcasesObject);
-  const returnedComponent = loadedShowcases[
-    "Primitives/ArticleLabel/Article Label"
-  ]();
+  const returnedComponent = loadedShowcases["Primitives/Article Label"]();
   expect(returnedComponent).toEqual("lol");
 });
 
 it("filters out showcases that don't match specified plaform", () => {
   const mockShowcase = {
     default: {
-      name: "Primitives/ArticleLabel",
+      name: "Primitives",
       children: [
         {
           platform: "native",

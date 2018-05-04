@@ -88,3 +88,12 @@ it("filters out showcases that don't match specified plaform", () => {
   const loaded = loader(getShowcasesObject, "web");
   expect(loaded).toEqual({});
 });
+
+it("does not explode when a showcase file has no default export", () => {
+  let mockShowcase;
+
+  const getShowcasesObject = () => [mockShowcase];
+
+  const loaded = loader(getShowcasesObject, "web");
+  expect(loaded).toEqual({});
+});

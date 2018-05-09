@@ -41,12 +41,10 @@ program
       );
     if (!path || !accountName || !key || !issueNumber || !repository)
       process.exit(1);
-    gitHubCommentManager.publishQRCode(
-      accountName,
-      key,
-      path,
-      issueNumber,
-      repository
-    );
+    gitHubCommentManager
+      .publishQRCode(accountName, key, path, issueNumber, repository)
+      .catch(error => {
+        throw error;
+      });
   });
 program.parse(process.argv);

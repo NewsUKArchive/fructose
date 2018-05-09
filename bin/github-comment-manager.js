@@ -68,7 +68,7 @@ const postComment = (
   repositoryName
 ) =>
   new Promise((resolve, reject) => {
-    const auth = `Basic ${Buffer.form(`${accountName}:${accountKey}`).toString(
+    const auth = `Basic ${Buffer.from(`${accountName}:${accountKey}`).toString(
       "base64"
     )}`;
     const postCommentOptions = {
@@ -77,7 +77,7 @@ const postComment = (
         Authorization: auth,
         "User-Agent": accountName
       },
-      body: `{ "body": "To open up this build in expo, please scan this QRcode : <img src="${documentPath}"> "}`
+      body: `{ "body": "To open up this build in expo, please scan this QRcode : <img src='${documentPath}'> "}`
     };
 
     request.post(postCommentOptions, error => {
@@ -93,25 +93,29 @@ const publishQRCode = async (
   issueNumber,
   repositoryName
 ) => {
-  const commentsToDelete = await existingComments(
-    accountName,
-    accountKey,
-    issueNumber,
-    repositoryName
-  );
-  await deleteCommentsFromList(
-    commentsToDelete,
-    accountName,
-    accountKey,
-    repositoryName
-  );
-  await postComment(
-    accountName,
-    accountKey,
-    documentPath,
-    issueNumber,
-    repositoryName
-  );
+  try {
+    const commentsToDelete = await existingComments(
+      accountName,
+      accountKey,
+      issueNumber,
+      repositoryName
+    );
+    await deleteCommentsFromList(
+      commentsToDelete,
+      accountName,
+      accountKey,
+      repositoryName
+    );
+    await postComment(
+      accountName,
+      accountKey,
+      documentPath,
+      issueNumber,
+      repositoryName
+    );
+  } catch (err) {
+    throw err;
+  }
 };
 
 module.exports = {

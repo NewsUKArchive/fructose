@@ -1,3 +1,13 @@
+<a name="3.6.0"></a>
+# [3.6.0](https://github.com/newsuk/fructose/compare/v3.5.10...v3.6.0) (2018-05-09)
+
+
+### Features
+
+* github commenting for expo QR codes ([#126](https://github.com/newsuk/fructose/issues/126)) ([ff9ef53](https://github.com/newsuk/fructose/commit/ff9ef53))
+
+
+
 <a name="3.5.10"></a>
 ## [3.5.10](https://github.com/newsuk/fructose/compare/v3.5.9...v3.5.10) (2018-05-04)
 

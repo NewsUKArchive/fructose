@@ -1,3 +1,18 @@
+<a name="3.5.10"></a>
+## [3.5.10](https://github.com/newsuk/fructose/compare/v3.5.9...v3.5.10) (2018-05-04)
+
+
+
+<a name="3.5.9"></a>
+## [3.5.9](https://github.com/newsuk/fructose/compare/v3.5.8...v3.5.9) (2018-05-04)
+
+
+### Bug Fixes
+
+* don't error when showcase file does not export default ([#124](https://github.com/newsuk/fructose/issues/124)) ([5695f4a](https://github.com/newsuk/fructose/commit/5695f4a))
+
+
+
 <a name="3.5.8"></a>
 ## [3.5.8](https://github.com/newsuk/fructose/compare/v3.5.7...v3.5.8) (2018-05-02)
 

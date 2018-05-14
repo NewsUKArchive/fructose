@@ -1,3 +1,13 @@
+<a name="3.6.1"></a>
+## [3.6.1](https://github.com/newsuk/fructose/compare/v3.6.0...v3.6.1) (2018-05-14)
+
+
+### Bug Fixes
+
+* format comment ([#128](https://github.com/newsuk/fructose/issues/128)) ([bd49a0f](https://github.com/newsuk/fructose/commit/bd49a0f))
+
+
+
 <a name="3.6.0"></a>
 # [3.6.0](https://github.com/newsuk/fructose/compare/v3.5.10...v3.6.0) (2018-05-09)
 

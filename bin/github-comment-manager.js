@@ -77,7 +77,7 @@ const postComment = (
         Authorization: auth,
         "User-Agent": accountName
       },
-      body: `{ "body": "To open up this build in expo, please scan this QRcode : <img src='${documentPath}'> "}`
+      body: `{ "body": "If you use Expo, view our components by scanning this qr code: <br> <img src='${documentPath}'> <br> This has been made possible through [Fructose](https://github.com/newsuk/fructose) "}`
     };
 
     request.post(postCommentOptions, error => {

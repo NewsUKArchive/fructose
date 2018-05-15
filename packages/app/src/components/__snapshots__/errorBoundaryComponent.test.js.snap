@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Boundary It renders the error View when error is triggered 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#B20000",
+      "height": "100%",
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "white",
+        "fontSize": 24,
+        "fontWeight": "bold",
+        "textAlign": "center",
+      }
+    }
+  >
+    Exception Found
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "white",
+        "fontSize": 16,
+      }
+    }
+  >
+    lol is not defined
+  </Text>
+</View>
+`;
+
+exports[`Error Boundary it render a component when there is no error 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+>
+  Hey I rendered
+</Text>
+`;

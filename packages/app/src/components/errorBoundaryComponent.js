@@ -28,7 +28,7 @@ export default class ErrorBoundary extends React.Component {
       return <ErrorView error={this.state.error} />;
     }
 
-    return this.props.children;
+    return this.props.children; //eslint-disable-line
   }
 }
 
@@ -36,6 +36,5 @@ ErrorBoundary.propTypes = {
   events: PropTypes.shape({
     emit: PropTypes.func.isRequired,
     on: PropTypes.func.isRequired
-  }).isRequired,
-  children: PropTypes.func.isRequired
+  }).isRequired
 };

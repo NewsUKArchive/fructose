@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyleSheet, View, StatusBar } from "react-native";
+import { StyleSheet, View, StatusBar, Text } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
 const knobs = {
   select: () => {},
   color: () => {},
-  selectV2: () => {}
+  selectV2: () => {},
+  e2eTestDontDelete: () => <Text>YAY I RENDERED</Text>
 };
 
 const actions = {

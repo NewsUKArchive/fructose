@@ -2,20 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { StyleSheet, Text, View } from "react-native";
 
-import FructoseApp from "./fructoseView";
+import ErrorBoundary from "./errorBoundaryComponent";
+import FructoseComponentWrapper from "./fructoseComponentWrapper";
 import NavigationWrapper from "./navigation/navigationWrapper";
 import { version } from "../../../../package.json";
-
-const knobs = {
-  select: () => {},
-  color: () => {},
-  selectV2: () => {}
-};
-
-const actions = {
-  action: () => {},
-  decorateAction: () => () => {}
-};
 
 const styles = StyleSheet.create({
   header: {
@@ -101,10 +91,9 @@ class App extends Component {
         componentList={this.props.componentList}
         events={this.props.comms.events}
       >
-        <FructoseApp
-          component={this.state.component(knobs, actions)}
-          events={this.props.comms.events}
-        />
+        <ErrorBoundary events={this.props.comms.events}>
+          <FructoseComponentWrapper component={this.state.component} />
+        </ErrorBoundary>
       </NavigationWrapper>
     );
   }

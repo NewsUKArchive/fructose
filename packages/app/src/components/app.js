@@ -94,7 +94,10 @@ class App extends Component {
         componentList={this.props.componentList}
         events={this.props.comms.events}
       >
-        <ErrorBoundary events={this.props.comms.events}>
+        <ErrorBoundary
+          socket={this.props.comms.socket}
+          events={this.props.comms.events}
+        >
           <FructoseComponentWrapper component={this.state.component} />
         </ErrorBoundary>
       </NavigationWrapper>

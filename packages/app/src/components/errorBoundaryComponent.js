@@ -3,17 +3,20 @@ import PropTypes from "prop-types";
 import ErrorView from "./errorViewComponent";
 
 export default class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-
+  constructor({ events, socket }) {
+    super();
+    this.events = events;
+    this.socket = socket;
     this.state = {
-      error: null
+      error: null,
+      component: null
     };
   }
 
   componentWillMount() {
-    this.props.events.on("load-component", () => {
+    this.events.on("load-component", component => {
       this.state.error = null;
+      this.state.component = component;
     });
   }
 
@@ -21,6 +24,13 @@ export default class ErrorBoundary extends React.Component {
     this.setState({
       error
     });
+
+    const errorObject = {
+      component: this.state.component,
+      error
+    };
+
+    this.socket.emit("error", errorObject);
   }
 
   render() {

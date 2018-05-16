@@ -61,8 +61,8 @@ class FructoseServer {
           this.io.emit("bundled-components", componentKeys);
         });
 
-        socket.on("getAppComponents", () => {
-          this.io.emit("get-app-components");
+        socket.on("get-loaded-app-components", () => {
+          this.io.emit("get-loaded-app-components");
         });
       });
 

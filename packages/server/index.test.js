@@ -60,14 +60,14 @@ describe("FructoseServer", () => {
     });
   });
 
-  it("forwards the get-app-components", () =>
+  it("forwards the get-loaded-app-components", () =>
     new Promise(resolve => {
       setUp(socketConfig).then(() => {
-        socket.on("get-app-components", () => {
+        socket.on("get-loaded-app-components", () => {
           resolve();
         });
 
-        socket.emit("getAppComponents");
+        socket.emit("get-loaded-app-components");
       });
     }));
 

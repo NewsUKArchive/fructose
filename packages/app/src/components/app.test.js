@@ -53,7 +53,7 @@ describe("App", () => {
         componentList={componentList}
       />
     );
-    messaging.socket.emit("get-app-components");
+    messaging.socket.emit("get-loaded-app-components");
   });
 
   it("lets clients know when the app is ready", done => {

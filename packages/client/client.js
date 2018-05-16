@@ -21,7 +21,7 @@ class FructoseClient {
         resolve(componentList);
       });
       log.verbose("fructose Client", "getting loaded app components");
-      this.socket.emit("getAppComponents");
+      this.socket.emit("get-loaded-app-components");
     });
   }
 

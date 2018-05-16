@@ -72,7 +72,7 @@ describe("App", () => {
   });
 
   it("lets clients know that component is loaded", done => {
-    messaging.socket.on("loadedOnDevice", () => {
+    messaging.socket.on("component-loaded-in-app", () => {
       done();
     });
     app = shallow(

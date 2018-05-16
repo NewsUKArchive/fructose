@@ -50,13 +50,13 @@ describe("FructoseServer", () => {
     });
   });
 
-  it("forwards the loadedOnDevice message", done => {
+  it("forwards the component-loaded-in-app message", done => {
     setUp(socketConfig).then(() => {
       socket.on("loaded", () => {
         done();
       });
 
-      socket.emit("loadedOnDevice");
+      socket.emit("component-loaded-in-app");
     });
   });
 

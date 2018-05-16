@@ -82,7 +82,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    this.props.comms.socket.emit("loadedOnDevice");
+    this.props.comms.socket.emit("component-loaded-in-app");
   }
 
   render() {

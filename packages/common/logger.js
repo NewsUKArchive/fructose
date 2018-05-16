@@ -17,7 +17,7 @@ module.exports = {
     log.verbose(`[${fileName}] :`, textToLog);
   },
   error: (fileName, textToError) => {
-    log.stream = process.stderr;
+    log.stream = process.stdout;
     log.prefixStyle = { fg: "red" };
     log.error(`[${fileName}] :`, textToError);
   }

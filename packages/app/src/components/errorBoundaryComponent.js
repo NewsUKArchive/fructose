@@ -12,7 +12,7 @@ export default class ErrorBoundary extends React.Component {
   }
 
   componentWillMount() {
-    this.props.events.on("load", () => {
+    this.props.events.on("load-component", () => {
       this.state.error = null;
     });
   }

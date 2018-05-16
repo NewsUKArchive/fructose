@@ -34,7 +34,7 @@ class FructoseClient {
       });
 
       log.info("fructose client", `loading component: ${component}`);
-      this.socket.emit("loadComponent", component);
+      this.socket.emit("load-component-in-app", component);
     });
   }
 

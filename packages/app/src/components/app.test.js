@@ -37,7 +37,7 @@ describe("App", () => {
         componentList={componentList}
       />
     );
-    messaging.socket.emit("load-on-device", "component1");
+    messaging.socket.emit("load-component-in-app", "component1");
     expect(app.instance().state.component).toBe(components.component1);
   });
 

@@ -42,7 +42,7 @@ describe("Fructose Client", () => {
   it("can load a component", () =>
     new Promise(resolve => {
       io.on("connection", socket => {
-        socket.on("loadComponent", x => {
+        socket.on("load-component-in-app", x => {
           expect(x).toBe("component");
           io.emit("loaded");
         });

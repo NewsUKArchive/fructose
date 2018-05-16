@@ -30,13 +30,13 @@ describe("FructoseServer", () => {
     await server.close();
   });
 
-  it("forwards the loadComponent message", done => {
+  it("forwards the load-component-in-app message", done => {
     setUp(socketConfig).then(() => {
-      socket.on("load-on-device", x => {
+      socket.on("load-component-in-app", x => {
         expect(x).toBe("a component");
         done();
       });
-      socket.emit("loadComponent", "a component");
+      socket.emit("load-component-in-app", "a component");
     });
   });
 

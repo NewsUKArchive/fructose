@@ -73,7 +73,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.comms.socket.on("load-on-device", this.loadComponent);
+    this.props.comms.socket.on("load-component-in-app", this.loadComponent);
     this.props.comms.socket.on(
       "get-loaded-app-components",
       this.sendComponentList

@@ -45,8 +45,8 @@ class FructoseServer {
           this.io.emit("fructose-app-ready");
         });
 
-        socket.on("loadComponent", componentName => {
-          this.io.emit("load-on-device", componentName);
+        socket.on("load-component-in-app", componentName => {
+          this.io.emit("load-component-in-app", componentName);
         });
 
         socket.on("loadedOnDevice", () => {

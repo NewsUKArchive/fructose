@@ -29,18 +29,6 @@ describe("App", () => {
     componentList = Object.keys(components).map(key => key);
   });
 
-  it("loads a component via events", () => {
-    app = shallow(
-      <App
-        comms={messaging}
-        components={components}
-        componentList={componentList}
-      />
-    );
-    messaging.events.emit("load", "component1");
-    expect(app.instance().state.component).toBe(components.component1);
-  });
-
   it("loads a component via socket", () => {
     app = shallow(
       <App

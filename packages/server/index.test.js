@@ -32,12 +32,11 @@ describe("FructoseServer", () => {
 
   it("forwards the loadComponent message", done => {
     setUp(socketConfig).then(() => {
-      socket.on("load-on-device", (x, y) => {
-        expect(x).toBe(1);
-        expect(y).toBe(2);
+      socket.on("load-on-device", x => {
+        expect(x).toBe("a component");
         done();
       });
-      socket.emit("loadComponent", 1, 2);
+      socket.emit("loadComponent", "a component");
     });
   });
 

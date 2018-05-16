@@ -45,8 +45,8 @@ class FructoseServer {
           this.io.emit("fructose-app-ready");
         });
 
-        socket.on("loadComponent", (componentName, props) => {
-          this.io.emit("load-on-device", componentName, props);
+        socket.on("loadComponent", componentName => {
+          this.io.emit("load-on-device", componentName);
         });
 
         socket.on("loadedOnDevice", () => {
@@ -63,18 +63,6 @@ class FructoseServer {
 
         socket.on("getAppComponents", () => {
           this.io.emit("get-app-components");
-        });
-
-        socket.on("no-components", () => {
-          throw new Error("No Components found in app");
-        });
-
-        socket.on("debug", message => {
-          log.info(
-            "server-index",
-            "Fructose server recieved debug message : ",
-            message
-          );
         });
       });
 

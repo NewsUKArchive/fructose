@@ -73,10 +73,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.comms.events.on("load", this.loadComponent);
-    this.props.comms.socket.on("load-on-device", name =>
-      this.props.comms.events.emit("load", name)
-    );
+    this.props.comms.socket.on("load-on-device", this.loadComponent);
     this.props.comms.socket.on("get-app-components", this.sendComponentList);
     this.props.comms.socket.emit("fructose-app-ready");
   }

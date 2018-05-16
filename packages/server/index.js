@@ -50,7 +50,7 @@ class FructoseServer {
         });
 
         socket.on("component-loaded-in-app", () => {
-          this.io.emit("loaded");
+          this.io.emit("component-loaded-in-app");
         });
 
         socket.on("send-loaded-app-components", componentKeys => {

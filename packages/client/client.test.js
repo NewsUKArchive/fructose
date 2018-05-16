@@ -44,7 +44,7 @@ describe("Fructose Client", () => {
       io.on("connection", socket => {
         socket.on("load-component-in-app", x => {
           expect(x).toBe("component");
-          io.emit("loaded");
+          io.emit("component-loaded-in-app");
         });
       });
 

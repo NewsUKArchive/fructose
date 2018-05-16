@@ -27,9 +27,9 @@ class FructoseClient {
 
   loadComponent(component) {
     return new Promise(resolve => {
-      this.socket.on("loaded", () => {
+      this.socket.on("component-loaded-in-app", () => {
         log.info("fructose client", `component loaded: ${component}`);
-        this.socket.removeListener("loaded");
+        this.socket.removeListener("component-loaded-in-app");
         resolve("component loaded");
       });
 

@@ -52,7 +52,7 @@ describe("FructoseServer", () => {
 
   it("forwards the component-loaded-in-app message", done => {
     setUp(socketConfig).then(() => {
-      socket.on("loaded", () => {
+      socket.on("component-loaded-in-app", () => {
         done();
       });
 

@@ -64,7 +64,7 @@ describe("Fructose Client", () => {
 
       io.on("connection", socket => {
         socket.on("get-loaded-app-components", () => {
-          io.emit("bundled-components", componentList);
+          io.emit("send-loaded-app-components", componentList);
         });
       });
 

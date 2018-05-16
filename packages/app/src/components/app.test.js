@@ -42,7 +42,7 @@ describe("App", () => {
   });
 
   it("returns the list of components that can be loaded", done => {
-    messaging.socket.on("loaded-app-components", list => {
+    messaging.socket.on("send-loaded-app-components", list => {
       expect(list).toBe(componentList);
       done();
     });

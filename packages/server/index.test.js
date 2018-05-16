@@ -74,11 +74,11 @@ describe("FructoseServer", () => {
   it("forwards the bundled-components", () =>
     new Promise(resolve => {
       setUp(socketConfig).then(() => {
-        socket.on("bundled-components", () => {
+        socket.on("send-loaded-app-components", () => {
           resolve();
         });
 
-        socket.emit("loaded-app-components");
+        socket.emit("send-loaded-app-components");
       });
     }));
 });

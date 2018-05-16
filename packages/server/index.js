@@ -53,12 +53,12 @@ class FructoseServer {
           this.io.emit("loaded");
         });
 
-        socket.on("loaded-app-components", componentKeys => {
+        socket.on("send-loaded-app-components", componentKeys => {
           log.verbose(
             "server-index",
             "Fructose App sending bundled components"
           );
-          this.io.emit("bundled-components", componentKeys);
+          this.io.emit("send-loaded-app-components", componentKeys);
         });
 
         socket.on("get-loaded-app-components", () => {

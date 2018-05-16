@@ -17,7 +17,7 @@ class FructoseClient {
 
   getLoadedComponents() {
     return new Promise(resolve => {
-      this.socket.on("bundled-components", componentList => {
+      this.socket.on("send-loaded-app-components", componentList => {
         resolve(componentList);
       });
       log.verbose("fructose Client", "getting loaded app components");

@@ -66,7 +66,7 @@ class App extends Component {
 
     this.sendComponentList = () => {
       this.props.comms.socket.emit(
-        "loaded-app-components",
+        "send-loaded-app-components",
         this.props.componentList
       );
     };

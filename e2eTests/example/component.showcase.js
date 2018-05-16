@@ -1,7 +1,7 @@
 /* globals device test expect element by afterEach beforeEach */
 
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
   green: {
@@ -93,13 +93,23 @@ export default {
     },
     {
       type: "story",
-      name: "The Error",
+      name: "The Hallows",
+      component: () => <Text style={styles.yellow}>The Deathly Hallows</Text>
+    },
+    {
+      type: "story",
+      name: "The Internal JS Error",
       component: () => <Break />
     },
     {
       type: "story",
-      name: "The Hallows",
-      component: () => <Text style={styles.yellow}>The Deathly Hallows</Text>
+      name: "The Handle undefined Knob showcase",
+      component: ({ undefinedKnob }) => <Text>{undefinedKnob()}</Text>
+    },
+    {
+      type: "story",
+      name: "The Handle knob showcase",
+      component: ({ e2eTestDontDelete }) => <View>{e2eTestDontDelete()}</View>
     }
   ]
 };

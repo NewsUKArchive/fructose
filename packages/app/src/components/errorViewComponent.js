@@ -1,49 +1,41 @@
 import React from "react";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
 import PropTypes from "prop-types";
 
-export default class ErrorView extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      error: null
-    };
-
-    this.handleError = this.handleError.bind(this);
+const styles = StyleSheet.create({
+  errorContainer: {
+    backgroundColor: "#B20000",
+    height: "100%"
+  },
+  errorHeader: {
+    fontWeight: "bold",
+    fontSize: 24,
+    color: "white",
+    textAlign: "center"
+  },
+  stackTrace: {
+    color: "white",
+    fontSize: 16
   }
+});
 
-  componentWillMount() {
-    this.props.events.on("load", () => {
-      this.state.error = null; // don't do setState so we don't trigger a render
-    });
-  }
+const ErrorState = props => (
+  <View style={styles.errorContainer}>
+    <StatusBar hidden />
+    <Text style={styles.errorHeader}>Exception Found</Text>
+    <Text style={styles.stackTrace}>{props.error.message}</Text>
+  </View>
+);
 
-  componentDidCatch(e) {
-    this.setState({
-      error: e
-    });
-  }
-
-  handleError(e) {
-    this.setState({
-      error: e
-    });
-  }
-
-  render() {
-    return this.props.children({
-      hasError: !!this.state.error,
-      error: this.state.error,
-      onError: this.handleError
-    });
-  }
-}
-
-ErrorView.propTypes = {
-  events: PropTypes.shape({
-    emit: PropTypes.func.isRequired,
-    on: PropTypes.func.isRequired,
-    removeListener: PropTypes.func.isRequired
-  }).isRequired,
-  children: PropTypes.func.isRequired
+ErrorState.propTypes = {
+  error: PropTypes.shape({
+    message: PropTypes.string,
+    stack: PropTypes.string
+  })
 };
+
+ErrorState.defaultProps = {
+  error: {}
+};
+
+export default ErrorState;

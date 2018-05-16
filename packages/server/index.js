@@ -64,6 +64,11 @@ class FructoseServer {
         socket.on("get-loaded-app-components", () => {
           this.io.emit("get-loaded-app-components");
         });
+
+        socket.on("component-error", ({ component, error }) => {
+          log.info("server-index", `Error in component: ${component}`);
+          log.info("server-index", error);
+        });
       });
 
       this.server.listen(this.port, () => {

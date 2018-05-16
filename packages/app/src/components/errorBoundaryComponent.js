@@ -14,6 +14,11 @@ export default class ErrorBoundary extends React.Component {
   }
 
   componentWillMount() {
+    this.socket.on("load-component-in-app", component => {
+      this.state.error = null;
+      this.state.component = component;
+    });
+
     this.events.on("load-component", component => {
       this.state.error = null;
       this.state.component = component;
@@ -27,10 +32,10 @@ export default class ErrorBoundary extends React.Component {
 
     const errorObject = {
       component: this.state.component,
-      error
+      error: error.message
     };
 
-    this.socket.emit("error", errorObject);
+    this.socket.emit("component-error", errorObject);
   }
 
   render() {

@@ -19,7 +19,7 @@ export default class NavigationWrapper extends Component {
   }
 
   onMenuItemPress(id) {
-    this.props.events.emit("load", id);
+    this.props.events.emit("load-component", id);
   }
 
   render() {

@@ -85,7 +85,18 @@ describe("App", () => {
 
     // assumption being made that the app will re-render
     app.instance().componentDidUpdate();
-    messaging.events.emit("load", "component1");
+  });
+
+  it("loads a component via events", () => {
+    app = shallow(
+      <App
+        comms={messaging}
+        components={components}
+        componentList={componentList}
+      />
+    );
+    messaging.events.emit("load-component", "component1");
+    expect(app.instance().state.component).toBe(components.component1);
   });
 
   it("throws error when requested to load component that does not exist", () => {

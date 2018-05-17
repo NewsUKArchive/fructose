@@ -17,24 +17,24 @@ class FructoseClient {
 
   getLoadedComponents() {
     return new Promise(resolve => {
-      this.socket.on("bundled-components", componentList => {
+      this.socket.on("send-loaded-app-components", componentList => {
         resolve(componentList);
       });
       log.verbose("fructose Client", "getting loaded app components");
-      this.socket.emit("getAppComponents");
+      this.socket.emit("get-loaded-app-components");
     });
   }
 
   loadComponent(component) {
     return new Promise(resolve => {
-      this.socket.on("loaded", () => {
+      this.socket.on("component-loaded-in-app", () => {
         log.info("fructose client", `component loaded: ${component}`);
-        this.socket.removeListener("loaded");
+        this.socket.removeListener("component-loaded-in-app");
         resolve("component loaded");
       });
 
       log.info("fructose client", `loading component: ${component}`);
-      this.socket.emit("loadComponent", component);
+      this.socket.emit("load-component-in-app", component);
     });
   }
 

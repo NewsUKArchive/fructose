@@ -29,18 +29,6 @@ describe("App", () => {
     componentList = Object.keys(components).map(key => key);
   });
 
-  it("loads a component via events", () => {
-    app = shallow(
-      <App
-        comms={messaging}
-        components={components}
-        componentList={componentList}
-      />
-    );
-    messaging.events.emit("load", "component1");
-    expect(app.instance().state.component).toBe(components.component1);
-  });
-
   it("loads a component via socket", () => {
     app = shallow(
       <App
@@ -49,12 +37,12 @@ describe("App", () => {
         componentList={componentList}
       />
     );
-    messaging.socket.emit("load-on-device", "component1");
+    messaging.socket.emit("load-component-in-app", "component1");
     expect(app.instance().state.component).toBe(components.component1);
   });
 
   it("returns the list of components that can be loaded", done => {
-    messaging.socket.on("loaded-app-components", list => {
+    messaging.socket.on("send-loaded-app-components", list => {
       expect(list).toBe(componentList);
       done();
     });
@@ -65,7 +53,7 @@ describe("App", () => {
         componentList={componentList}
       />
     );
-    messaging.socket.emit("get-app-components");
+    messaging.socket.emit("get-loaded-app-components");
   });
 
   it("lets clients know when the app is ready", done => {
@@ -84,7 +72,7 @@ describe("App", () => {
   });
 
   it("lets clients know that component is loaded", done => {
-    messaging.socket.on("loadedOnDevice", () => {
+    messaging.socket.on("component-loaded-in-app", () => {
       done();
     });
     app = shallow(
@@ -97,7 +85,18 @@ describe("App", () => {
 
     // assumption being made that the app will re-render
     app.instance().componentDidUpdate();
-    messaging.events.emit("load", "component1");
+  });
+
+  it("loads a component via events", () => {
+    app = shallow(
+      <App
+        comms={messaging}
+        components={components}
+        componentList={componentList}
+      />
+    );
+    messaging.events.emit("load-component", "component1");
+    expect(app.instance().state.component).toBe(components.component1);
   });
 
   it("throws error when requested to load component that does not exist", () => {

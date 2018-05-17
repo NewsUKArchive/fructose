@@ -66,23 +66,26 @@ class App extends Component {
 
     this.sendComponentList = () => {
       this.props.comms.socket.emit(
-        "loaded-app-components",
+        "send-loaded-app-components",
         this.props.componentList
       );
     };
   }
 
   componentDidMount() {
-    this.props.comms.events.on("load", this.loadComponent);
-    this.props.comms.socket.on("load-on-device", name =>
-      this.props.comms.events.emit("load", name)
+    this.props.comms.events.on("load-component", component => {
+      this.loadComponent(component);
+    });
+    this.props.comms.socket.on("load-component-in-app", this.loadComponent);
+    this.props.comms.socket.on(
+      "get-loaded-app-components",
+      this.sendComponentList
     );
-    this.props.comms.socket.on("get-app-components", this.sendComponentList);
     this.props.comms.socket.emit("fructose-app-ready");
   }
 
   componentDidUpdate() {
-    this.props.comms.socket.emit("loadedOnDevice");
+    this.props.comms.socket.emit("component-loaded-in-app");
   }
 
   render() {
@@ -91,7 +94,10 @@ class App extends Component {
         componentList={this.props.componentList}
         events={this.props.comms.events}
       >
-        <ErrorBoundary events={this.props.comms.events}>
+        <ErrorBoundary
+          socket={this.props.comms.socket}
+          events={this.props.comms.events}
+        >
           <FructoseComponentWrapper component={this.state.component} />
         </ErrorBoundary>
       </NavigationWrapper>

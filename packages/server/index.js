@@ -45,36 +45,29 @@ class FructoseServer {
           this.io.emit("fructose-app-ready");
         });
 
-        socket.on("loadComponent", (componentName, props) => {
-          this.io.emit("load-on-device", componentName, props);
+        socket.on("load-component-in-app", componentName => {
+          this.io.emit("load-component-in-app", componentName);
         });
 
-        socket.on("loadedOnDevice", () => {
-          this.io.emit("loaded");
+        socket.on("component-loaded-in-app", () => {
+          this.io.emit("component-loaded-in-app");
         });
 
-        socket.on("loaded-app-components", componentKeys => {
+        socket.on("send-loaded-app-components", componentKeys => {
           log.verbose(
             "server-index",
             "Fructose App sending bundled components"
           );
-          this.io.emit("bundled-components", componentKeys);
+          this.io.emit("send-loaded-app-components", componentKeys);
         });
 
-        socket.on("getAppComponents", () => {
-          this.io.emit("get-app-components");
+        socket.on("get-loaded-app-components", () => {
+          this.io.emit("get-loaded-app-components");
         });
 
-        socket.on("no-components", () => {
-          throw new Error("No Components found in app");
-        });
-
-        socket.on("debug", message => {
-          log.info(
-            "server-index",
-            "Fructose server recieved debug message : ",
-            message
-          );
+        socket.on("component-error", ({ component, error }) => {
+          log.error("server-index", `Error found in component: ${component}`);
+          log.error("server-index", error);
         });
       });
 

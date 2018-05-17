@@ -30,14 +30,13 @@ describe("FructoseServer", () => {
     await server.close();
   });
 
-  it("forwards the loadComponent message", done => {
+  it("forwards the load-component-in-app message", done => {
     setUp(socketConfig).then(() => {
-      socket.on("load-on-device", (x, y) => {
-        expect(x).toBe(1);
-        expect(y).toBe(2);
+      socket.on("load-component-in-app", x => {
+        expect(x).toBe("a component");
         done();
       });
-      socket.emit("loadComponent", 1, 2);
+      socket.emit("load-component-in-app", "a component");
     });
   });
 
@@ -51,35 +50,35 @@ describe("FructoseServer", () => {
     });
   });
 
-  it("forwards the loadedOnDevice message", done => {
+  it("forwards the component-loaded-in-app message", done => {
     setUp(socketConfig).then(() => {
-      socket.on("loaded", () => {
+      socket.on("component-loaded-in-app", () => {
         done();
       });
 
-      socket.emit("loadedOnDevice");
+      socket.emit("component-loaded-in-app");
     });
   });
 
-  it("forwards the get-app-components", () =>
+  it("forwards the get-loaded-app-components", () =>
     new Promise(resolve => {
       setUp(socketConfig).then(() => {
-        socket.on("get-app-components", () => {
+        socket.on("get-loaded-app-components", () => {
           resolve();
         });
 
-        socket.emit("getAppComponents");
+        socket.emit("get-loaded-app-components");
       });
     }));
 
   it("forwards the bundled-components", () =>
     new Promise(resolve => {
       setUp(socketConfig).then(() => {
-        socket.on("bundled-components", () => {
+        socket.on("send-loaded-app-components", () => {
           resolve();
         });
 
-        socket.emit("loaded-app-components");
+        socket.emit("send-loaded-app-components");
       });
     }));
 });

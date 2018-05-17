@@ -22,19 +22,19 @@ const actions = {
   decorateAction: () => () => {}
 };
 
-const FructoseView = ({ component }) => (
+const FructoseComponentWrapper = ({ component }) => (
   <View style={styles.container} testID="fructose">
     <StatusBar hidden />
     {component(knobs, actions)}
   </View>
 );
 
-FructoseView.propTypes = {
-  component: PropTypes.element
+FructoseComponentWrapper.propTypes = {
+  component: PropTypes.func.isRequired
 };
 
-FructoseView.defaultProps = {
+FructoseComponentWrapper.defaultProps = {
   component: null
 };
 
-export default FructoseView;
+export default FructoseComponentWrapper;

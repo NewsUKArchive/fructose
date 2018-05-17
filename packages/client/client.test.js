@@ -42,9 +42,9 @@ describe("Fructose Client", () => {
   it("can load a component", () =>
     new Promise(resolve => {
       io.on("connection", socket => {
-        socket.on("loadComponent", x => {
+        socket.on("load-component-in-app", x => {
           expect(x).toBe("component");
-          io.emit("loaded");
+          io.emit("component-loaded-in-app");
         });
       });
 
@@ -63,8 +63,8 @@ describe("Fructose Client", () => {
       const componentList = ["a", "b", "c"];
 
       io.on("connection", socket => {
-        socket.on("getAppComponents", () => {
-          io.emit("bundled-components", componentList);
+        socket.on("get-loaded-app-components", () => {
+          io.emit("send-loaded-app-components", componentList);
         });
       });
 

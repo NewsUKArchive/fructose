@@ -11,9 +11,7 @@ export default class ErrorBoundary extends React.Component {
       error: null,
       component: null
     };
-  }
 
-  componentWillMount() {
     this.socket.on("load-component-in-app", component => {
       this.state.error = null;
       this.state.component = component;

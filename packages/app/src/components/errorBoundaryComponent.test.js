@@ -13,7 +13,7 @@ describe("Error Boundary", () => {
   it("It renders the error View when error is triggered", () => {
     const wrapper = renderer
       .create(
-        <ErrorBoundary events={new EventEmitter()}>
+        <ErrorBoundary socket={new EventEmitter()} events={new EventEmitter()}>
           <ThrowAnError />
         </ErrorBoundary>
       )
@@ -25,7 +25,7 @@ describe("Error Boundary", () => {
   it("it render a component when there is no error", () => {
     const wrapper = renderer
       .create(
-        <ErrorBoundary events={new EventEmitter()}>
+        <ErrorBoundary socket={new EventEmitter()} events={new EventEmitter()}>
           <Text>Hey I rendered</Text>
         </ErrorBoundary>
       )

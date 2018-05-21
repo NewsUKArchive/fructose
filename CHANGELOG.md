@@ -1,3 +1,13 @@
+<a name="3.6.4"></a>
+## [3.6.4](https://github.com/newsuk/fructose/compare/v3.6.3...v3.6.4) (2018-05-21)
+
+
+### Bug Fixes
+
+* commenting only deletes expo related comments ([#131](https://github.com/newsuk/fructose/issues/131)) ([be466c2](https://github.com/newsuk/fructose/commit/be466c2))
+
+
+
 <a name="3.6.3"></a>
 ## [3.6.3](https://github.com/newsuk/fructose/compare/v3.6.2...v3.6.3) (2018-05-17)
 

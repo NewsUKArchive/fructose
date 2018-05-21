@@ -119,7 +119,7 @@ describe("publish stories to github pull request", () => {
     expect(commentsToDelete).toEqual([1, 2]);
   });
 
-  it("should only delete comments about dextrose", async () => {
+  it("should only delete comments about Expo", async () => {
     nock("https://api.github.com")
       .get("/repos/testRepo/issues/1/comments")
       .reply(200, sameUserCommentsResponse);

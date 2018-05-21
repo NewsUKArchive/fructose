@@ -22,7 +22,7 @@ const existingComments = (
       if (error) reject(error);
       const ids = JSON.parse(data)
         .filter(({ user }) => user.login === accountName)
-        .filter(({ body }) => body.includes("If you use Expo"))
+        .filter(({ body }) => body.includes("Expo"))
         .map(({ id }) => id);
 
       resolve(ids);

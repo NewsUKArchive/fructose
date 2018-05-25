@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
+import githubCommentManager from "./github-comment-manager";
+
 const program = require("commander");
 const log = require("../../../common/logger");
-const gitHubCommentManager = require("./github-comment-manager");
 
 program
   .command("publish-QR-code")
@@ -41,13 +42,13 @@ program
       );
     if (!path || !accountName || !key || !issueNumber || !repository)
       process.exit(1);
-    await gitHubCommentManager.deleteAllExpoComments(
+    await githubCommentManager.deleteAllExpoComments(
       accountName,
       key,
       issueNumber,
       repository
     );
-    await gitHubCommentManager.createNewExpoComment(
+    await githubCommentManager.createNewExpoComment(
       accountName,
       key,
       path,

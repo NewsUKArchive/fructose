@@ -65,7 +65,7 @@ const deleteAllExpoComments = async (
   return deleteCommentsFromList(comments, account, token, repository);
 };
 
-module.exports = {
+export default {
   deleteAllExpoComments,
   createNewExpoComment
 };

@@ -1,6 +1,7 @@
 /* global describe it expect */
+import githubCommentManager from "./github-comment-manager";
+
 const nock = require("nock");
-const githubCommentManager = require("./github-comment-manager");
 
 const account = "testAccountName";
 const token = "testKey";

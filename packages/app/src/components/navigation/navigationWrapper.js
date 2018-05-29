@@ -33,7 +33,7 @@ export default class NavigationWrapper extends Component {
 
     return (
       <View style={styles.menu}>
-        <SideMenu menu={menu} isOpen={false}>
+        <SideMenu menu={menu} isOpen={false} openMenuOffset={350}>
           {this.props.children}
         </SideMenu>
       </View>

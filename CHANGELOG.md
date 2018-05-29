@@ -1,3 +1,13 @@
+<a name="3.7.0"></a>
+# [3.7.0](https://github.com/newsuk/fructose/compare/v3.6.4...v3.7.0) (2018-05-29)
+
+
+### Features
+
+* use github-comment-manager for PR commenting ([#132](https://github.com/newsuk/fructose/issues/132)) ([03b4ac2](https://github.com/newsuk/fructose/commit/03b4ac2))
+
+
+
 <a name="3.6.4"></a>
 ## [3.6.4](https://github.com/newsuk/fructose/compare/v3.6.3...v3.6.4) (2018-05-21)
 

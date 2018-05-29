@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
+import program from "commander";
 import githubCommentManager from "./github-comment-manager";
-
-const program = require("commander");
-const log = require("../../../common/logger");
+import log from "../../../common/logger";
 
 program
   .command("publish-QR-code")

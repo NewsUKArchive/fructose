@@ -8,49 +8,18 @@ describe("menu Data Generator", () => {
       "parent2/parent2child",
       "parent2/parent2child2",
       "parent1/parent1child3",
-      "parent3"
+      "parent3",
+      "parent3/parent3child1",
+      "parent4"
     ];
 
     const expectedResult = [
       {
-        items: [
-          {
-            componentName: "parent1/parent1child",
-            title: "parent1child"
-          },
-          {
-            componentName: "parent1/parent1child2",
-            title: "parent1child2"
-          },
-          {
-            componentName: "parent1/parent1child3",
-            title: "parent1child3"
-          }
-        ],
-        title: "parent1"
+        title: "parent1",
+        data: ["parent1child", "parent1child2", "parent1child3"]
       },
-      {
-        items: [
-          {
-            componentName: "parent2/parent2child",
-            title: "parent2child"
-          },
-          {
-            componentName: "parent2/parent2child2",
-            title: "parent2child2"
-          }
-        ],
-        title: "parent2"
-      },
-      {
-        items: [
-          {
-            componentName: "parent3",
-            title: undefined
-          }
-        ],
-        title: "parent3"
-      }
+      { title: "parent2", data: ["parent2child", "parent2child2"] },
+      { title: "parent3", data: ["parent3child1"] }
     ];
 
     const actualResult = createMenuData(data);

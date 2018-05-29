@@ -77,7 +77,7 @@ const sameUserCommentsResponse = [
 ];
 
 describe("deleteAllExpoComments", () => {
-  it("should not delete any comments", async () => {
+  it("should not delete any comments as there are no comments made by the specified user's account", async () => {
     nock("https://api.github.com")
       .get(`/repos/${account}/${repository}/issues/${pullRequest}/comments`)
       .reply(200, noCommentsResponse);

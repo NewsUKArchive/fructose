@@ -11,6 +11,13 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center"
   },
+  sectionHeader: {
+    fontSize: 22,
+    margin: 4,
+    marginBottom: 8,
+    color: "white",
+    textAlign: "center"
+  },
   menuItem: {
     margin: 10,
     color: "gray",
@@ -24,6 +31,8 @@ const styles = StyleSheet.create({
   }
 });
 
+const MenuSeparator = () => <View style={styles.menuSeparator} />;
+
 export default class MenuList extends Component {
   constructor(props) {
     super(props);
@@ -36,17 +45,24 @@ export default class MenuList extends Component {
         <Text style={styles.menuHeader}>Component List</Text>
         <SectionList
           sections={this.preparedMenuItems}
+          keyExtractor={(item, index) => index}
+          stickySectionHeadersEnabled={false}
           renderSectionHeader={({ section: { title } }) => (
-            <Text style={{ fontWeight: "bold" }}>{title}</Text>
+            <Text style={styles.sectionHeader}>{title}</Text>
           )}
           renderItem={({ item, index, section }) => (
-            <Text
-              key={index}
-              onPress={() => this.props.onMenuItemPress(section, item)}
-            >
-              {" "}
-              {item}{" "}
-            </Text>
+            <View>
+              <Text
+                style={styles.menuItem}
+                key={index}
+                onPress={() => this.props.onMenuItemPress(section, item)}
+              >
+                {" "}
+                {item}{" "}
+              </Text>
+
+              <MenuSeparator />
+            </View>
           )}
         />
       </View>

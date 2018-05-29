@@ -18,7 +18,8 @@ export default class NavigationWrapper extends Component {
     this.onMenuItemPress = this.onMenuItemPress.bind(this);
   }
 
-  onMenuItemPress(id) {
+  onMenuItemPress(section, item) {
+    const id = `${section.title}/${item}`;
     this.props.events.emit("load-component", id);
   }
 
@@ -33,7 +34,7 @@ export default class NavigationWrapper extends Component {
 
     return (
       <View style={styles.menu}>
-        <SideMenu menu={menu} isOpen={false}>
+        <SideMenu menu={menu} isOpen={false} openMenuOffset={350}>
           {this.props.children}
         </SideMenu>
       </View>

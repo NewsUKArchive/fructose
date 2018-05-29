@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, SectionList } from "react-native";
 import PropTypes from "prop-types";
-import NestedListView, { NestedRow } from "react-native-nested-listview";
 import createMenuData from "./createMenuData";
 
 const styles = StyleSheet.create({
   menuHeader: {
     fontSize: 24,
+    margin: 4,
+    marginBottom: 8,
+    color: "white",
+    textAlign: "center"
+  },
+  sectionHeader: {
+    fontSize: 22,
     margin: 4,
     marginBottom: 8,
     color: "white",
@@ -27,47 +33,37 @@ const styles = StyleSheet.create({
 
 const MenuSeparator = () => <View style={styles.menuSeparator} />;
 
-const MenuNode = props => {
-  if (props.node.title) {
-    return (
-      <NestedRow level={props.level}>
-        <Text style={styles.menuItem}>{props.node.title}</Text>
-        <MenuSeparator />
-      </NestedRow>
-    );
-  }
-  return null;
-};
-
-MenuNode.propTypes = {
-  node: PropTypes.shape().isRequired,
-  level: PropTypes.number.isRequired
-};
-
 export default class MenuList extends Component {
   constructor(props) {
     super(props);
     this.preparedMenuItems = createMenuData(props.menuItems);
   }
 
-  handleNodePress(node) {
-    if (node.items) {
-      return node.items[0].title
-        ? null
-        : this.props.onMenuItemPress(node.title);
-    }
-    return this.props.onMenuItemPress(node.componentName);
-  }
-
   render() {
     return (
       <View>
         <Text style={styles.menuHeader}>Component List</Text>
-        <NestedListView
-          data={this.preparedMenuItems}
-          getChildrenName={() => "items"}
-          renderNode={(node, level) => <MenuNode node={node} level={level} />}
-          onNodePressed={node => this.handleNodePress(node)}
+        <SectionList
+          sections={this.preparedMenuItems}
+          keyExtractor={(item, index) => index}
+          stickySectionHeadersEnabled={false}
+          renderSectionHeader={({ section: { title } }) => (
+            <Text style={styles.sectionHeader}>{title}</Text>
+          )}
+          renderItem={({ item, index, section }) => (
+            <View>
+              <Text
+                style={styles.menuItem}
+                key={index}
+                onPress={() => this.props.onMenuItemPress(section, item)}
+              >
+                {" "}
+                {item}{" "}
+              </Text>
+
+              <MenuSeparator />
+            </View>
+          )}
         />
       </View>
     );

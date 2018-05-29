@@ -1,28 +1,22 @@
 /* eslint-disable no-param-reassign */
-export default arr => {
-  const menuItemCollection = arr.reduce((menuItems, item) => {
+export default arr =>
+  arr.reduce((menuItems, item) => {
     const split = item.split("/");
     const parent = split[0];
     const child = split[1];
 
-    if (!menuItems[parent]) {
-      menuItems[parent] = {};
-      menuItems[parent].items = [];
-      menuItems[parent].title = parent;
+    if (!child) return menuItems;
+
+    let section = menuItems.find(sections => sections.title === parent);
+
+    if (!section) {
+      section = {};
+      section.data = [];
+      section.title = parent;
+      menuItems.push(section);
     }
 
-    menuItems[parent].items.push({
-      componentName: item,
-      title: child
-    });
+    section.data.push(child);
 
     return menuItems;
-  }, {});
-
-  return Object.keys(menuItemCollection)
-    .map(item => {
-      menuItemCollection[item].items.sort((a, b) => a.title > b.title);
-      return menuItemCollection[item];
-    })
-    .sort((a, b) => a.title > b.title);
-};
+  }, []);

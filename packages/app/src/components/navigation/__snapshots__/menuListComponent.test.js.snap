@@ -18,53 +18,39 @@ exports[`Menu List Component renders specified component 1`] = `
   >
     Component List
   </Text>
-  <NestedListView
-    data={
+  <SectionList
+    data={Array []}
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onEndReachedThreshold={2}
+    renderItem={[Function]}
+    renderSectionHeader={[Function]}
+    scrollEventThrottle={50}
+    sections={
       Array [
         Object {
-          "items": Array [
-            Object {
-              "componentName": "parent1/parent1child",
-              "title": "parent1child",
-            },
-            Object {
-              "componentName": "parent1/parent1child2",
-              "title": "parent1child2",
-            },
-            Object {
-              "componentName": "parent1/parent1child3",
-              "title": "parent1child3",
-            },
+          "data": Array [
+            "parent1child",
+            "parent1child2",
+            "parent1child3",
           ],
           "title": "parent1",
         },
         Object {
-          "items": Array [
-            Object {
-              "componentName": "parent2/parent2child",
-              "title": "parent2child",
-            },
-            Object {
-              "componentName": "parent2/parent2child2",
-              "title": "parent2child2",
-            },
+          "data": Array [
+            "parent2child",
+            "parent2child2",
           ],
           "title": "parent2",
         },
-        Object {
-          "items": Array [
-            Object {
-              "componentName": "parent3",
-              "title": undefined,
-            },
-          ],
-          "title": "parent3",
-        },
       ]
     }
-    getChildrenName={[Function]}
-    onNodePressed={[Function]}
-    renderNode={[Function]}
+    stickySectionHeadersEnabled={false}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
   />
 </View>
 `;

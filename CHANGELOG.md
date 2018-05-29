@@ -1,3 +1,13 @@
+<a name="3.8.0"></a>
+# [3.8.0](https://github.com/newsuk/fructose/compare/v3.7.0...v3.8.0) (2018-05-29)
+
+
+### Features
+
+* improve component navigation ([#133](https://github.com/newsuk/fructose/issues/133)) ([7c72fc7](https://github.com/newsuk/fructose/commit/7c72fc7))
+
+
+
 <a name="3.7.0"></a>
 # [3.7.0](https://github.com/newsuk/fructose/compare/v3.6.4...v3.7.0) (2018-05-29)
 

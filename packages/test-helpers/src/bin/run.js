@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const program = require("commander");
-const log = require("../packages/common/logger");
-const gitHubCommentManager = require("./github-comment-manager");
+import program from "commander";
+import githubCommentManager from "./github-comment-manager";
+import log from "../../../common/logger";
 
 program
   .command("publish-QR-code")
@@ -24,7 +24,7 @@ program
     "-r --repository [repository]",
     "gitbug organisation and repo e.g. newsuk/times-components"
   )
-  .action(options => {
+  .action(async options => {
     const { path, accountName, key, issueNumber, repository } = options;
 
     if (!path)
@@ -41,10 +41,18 @@ program
       );
     if (!path || !accountName || !key || !issueNumber || !repository)
       process.exit(1);
-    gitHubCommentManager
-      .publishQRCode(accountName, key, path, issueNumber, repository)
-      .catch(error => {
-        throw error;
-      });
+    await githubCommentManager.deleteAllExpoComments(
+      accountName,
+      key,
+      issueNumber,
+      repository
+    );
+    await githubCommentManager.createNewExpoComment(
+      accountName,
+      key,
+      path,
+      issueNumber,
+      repository
+    );
   });
 program.parse(process.argv);

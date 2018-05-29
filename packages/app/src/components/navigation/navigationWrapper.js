@@ -18,7 +18,8 @@ export default class NavigationWrapper extends Component {
     this.onMenuItemPress = this.onMenuItemPress.bind(this);
   }
 
-  onMenuItemPress(id) {
+  onMenuItemPress(section, item) {
+    const id = `${section.title}/${item}`;
     this.props.events.emit("load-component", id);
   }
 

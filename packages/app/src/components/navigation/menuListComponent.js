@@ -30,25 +30,24 @@ export default class MenuList extends Component {
     this.preparedMenuItems = createMenuData(props.menuItems);
   }
 
-  handleNodePress(node) {
-    if (node.items) {
-      return node.items[0].title
-        ? null
-        : this.props.onMenuItemPress(node.title);
-    }
-    return this.props.onMenuItemPress(node.componentName);
-  }
-
   render() {
     return (
       <View>
         <Text style={styles.menuHeader}>Component List</Text>
         <SectionList
+          sections={this.preparedMenuItems}
           renderSectionHeader={({ section: { title } }) => (
             <Text style={{ fontWeight: "bold" }}>{title}</Text>
           )}
-          renderItem={({ item, index }) => <Text key={index}>{item}</Text>}
-          sections={this.preparedMenuItems}
+          renderItem={({ item, index, section }) => (
+            <Text
+              key={index}
+              onPress={() => this.props.onMenuItemPress(section, item)}
+            >
+              {" "}
+              {item}{" "}
+            </Text>
+          )}
         />
       </View>
     );

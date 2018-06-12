@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Menu List Component renders specified component 1`] = `
-<View>
+<Component>
   <Text
     accessible={true}
     allowFontScaling={true}
@@ -52,5 +52,5 @@ exports[`Menu List Component renders specified component 1`] = `
     updateCellsBatchingPeriod={50}
     windowSize={21}
   />
-</View>
+</Component>
 `;

@@ -23,7 +23,6 @@
     "prepare": "babel packages/test-helpers/src --out-dir packages/test-helpers/lib"
   },
   "bin": {
-    "compile-tests": "packages/test-helpers/bin/writeComponentsTests.js",
     "fructose-web": "packages/web/bin/start.js",
     "fructose-tunnel": "packages/test-helpers/bin/createTunnel.js",
     "fructose": "packages/test-helpers/lib/bin/run.js"

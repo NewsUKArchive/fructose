@@ -14,6 +14,7 @@ const knobs = {
   select: () => {},
   color: () => {},
   selectV2: () => {},
+  text: () => {},
   e2eTestDontDelete: () => <Text>YAY I RENDERED</Text>
 };
 

@@ -1,3 +1,13 @@
+<a name="3.8.5"></a>
+## [3.8.5](https://github.com/newsuk/fructose/compare/v3.8.4...v3.8.5) (2018-08-01)
+
+
+### Bug Fixes
+
+* removing old binary from package.json ([#139](https://github.com/newsuk/fructose/issues/139)) ([bb99661](https://github.com/newsuk/fructose/commit/bb99661))
+
+
+
 <a name="3.8.4"></a>
 ## [3.8.4](https://github.com/newsuk/fructose/compare/v3.8.3...v3.8.4) (2018-08-01)
 

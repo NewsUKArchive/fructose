@@ -1,3 +1,13 @@
+<a name="3.8.6"></a>
+## [3.8.6](https://github.com/newsuk/fructose/compare/v3.8.5...v3.8.6) (2018-08-06)
+
+
+### Bug Fixes
+
+* loads of new knobs ([#141](https://github.com/newsuk/fructose/issues/141)) ([29b820f](https://github.com/newsuk/fructose/commit/29b820f))
+
+
+
 <a name="3.8.5"></a>
 ## [3.8.5](https://github.com/newsuk/fructose/compare/v3.8.4...v3.8.5) (2018-08-01)
 

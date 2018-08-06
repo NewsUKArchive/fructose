@@ -15,6 +15,12 @@ const knobs = {
   color: () => {},
   selectV2: () => {},
   text: () => {},
+  number: () => {},
+  boolean: () => {},
+  array:() => {},
+  radio: () => {},
+  date: () => {},
+  button: () => {},
   e2eTestDontDelete: () => <Text>YAY I RENDERED</Text>
 };
 

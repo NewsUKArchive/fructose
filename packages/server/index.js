@@ -69,6 +69,13 @@ class FructoseServer {
           log.error("server-index", `Error found in component: ${component}`);
           log.error("server-index", error);
         });
+
+        socket.on("component-not-found", component => {
+          log.error(
+            "server-index",
+            `Error component not found in app: ${component}`
+          );
+        });
       });
 
       this.server.listen(this.port, () => {

@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import showcases from "./component.showcase";
+import showcases from "./component-pages.showcase";
 import fructose from "./../../setup";
 
 describe("Web example tests", () => {
@@ -21,7 +21,7 @@ describe("Web example tests", () => {
 
     for (let i = 0; i < showcases.children.length; i++) {
       const result = await fructoseClient.loadComponent(
-        `${showcases.name}/${showcases.children[i].name}`
+        `${showcases.name}:${showcases.children[i].name}`
       );
 
       expect(result).toBe("component loaded");

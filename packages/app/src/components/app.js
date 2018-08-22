@@ -58,9 +58,14 @@ class App extends Component {
     };
 
     this.loadComponent = name => {
-      const component = this.props.components[name];
-      if (!component)
-        throw new Error(`${name} does not exist in the componentStore`);
+      let component = this.props.components[name];
+
+      if (!component) {
+        component = LoadingScreen;
+        this.props.comms.socket.emit("component-not-found", name);
+        this.setState({ component });
+      }
+
       this.setState({ component });
     };
 

@@ -1,3 +1,13 @@
+<a name="3.8.7"></a>
+## [3.8.7](https://github.com/newsuk/fructose/compare/v3.8.6...v3.8.7) (2018-08-23)
+
+
+### Bug Fixes
+
+* cleaning up test session ([#144](https://github.com/newsuk/fructose/issues/144)) ([ec976f8](https://github.com/newsuk/fructose/commit/ec976f8))
+
+
+
 <a name="3.8.6"></a>
 ## [3.8.6](https://github.com/newsuk/fructose/compare/v3.8.5...v3.8.6) (2018-08-06)
 

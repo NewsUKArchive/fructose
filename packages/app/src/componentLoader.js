@@ -26,8 +26,7 @@ export default (loadComponents, platform) => {
         );
 
         filteredShowcases.forEach(showcase => {
-          const nameWithoutSlash = showcases.name.split("/")[0];
-          const showCaseName = `${nameWithoutSlash}/${showcase.name}`;
+          const showCaseName = `${showcases.name}:${showcase.name}`;
           componentsStore[showCaseName] = showcase.component;
         });
       }

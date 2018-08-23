@@ -10,7 +10,7 @@ it("returns an object with keys when using .showcasefiles", () => {
       children: [
         {
           type: "story",
-          name: "Article Label",
+          name: "small",
           component: () => "lol"
         }
       ]
@@ -19,7 +19,7 @@ it("returns an object with keys when using .showcasefiles", () => {
 
   const getShowcasesObject = () => [mockShowcase];
   const loadedShowcases = loader(getShowcasesObject);
-  const returnedComponent = loadedShowcases["Primitives/Article Label"]();
+  const returnedComponent = loadedShowcases["Primitives/ArticleLabel:small"]();
   expect(returnedComponent).toEqual("lol");
 });
 
@@ -27,11 +27,11 @@ it("filters out non story showcases", () => {
   // mocks the showcase structure that is exported in times-components
   const mockShowcase = {
     default: {
-      name: "Primitivesl",
+      name: "Primitives/ArticleLabel",
       children: [
         {
           type: "not a story",
-          name: "Article Label",
+          name: "small",
           component: () => "lol"
         }
       ]
@@ -47,11 +47,11 @@ it("filters out non story showcases", () => {
 it("returns showcases without a platform", () => {
   const mockShowcase = {
     default: {
-      name: "Primitives",
+      name: "Primitives/ArticleLabel",
       children: [
         {
           type: "story",
-          name: "Article Label",
+          name: "small",
           component: () => "lol"
         }
       ]
@@ -60,19 +60,19 @@ it("returns showcases without a platform", () => {
 
   const getShowcasesObject = () => [mockShowcase];
   const loadedShowcases = loader(getShowcasesObject);
-  const returnedComponent = loadedShowcases["Primitives/Article Label"]();
+  const returnedComponent = loadedShowcases["Primitives/ArticleLabel:small"]();
   expect(returnedComponent).toEqual("lol");
 });
 
 it("filters out showcases that don't match specified plaform", () => {
   const mockShowcase = {
     default: {
-      name: "Primitives",
+      name: "Primitives/ArticleLabel",
       children: [
         {
           platform: "native",
           type: "story",
-          name: "Article Label",
+          name: "small",
           component: () => "lol"
         }
       ]

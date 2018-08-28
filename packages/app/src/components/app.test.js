@@ -99,7 +99,11 @@ describe("App", () => {
     expect(app.instance().state.component).toBe(components.component1);
   });
 
-  it("throws error when requested to load component that does not exist", () => {
+  it("throws emits when requested to load component that does not exist", done => {
+    messaging.socket.on("component-not-found", () => {
+      done();
+    });
+
     app = shallow(
       <App
         comms={messaging}
@@ -107,8 +111,7 @@ describe("App", () => {
         componentList={componentList}
       />
     );
-    expect(() =>
-      app.instance().loadComponent("non-existent-component")
-    ).toThrow();
+
+    app.instance().loadComponent("non-existent-component");
   });
 });

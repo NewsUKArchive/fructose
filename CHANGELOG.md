@@ -1,3 +1,13 @@
+<a name="3.9.0"></a>
+# [3.9.0](https://github.com/newsuk/fructose/compare/v3.8.8...v3.9.0) (2018-08-28)
+
+
+### Features
+
+* set component to Default if component does not exist in app ([#143](https://github.com/newsuk/fructose/issues/143)) ([87bb23c](https://github.com/newsuk/fructose/commit/87bb23c))
+
+
+
 <a name="3.8.8"></a>
 ## [3.8.8](https://github.com/newsuk/fructose/compare/v3.8.7...v3.8.8) (2018-08-23)
 

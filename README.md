@@ -1,5 +1,5 @@
 
-[![Build Status](https://www.bitrise.io/app/3038aa161f140118/status.svg?token=xtX-Hi2JSI7S3zQIGHI0EQ&branch=master)](https://www.bitrise.io/app/3038aa161f140118)
+[![Build Status](https://app.bitrise.io/app/3038aa161f140118/status.svg?token=xtX-Hi2JSI7S3zQIGHI0EQ&branch=master)](https://app.bitrise.io/app/3038aa161f140118)
 
 # Fructose - Functional React (native) UI Tester 
 

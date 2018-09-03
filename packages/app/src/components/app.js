@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from "react-native";
 
 import ErrorBoundary from "./errorBoundaryComponent";
 import FructoseComponentWrapper from "./fructoseComponentWrapper";
-import NavigationWrapper from "./navigation/navigationWrapper";
 import { version } from "../../../../package.json";
 
 const styles = StyleSheet.create({
@@ -95,12 +94,12 @@ class App extends Component {
 
   render() {
     return (
-        <ErrorBoundary
-          socket={this.props.comms.socket}
-          events={this.props.comms.events}
-        >
-          <FructoseComponentWrapper component={this.state.component} />
-        </ErrorBoundary>
+      <ErrorBoundary
+        socket={this.props.comms.socket}
+        events={this.props.comms.events}
+      >
+        <FructoseComponentWrapper component={this.state.component} />
+      </ErrorBoundary>
     );
   }
 }

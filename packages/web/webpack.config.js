@@ -2,24 +2,24 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const alias = {
-  "react-native": "react-native-web",
+  "react-native": "react-native-web"
 };
-const extensions = [".web.js", ".js"];
+const extensions = [".web.js", ".js", ".jsx"];
 const mode = "production";
 
-const babelConfig = [{
+const babelConfig = [
+  {
     test: /\.js$/,
     use: {
       loader: "babel-loader",
       options: {
         cacheDirectory: true,
         presets: ["react-native"],
-        plugins: [
-          "react-native-web"
-        ]
+        plugins: ["react-native-web"]
       }
     }
-  }, {
+  },
+  {
     test: /\.ttf$/,
     loader: "url-loader",
     include: path.resolve(
@@ -41,17 +41,19 @@ const babelConfig = [{
       name: "sounds/[name]-[hash:16].[ext]"
     }
   }
-]
+];
 
 module.exports = {
   mode,
   module: {
     rules: babelConfig
   },
-  plugins: [new HtmlWebpackPlugin({
-    filename: "index.html",
-    template: path.join(__dirname, "./index.ejs")
-  })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: path.join(__dirname, "./index.ejs")
+    })
+  ],
   output: {
     filename: "test.bundle.js",
     path: path.resolve(__dirname, "./dist")

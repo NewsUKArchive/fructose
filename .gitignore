@@ -75,6 +75,7 @@ packages/web/templates/**
 !dist/public
 dist/public/**
 !dist/public/react-logo.png
+packages/web/dist/
 
 **/__snapshots__/*/tmp
 **/vendor-dev

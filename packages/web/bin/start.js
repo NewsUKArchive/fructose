@@ -4,7 +4,7 @@ const log = require("../../common/logger");
 
 program
   .version("0.0.1")
-  .option("-d, --build-dir [directory]", "specify the build directory")
+  .option("-d, --build-dir [directory]", "specify the directory where webpack.config.js lives")
   .parse(process.argv);
 
 if (!program.buildDir)

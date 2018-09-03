@@ -5,7 +5,7 @@ const alias = {
   "react-native": "react-native-web",
 };
 const extensions = [".web.js", ".js"];
-const mode = "development";
+const mode = "production";
 
 const babelConfig = [{
     test: /\.js$/,

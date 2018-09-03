@@ -29,6 +29,6 @@ describe("Web example tests", () => {
   });
 
   afterAll(async () => {
-    // await fructose.hooks.web.cleanup();
+    await fructose.hooks.web.cleanup();
   });
 });

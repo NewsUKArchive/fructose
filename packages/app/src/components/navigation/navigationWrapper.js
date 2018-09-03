@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import SideMenu from "react-native-side-menu";
 import MenuList from "./menuListComponent";

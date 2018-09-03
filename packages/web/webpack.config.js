@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const alias = {
-  "react-native": "react-native-web"
+  "react-native": "react-native-web",
 };
 const extensions = [".web.js", ".js"];
 const mode = "development";

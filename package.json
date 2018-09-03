@@ -49,7 +49,7 @@
       "<rootDir>/packages/test-helpers/lib"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!react-native|react-navigation|fructose-app|@times-components/image)"
+      "node_modules/(?!react-native|fructose-app|@times-components/image)"
     ]
   },
   "dependencies": {
@@ -68,6 +68,7 @@
     "prop-types": "^15.6.0",
     "react-native": "0.55.4",
     "react-native-side-menu": "^1.1.3",
+    "react-navigation": "2.10.0",
     "request": "^2.82.0",
     "server-destroy": "^1.0.1",
     "socket.io": "1.7.4",
@@ -82,7 +83,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "6.26.0",
+    "babel-core": "6.26.3",
     "babel-jest": "19.0.0",
     "babel-loader": "7.1.4",
     "babel-plugin-react-native-web": "^0.8.9",

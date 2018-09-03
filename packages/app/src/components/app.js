@@ -41,9 +41,6 @@ const LoadingScreen = () => (
     </Text>
     <View>
       <Text style={styles.header}>🛠 FRUCTOSE 🛠</Text>
-      <Text style={styles.text}>
-        Swipe right from left edge for component menu
-      </Text>
     </View>
     <Text style={styles.version}>Version: {version}</Text>
   </View>

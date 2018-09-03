@@ -33,13 +33,6 @@ const babelConfig = [
     query: {
       name: "images/[name]-[hash:16].[ext]"
     }
-  },
-  {
-    test: /\.(mp3|wav)$/,
-    loader: "file-loader",
-    query: {
-      name: "sounds/[name]-[hash:16].[ext]"
-    }
   }
 ];
 

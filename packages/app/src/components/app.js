@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from "react-native";
 
 import ErrorBoundary from "./errorBoundaryComponent";
 import FructoseComponentWrapper from "./fructoseComponentWrapper";
-import NavigationWrapper from "./navigation/navigationWrapper";
 import { version } from "../../../../package.json";
 
 const styles = StyleSheet.create({
@@ -42,9 +41,6 @@ const LoadingScreen = () => (
     </Text>
     <View>
       <Text style={styles.header}>🛠 FRUCTOSE 🛠</Text>
-      <Text style={styles.text}>
-        Swipe right from left edge for component menu
-      </Text>
     </View>
     <Text style={styles.version}>Version: {version}</Text>
   </View>
@@ -95,17 +91,12 @@ class App extends Component {
 
   render() {
     return (
-      <NavigationWrapper
-        componentList={this.props.componentList}
+      <ErrorBoundary
+        socket={this.props.comms.socket}
         events={this.props.comms.events}
       >
-        <ErrorBoundary
-          socket={this.props.comms.socket}
-          events={this.props.comms.events}
-        >
-          <FructoseComponentWrapper component={this.state.component} />
-        </ErrorBoundary>
-      </NavigationWrapper>
+        <FructoseComponentWrapper component={this.state.component} />
+      </ErrorBoundary>
     );
   }
 }

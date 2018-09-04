@@ -1,20 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Menu List Component renders specified component 1`] = `
-<Component>
+<View>
   <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    style={
-      Object {
-        "color": "white",
-        "fontSize": 24,
-        "margin": 4,
-        "marginBottom": 8,
-        "textAlign": "center",
-      }
-    }
+    style={26}
   >
     Component List
   </Text>
@@ -52,5 +41,5 @@ exports[`Menu List Component renders specified component 1`] = `
     updateCellsBatchingPeriod={50}
     windowSize={21}
   />
-</Component>
+</View>
 `;

@@ -1,61 +1,58 @@
-/* eslint-disable */
-
-const __DEV__ = process.env.NODE_ENV === "development";
-
 const path = require("path");
-const glob = require("glob");
-const webpack = require("webpack");
-const config = require("./shared.webpack.config.js");
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const plugins = [
-  new webpack.DefinePlugin({
-    "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-    __DEV__
-  }),
-  new HtmlWebpackPlugin({
-    filename: "index.html",
-    template: path.join(__dirname, "./index.ejs")
-  }),
-  // Split out any remaining node modules
-  new webpack.optimize.CommonsChunkPlugin({
-    name: "vendor/lib",
-    minChunks: module =>
-      module.context && module.context.indexOf("node_modules/") !== -1
-  }),
+const alias = {
+  "react-native": "react-native-web"
+};
+const extensions = [".web.js", ".js", ".jsx"];
+const mode = "production";
 
-  ...(__DEV__
-    ? []
-    : [
-        ...config.productionPlugins
-
-        // Add any app-specific production plugins here.
-      ])
+const babelConfig = [
+  {
+    test: /\.js$/,
+    use: {
+      loader: "babel-loader",
+      options: {
+        cacheDirectory: true,
+        presets: ["react-native"],
+        plugins: ["react-native-web"]
+      }
+    }
+  },
+  {
+    test: /\.ttf$/,
+    loader: "url-loader",
+    include: path.resolve(
+      __dirname,
+      "../node_modules/react-native-vector-icons"
+    )
+  },
+  {
+    test: /\.(gif|jpe?g|png|svg)$/,
+    loader: "url-loader",
+    query: {
+      name: "images/[name]-[hash:16].[ext]"
+    }
+  }
 ];
 
-module.exports = outputPath => ({
+module.exports = {
+  mode,
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        // TODO: Set up react-hot-loader during development.
-        loaders: ["babel-loader?cacheDirectory=true"],
-        exclude: /node_modules\/react-native-web\//
-      },
-      ...config.loaders
-    ]
+    rules: babelConfig
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: path.join(__dirname, "./index.ejs")
+    })
+  ],
   output: {
-    path: outputPath,
-    filename: "javascript/[name]-[hash:16].js",
-    publicPath: "/"
+    filename: "test.bundle.js",
+    path: path.resolve(__dirname, "./dist")
   },
-  plugins: plugins,
   resolve: {
-    alias: {
-      "react-native": "react-native-web"
-    },
-    extensions: [".web.js", ".js", ".json"]
+    alias,
+    extensions
   }
-});
+};

@@ -4,7 +4,7 @@ const log = require("../../common/logger");
 
 program
   .version("0.0.1")
-  .option("-d, --build-dir [directory]", "specify the build directory")
+  .option("-d, --build-dir [directory]", "specify the directory where webpack.config.js lives")
   .parse(process.argv);
 
 if (!program.buildDir)
@@ -21,7 +21,7 @@ const directory = path.resolve(program.buildDir);
 
 // eslint-disable-next-line import/no-dynamic-require
 const upperConfig = require(`${directory}/webpack.config.js`);
-const config = require("../webpack.config.js")(path.join(directory));
+const config = require("../webpack.config.js")
 
 const mergedConfig = merge(upperConfig, config);
 const fs = require("fs");

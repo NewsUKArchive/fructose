@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 import io from "socket.io-client";
-import properties from "./properties";
+import properties from "./properties.json";
 
 const config = {
   transports: ["websocket"],

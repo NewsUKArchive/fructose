@@ -1,5 +1,6 @@
 /* globals document */
-import { AppRegistry } from "react-native";
+
+import { AppRegistry, Text } from "react-native";
 import fructose from "../../packages/app/src";
 import { getStories } from "./components"; // eslint-disable-line import/no-unresolved
 

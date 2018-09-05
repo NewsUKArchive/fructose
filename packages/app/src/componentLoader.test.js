@@ -19,7 +19,7 @@ it("returns an object with keys when using .showcasefiles", () => {
 
   const getShowcasesObject = () => [mockShowcase];
   const loadedShowcases = loader(getShowcasesObject);
-  const returnedComponent = loadedShowcases["Primitives/ArticleLabel:small"]();
+  const returnedComponent = loadedShowcases["primitives/articlelabel:small"]();
   expect(returnedComponent).toEqual("lol");
 });
 
@@ -60,7 +60,7 @@ it("returns showcases without a platform", () => {
 
   const getShowcasesObject = () => [mockShowcase];
   const loadedShowcases = loader(getShowcasesObject);
-  const returnedComponent = loadedShowcases["Primitives/ArticleLabel:small"]();
+  const returnedComponent = loadedShowcases["primitives/articlelabel:small"]();
   expect(returnedComponent).toEqual("lol");
 });
 
@@ -80,7 +80,6 @@ it("filters out showcases that don't match specified plaform", () => {
   };
 
   const getShowcasesObject = () => [mockShowcase];
-
   const loaded = loader(getShowcasesObject, "web");
   expect(loaded).toEqual({});
 });

@@ -26,7 +26,9 @@ export default (loadComponents, platform) => {
         );
 
         filteredShowcases.forEach(showcase => {
-          const showCaseName = `${showcases.name}:${showcase.name}`;
+          const showCaseName = `${showcases.name}:${
+            showcase.name
+          }`.toLowerCase();
           componentsStore[showCaseName] = showcase.component;
         });
       }

@@ -54,7 +54,8 @@ class App extends Component {
     };
 
     this.loadComponent = name => {
-      let component = this.props.components[name];
+      const lowercaseComponent = `${name}`.toLowerCase();
+      let component = this.props.components[lowercaseComponent];
 
       if (!component) {
         component = LoadingScreen;

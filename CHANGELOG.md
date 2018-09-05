@@ -1,3 +1,13 @@
+<a name="3.9.3"></a>
+## [3.9.3](https://github.com/newsuk/fructose/compare/v3.9.2...v3.9.3) (2018-09-05)
+
+
+### Bug Fixes
+
+* lowercase stories before load ([#147](https://github.com/newsuk/fructose/issues/147)) ([d1860db](https://github.com/newsuk/fructose/commit/d1860db))
+
+
+
 <a name="3.9.2"></a>
 ## [3.9.2](https://github.com/newsuk/fructose/compare/v3.9.1...v3.9.2) (2018-09-04)
 

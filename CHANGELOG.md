@@ -1,3 +1,13 @@
+<a name="3.9.4"></a>
+## [3.9.4](https://github.com/newsuk/fructose/compare/v3.9.3...v3.9.4) (2018-09-25)
+
+
+### Bug Fixes
+
+* update webpack config to bundle .mjs files ([#148](https://github.com/newsuk/fructose/issues/148)) ([59e6ebf](https://github.com/newsuk/fructose/commit/59e6ebf))
+
+
+
 <a name="3.9.3"></a>
 ## [3.9.3](https://github.com/newsuk/fructose/compare/v3.9.2...v3.9.3) (2018-09-05)
 

@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const alias = {
   "react-native": "react-native-web"
 };
-const extensions = [".web.js", ".js", ".jsx"];
+const extensions = [".web.js", ".js", ".jsx", ".mjs"];
 const mode = "production";
 
 const babelConfig = [
@@ -26,6 +26,11 @@ const babelConfig = [
       __dirname,
       "../node_modules/react-native-vector-icons"
     )
+  },
+  {
+    include: /node_modules/,
+    test: /\.mjs$/,
+    type: "javascript/auto"
   },
   {
     test: /\.(gif|jpe?g|png|svg)$/,

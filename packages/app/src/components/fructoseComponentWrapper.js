@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { StyleSheet, View, StatusBar, Text } from "react-native";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, View, StatusBar, Text } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    height: "100%",
-    width: "100%"
+    backgroundColor: 'white',
+    height: '100%',
+    width: '100%'
   }
 });
 
@@ -17,7 +17,7 @@ const knobs = {
   text: () => {},
   number: () => {},
   boolean: () => {},
-  array:() => {},
+  array: () => {},
   radio: () => {},
   date: () => {},
   button: () => {},
@@ -29,12 +29,24 @@ const actions = {
   decorateAction: () => () => {}
 };
 
-const FructoseComponentWrapper = ({ component }) => (
-  <View style={styles.container} testID="fructose">
-    <StatusBar hidden />
-    {component(knobs, actions)}
-  </View>
-);
+class FructoseComponentWrapper extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.component = props.component;
+  }
+
+  render() {
+    const component = this.component;
+    console.warn(component);
+    return (
+      <View style={styles.container} testID="fructose">
+        <StatusBar hidden />
+        {component(knobs, actions)}
+      </View>
+    );
+  }
+}
 
 FructoseComponentWrapper.propTypes = {
   component: PropTypes.func.isRequired

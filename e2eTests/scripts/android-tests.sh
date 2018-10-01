@@ -1,6 +1,6 @@
 
-emulator @fructose_device -no-boot-anim &
-EMU_PID=$!
+# ~/Library/Android/sdk/tools/emulator @Pixel_2_API_26 -no-boot-anim & 
+# EMU_PID=$!
 adb wait-for-device
 adb reverse tcp:8081 tcp:8081
 adb reverse tcp:7811 tcp:7811

@@ -1,43 +1,43 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { StyleSheet, Text, View } from "react-native";
-
-import ErrorBoundary from "./errorBoundaryComponent";
-import FructoseComponentWrapper from "./fructoseComponentWrapper";
-import { version } from "../../../../package.json";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, Text, View } from 'react-native';
+import { createDrawerNavigator } from 'react-navigation';
+import ErrorBoundary from './errorBoundaryComponent';
+import FructoseComponentWrapper from './fructoseComponentWrapper';
+import { version } from '../../../../package.json';
 
 const styles = StyleSheet.create({
   header: {
-    color: "white",
+    color: 'white',
     fontSize: 40,
-    textAlign: "center"
+    textAlign: 'center'
   },
   version: {
     padding: 10,
-    color: "white",
+    color: 'white',
     fontSize: 20,
-    textAlign: "left"
+    textAlign: 'left'
   },
   text: {
     paddingTop: 10,
-    color: "white",
+    color: 'white',
     fontSize: 16,
-    textAlign: "center"
+    textAlign: 'center'
   },
   view: {
-    backgroundColor: "lightpink",
-    height: "100%",
-    width: "100%",
+    backgroundColor: 'lightpink',
+    height: '100%',
+    width: '100%',
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "space-between"
+    flexDirection: 'column',
+    justifyContent: 'space-between'
   }
 });
 
 const LoadingScreen = () => (
   <View style={styles.view}>
     <Text style={styles.text}>
-      Brought to you by {"\n"} The Times Tooling Team
+      Brought to you by {'\n'} The Times Tooling Team
     </Text>
     <View>
       <Text style={styles.header}>🛠 FRUCTOSE 🛠</Text>
@@ -52,6 +52,7 @@ class App extends Component {
     this.state = {
       component: () => <LoadingScreen />
     };
+    this.RootStack = this.initialiseNavigation(props.components);
 
     this.loadComponent = name => {
       const lowercaseComponent = `${name}`.toLowerCase();
@@ -59,7 +60,7 @@ class App extends Component {
 
       if (!component) {
         component = LoadingScreen;
-        this.props.comms.socket.emit("component-not-found", name);
+        this.props.comms.socket.emit('component-not-found', name);
         this.setState({ component });
       }
 
@@ -68,37 +69,54 @@ class App extends Component {
 
     this.sendComponentList = () => {
       this.props.comms.socket.emit(
-        "send-loaded-app-components",
+        'send-loaded-app-components',
         this.props.componentList
       );
     };
   }
 
+  initialiseNavigation(componentsToLoad) {
+    const navigationList = {
+      Home: {
+        screen: LoadingScreen
+      }
+    };
+
+    for (const component in componentsToLoad) {
+      navigationList[component] = {
+        screen: () => (
+          <ErrorBoundary
+            socket={this.props.comms.socket}
+            events={this.props.comms.events}
+          >
+            <FructoseComponentWrapper component={componentsToLoad[component]} />
+          </ErrorBoundary>
+        )
+      };
+    }
+
+    return createDrawerNavigator(navigationList);
+  }
+
   componentDidMount() {
-    this.props.comms.events.on("load-component", component => {
+    this.props.comms.events.on('load-component', component => {
       this.loadComponent(component);
     });
-    this.props.comms.socket.on("load-component-in-app", this.loadComponent);
+    this.props.comms.socket.on('load-component-in-app', this.loadComponent);
     this.props.comms.socket.on(
-      "get-loaded-app-components",
+      'get-loaded-app-components',
       this.sendComponentList
     );
-    this.props.comms.socket.emit("fructose-app-ready");
+    this.props.comms.socket.emit('fructose-app-ready');
   }
 
   componentDidUpdate() {
-    this.props.comms.socket.emit("component-loaded-in-app");
+    this.props.comms.socket.emit('component-loaded-in-app');
   }
 
   render() {
-    return (
-      <ErrorBoundary
-        socket={this.props.comms.socket}
-        events={this.props.comms.events}
-      >
-        <FructoseComponentWrapper component={this.state.component} />
-      </ErrorBoundary>
-    );
+    const RootStack = this.RootStack;
+    return <RootStack />;
   }
 }
 

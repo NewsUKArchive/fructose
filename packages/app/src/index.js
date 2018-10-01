@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import App from "./components/app";
-import Messaging from "./messaging";
-import componentLoader from "./componentLoader";
+import App from './components/app';
+import Messaging from './messaging';
+import componentLoader from './componentLoader';
 
-const defaultPlatform = "native";
+const defaultPlatform = 'native';
 
 export default (componentsToLoad, config) => () => {
   // disable red + yellow pop ups and allow our own error component to render

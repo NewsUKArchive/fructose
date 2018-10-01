@@ -67,7 +67,7 @@
     "prop-types": "^15.6.0",
     "react-native": "0.55.4",
     "react-native-side-menu": "^1.1.3",
-    "react-navigation": "2.10.0",
+    "react-navigation": "^2.17.0",
     "request": "^2.82.0",
     "server-destroy": "^1.0.1",
     "socket.io": "1.7.4",

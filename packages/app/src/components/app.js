@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { createDrawerNavigator } from 'react-navigation';
 import ErrorBoundary from './errorBoundaryComponent';
 import FructoseComponentWrapper from './fructoseComponentWrapper';
 import { version } from '../../../../package.json';
+import { DrawerItems, SafeAreaView } from 'react-navigation';
 
 const styles = StyleSheet.create({
   header: {
@@ -31,6 +32,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between'
+  },
+  container: {
+    flex: 1
   }
 });
 
@@ -45,6 +49,21 @@ const LoadingScreen = () => (
     <Text style={styles.version}>Version: {version}</Text>
   </View>
 );
+
+const CustomDrawerContentComponent = props => {
+  console.warn(props.navigation.router.childRouters);
+
+  return (
+    <ScrollView>
+      <SafeAreaView
+        style={styles.container}
+        forceInset={{ top: 'always', horizontal: 'never' }}
+      >
+        <DrawerItems {...props} />
+      </SafeAreaView>
+    </ScrollView>
+  );
+};
 
 class App extends Component {
   constructor(props) {
@@ -77,7 +96,7 @@ class App extends Component {
 
   initialiseNavigation(componentsToLoad) {
     const navigationList = {
-      Home: {
+      Home_: {
         screen: LoadingScreen
       }
     };
@@ -95,7 +114,9 @@ class App extends Component {
       };
     }
 
-    return createDrawerNavigator(navigationList);
+    return createDrawerNavigator(navigationList, {
+      contentComponent: CustomDrawerContentComponent
+    });
   }
 
   componentDidMount() {

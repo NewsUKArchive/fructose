@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { createDrawerNavigator } from 'react-navigation';
 import ErrorBoundary from './errorBoundaryComponent';
 import FructoseComponentWrapper from './fructoseComponentWrapper';
 import { version } from '../../../../package.json';
-import { DrawerItems, SafeAreaView } from 'react-navigation';
+import {
+  DrawerItems,
+  SafeAreaView,
+  createDrawerNavigator
+} from 'react-navigation';
+
+import MainDrawer from './navigation/mainDrawer';
 
 const styles = StyleSheet.create({
   header: {
@@ -50,21 +55,6 @@ const LoadingScreen = () => (
   </View>
 );
 
-const CustomDrawerContentComponent = props => {
-  console.warn(props.navigation.router.childRouters);
-
-  return (
-    <ScrollView>
-      <SafeAreaView
-        style={styles.container}
-        forceInset={{ top: 'always', horizontal: 'never' }}
-      >
-        <DrawerItems {...props} />
-      </SafeAreaView>
-    </ScrollView>
-  );
-};
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -94,6 +84,22 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.comms.events.on('load-component', component => {
+      this.loadComponent(component);
+    });
+    this.props.comms.socket.on('load-component-in-app', this.loadComponent);
+    this.props.comms.socket.on(
+      'get-loaded-app-components',
+      this.sendComponentList
+    );
+    this.props.comms.socket.emit('fructose-app-ready');
+  }
+
+  componentDidUpdate() {
+    this.props.comms.socket.emit('component-loaded-in-app');
+  }
+
   initialiseNavigation(componentsToLoad) {
     const navigationList = {
       Home_: {
@@ -115,24 +121,8 @@ class App extends Component {
     }
 
     return createDrawerNavigator(navigationList, {
-      contentComponent: CustomDrawerContentComponent
+      contentComponent: MainDrawer
     });
-  }
-
-  componentDidMount() {
-    this.props.comms.events.on('load-component', component => {
-      this.loadComponent(component);
-    });
-    this.props.comms.socket.on('load-component-in-app', this.loadComponent);
-    this.props.comms.socket.on(
-      'get-loaded-app-components',
-      this.sendComponentList
-    );
-    this.props.comms.socket.emit('fructose-app-ready');
-  }
-
-  componentDidUpdate() {
-    this.props.comms.socket.emit('component-loaded-in-app');
   }
 
   render() {

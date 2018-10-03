@@ -80,8 +80,8 @@ class MainDrawer extends Component {
   render() {
     if (this.state.parentDrawer) {
       return ([
-        <DrawerHeader navigateToCallback={this.navigateToCallback} />,
-        <ScrollView>
+        <DrawerHeader navigateToCallback={this.navigateToCallback} key='header' />,
+        <ScrollView key='scroll'>
           <TouchableOpacity style={styles.parentDrawerTouch} />
           {this.renderParentItems(this.parents)}
         </ScrollView>
@@ -91,9 +91,9 @@ class MainDrawer extends Component {
     const items = this.items.filter(item => item.key.split('/')[0] === this.state.selectedParent)
     
     return ([
-      <DrawerHeader parentDrawer={() => this.state.parentDrawer} navigateToCallback={this.navigateToCallback} />,
-      <ScrollView>
-        <DrawerItems items={items} {...this.restProps}/> 
+      <DrawerHeader key='header' parentDrawer={() => this.state.parentDrawer} navigateToCallback={this.navigateToCallback} />,
+      <ScrollView key='scroll'>
+        <DrawerItems key='items' items={items} {...this.restProps}/> 
       </ScrollView>
     ])
   }

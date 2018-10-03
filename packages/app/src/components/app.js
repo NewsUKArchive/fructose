@@ -56,7 +56,7 @@ class App extends Component {
   }
 
   render() {
-    const RootStack = rootStack(this.props.components, this.props.comms)
+    const RootStack = rootStack(this.props.components, this.props.comms )
     return <RootStack />;
   }
 }

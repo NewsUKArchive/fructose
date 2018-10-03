@@ -37,11 +37,10 @@ class FructoseComponentWrapper extends React.Component {
   }
 
   render() {
-    const component = this.component;
     return (
       <View style={styles.container} testID="fructose">
         <StatusBar hidden />
-        {component(knobs, actions)}
+        {this.component(knobs, actions)}
       </View>
     );
   }

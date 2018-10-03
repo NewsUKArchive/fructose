@@ -12,6 +12,9 @@ import {
   createDrawerNavigator
 } from 'react-navigation';
 
+import ParentNavigationItem from "./parentNavigationItem";
+
+
 const styles = StyleSheet.create({
   parentDrawerTouch: {
     paddingLeft: 13,
@@ -46,69 +49,59 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
-const getParents = obj => [
-  ...new Set(Object.keys(obj).map(item => item.split('/')[0]))
+const getParentComponentNames = obj => [
+  ...new Set(obj.map(item => item.key.split('/')[0]))
 ];
 
+
 class MainDrawer extends Component {
-  constructor(props) {
-    super(props);
+  constructor({items, ...restProps}) {
+    super();
+
+      console.warn(restProps)
+    this.items = items;
+    this.restProps = restProps;
+
     this.state = {
-      parentDrawer: false
+      parentDrawer: true
     };
 
-    this.parents = getParents(props.navigation.router.childRouters);
+   
+    this.parents = getParentComponentNames(this.items);
   }
+
+   renderParentItems(parentsToRender){
+     return parentsToRender.map(item => (<ParentNavigationItem key={item} label={item} onPress={() => {
+      this.setState({
+        currentComponent: item,
+        parentDrawer: false,
+        selectedParent: item})
+    }} />) )
+   } 
+
 
   render() {
     if (this.state.parentDrawer) {
       return (
         <ScrollView>
           <TouchableOpacity style={styles.parentDrawerTouch} />
-          {this.parents.map(parent => <Text>{parent}</Text>)}
+          {this.renderParentItems(this.parents)}
         </ScrollView>
       );
     }
-    return <Text>test</Text>;
+
+
+    const items = this.items.filter(item => item.key.split('/')[0] === this.state.selectedParent)
+    
+    
+    return (
+      <ScrollView>
+        <DrawerItems items={items} {...this.restProps}/> 
+      </ScrollView>
+    )
   }
 }
 
 export default MainDrawer;
 
-// const wrapper = navigationList => props => {
-//   const parent = parents(navigationList);
 
-//   return (
-//     <ScrollView>
-//       <SafeAreaView
-//         style={styles.container}
-//         forceInset={{ top: 'always', horizontal: 'never' }}
-//       >
-//         <Text>Header</Text>
-//         <DrawerItems {...props} />
-//         <Text>Footer</Text>
-//       </SafeAreaView>
-//     </ScrollView>
-//   );
-// };
-
-// const getMenuData = items => {
-//   // console.warn(items);
-//   const tings = Object.keys(items).reduce((obj, value) => {
-//     const parent = value.split('/')[0];
-
-//     if (!obj[parent]) {
-//       obj[parent] = {
-//         rendered: false,
-//         children: []
-//       };
-//     }
-
-//     obj[parent].children.push({ [value]: items[value] });
-
-//     return obj;
-//   }, {});
-//   console.warn(tings);
-// };
-
-// export default MainDrawer;

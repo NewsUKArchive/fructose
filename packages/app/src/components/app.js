@@ -102,7 +102,7 @@ class App extends Component {
 
   initialiseNavigation(componentsToLoad) {
     const navigationList = {
-      Home_: {
+      Home: {
         screen: LoadingScreen
       }
     };

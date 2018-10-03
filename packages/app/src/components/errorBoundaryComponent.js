@@ -5,22 +5,22 @@ import ErrorView from "./errorViewComponent";
 export default class ErrorBoundary extends React.Component {
   constructor({ events, socket }) {
     super();
-    this.events = events;
-    this.socket = socket;
+    // this.events = events;
+    // this.socket = socket;
     this.state = {
       error: null,
       component: null
     };
 
-    this.socket.on("load-component-in-app", component => {
-      this.state.error = null;
-      this.state.component = component;
-    });
+    // this.socket.on("load-component-in-app", component => {
+    //   this.state.error = null;
+    //   this.state.component = component;
+    // });
 
-    this.events.on("load-component", component => {
-      this.state.error = null;
-      this.state.component = component;
-    });
+    // this.events.on("load-component", component => {
+    //   this.state.error = null;
+    //   this.state.component = component;
+    // });
   }
 
   componentDidCatch(error) {
@@ -28,12 +28,12 @@ export default class ErrorBoundary extends React.Component {
       error
     });
 
-    const errorObject = {
-      component: this.state.component,
-      error: error.message
-    };
+    // const errorObject = {
+    //   component: this.state.component,
+    //   error: error.message
+    // };
 
-    this.socket.emit("component-error", errorObject);
+    // this.socket.emit("component-error", errorObject);
   }
 
   render() {

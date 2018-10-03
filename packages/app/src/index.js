@@ -1,7 +1,7 @@
 import React from 'react';
 
 import App from './components/app';
-import Messaging from './messaging';
+// import Messaging from './messaging';
 import componentLoader from './componentLoader';
 
 const defaultPlatform = 'native';
@@ -20,7 +20,7 @@ export default (componentsToLoad, config) => () => {
     <App
       components={components}
       componentList={componentList}
-      comms={Messaging()}
+      // comms={Messaging()}
     />
   );
 };

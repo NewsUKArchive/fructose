@@ -5,38 +5,38 @@ import {
 } from 'react-navigation';
 // import RootStack from './rootStack'
 import getNavigationScreens from './getNavigationScreens';
-import MainDrawer from "./navigation/mainDrawer"
+import Navigation from "./navigation/navigation"
 
-const rootStack = (components, comms) => createDrawerNavigator(getNavigationScreens(components, comms), {
-    contentComponent: MainDrawer
+const rootStack = (components) => createDrawerNavigator(getNavigationScreens(components), {
+    contentComponent: Navigation
   });
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      component: () => <LoadingScreen />
-    };
+    // this.state = {
+    //   component: () => <LoadingScreen />
+    // };
     
-    this.loadComponent = name => {
-      const lowercaseComponent = `${name}`.toLowerCase();
-      let component = this.props.components[lowercaseComponent];
+    // this.loadComponent = name => {
+    //   const lowercaseComponent = `${name}`.toLowerCase();
+    //   let component = this.props.components[lowercaseComponent];
 
-      if (!component) {
-        component = LoadingScreen;
-        this.props.comms.socket.emit('component-not-found', name);
-        this.setState({ component });
-      }
+    //   if (!component) {
+    //     component = LoadingScreen;
+    //     this.props.comms.socket.emit('component-not-found', name);
+    //     this.setState({ component });
+    //   }
 
-      this.setState({ component });
-    };
+    //   this.setState({ component });
+    // };
 
-    this.sendComponentList = () => {
-      this.props.comms.socket.emit(
-        'send-loaded-app-components',
-        this.props.componentList
-      );
-    };
+  //   this.sendComponentList = () => {
+  //     this.props.comms.socket.emit(
+  //       'send-loaded-app-components',
+  //       this.props.componentList
+  //     );
+  //   };
   }
 
   componentDidMount() {
@@ -57,7 +57,7 @@ class App extends Component {
   }
 
   render() {
-    const RootStack = rootStack(this.props.components, this.props.comms )
+    const RootStack = rootStack(this.props.components)
     return <RootStack />;
   }
 }

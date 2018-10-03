@@ -4,11 +4,21 @@ import {
   ScrollView,
   TouchableOpacity
 } from 'react-native';
+import io from "socket.io-client";
 import {
   DrawerItems,
 } from 'react-navigation';
 import DrawerHeader from "./drawerHeader";
 import ParentNavigationItem from "./parentNavigationItem";
+
+const config = {
+  transports: ["websocket"],
+  query: {
+    clientType: "app"
+  }
+};
+
+const serverUrl = "http://localhost:7811"
 
 const styles = StyleSheet.create({
   parentDrawerTouch: {
@@ -53,6 +63,8 @@ class MainDrawer extends Component {
   constructor({items, ...restProps}) {
     super();
 
+    this.socket = io(serverUrl, config);
+
     this.items = items;
     this.restProps = restProps;
 
@@ -62,7 +74,41 @@ class MainDrawer extends Component {
 
     this.parents = getParentComponentNames(this.items);
     this.navigateToCallback = this.navigateToCallback.bind(this)
+
+    
   }
+
+   componentDidMount() {
+
+    this.socket.on('load-component-in-app', this.loadComponent);
+    this.socket.on(
+      'get-loaded-app-components',
+      this.sendComponentList
+    );
+    this.socket.emit('fructose-app-ready');
+  }
+
+  componentDidUpdate() {
+    this.socket.emit('component-loaded-in-app');
+  }
+
+  loadComponent(name) {
+    const lowercaseComponent = `${name}`.toLowerCase();
+    const component = this.items.components[lowercaseComponent];
+
+    if (!component) {
+      this.restProps.navigation.navigate('Home')
+    }
+
+    this.restProps.navigation.navigate(component)
+  };
+
+  sendComponentList(){
+    this.socket.emit(
+      'send-loaded-app-components',
+      this.items
+    );
+  };
 
   navigateToCallback() {
 		this.setState({ parentDrawer: true });
@@ -76,6 +122,7 @@ class MainDrawer extends Component {
         selectedParent: item})
     }} />) )
    } 
+
 
   render() {
     if (this.state.parentDrawer) {
@@ -97,6 +144,7 @@ class MainDrawer extends Component {
       </ScrollView>
     ])
   }
+  
 }
 
 export default MainDrawer;

@@ -71,9 +71,8 @@ class MainDrawer extends Component {
     this.navigateToCallback = this.navigateToCallback.bind(this)
   }
 
-  navigateToCallback(routeName) {
+  navigateToCallback() {
 		this.setState({ parentDrawer: true });
-		// this.props.navigation.navigate(routeName);
 	};
 
 
@@ -103,7 +102,6 @@ class MainDrawer extends Component {
 
 
     const items = this.items.filter(item => item.key.split('/')[0] === this.state.selectedParent)
-    
     
     return (
       <ScrollView>

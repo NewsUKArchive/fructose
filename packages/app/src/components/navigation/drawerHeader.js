@@ -5,6 +5,9 @@ import backIcon from "./back-icon.png"
 
 
 const styles = StyleSheet.create({
+    menuHeaderText: { color: 'gray', paddingLeft: 5, fontSize: 20 
+
+    },
     menuHeader: {
         flexDirection: 'row',
         backgroundColor: 'skyblue',
@@ -35,12 +38,12 @@ const renderImage = (parentDrawer) =>
 
 
 const DrawerHeader = ({ navigateToCallback, parentDrawer }) => (
-	<TouchableOpacity onPress={() => navigateToCallback('Home')}>
+	<TouchableOpacity onPress={() => navigateToCallback()}>
 		<View
 			style={styles.menuHeader}
 		>
         {renderImage(parentDrawer)}
-        <Text style={{ color: '#FFF', paddingLeft: 9, fontSize: 16 }}>
+        <Text style={styles.menuHeaderText}>
             Component List
         </Text>    
 		</View>

@@ -107,7 +107,7 @@ class MainDrawer extends Component {
     
     return (
       <ScrollView>
-                <DrawerHeader navigateToCallback={this.navigateToCallback} />
+                <DrawerHeader parentDrawer={() => this.state.parentDrawer} navigateToCallback={this.navigateToCallback} />
 
         <DrawerItems items={items} {...this.restProps}/> 
       </ScrollView>

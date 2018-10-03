@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {
+  createDrawerNavigator
+} from 'react-navigation';
+// import RootStack from './rootStack'
+import getNavigationScreens from './getNavigationScreens';
+import MainDrawer from "./navigation/mainDrawer"
 
-import RootStack from './rootStack'
-
+const rootStack = (components, comms) => createDrawerNavigator(getNavigationScreens(components, comms), {
+    contentComponent: MainDrawer
+  });
 
 class App extends Component {
   constructor(props) {
@@ -49,7 +56,8 @@ class App extends Component {
   }
 
   render() {
-    return <RootStack componentsToLoad={this.props.components} messaging={this.props.comms}/>;
+    const RootStack = rootStack(this.props.components, this.props.comms)
+    return <RootStack />;
   }
 }
 

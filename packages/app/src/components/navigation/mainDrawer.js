@@ -12,6 +12,7 @@ import {
   createDrawerNavigator
 } from 'react-navigation';
 
+import DrawerHeader from "./drawerHeader";
 import ParentNavigationItem from "./parentNavigationItem";
 
 
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
   }
 });
 const getParentComponentNames = obj => [
-  ...new Set(obj.map(item => item.key.split('/')[0]))
+  ...new Set(obj.map(item => item.key.split('/')[0]).filter(parent => parent !== 'Home'))
 ];
 
 
@@ -58,7 +59,6 @@ class MainDrawer extends Component {
   constructor({items, ...restProps}) {
     super();
 
-      console.warn(restProps)
     this.items = items;
     this.restProps = restProps;
 
@@ -68,7 +68,14 @@ class MainDrawer extends Component {
 
    
     this.parents = getParentComponentNames(this.items);
+    this.navigateToCallback = this.navigateToCallback.bind(this)
   }
+
+  navigateToCallback(routeName) {
+		this.setState({ parentDrawer: true });
+		// this.props.navigation.navigate(routeName);
+	};
+
 
    renderParentItems(parentsToRender){
      return parentsToRender.map(item => (<ParentNavigationItem key={item} label={item} onPress={() => {
@@ -79,15 +86,19 @@ class MainDrawer extends Component {
     }} />) )
    } 
 
+ 
 
   render() {
+
     if (this.state.parentDrawer) {
       return (
         <ScrollView>
+                  <DrawerHeader navigateToCallback={this.navigateToCallback} />
+
           <TouchableOpacity style={styles.parentDrawerTouch} />
           {this.renderParentItems(this.parents)}
         </ScrollView>
-      );
+);
     }
 
 
@@ -96,6 +107,8 @@ class MainDrawer extends Component {
     
     return (
       <ScrollView>
+                <DrawerHeader navigateToCallback={this.navigateToCallback} />
+
         <DrawerItems items={items} {...this.restProps}/> 
       </ScrollView>
     )

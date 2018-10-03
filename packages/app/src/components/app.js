@@ -43,6 +43,7 @@ class App extends Component {
     this.props.comms.events.on('load-component', component => {
       this.loadComponent(component);
     });
+
     this.props.comms.socket.on('load-component-in-app', this.loadComponent);
     this.props.comms.socket.on(
       'get-loaded-app-components',

@@ -5,7 +5,7 @@ import backIcon from "./back-icon.png"
 
 
 const styles = StyleSheet.create({
-    menuHeaderText: { color: 'gray', paddingLeft: 5, fontSize: 20 
+    menuHeaderText: { color: 'gray', textAlign:'center', fontSize: 20 
 
     },
     menuHeader: {
@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
     menuSeparator: {
       backgroundColor: "gray",
       height: StyleSheet.hairlineWidth,
-      width: "100%",
-      margin: 4
+      width: "100%"
     },
     image: {
         width: 40,

@@ -38,7 +38,6 @@ class FructoseComponentWrapper extends React.Component {
 
   render() {
     const component = this.component;
-    console.warn(component);
     return (
       <View style={styles.container} testID="fructose">
         <StatusBar hidden />

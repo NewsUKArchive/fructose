@@ -57,55 +57,55 @@ const Break = props => {
 export default {
   name: 'Example Pages/Tests',
   children: [
-    // {
-    //   type: 'story',
-    //   name: 'The Stone',
-    //   component: () => (
-    //     <Text style={styles.green}> The Philosopher&apos;s Stone</Text>
-    //   )
-    // },
-    // {
-    //   type: 'story',
-    //   name: 'The Chamber',
-    //   component: () => <Text style={styles.aqua}> The Chamber of Secrets</Text>
-    // },
-    // {
-    //   type: 'story',
-    //   name: 'The Prisoner',
-    //   component: () => <Text style={styles.blue}> The Prisoner of Azkaban</Text>
-    // },
-    // {
-    //   type: 'story',
-    //   name: 'The Goblet',
-    //   component: () => <Text style={styles.black}>The Goblet of Fire</Text>
-    // },
-    // {
-    //   type: 'story',
-    //   name: 'The Order',
-    //   component: () => (
-    //     <Text style={styles.orange}> The Order of the Phoenix</Text>
-    //   )
-    // },
-    // {
-    //   type: 'story',
-    //   name: 'The Prince',
-    //   component: () => <Text style={styles.purple}> The Half Blood Prince</Text>
-    // },
-    // {
-    //   type: 'story',
-    //   name: 'The Hallows',
-    //   component: () => <Text style={styles.yellow}>The Deathly Hallows</Text>
-    // },
-    // {
-    //   type: 'story',
-    //   name: 'The Internal JS Error',
-    //   component: () => <Break />
-    // },
-    // {
-    //   type: 'story',
-    //   name: 'The Handle undefined Knob showcase',
-    //   component: ({ undefinedKnob }) => <Text>{undefinedKnob()}</Text>
-    // },
+    {
+      type: 'story',
+      name: 'The Stone',
+      component: () => (
+        <Text style={styles.green}> The Philosopher&apos;s Stone</Text>
+      )
+    },
+    {
+      type: 'story',
+      name: 'The Chamber',
+      component: () => <Text style={styles.aqua}> The Chamber of Secrets</Text>
+    },
+    {
+      type: 'story',
+      name: 'The Prisoner',
+      component: () => <Text style={styles.blue}> The Prisoner of Azkaban</Text>
+    },
+    {
+      type: 'story',
+      name: 'The Goblet',
+      component: () => <Text style={styles.black}>The Goblet of Fire</Text>
+    },
+    {
+      type: 'story',
+      name: 'The Order',
+      component: () => (
+        <Text style={styles.orange}> The Order of the Phoenix</Text>
+      )
+    },
+    {
+      type: 'story',
+      name: 'The Prince',
+      component: () => <Text style={styles.purple}> The Half Blood Prince</Text>
+    },
+    {
+      type: 'story',
+      name: 'The Hallows',
+      component: () => <Text style={styles.yellow}>The Deathly Hallows</Text>
+    },
+    {
+      type: 'story',
+      name: 'The Internal JS Error',
+      component: () => <Break />
+    },
+    {
+      type: 'story',
+      name: 'The Handle undefined Knob showcase',
+      component: ({ undefinedKnob }) => <Text>{undefinedKnob()}</Text>
+    },
     {
       type: 'story',
       name: 'The Handle knob showcase',

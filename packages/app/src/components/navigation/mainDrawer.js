@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
-  View,
   ScrollView,
   TouchableOpacity
 } from 'react-native';
 import {
   DrawerItems,
-  SafeAreaView,
-  createDrawerNavigator
 } from 'react-navigation';
-
 import DrawerHeader from "./drawerHeader";
 import ParentNavigationItem from "./parentNavigationItem";
-
 
 const styles = StyleSheet.create({
   parentDrawerTouch: {
@@ -50,10 +44,10 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
+
 const getParentComponentNames = obj => [
   ...new Set(obj.map(item => item.key.split('/')[0]).filter(parent => parent !== 'Home'))
 ];
-
 
 class MainDrawer extends Component {
   constructor({items, ...restProps}) {
@@ -66,7 +60,6 @@ class MainDrawer extends Component {
       parentDrawer: true
     };
 
-   
     this.parents = getParentComponentNames(this.items);
     this.navigateToCallback = this.navigateToCallback.bind(this)
   }
@@ -79,37 +72,30 @@ class MainDrawer extends Component {
    renderParentItems(parentsToRender){
      return parentsToRender.map(item => (<ParentNavigationItem key={item} label={item} onPress={() => {
       this.setState({
-        currentComponent: item,
         parentDrawer: false,
         selectedParent: item})
     }} />) )
    } 
 
- 
-
   render() {
-
     if (this.state.parentDrawer) {
-      return (
+      return ([
+        <DrawerHeader navigateToCallback={this.navigateToCallback} />,
         <ScrollView>
-                  <DrawerHeader navigateToCallback={this.navigateToCallback} />
-
           <TouchableOpacity style={styles.parentDrawerTouch} />
           {this.renderParentItems(this.parents)}
         </ScrollView>
-);
+      ]);
     }
-
 
     const items = this.items.filter(item => item.key.split('/')[0] === this.state.selectedParent)
     
-    return (
+    return ([
+      <DrawerHeader parentDrawer={() => this.state.parentDrawer} navigateToCallback={this.navigateToCallback} />,
       <ScrollView>
-                <DrawerHeader parentDrawer={() => this.state.parentDrawer} navigateToCallback={this.navigateToCallback} />
-
         <DrawerItems items={items} {...this.restProps}/> 
       </ScrollView>
-    )
+    ])
   }
 }
 

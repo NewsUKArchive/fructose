@@ -3,8 +3,10 @@ import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native';
 import forwardIcon from "./forward-icon.png"
 
 const styles = StyleSheet.create({
-    menuHeaderText: { color: 'gray',  fontSize: 14, fontWeight: 'bold' 
-
+    menuHeaderText: { 
+		color: 'gray',  
+		fontSize: 14, 
+		fontWeight: 'bold' 
 	},
 	button: {
 		paddingTop: 21,

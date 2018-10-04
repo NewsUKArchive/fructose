@@ -8,7 +8,7 @@ import io from "socket.io-client";
 import {
   DrawerItems,
 } from 'react-navigation';
-import DrawerHeader from "./drawerHeader";
+import NavigationHeader from "./navigationHeader";
 import ParentNavigationItem from "./parentNavigationItem";
 
 const config = {
@@ -18,7 +18,7 @@ const config = {
   }
 };
 
-const serverUrl = "http://localhost:7811"
+const fructoseServerUrlerverUrl = "http://localhost:7811"
 
 const styles = StyleSheet.create({
   parentDrawerTouch: {
@@ -62,23 +62,22 @@ const getParentComponentNames = obj => [
 class MainDrawer extends Component {
   constructor({items, ...restProps}) {
     super();
-    this.socket = io(serverUrl, config);
-
+    this.socket = io(fructoseServerUrlerverUrl, config);
     this.items = items;
     this.restProps = restProps;
+    this.allComponentNames = this.items.map(component => component.key).filter(component => component !== 'Home')
+    this.parentComponentNames = getParentComponentNames(this.items);
+    this.navigateToCallback = this.navigateToCallback.bind(this)
 
     this.state = {
       parentDrawer: true
     };
-    this.componentNames = this.items.map(component => component.key).filter(component => component !== 'Home')
-    this.parents = getParentComponentNames(this.items);
-    this.navigateToCallback = this.navigateToCallback.bind(this)
   }
 
    componentDidMount() {
 
-    this.socket.on('load-component-in-app', (componentName) => {
-      this.restProps.navigation.navigate(componentName)
+    this.socket.on('load-component-in-app', componentToLoadInApp => {
+      this.restProps.navigation.navigate(componentToLoadInApp)
 
     });
     
@@ -86,7 +85,7 @@ class MainDrawer extends Component {
       'get-loaded-app-components', () =>
       this.socket.emit(
         'send-loaded-app-components',
-        this.componentNames
+        this.allComponentNames
       )
     );
 
@@ -106,15 +105,17 @@ class MainDrawer extends Component {
      return parentsToRender.map(item => (<ParentNavigationItem key={item} label={item} onPress={() => {
       this.setState({
         parentDrawer: false,
-        selectedParent: item})
-    }} />) )
+        selectedParent: item
+      })
+    }} 
+    />) )
    } 
 
 
-  render() {
+   render() {
     if (this.state.parentDrawer) {
       return ([
-        <DrawerHeader navigateToCallback={this.navigateToCallback} key='header' />,
+        <NavigationHeader navigateToCallback={this.navigateToCallback} key='header' />,
         <ScrollView key='scroll'>
           <TouchableOpacity style={styles.parentDrawerTouch} />
           {this.renderParentItems(this.parents)}
@@ -122,12 +123,12 @@ class MainDrawer extends Component {
       ]);
     }
 
-    const items = this.items.filter(item => item.key.split('/')[0] === this.state.selectedParent)
+    const childrenComponents = this.items.filter(item => item.key.split('/')[0] === this.state.selectedParent)
     
     return ([
-      <DrawerHeader key='header' parentDrawer={() => this.state.parentDrawer} navigateToCallback={this.navigateToCallback} />,
+      <NavigationHeader key='header' parentDrawer={() => this.state.parentDrawer} navigateToCallback={this.navigateToCallback} />,
       <ScrollView key='scroll'>
-        <DrawerItems key='items' items={items} {...this.restProps}/> 
+        <DrawerItems key='items' items={childrenComponents} {...this.restProps}/> 
       </ScrollView>
     ])
   }

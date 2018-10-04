@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   ScrollView,
-  TouchableOpacity, 
-  PropTypes
+  TouchableOpacity
 } from 'react-native';
 import io from "socket.io-client";
 import {
@@ -132,22 +131,7 @@ class Navigation extends Component {
       </ScrollView>
     ])
   }
-  
 }
-
-// Navigation.propTypes = {
-//   components: PropTypes.objectOf(PropTypes.func).isRequired,
-//   comms: PropTypes.shape({
-//     events: PropTypes.shape({
-//       emit: PropTypes.func.isRequired,
-//       on: PropTypes.func.isRequired
-//     }).isRequired,
-//     socket: PropTypes.shape({
-//       emit: PropTypes.func.isRequired,
-//       on: PropTypes.func.isRequired
-//     }).isRequired
-//   }).isRequired
-// };
 
 export default Navigation;
 

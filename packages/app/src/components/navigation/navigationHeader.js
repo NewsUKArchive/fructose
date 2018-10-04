@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { View, Text, Image, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 import backIcon from "./back-icon.png"
 
 
@@ -36,12 +37,13 @@ const renderImage = (parentDrawer) =>
     )  : <View style={styles.image} />
 
 
-const DrawerHeader = ({ navigateToCallback, parentDrawer }) => (
+const DrawerHeader = ({ navigateToCallback, isParentMenu }) => (
 	<TouchableOpacity onPress={() => navigateToCallback()}>
 		<View
 			style={styles.menuHeader}
 		>
-        {renderImage(parentDrawer)}
+      
+        {renderImage(isParentMenu)}
         <Text style={styles.menuHeaderText}>
             Component List
         </Text>    
@@ -50,4 +52,11 @@ const DrawerHeader = ({ navigateToCallback, parentDrawer }) => (
 	</TouchableOpacity>
 );
 
+DrawerHeader.propTypes = {
+    navigateToCallback: PropTypes.func.isRequired,
+    isParentMenu: PropTypes.func.isRequired
+
+}
+
 export default DrawerHeader;
+

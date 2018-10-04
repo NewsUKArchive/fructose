@@ -62,7 +62,6 @@ const getParentComponentNames = obj => [
 class MainDrawer extends Component {
   constructor({items, ...restProps}) {
     super();
-
     this.socket = io(serverUrl, config);
 
     this.items = items;
@@ -71,44 +70,32 @@ class MainDrawer extends Component {
     this.state = {
       parentDrawer: true
     };
-
+    this.componentNames = this.items.map(component => component.key).filter(component => component !== 'Home')
     this.parents = getParentComponentNames(this.items);
     this.navigateToCallback = this.navigateToCallback.bind(this)
-
-    
   }
 
    componentDidMount() {
 
-    this.socket.on('load-component-in-app', this.loadComponent);
+    this.socket.on('load-component-in-app', (componentName) => {
+      this.restProps.navigation.navigate(componentName)
+
+    });
+    
     this.socket.on(
-      'get-loaded-app-components',
-      this.sendComponentList
+      'get-loaded-app-components', () =>
+      this.socket.emit(
+        'send-loaded-app-components',
+        this.componentNames
+      )
     );
+
     this.socket.emit('fructose-app-ready');
   }
 
   componentDidUpdate() {
     this.socket.emit('component-loaded-in-app');
   }
-
-  loadComponent(name) {
-    const lowercaseComponent = `${name}`.toLowerCase();
-    const component = this.items.components[lowercaseComponent];
-
-    if (!component) {
-      this.restProps.navigation.navigate('Home')
-    }
-
-    this.restProps.navigation.navigate(component)
-  };
-
-  sendComponentList(){
-    this.socket.emit(
-      'send-loaded-app-components',
-      this.items
-    );
-  };
 
   navigateToCallback() {
 		this.setState({ parentDrawer: true });

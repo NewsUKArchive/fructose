@@ -118,7 +118,7 @@ class MainDrawer extends Component {
         <NavigationHeader navigateToCallback={this.navigateToCallback} key='header' />,
         <ScrollView key='scroll'>
           <TouchableOpacity style={styles.parentDrawerTouch} />
-          {this.renderParentItems(this.parents)}
+          {this.renderParentItems(this.parentComponentNames)}
         </ScrollView>
       ]);
     }

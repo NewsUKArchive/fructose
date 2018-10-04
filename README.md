@@ -146,7 +146,7 @@ fructoseClient.loadComponent('your component name')
 ```
 
 Your component is now ready for interrogation by the testing library of your choice.
-We have used both successfully [appium] and [detox] 
+We have successfully used both  [appium] and [detox] 
 
 
 ## Notes 

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Renders the root stack 1`] = `<NavigationContainer />`;
+
+exports[`App Renders the root stack of components that have been loaded 1`] = `<NavigationContainer />`;

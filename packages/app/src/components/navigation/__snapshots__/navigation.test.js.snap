@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation renders when is child menu 1`] = `
+Array [
+  <DrawerHeader
+    isParentMenu={[Function]}
+    key="header"
+    navigateToCallback={[Function]}
+  />,
+  <ScrollView
+    key="scroll"
+  />,
+]
+`;
+
+exports[`Navigation renders when is parent menu 1`] = `
+Array [
+  <DrawerHeader
+    key="header"
+    navigateToCallback={[Function]}
+  />,
+  <ScrollView
+    key="scroll"
+  />,
+]
+`;

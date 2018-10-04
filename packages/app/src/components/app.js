@@ -23,16 +23,6 @@ class App extends Component {
 
 App.propTypes = {
   components: PropTypes.objectOf(PropTypes.func).isRequired,
-  comms: PropTypes.shape({
-    events: PropTypes.shape({
-      emit: PropTypes.func.isRequired,
-      on: PropTypes.func.isRequired
-    }).isRequired,
-    socket: PropTypes.shape({
-      emit: PropTypes.func.isRequired,
-      on: PropTypes.func.isRequired
-    }).isRequired
-  }).isRequired
 };
 
 export default App;

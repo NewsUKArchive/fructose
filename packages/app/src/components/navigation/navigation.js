@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity, 
+  PropTypes
 } from 'react-native';
 import io from "socket.io-client";
 import {
@@ -21,7 +22,7 @@ const config = {
 const fructoseServerUrlerverUrl = "http://localhost:7811"
 
 const styles = StyleSheet.create({
-  parentDrawerTouch: {
+  isParentMenuTouch: {
     paddingLeft: 13,
     paddingTop: 15
   },
@@ -59,7 +60,7 @@ const getParentComponentNames = obj => [
   ...new Set(obj.map(item => item.key.split('/')[0]).filter(parent => parent !== 'Home'))
 ];
 
-class MainDrawer extends Component {
+class Navigation extends Component {
   constructor({items, ...restProps}) {
     super();
     this.socket = io(fructoseServerUrlerverUrl, config);
@@ -70,12 +71,11 @@ class MainDrawer extends Component {
     this.navigateToCallback = this.navigateToCallback.bind(this)
 
     this.state = {
-      parentDrawer: true
+      isParentMenu: true
     };
   }
 
    componentDidMount() {
-
     this.socket.on('load-component-in-app', componentToLoadInApp => {
       this.restProps.navigation.navigate(componentToLoadInApp)
 
@@ -97,14 +97,14 @@ class MainDrawer extends Component {
   }
 
   navigateToCallback() {
-		this.setState({ parentDrawer: true });
+		this.setState({ isParentMenu: true });
 	};
 
 
    renderParentItems(parentsToRender){
      return parentsToRender.map(item => (<ParentNavigationItem key={item} label={item} onPress={() => {
       this.setState({
-        parentDrawer: false,
+        isParentMenu: false,
         selectedParent: item
       })
     }} 
@@ -113,11 +113,11 @@ class MainDrawer extends Component {
 
 
    render() {
-    if (this.state.parentDrawer) {
+    if (this.state.isParentMenu) {
       return ([
         <NavigationHeader navigateToCallback={this.navigateToCallback} key='header' />,
         <ScrollView key='scroll'>
-          <TouchableOpacity style={styles.parentDrawerTouch} />
+          <TouchableOpacity style={styles.isParentMenuTouch} />
           {this.renderParentItems(this.parentComponentNames)}
         </ScrollView>
       ]);
@@ -126,7 +126,7 @@ class MainDrawer extends Component {
     const childrenComponents = this.items.filter(item => item.key.split('/')[0] === this.state.selectedParent)
     
     return ([
-      <NavigationHeader key='header' parentDrawer={() => this.state.parentDrawer} navigateToCallback={this.navigateToCallback} />,
+      <NavigationHeader key='header' isParentMenu={() => this.state.isParentMenu} navigateToCallback={this.navigateToCallback} />,
       <ScrollView key='scroll'>
         <DrawerItems key='items' items={childrenComponents} {...this.restProps}/> 
       </ScrollView>
@@ -135,6 +135,20 @@ class MainDrawer extends Component {
   
 }
 
-export default MainDrawer;
+// Navigation.propTypes = {
+//   components: PropTypes.objectOf(PropTypes.func).isRequired,
+//   comms: PropTypes.shape({
+//     events: PropTypes.shape({
+//       emit: PropTypes.func.isRequired,
+//       on: PropTypes.func.isRequired
+//     }).isRequired,
+//     socket: PropTypes.shape({
+//       emit: PropTypes.func.isRequired,
+//       on: PropTypes.func.isRequired
+//     }).isRequired
+//   }).isRequired
+// };
+
+export default Navigation;
 
 

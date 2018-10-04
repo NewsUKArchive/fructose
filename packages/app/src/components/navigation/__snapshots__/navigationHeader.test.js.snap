@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation Header Renders with back icon 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  focusedOpacity={0.7}
+  onPress={[Function]}
+>
+  <View
+    style={38}
+  >
+    <View
+      style={40}
+    />
+    <Text
+      style={37}
+    >
+      Component List
+    </Text>
+  </View>
+  <MenuSeparator />
+</TouchableOpacity>
+`;
+
+exports[`Navigation Header Renders without back icon 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  focusedOpacity={0.7}
+  onPress={[Function]}
+>
+  <View
+    style={38}
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../packages/app/src/components/navigation/back-icon.png",
+        }
+      }
+      style={40}
+    />
+    <Text
+      style={37}
+    >
+      Component List
+    </Text>
+  </View>
+  <MenuSeparator />
+</TouchableOpacity>
+`;

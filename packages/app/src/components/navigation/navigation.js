@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity
-} from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import io from "socket.io-client";
-import {
-  DrawerItems,
-} from 'react-navigation';
+import { DrawerItems } from "react-navigation";
 import NavigationHeader from "./navigationHeader";
 import ParentNavigationItem from "./parentNavigationItem";
 
@@ -18,7 +12,7 @@ const config = {
   }
 };
 
-const fructoseServerUrlerverUrl = "http://localhost:7811"
+const fructoseServerUrl = "http://localhost:7811";
 
 const styles = StyleSheet.create({
   isParentMenuTouch: {
@@ -26,29 +20,29 @@ const styles = StyleSheet.create({
     paddingTop: 15
   },
   header: {
-    color: 'white',
+    color: "white",
     fontSize: 40,
-    textAlign: 'center'
+    textAlign: "center"
   },
   version: {
     padding: 10,
-    color: 'white',
+    color: "white",
     fontSize: 20,
-    textAlign: 'left'
+    textAlign: "left"
   },
   text: {
     paddingTop: 10,
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    textAlign: 'center'
+    textAlign: "center"
   },
   view: {
-    backgroundColor: 'lightpink',
-    height: '100%',
-    width: '100%',
+    backgroundColor: "lightpink",
+    height: "100%",
+    width: "100%",
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-between'
+    flexDirection: "column",
+    justifyContent: "space-between"
   },
   container: {
     flex: 1
@@ -56,83 +50,97 @@ const styles = StyleSheet.create({
 });
 
 const getParentComponentNames = obj => [
-  ...new Set(obj.map(item => item.key.split('/')[0]).filter(parent => parent !== 'Home'))
+  ...new Set(
+    obj.map(item => item.key.split("/")[0]).filter(parent => parent !== "Home")
+  )
 ];
 
 class Navigation extends Component {
-  constructor({items, ...restProps}) {
+  constructor({ items, ...restProps }) {
     super();
-    this.socket = io(fructoseServerUrlerverUrl, config);
+    this.socket = io(fructoseServerUrl, config);
     this.items = items;
     this.restProps = restProps;
-    this.allComponentNames = this.items.map(component => component.key).filter(component => component !== 'Home')
+    this.allComponentNames = this.items
+      .map(component => component.key)
+      .filter(component => component !== "Home");
     this.parentComponentNames = getParentComponentNames(this.items);
-    this.navigateToCallback = this.navigateToCallback.bind(this)
+    this.navigateToCallback = this.navigateToCallback.bind(this);
 
     this.state = {
       isParentMenu: true
     };
+
+    this.socket.on("load-component-in-app", componentToLoadInApp => {
+      console.warn(componentToLoadInApp);
+      this.restProps.navigation.navigate(componentToLoadInApp);
+    });
+
+    this.socket.on("get-loaded-app-components", () =>
+      this.socket.emit("send-loaded-app-components", this.allComponentNames)
+    );
   }
 
-   componentDidMount() {
-    this.socket.on('load-component-in-app', componentToLoadInApp => {
-      this.restProps.navigation.navigate(componentToLoadInApp)
-
-    });
-    
-    this.socket.on(
-      'get-loaded-app-components', () =>
-      this.socket.emit(
-        'send-loaded-app-components',
-        this.allComponentNames
-      )
-    );
-
-    this.socket.emit('fructose-app-ready');
+  componentDidMount() {
+    this.socket.emit("fructose-app-ready");
   }
 
   componentDidUpdate() {
-    this.socket.emit('component-loaded-in-app');
+    this.socket.emit("component-loaded-in-app");
   }
 
   navigateToCallback() {
-		this.setState({ isParentMenu: true });
-	};
+    this.setState({ isParentMenu: true });
+  }
 
+  renderParentItems(parentsToRender) {
+    return parentsToRender.map(item => (
+      <ParentNavigationItem
+        key={item}
+        label={item}
+        onPress={() => {
+          this.setState({
+            isParentMenu: false,
+            selectedParent: item
+          });
+        }}
+      />
+    ));
+  }
 
-   renderParentItems(parentsToRender){
-     return parentsToRender.map(item => (<ParentNavigationItem key={item} label={item} onPress={() => {
-      this.setState({
-        isParentMenu: false,
-        selectedParent: item
-      })
-    }} 
-    />) )
-   } 
-
-
-   render() {
+  render() {
     if (this.state.isParentMenu) {
-      return ([
-        <NavigationHeader navigateToCallback={this.navigateToCallback} key='header' />,
-        <ScrollView key='scroll'>
+      return [
+        <NavigationHeader
+          navigateToCallback={this.navigateToCallback}
+          key="header"
+        />,
+        <ScrollView key="scroll">
           <TouchableOpacity style={styles.isParentMenuTouch} />
           {this.renderParentItems(this.parentComponentNames)}
         </ScrollView>
-      ]);
+      ];
     }
 
-    const childrenComponents = this.items.filter(item => item.key.split('/')[0] === this.state.selectedParent)
-    
-    return ([
-      <NavigationHeader key='header' isParentMenu={() => this.state.isParentMenu} navigateToCallback={this.navigateToCallback} />,
-      <ScrollView key='scroll'>
-        <DrawerItems key='items' items={childrenComponents} {...this.restProps}/> 
+    const childrenComponents = this.items.filter(
+      item => item.key.split("/")[0] === this.state.selectedParent
+    );
+
+    return [
+      <NavigationHeader
+        key="header"
+        isParentMenu={() => this.state.isParentMenu}
+        navigateToCallback={this.navigateToCallback}
+      />,
+      <ScrollView key="scroll">
+        <DrawerItems
+          key="items"
+          items={childrenComponents}
+          {...this.restProps}
+        />
       </ScrollView>
-    ])
+    ];
   }
 }
 
 export default Navigation;
-
-

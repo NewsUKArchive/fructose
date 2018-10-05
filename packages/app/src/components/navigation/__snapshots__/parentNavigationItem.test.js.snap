@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parent Navigation Header Renders without back icon 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  focusedOpacity={0.7}
+  onPress={[Function]}
+  style={33}
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={32}
+    >
+       
+      label to render
+    </Text>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../packages/app/src/components/navigation/forward-icon.png",
+        }
+      }
+      style={34}
+    />
+  </View>
+</TouchableOpacity>
+`;

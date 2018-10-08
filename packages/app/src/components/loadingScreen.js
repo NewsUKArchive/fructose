@@ -18,16 +18,15 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     color: "white",
     fontSize: 16,
-    textAlign: "center",
-    height: "100%"
+    textAlign: "center"
   },
   view: {
-    flex: 1,
-    width: "100%",
+    backgroundColor: "lightpink",
     height: "100%",
-    margin: 0,
-    padding: 0,
-    backgroundColor: "lightpink"
+    width: "100%",
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-between"
   }
 });
 

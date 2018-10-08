@@ -9,7 +9,7 @@ const App = ({ components }) => {
     contentComponent: Navigation
   });
 
-  return <Root classes="Root" style={{ height: "100%" }} />;
+  return <Root />;
 };
 
 App.propTypes = {

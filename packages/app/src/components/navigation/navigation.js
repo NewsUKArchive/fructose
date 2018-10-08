@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   view: {
-    height: "100vh",
+    height: "100%",
     width: "100%",
     flex: 1,
     flexDirection: "column"

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, ScrollView, TouchableOpacity, View } from "react-native";
+import { StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import io from "socket.io-client";
 import { DrawerItems } from "react-navigation";
 import NavigationHeader from "./navigationHeader";
@@ -35,12 +35,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     textAlign: "center"
-  },
-  view: {
-    height: "100%",
-    width: "100%",
-    flex: 1,
-    flexDirection: "column"
   }
 });
 
@@ -109,17 +103,15 @@ class Navigation extends Component {
   render() {
     if (this.state.isParentMenu) {
       return [
-        <View syle={styles.view} key="view">
-          <NavigationHeader
-            isParentMenu={() => this.state.isParentMenu}
-            navigateToCallback={this.navigateToCallback}
-            key="header"
-          />,
-          <ScrollView key="scroll">
-            <TouchableOpacity style={styles.isParentMenuTouch} />
-            {this.renderParentItems(this.parentComponentNames)}
-          </ScrollView>
-        </View>
+        <NavigationHeader
+          isParentMenu={() => this.state.isParentMenu}
+          navigateToCallback={this.navigateToCallback}
+          key="header"
+        />,
+        <ScrollView key="scroll">
+          <TouchableOpacity style={styles.isParentMenuTouch} />
+          {this.renderParentItems(this.parentComponentNames)}
+        </ScrollView>
       ];
     }
 
@@ -128,20 +120,18 @@ class Navigation extends Component {
     );
 
     return [
-      <View syle={styles.view} key="view">
-        <NavigationHeader
-          key="header"
-          isParentMenu={() => this.state.isParentMenu}
-          navigateToCallback={this.navigateToCallback}
-        />,
-        <ScrollView key="scroll">
-          <DrawerItems
-            key="items"
-            items={childrenComponents}
-            {...this.restProps}
-          />
-        </ScrollView>
-      </View>
+      <NavigationHeader
+        key="header"
+        isParentMenu={() => this.state.isParentMenu}
+        navigateToCallback={this.navigateToCallback}
+      />,
+      <ScrollView key="scroll">
+        <DrawerItems
+          key="items"
+          items={childrenComponents}
+          {...this.restProps}
+        />
+      </ScrollView>
     ];
   }
 }

@@ -1,6 +1,5 @@
-
-# ~/Library/Android/sdk/tools/emulator @Pixel_2_API_26 -no-boot-anim & 
-# EMU_PID=$!
+emulator @fructose_device -no-boot-anim &
+EMU_PID=$!
 adb wait-for-device
 adb reverse tcp:8081 tcp:8081
 adb reverse tcp:7811 tcp:7811
@@ -12,4 +11,3 @@ BUNDLER_PID=$!
 LOGLEVEL=verbose node_modules/.bin/jest ./e2eTests/example/android.test.js --verbose  --forceExit
 kill -9 $EMU_PID
 kill -9 $BUNDLER_PID
-

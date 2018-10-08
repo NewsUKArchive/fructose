@@ -67,7 +67,7 @@ class Navigation extends Component {
     };
 
     this.socket.on("load-component-in-app", componentToLoadInApp => {
-      this.restProps.navigation.navigate(componentToLoadInApp);
+      this.restProps.navigation.navigate(componentToLoadInApp.toLowerCase());
     });
 
     this.socket.on("get-loaded-app-components", () =>

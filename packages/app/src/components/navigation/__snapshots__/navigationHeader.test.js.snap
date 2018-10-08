@@ -3,21 +3,43 @@
 exports[`Navigation Header Renders with back icon 1`] = `
 <TouchableOpacity
   activeOpacity={0.2}
-  focusedOpacity={0.7}
   onPress={[Function]}
 >
-  <View
-    style={33}
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "skyblue",
+        "flexDirection": "row",
+        "paddingLeft": 17,
+        "paddingTop": NaN,
+        "paddingVertical": 28,
+      }
+    }
   >
-    <View
-      style={35}
+    <Component
+      style={
+        Object {
+          "height": 40,
+          "width": 40,
+        }
+      }
     />
     <Text
-      style={32}
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "gray",
+          "fontSize": 20,
+          "textAlign": "center",
+        }
+      }
     >
       Component List
     </Text>
-  </View>
+  </Component>
   <MenuSeparator />
 </TouchableOpacity>
 `;
@@ -25,11 +47,19 @@ exports[`Navigation Header Renders with back icon 1`] = `
 exports[`Navigation Header Renders without back icon 1`] = `
 <TouchableOpacity
   activeOpacity={0.2}
-  focusedOpacity={0.7}
   onPress={[Function]}
 >
-  <View
-    style={33}
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "skyblue",
+        "flexDirection": "row",
+        "paddingLeft": 17,
+        "paddingTop": NaN,
+        "paddingVertical": 28,
+      }
+    }
   >
     <Image
       source={
@@ -37,14 +67,28 @@ exports[`Navigation Header Renders without back icon 1`] = `
           "testUri": "../../../packages/app/src/components/navigation/back-icon.png",
         }
       }
-      style={35}
+      style={
+        Object {
+          "height": 40,
+          "width": 40,
+        }
+      }
     />
     <Text
-      style={32}
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "gray",
+          "fontSize": 20,
+          "textAlign": "center",
+        }
+      }
     >
       Component List
     </Text>
-  </View>
+  </Component>
   <MenuSeparator />
 </TouchableOpacity>
 `;

@@ -65,7 +65,6 @@ describe("snapshotAssert", () => {
     try {
       await assertSnapshot(snapper, testName);
     } catch (err) {
-      console.warn("ADSADASDASDASD:", err);
       expect(err.code).toEqual("ERR_ASSERTION");
     }
   });

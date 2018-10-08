@@ -111,6 +111,7 @@ class Navigation extends Component {
       return [
         <View syle={styles.view} key="view">
           <NavigationHeader
+            isParentMenu={() => this.state.isParentMenu}
             navigateToCallback={this.navigateToCallback}
             key="header"
           />,

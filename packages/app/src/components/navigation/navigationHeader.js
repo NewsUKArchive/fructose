@@ -44,7 +44,7 @@ const renderImage = parentDrawer =>
     <View style={styles.image} />
   );
 
-const DrawerHeader = ({ navigateToCallback, isParentMenu }) => (
+const NavigationHeader = ({ navigateToCallback, isParentMenu }) => (
   <TouchableOpacity onPress={() => navigateToCallback()}>
     <View style={styles.menuHeader}>
       {renderImage(isParentMenu)}
@@ -54,9 +54,9 @@ const DrawerHeader = ({ navigateToCallback, isParentMenu }) => (
   </TouchableOpacity>
 );
 
-DrawerHeader.propTypes = {
+NavigationHeader.propTypes = {
   navigateToCallback: PropTypes.func.isRequired,
   isParentMenu: PropTypes.func.isRequired
 };
 
-export default DrawerHeader;
+export default NavigationHeader;

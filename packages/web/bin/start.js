@@ -23,7 +23,7 @@ const directory = path.resolve(program.buildDir);
 const upperConfig = require(`${directory}/webpack.config.js`);
 const config = require("../webpack.config.js")
 
-const mergedConfig = merge(upperConfig, config);
+const mergedConfig = merge(config, upperConfig);
 const fs = require("fs");
 
 function getHeadHtml(configDirPath) {

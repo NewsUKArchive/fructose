@@ -43,11 +43,11 @@ const babelConfig = [
 ];
 
 
-const entry = require("../../e2eTests/fructose/webpack.config").entry.app
+// const entry = require("../../e2eTests/fructose/webpack.config").entry.app
 
 module.exports = {
   mode,
-  entry: ["babel-polyfill", entry],
+  entry: ["babel-polyfill"],
   module: {
     rules: babelConfig
   },

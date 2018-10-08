@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, ScrollView, TouchableOpacity, View } from "react-native";
 import io from "socket.io-client";
 import { DrawerItems } from "react-navigation";
 import NavigationHeader from "./navigationHeader";
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   view: {
-    backgroundColor: "lightpink",
     height: "100%",
     width: "100%",
     flex: 1,
@@ -72,7 +71,6 @@ class Navigation extends Component {
     };
 
     this.socket.on("load-component-in-app", componentToLoadInApp => {
-      console.warn(componentToLoadInApp);
       this.restProps.navigation.navigate(componentToLoadInApp);
     });
 
@@ -111,6 +109,7 @@ class Navigation extends Component {
   render() {
     if (this.state.isParentMenu) {
       return [
+        <View syle={styles.view} key="view" >
         <NavigationHeader
           navigateToCallback={this.navigateToCallback}
           key="header"
@@ -119,6 +118,7 @@ class Navigation extends Component {
           <TouchableOpacity style={styles.isParentMenuTouch} />
           {this.renderParentItems(this.parentComponentNames)}
         </ScrollView>
+        </View>
       ];
     }
 

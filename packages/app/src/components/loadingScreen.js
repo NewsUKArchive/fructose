@@ -21,16 +21,15 @@ const styles = StyleSheet.create({
       textAlign: 'center'
     },
     view: {
-      backgroundColor: 'lightpink',
-      height: '100%',
-      width: '100%',
       flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'space-between'
+      width: '100%',
+      height: '100%',
+      margin: 0,
+      padding: 0,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'lightpink'
     },
-    container: {
-      flex: 1
-    }
   });
 
 const LoadingScreen = () => (

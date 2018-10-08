@@ -37,14 +37,10 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   view: {
-    height: "100%",
+    height: "100vh",
     width: "100%",
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  container: {
-    flex: 1
+    flexDirection: "column"
   }
 });
 
@@ -109,15 +105,15 @@ class Navigation extends Component {
   render() {
     if (this.state.isParentMenu) {
       return [
-        <View syle={styles.view} key="view" >
-        <NavigationHeader
-          navigateToCallback={this.navigateToCallback}
-          key="header"
-        />,
-        <ScrollView key="scroll">
-          <TouchableOpacity style={styles.isParentMenuTouch} />
-          {this.renderParentItems(this.parentComponentNames)}
-        </ScrollView>
+        <View syle={styles.view} key="view">
+          <NavigationHeader
+            navigateToCallback={this.navigateToCallback}
+            key="header"
+          />,
+          <ScrollView key="scroll">
+            <TouchableOpacity style={styles.isParentMenuTouch} />
+            {this.renderParentItems(this.parentComponentNames)}
+          </ScrollView>
         </View>
       ];
     }
@@ -127,18 +123,20 @@ class Navigation extends Component {
     );
 
     return [
-      <NavigationHeader
-        key="header"
-        isParentMenu={() => this.state.isParentMenu}
-        navigateToCallback={this.navigateToCallback}
-      />,
-      <ScrollView key="scroll">
-        <DrawerItems
-          key="items"
-          items={childrenComponents}
-          {...this.restProps}
-        />
-      </ScrollView>
+      <View syle={styles.view} key="view">
+        <NavigationHeader
+          key="header"
+          isParentMenu={() => this.state.isParentMenu}
+          navigateToCallback={this.navigateToCallback}
+        />,
+        <ScrollView key="scroll">
+          <DrawerItems
+            key="items"
+            items={childrenComponents}
+            {...this.restProps}
+          />
+        </ScrollView>
+      </View>
     ];
   }
 }

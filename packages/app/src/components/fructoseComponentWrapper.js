@@ -17,7 +17,7 @@ const knobs = {
   text: () => {},
   number: () => {},
   boolean: () => {},
-  array:() => {},
+  array: () => {},
   radio: () => {},
   date: () => {},
   button: () => {},
@@ -38,10 +38,6 @@ const FructoseComponentWrapper = ({ component }) => (
 
 FructoseComponentWrapper.propTypes = {
   component: PropTypes.func.isRequired
-};
-
-FructoseComponentWrapper.defaultProps = {
-  component: null
 };
 
 export default FructoseComponentWrapper;

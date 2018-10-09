@@ -13,7 +13,7 @@ export default (loadComponents, platform) => {
       if (isValidShowcase(parent)) {
         const showcases = parent.default;
         const partiallyFilteredShowcases = showcases.children.filter(
-          showcase => showcase.type === "story"
+          showcase => showcase.type === 'story'
         );
 
         const filteredShowcases = partiallyFilteredShowcases.filter(

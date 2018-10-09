@@ -6,7 +6,7 @@ import LoadingScreen from "./loadingScreen";
 export default componentsToLoad => {
   const navigationList = {
     Home: {
-      screen: <LoadingScreen />
+      screen: LoadingScreen
     }
   };
 

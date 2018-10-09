@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require('webpack');
+const webpack = require("webpack");
 
 const alias = {
   "react-native": "react-native-web"
@@ -42,9 +42,6 @@ const babelConfig = [
   }
 ];
 
-
-// const entry = require("../../e2eTests/fructose/webpack.config").entry.app
-
 module.exports = {
   mode,
   entry: ["babel-polyfill"],
@@ -57,7 +54,7 @@ module.exports = {
       template: path.join(__dirname, "./index.ejs")
     }),
     new webpack.DefinePlugin({
-      __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true'))
+      __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || "true"))
     })
   ],
   output: {

@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  StatusBar,
-  StyleSheet,
-  TouchableOpacity
-} from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 import backIcon from "./back-icon.png";
 
@@ -21,7 +14,6 @@ const styles = StyleSheet.create({
     backgroundColor: "skyblue",
     paddingVertical: 28,
     paddingLeft: 17,
-    paddingTop: StatusBar.currentHeight + 10,
     alignItems: "center"
   },
   menuSeparator: {
@@ -37,17 +29,17 @@ const styles = StyleSheet.create({
 
 const MenuSeparator = () => <View style={styles.menuSeparator} />;
 
-const renderImage = parentDrawer =>
-  parentDrawer ? (
-    <Image source={backIcon} style={styles.image} />
-  ) : (
+const renderImage = isParentMenu =>
+  isParentMenu ? (
     <View style={styles.image} />
+  ) : (
+    <Image source={backIcon} style={styles.image} />
   );
 
 const NavigationHeader = ({ navigateToCallback, isParentMenu }) => (
   <TouchableOpacity onPress={() => navigateToCallback()}>
     <View style={styles.menuHeader}>
-      {renderImage(isParentMenu)}
+      {renderImage(isParentMenu())}
       <Text style={styles.menuHeaderText}>Component List</Text>
     </View>
     <MenuSeparator />

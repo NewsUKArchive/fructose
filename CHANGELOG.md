@@ -1,3 +1,13 @@
+<a name="3.10.0"></a>
+# [3.10.0](https://github.com/newsuk/fructose/compare/v3.9.4...v3.10.0) (2018-10-09)
+
+
+### Features
+
+* Stack navigation ([#150](https://github.com/newsuk/fructose/issues/150)) ([0eb91e2](https://github.com/newsuk/fructose/commit/0eb91e2))
+
+
+
 <a name="3.9.4"></a>
 ## [3.9.4](https://github.com/newsuk/fructose/compare/v3.9.3...v3.9.4) (2018-09-25)
 

@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, View, StatusBar, Text } from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, View, StatusBar, Text } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    height: '100%',
-    width: '100%'
+    backgroundColor: "white",
+    height: "100%",
+    width: "100%"
   }
 });
 
@@ -29,29 +29,15 @@ const actions = {
   decorateAction: () => () => {}
 };
 
-class FructoseComponentWrapper extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.component = props.component;
-  }
-
-  render() {
-    return (
-      <View style={styles.container} testID="fructose">
-        <StatusBar hidden />
-        {this.component(knobs, actions)}
-      </View>
-    );
-  }
-}
+const FructoseComponentWrapper = ({ component }) => (
+  <View style={styles.container} testID="fructose">
+    <StatusBar hidden />
+    {component(knobs, actions)}
+  </View>
+);
 
 FructoseComponentWrapper.propTypes = {
   component: PropTypes.func.isRequired
-};
-
-FructoseComponentWrapper.defaultProps = {
-  component: null
 };
 
 export default FructoseComponentWrapper;

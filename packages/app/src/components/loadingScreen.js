@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 });
 
 const LoadingScreen = () => (
-  <View id="thing" style={styles.view}>
+  <View style={styles.view}>
     <Text style={styles.text}>
       Brought to you by {"\n"} The Times Tooling Team
     </Text>

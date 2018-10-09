@@ -12,12 +12,16 @@ exports[`Navigation Header Renders with back icon 1`] = `
         "backgroundColor": "skyblue",
         "flexDirection": "row",
         "paddingLeft": 17,
-        "paddingTop": NaN,
         "paddingVertical": 28,
       }
     }
   >
-    <Component
+    <Image
+      source={
+        Object {
+          "testUri": "../../../packages/app/src/components/navigation/back-icon.png",
+        }
+      }
       style={
         Object {
           "height": 40,
@@ -56,17 +60,11 @@ exports[`Navigation Header Renders without back icon 1`] = `
         "backgroundColor": "skyblue",
         "flexDirection": "row",
         "paddingLeft": 17,
-        "paddingTop": NaN,
         "paddingVertical": 28,
       }
     }
   >
-    <Image
-      source={
-        Object {
-          "testUri": "../../../packages/app/src/components/navigation/back-icon.png",
-        }
-      }
+    <Component
       style={
         Object {
           "height": 40,

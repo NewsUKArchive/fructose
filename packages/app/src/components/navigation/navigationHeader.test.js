@@ -14,14 +14,20 @@ describe("Navigation Header", () => {
 
   it("Renders without back icon", () => {
     app = shallow(
-      <NavigationHeader navigateToCallback={() => {}} isParentMenu />
+      <NavigationHeader
+        navigateToCallback={() => {}}
+        isParentMenu={() => true}
+      />
     );
     expect(app).toMatchSnapshot();
   });
 
   it("Renders with back icon", () => {
     app = shallow(
-      <NavigationHeader navigateToCallback={() => {}} isParentMenu={false} />
+      <NavigationHeader
+        navigateToCallback={() => {}}
+        isParentMenu={() => false}
+      />
     );
     expect(app).toMatchSnapshot();
   });

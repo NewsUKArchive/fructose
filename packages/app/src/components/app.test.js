@@ -14,21 +14,15 @@ describe("App", () => {
 
   beforeEach(() => {
     components = {
-      component1: () => <View/>,
-      component2: () => <View/>,
-      component3: () => <View/>
+      component1: () => <View />,
+      component2: () => <View />,
+      component3: () => <View />
     };
   });
 
   it("Renders the root stack", () => {
-    app = shallow(
-      <App
-        components={components}
-      />)
+    app = shallow(<App components={components} />);
 
-      expect(app).toMatchSnapshot();
+    expect(app).toMatchSnapshot();
   });
-
-})
-
-
+});

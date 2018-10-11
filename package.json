@@ -1,6 +1,6 @@
 {
   "name": "@times-components/fructose",
-  "version": "3.11.0",
+  "version": "3.11.1",
   "main": "index.js",
   "scripts": {
     "test:unit": "jest ./packages --verbose --forceExit",
@@ -59,11 +59,8 @@
     "express": "^4.16.2",
     "github-comment-manager": "^1.1.5",
     "html-webpack-plugin": "3.2.0",
-    "jimp": "^0.2.28",
     "ngrok": "^2.2.24",
     "npmlog": "^4.1.2",
-    "pixelmatch": "^4.0.2",
-    "pngjs": "^3.3.1",
     "prop-types": "^15.6.0",
     "react-native": "0.55.4",
     "react-native-side-menu": "^1.1.3",

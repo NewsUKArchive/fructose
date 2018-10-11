@@ -3,7 +3,6 @@ import { Chromeless } from "chromeless";
 import { FructoseServer } from "../../server";
 import log from "../../common/logger";
 import checkIfWebStarted from "./didWebStart";
-import Snapper from "../../snapshots/snapper";
 import fructoseClient from "../../client";
 
 const fructosePort = 7811;
@@ -34,12 +33,7 @@ const mobileHooks = () => {
     server.close();
   };
 
-  const takeScreenShot = async (platform, screenshotPath) => {
-    const snapper = new Snapper(platform);
-    await snapper.snap(screenshotPath);
-  };
-
-  return { setup, cleanup, takeScreenShot };
+  return { setup, cleanup };
 };
 
 const webHooks = () => {

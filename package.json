@@ -1,6 +1,6 @@
 {
   "name": "@times-components/fructose",
-  "version": "3.11.1",
+  "version": "3.11.2",
   "main": "index.js",
   "scripts": {
     "test:unit": "jest ./packages --verbose --forceExit",
@@ -55,7 +55,7 @@
     "babel-polyfill": "^6.26.0",
     "callsite": "^1.0.0",
     "chromeless": "^1.3.0",
-    "commander":"2.19.0",
+    "commander": "2.19.0",
     "express": "^4.16.2",
     "github-comment-manager": "^1.1.5",
     "html-webpack-plugin": "3.2.0",

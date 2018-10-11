@@ -1,3 +1,13 @@
+<a name="3.11.2"></a>
+## [3.11.2](https://github.com/newsuk/fructose/compare/v3.11.1...v3.11.2) (2018-10-11)
+
+
+### Bug Fixes
+
+* add babel-polyfill to github comment manager ([#154](https://github.com/newsuk/fructose/issues/154)) ([a68a5d0](https://github.com/newsuk/fructose/commit/a68a5d0))
+
+
+
 <a name="3.11.1"></a>
 ## [3.11.1](https://github.com/newsuk/fructose/compare/v3.11.0...v3.11.1) (2018-10-11)
 

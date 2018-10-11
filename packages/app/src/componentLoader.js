@@ -4,6 +4,18 @@ const isValidShowcase = parent => {
   if (!parent.default.children) return false;
   return true;
 };
+
+const filterShowcases = (showcases, platform) =>
+  showcases.children
+    .filter(showcase => showcase.type === "story")
+    .filter(showcase => !showcase.fructoseIgnoredStory)
+    .filter(showcase => {
+      if (showcase.platform) {
+        return showcase.platform.includes(platform);
+      }
+      return showcase;
+    });
+
 export default (loadComponents, platform) => {
   const componentsStore = {};
   const components = loadComponents();
@@ -12,18 +24,8 @@ export default (loadComponents, platform) => {
     components.forEach(parent => {
       if (isValidShowcase(parent)) {
         const showcases = parent.default;
-        const partiallyFilteredShowcases = showcases.children.filter(
-          showcase => showcase.type === 'story'
-        );
 
-        const filteredShowcases = partiallyFilteredShowcases.filter(
-          showcase => {
-            if (showcase.platform) {
-              return showcase.platform.includes(platform);
-            }
-            return showcase;
-          }
-        );
+        const filteredShowcases = filterShowcases(showcases, platform);
 
         filteredShowcases.forEach(showcase => {
           const showCaseName = `${showcases.name}:${

@@ -1,4 +1,3 @@
-
 emulator @fructose_device -no-boot-anim &
 EMU_PID=$!
 adb wait-for-device
@@ -12,4 +11,3 @@ BUNDLER_PID=$!
 LOGLEVEL=verbose node_modules/.bin/jest ./e2eTests/example/android.test.js --verbose  --forceExit
 kill -9 $EMU_PID
 kill -9 $BUNDLER_PID
-

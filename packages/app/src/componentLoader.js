@@ -24,7 +24,6 @@ export default (loadComponents, platform) => {
     components.forEach(parent => {
       if (isValidShowcase(parent)) {
         const showcases = parent.default;
-
         const filteredShowcases = filterShowcases(showcases, platform);
 
         filteredShowcases.forEach(showcase => {

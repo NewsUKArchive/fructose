@@ -1,3 +1,13 @@
+<a name="3.11.0"></a>
+# [3.11.0](https://github.com/newsuk/fructose/compare/v3.10.0...v3.11.0) (2018-10-11)
+
+
+### Features
+
+* fructoseIgnoredStory ([#152](https://github.com/newsuk/fructose/issues/152)) ([fb6a2ae](https://github.com/newsuk/fructose/commit/fb6a2ae))
+
+
+
 <a name="3.10.0"></a>
 # [3.10.0](https://github.com/newsuk/fructose/compare/v3.9.4...v3.10.0) (2018-10-09)
 

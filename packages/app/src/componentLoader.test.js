@@ -44,6 +44,33 @@ it("filters out non story showcases", () => {
   expect(loaded).toEqual({});
 });
 
+it("filters out ignored story showcases", () => {
+  // mocks the showcase structure that is exported in times-components
+  const mockShowcase = {
+    default: {
+      name: "Primitives/ArticleLabel",
+      children: [
+        {
+          type: "story",
+          fructoseIgnoredStory: true,
+          name: "small",
+          component: () => "lol"
+        },
+        {
+          type: "story",
+          name: "shown",
+          component: () => "lol"
+        }
+      ]
+    }
+  };
+
+  const getShowcasesObject = () => [mockShowcase];
+
+  const loaded = loader(getShowcasesObject);
+  expect(Object.keys(loaded)).toEqual(["primitives/articlelabel:shown"]);
+});
+
 it("returns showcases without a platform", () => {
   const mockShowcase = {
     default: {

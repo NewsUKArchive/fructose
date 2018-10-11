@@ -2722,10 +2722,15 @@ commander@2.11.x:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
   integrity sha512-b0553uYA5YAEGgyYIGYROzKQ7X5RAqedkfjiZxwi0kL1g3bOaBNNZfYkzt/CL0umgD5wc9Jec2FbB98CjkMRvQ==
 
-commander@2.15.x, commander@^2.11.0, commander@^2.15.1, commander@^2.9.0, commander@~2.15.0:
+commander@2.15.x, commander@^2.11.0, commander@^2.9.0, commander@~2.15.0:
   version "2.15.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
   integrity sha512-VlfT9F3V0v+jr4yxPc5gg9s62/fIVWsd2Bk2iD435um1NlGMYdVCq+MjcXnhYq2icNOizHr1kK+5TI6H0Hy0ag==
+
+commander@2.19.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
+  integrity sha512-6tvAOO+D6OENvRAh524Dh9jcfKTYDQAqvqezbCW82xj5X0pSrcpxtvRKHLG0yBY6SD7PSDrJaj+0AiOcKVd1Xg==
 
 commander@~2.1.0:
   version "2.1.0"
@@ -4632,10 +4637,10 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-github-comment-manager@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/github-comment-manager/-/github-comment-manager-1.1.4.tgz#36dccc945a9be54f94c550d98d278b280608e2f8"
-  integrity sha512-Vn9/pFWXMdhIyf3dcNoxNXiPtw6kQHMyTkGBCHoSzo3NnnHgxA5AViAouazBQotXMUPTk6l8Mf5mzYUGwCGgAA==
+github-comment-manager@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/github-comment-manager/-/github-comment-manager-1.1.5.tgz#aa5aff70841e5ee88025e564128caa49cc1762e4"
+  integrity sha512-YyDajTz3sBP6nBZ7P4nIQPbA2t1Aln3NXAgRC9zauqs+zMQIPQdw4fyDBwkpOR65d+O2nVe03iR9aMm7OW00eQ==
   dependencies:
     request "^2.87.0"
 

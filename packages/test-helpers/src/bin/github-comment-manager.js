@@ -1,5 +1,7 @@
 import { read, remove, create } from "github-comment-manager";
 
+require("babel-polyfill");
+
 const filterExpoComments = (comments, account) =>
   JSON.parse(comments)
     .filter(({ user }) => user.login === account)

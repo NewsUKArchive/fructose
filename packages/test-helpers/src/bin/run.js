@@ -25,6 +25,7 @@ program
     "gitbug organisation and repo e.g. newsuk/times-components"
   )
   .action(async options => {
+    console.log("publish action");
     const { path, accountName, key, issueNumber, repository } = options;
 
     if (!path)
@@ -41,12 +42,15 @@ program
       );
     if (!path || !accountName || !key || !issueNumber || !repository)
       process.exit(1);
+    console.log("before delete action");    
     await githubCommentManager.deleteAllExpoComments(
       accountName,
       key,
       issueNumber,
       repository
     );
+    console.log("after delete action");
+    console.log("after create action");
     await githubCommentManager.createNewExpoComment(
       accountName,
       key,
@@ -54,5 +58,6 @@ program
       issueNumber,
       repository
     );
+    console.log("after create action");
   });
 program.parse(process.argv);

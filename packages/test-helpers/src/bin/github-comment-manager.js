@@ -3,7 +3,7 @@ import { read, remove, create } from "github-comment-manager";
 require("babel-polyfill");
 
 const commentHeader =
-  "If you use Expo, view our components by scanning this qr code:<br>";
+  "If you use Expo, view our components by scanning this qr code:<br/>";
 
 const filterExpoComments = comments =>
   JSON.parse(comments)
@@ -30,10 +30,9 @@ const deleteComment = (commentId, account, token, repository) =>
 
 const deleteCommentsFromList = (comments, account, token, repository) =>
   Promise.all(
-    comments.map(commentId => {
-      console.log(`inside comments map ${commentId}`);
-      return deleteComment(commentId, account, token, repository);
-    })
+    comments.map(commentId =>
+      deleteComment(commentId, account, token, repository)
+    )
   ).then(() => comments.length);
 
 const createNewExpoComment = (

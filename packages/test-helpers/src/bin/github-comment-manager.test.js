@@ -21,21 +21,21 @@ const noCommentsResponse = [
 const mixedCommentsResponse = [
   {
     id: 1,
-    body: "If you use Expo, view our components by scanning this qr code:",
+    body: "If you use Expo, view our components by scanning this qr code:<br/>",
     user: {
       login: "not test account name"
     }
   },
   {
     id: 2,
-    body: "If you use Expo, view our components by scanning this qr code:",
+    body: "If you use Expo, view our components by scanning this qr code:<br/>",
     user: {
       login: account
     }
   },
   {
     id: 3,
-    body: "If you use Expo, view our components by scanning this qr code:",
+    body: "If you use Expo, view our components by scanning this qr code:<br/>",
     user: {
       login: "a different non test account name"
     }
@@ -45,14 +45,14 @@ const mixedCommentsResponse = [
 const multipleUserCommentsResponse = [
   {
     id: 1,
-    body: "If you use Expo, view our components by scanning this qr code:",
+    body: "If you use Expo, view our components by scanning this qr code:<br/>",
     user: {
       login: account
     }
   },
   {
     id: 2,
-    body: "If you use Expo, view our components by scanning this qr code:",
+    body: "If you use Expo, view our components by scanning this qr code:<br/>",
     user: {
       login: account
     }
@@ -69,7 +69,7 @@ const sameUserCommentsResponse = [
   },
   {
     id: 2,
-    body: "If you use Expo, view our components by scanning this qr code:",
+    body: "If you use Expo, view our components by scanning this qr code:<br/>",
     user: {
       login: account
     }
@@ -77,21 +77,6 @@ const sameUserCommentsResponse = [
 ];
 
 describe("deleteAllExpoComments", () => {
-  it("should not delete any comments as there are no comments made by the specified user's account", async () => {
-    nock("https://api.github.com")
-      .get(`/repos/${account}/${repository}/issues/${pullRequest}/comments`)
-      .reply(200, noCommentsResponse);
-
-    const deletedCount = await githubCommentManager.deleteAllExpoComments(
-      account,
-      token,
-      pullRequest,
-      repository
-    );
-
-    expect(deletedCount).toEqual(0);
-  });
-
   it("should delete multiple Expo comments", async () => {
     nock("https://api.github.com")
       .get(`/repos/${account}/${repository}/issues/${pullRequest}/comments`)
@@ -112,25 +97,6 @@ describe("deleteAllExpoComments", () => {
     );
 
     expect(deletedCount).toEqual(2);
-  });
-
-  it("should only delete comments from specific user", async () => {
-    nock("https://api.github.com")
-      .get(`/repos/${account}/${repository}/issues/${pullRequest}/comments`)
-      .reply(200, mixedCommentsResponse);
-
-    nock("https://api.github.com")
-      .delete(`/repos/${account}/${repository}/issues/comments/2`)
-      .reply(200);
-
-    const deletedCount = await githubCommentManager.deleteAllExpoComments(
-      account,
-      token,
-      pullRequest,
-      repository
-    );
-
-    expect(deletedCount).toEqual(1);
   });
 
   it("should only delete expo comments", async () => {
@@ -158,7 +124,7 @@ describe("createNewExpoComment", () => {
     nock("https://api.github.com")
       .post(
         `/repos/${account}/${repository}/issues/${pullRequest}/comments`,
-        `{"body": "If you use Expo, view our components by scanning this qr code: <br> <img src='${documentPath}'> <br> This has been made possible through [Fructose](https://github.com/newsuk/fructose) "}`
+        `{"body": "If you use Expo, view our components by scanning this qr code:<br/> <br> <img src='${documentPath}'> <br> This has been made possible through [Fructose](https://github.com/newsuk/fructose) "}`
       )
       .reply(200);
 

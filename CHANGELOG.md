@@ -1,3 +1,13 @@
+<a name="3.11.4"></a>
+## [3.11.4](https://github.com/newsuk/fructose/compare/v3.11.3...v3.11.4) (2018-10-15)
+
+
+### Bug Fixes
+
+* remove account filter for deleting comments ([#155](https://github.com/newsuk/fructose/issues/155)) ([0a385cb](https://github.com/newsuk/fructose/commit/0a385cb))
+
+
+
 <a name="3.11.3"></a>
 ## [3.11.3](https://github.com/newsuk/fructose/compare/v3.11.2...v3.11.3) (2018-10-12)
 

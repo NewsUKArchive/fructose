@@ -52,7 +52,7 @@ it("filters out ignored story showcases", () => {
       children: [
         {
           type: "story",
-          fructoseIgnoredStory: true,
+          hasExternalDeps: true,
           name: "small",
           component: () => "lol"
         },

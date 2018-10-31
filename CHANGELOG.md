@@ -34,7 +34,7 @@
 
 ### Features
 
-* fructoseIgnoredStory ([#152](https://github.com/newsuk/fructose/issues/152)) ([fb6a2ae](https://github.com/newsuk/fructose/commit/fb6a2ae))
+* hasExternalDeps ([#152](https://github.com/newsuk/fructose/issues/152)) ([fb6a2ae](https://github.com/newsuk/fructose/commit/fb6a2ae))
 
 
 

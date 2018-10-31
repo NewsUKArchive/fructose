@@ -1,3 +1,13 @@
+<a name="3.12.0"></a>
+# [3.12.0](https://github.com/newsuk/fructose/compare/v3.11.4...v3.12.0) (2018-10-31)
+
+
+### Features
+
+* hasExternalDeps ([#156](https://github.com/newsuk/fructose/issues/156)) ([19c17b1](https://github.com/newsuk/fructose/commit/19c17b1))
+
+
+
 <a name="3.11.4"></a>
 ## [3.11.4](https://github.com/newsuk/fructose/compare/v3.11.3...v3.11.4) (2018-10-15)
 

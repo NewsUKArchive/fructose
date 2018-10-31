@@ -8,7 +8,7 @@ const isValidShowcase = parent => {
 const filterShowcases = (showcases, platform) =>
   showcases.children
     .filter(showcase => showcase.type === "story")
-    .filter(showcase => !showcase.fructoseIgnoredStory)
+    .filter(showcase => !showcase.hasExternalDeps)
     .filter(showcase => {
       if (showcase.platform) {
         return showcase.platform.includes(platform);
